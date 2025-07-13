@@ -11,10 +11,11 @@
   --font-weight-bold: 700;
   
   /* Color Palette - Light Mode */
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
+  --color-primary: #f59e0b;
+  --color-primary-hover: #d97706;
   --color-secondary: #64748b;
   --color-accent: #f59e0b;
+  --color-orange: #f59e0b;
   
   /* Background Colors */
   --color-bg-primary: #ffffff;
@@ -234,6 +235,10 @@ header picture img:hover {
   border: 0;
 }
 
+.text-orange {
+  color: var(--color-orange);
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -280,7 +285,7 @@ header picture img:hover {
   font-size: 1.25rem;
   font-weight: var(--font-weight-regular);
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: #464646;
   margin-bottom: var(--space-2xl);
   max-width: 650px;
   margin-left: auto;
