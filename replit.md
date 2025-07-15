@@ -51,20 +51,32 @@ Preferred communication style: Simple, everyday language.
 - Integration with AI services for content generation
 - Potential user authentication and resume storage
 
-## Recent Changes (July 13, 2025)
+## Recent Changes (July 15, 2025)
 
-### Hero Section Implementation
+### Color System Update
+- Updated primary orange color to #EE4E34 across the entire design system
+- Updated hover states and dark mode variants to maintain consistency
+- Applied new orange color to "your story" highlight in main headline
+
+### Hero Section Refinements
+- Changed primary CTA button text to "Join the waitlist"
+- Updated primary CTA link to point to https://tally.so/r/wzBlA0
+- Added white font color for subtitle in dark mode for better contrast
+- Maintained responsive design and accessibility standards
+
+### Below-the-Fold Section Implementation
+- Added "Why Your Resume Will Finally Stand Out" section
+- Implemented two-column grid layout with text content and visual placeholder
+- Created responsive design that stacks on mobile devices
+- Used clean, minimal styling consistent with overall design system
+- Content emphasizes Story.CV as a resume writer (not builder) with personalized approach
+
+### Previous Changes (July 13, 2025)
 - Added above-the-fold hero section with H1 headline and subtitle
 - Implemented call-to-action buttons with primary/secondary styling
 - Created responsive design that works across all device sizes
 - Applied clean, modern typography using Onest font system
-
-### SEO Optimization
-- Added comprehensive meta descriptions and keywords
-- Implemented Open Graph and Twitter Card meta tags
-- Added structured data (JSON-LD) for search engine understanding
-- Included canonical URL for proper indexing
-- Used semantic HTML with proper heading hierarchy
+- Added comprehensive SEO optimization with meta tags and structured data
 
 ## External Dependencies
 

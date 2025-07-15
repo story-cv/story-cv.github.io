@@ -11,11 +11,11 @@
   --font-weight-bold: 700;
   
   /* Color Palette - Light Mode */
-  --color-primary: #f59e0b;
-  --color-primary-hover: #d97706;
+  --color-primary: #EE4E34;
+  --color-primary-hover: #d63824;
   --color-secondary: #64748b;
-  --color-accent: #f59e0b;
-  --color-orange: #f59e0b;
+  --color-accent: #EE4E34;
+  --color-orange: #EE4E34;
   
   /* Background Colors */
   --color-bg-primary: #ffffff;
@@ -94,8 +94,8 @@
     --color-border-light: #475569;
     
     /* Adjust primary colors for dark mode contrast */
-    --color-primary: #3b82f6;
-    --color-primary-hover: #2563eb;
+    --color-primary: #EE4E34;
+    --color-primary-hover: #d63824;
   }
 }
 
@@ -292,6 +292,12 @@ header picture img:hover {
   margin-right: auto;
 }
 
+@media (prefers-color-scheme: dark) {
+  .hero-subtitle {
+    color: white;
+  }
+}
+
 .hero-cta {
   display: flex;
   gap: var(--space-md);
@@ -394,6 +400,120 @@ header picture img:hover {
   
   .hero-subtitle {
     font-size: 1.375rem;
+  }
+}
+
+/* Value Props Section */
+.value-props {
+  padding: var(--space-4xl) 0;
+  background-color: var(--color-bg-primary);
+}
+
+.value-props-title {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3xl);
+  letter-spacing: -0.02em;
+}
+
+.value-props-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.value-props-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.value-prop-intro {
+  font-size: 1.125rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0;
+  font-weight: var(--font-weight-regular);
+}
+
+.value-prop-intro strong {
+  font-weight: var(--font-weight-bold);
+}
+
+.value-prop-item {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.value-prop-description {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+  line-height: 1.6;
+  margin-top: var(--space-md);
+}
+
+.value-props-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visual-placeholder {
+  width: 100%;
+  height: 300px;
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+/* Responsive Design for Value Props */
+@media (max-width: 768px) {
+  .value-props {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .value-props-title {
+    font-size: 2rem;
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .value-props-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    text-align: center;
+  }
+  
+  .value-props-text {
+    order: 2;
+  }
+  
+  .value-props-visual {
+    order: 1;
+  }
+  
+  .visual-placeholder {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .value-props-title {
+    font-size: 1.75rem;
+  }
+  
+  .value-prop-intro {
+    font-size: 1rem;
+  }
+  
+  .visual-placeholder {
+    height: 150px;
   }
 }
 
