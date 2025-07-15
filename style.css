@@ -612,6 +612,210 @@ header picture img:hover {
   }
 }
 
+/* Comparison Toggle Section */
+.comparison {
+  padding: var(--space-4xl) 0;
+  background-color: var(--color-bg-primary);
+}
+
+.comparison-title {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3xl);
+  letter-spacing: -0.02em;
+}
+
+/* Toggle Switch */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.toggle-switch {
+  position: relative;
+  display: flex;
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  border: 1px solid var(--color-border);
+}
+
+.toggle-switch input[type="radio"] {
+  display: none;
+}
+
+.toggle-option {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-sm) var(--space-xl);
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.toggle-indicator {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+.toggle-switch input[type="radio"]:checked + .toggle-option {
+  color: var(--color-text-primary);
+}
+
+.toggle-switch input[type="radio"]#storycv:checked ~ .toggle-indicator {
+  transform: translateX(100%);
+}
+
+/* Comparison Content */
+.comparison-content {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.comparison-view {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--transition-normal);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.comparison-view.active {
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+  pointer-events: auto;
+}
+
+.view-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.view-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.step-card {
+  background-color: var(--color-bg-secondary);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.chatgpt-view .step-card {
+  background-color: #f8f9fa;
+  border-color: #e9ecef;
+}
+
+.storycv-view .step-card {
+  background-color: #fef7f0;
+  border-color: #fed7aa;
+}
+
+.step-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.step-card.step-animate {
+  animation: slideInUp 0.4s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.view-footer {
+  text-align: center;
+}
+
+.conclusion {
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+/* Responsive Design for Comparison */
+@media (max-width: 768px) {
+  .comparison {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .comparison-title {
+    font-size: 2rem;
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .toggle-option {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.85rem;
+  }
+  
+  .step-card {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.9rem;
+  }
+  
+  .conclusion {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-title {
+    font-size: 1.75rem;
+  }
+  
+  .toggle-option {
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.8rem;
+  }
+  
+  .view-subtitle {
+    font-size: 1rem;
+  }
+}
+
 /* Print Styles */
 @media print {
   * {
