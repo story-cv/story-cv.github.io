@@ -1,0 +1,33 @@
+Now, let's create the next major section of the landing page. This section should clearly articulate why StoryCV is superior to traditional human resume writers, presented in an aesthetically pleasing 2x2 grid layout.
+Remember to adhere to all previously defined styles: 'primary orange' is #EE4E34, primary CTA text is 'Join the waitlist' linking to https://tally.so/r/wzBlA0, and all existing font, color, and logo setups are in place.
+Section Title:
+Start this section with an <h2> heading: 'Why we’re better than a human resume writer'. Ensure this heading is prominent and well-spaced from the content below it.
+2x2 Grid Content Blocks:
+Implement a responsive grid layout. On mobile, these should stack vertically (1x4). On tablet (md breakpoint) and desktop, they should display as a 2x2 grid. Each block should be visually distinct (e.g., a card).
+Here is the content for each block:
+Block 1:
+Headline: You don’t have to explain what a backend engineer does.
+Description: Or what RevOps means. Or what OKRs are. We already get it. We understand every industry - from SaaS to supply chains.
+Block 2:
+Headline: No awkward Zoom calls.
+Description: No pressure to perform. You get to pause, reflect, and rewrite on your terms — not someone else’s clock.
+Block 3:
+Headline: Way more affordable.
+Description: Great resume help shouldn’t cost the same as a flight ticket. No hidden fees. No upsells. Just results.
+Block 4:
+Headline: Faster than anything else.
+Description: No “within 5 business days” promise. You’ll get a powerful, rewritten resume today. Not next Friday.
+Aesthetics & Styling Guidelines for the 2x2 Grid:
+Overall Section: Give the section generous vertical padding (py-16 or py-24) and horizontal padding (px-4 or px-8).
+Grid Layout: Use Tailwind's grid, grid-cols-1, md:grid-cols-2 classes with appropriate gap spacing (gap-8 or gap-12) between grid items.
+Individual Blocks (Cards):
+Each block should be enclosed in a div that acts as a card.
+Background: Use a clean, light background color (e.g., bg-gray-50 or bg-white with a very subtle shadow-md). If a specific secondary background color was set up, use that.
+Padding: Apply ample padding inside each card (p-6 or p-8).
+Rounded Corners: Apply subtle rounded-lg or rounded-xl for a soft look.
+Headlines (Bold Text): Ensure the headlines are bold (font-bold) and slightly larger than the description text.
+Description Text: Use a comfortable reading font size and a dark, readable text color (e.g., text-gray-700).
+Technical Constraints:
+Provide only the HTML and Tailwind CSS for this specific section. Do NOT include <html>, <head>, or <body> tags.
+Assume Tailwind CSS is correctly linked and configured.
+Ensure all text content provided above is accurately included."
