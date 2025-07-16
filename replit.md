@@ -78,15 +78,6 @@ Preferred communication style: Simple, everyday language.
 - Four key advantages: industry knowledge, no awkward calls, affordability, and speed
 - Used secondary background color to visually separate from other sections
 
-### Interactive Comparison Toggle Implementation
-- Added "Yes, you can use ChatGPT for your resume" section with animated toggle
-- Implemented smooth toggle switch with animated indicator
-- Created two distinct views: ChatGPT (9 steps) vs StoryCV (4 steps)
-- Added smooth CSS transitions and JavaScript-powered view switching
-- Included staggered animations for step cards with intersection observer
-- Used subtle color differentiation: neutral gray for ChatGPT, warm orange tint for StoryCV
-- Maintained respectful tone while highlighting StoryCV's advantages
-
 ### Previous Changes (July 13, 2025)
 - Added above-the-fold hero section with H1 headline and subtitle
 - Implemented call-to-action buttons with primary/secondary styling
