@@ -1167,17 +1167,19 @@ header picture img:hover {
 
 /* Comparison Table Section */
 .comparison-section {
-  padding: 0;
+  padding: var(--space-xl) var(--space-md);
   background-color: var(--color-bg-primary);
   min-height: 100vh;
   position: relative;
 }
 
 .comparison-container {
-  width: 100%;
-  height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 /* Sticky Header */
@@ -1219,17 +1221,18 @@ header picture img:hover {
 }
 
 .comparison-row {
-  min-height: calc(100vh - 80px);
+  min-height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1.2fr;
   gap: var(--space-md);
-  align-items: center;
-  padding: var(--space-xl) var(--space-md);
+  align-items: stretch;
+  padding: 1.25rem 0;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   opacity: 0;
   transform: translateY(20px);
   transition: all var(--transition-normal);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .comparison-row.visible {
@@ -1238,16 +1241,15 @@ header picture img:hover {
 }
 
 .row-cell {
-  padding: var(--space-lg);
+  padding: 1.25rem 1rem;
   border-radius: var(--radius-lg);
   background-color: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 200px;
+  min-height: auto;
 }
 
 .row-cell.label-cell {
@@ -1278,6 +1280,11 @@ header picture img:hover {
   margin: 0;
 }
 
+.cell-content p strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .sticky-header {
@@ -1299,13 +1306,13 @@ header picture img:hover {
   .comparison-row {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
-    padding: var(--space-lg) var(--space-md);
-    min-height: calc(100vh - 60px);
+    padding: 1.25rem 0;
+    min-height: auto;
   }
   
   .row-cell {
     min-height: auto;
-    padding: var(--space-md);
+    padding: 1rem;
   }
   
   .row-cell.label-cell {
@@ -1351,13 +1358,25 @@ header picture img:hover {
 @supports not (scroll-snap-type: y mandatory) {
   .comparison-rows {
     scroll-snap-type: none;
+    height: auto;
+    overflow-y: visible;
   }
   
   .comparison-row {
     min-height: auto;
-    margin-bottom: var(--space-xl);
+    margin-bottom: 1.25rem;
     border-bottom: 2px solid var(--color-border);
-    padding-bottom: var(--space-xl);
+    padding-bottom: 1.25rem;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .comparison-section {
+    min-height: auto;
+  }
+  
+  .comparison-container {
+    height: auto;
   }
 }
 

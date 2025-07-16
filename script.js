@@ -159,9 +159,9 @@ function initComparisonTable() {
             }
         });
     }, {
-        threshold: 0.5,
+        threshold: 0.3,
         root: comparisonRows,
-        rootMargin: '0px'
+        rootMargin: '-10% 0px -10% 0px'
     });
     
     // Observe all comparison rows
