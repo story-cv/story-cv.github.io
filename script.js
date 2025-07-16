@@ -85,4 +85,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addEventListener('scroll', requestTick, { passive: true });
+    
+    // Process cards animation
+    const processCards = document.querySelectorAll('.process-card');
+    
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add delay for staggered animation
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 150);
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    // Observe all process cards
+    processCards.forEach(card => {
+        cardObserver.observe(card);
+    });
 });

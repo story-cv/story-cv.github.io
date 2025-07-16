@@ -856,3 +856,209 @@ header picture img:hover {
     display: none;
   }
 }
+
+/* Process Flow Section */
+.process-flow {
+  padding: var(--space-4xl) 0;
+  background-color: var(--color-bg-secondary);
+}
+
+.process-header {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+}
+
+.process-title {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.02em;
+}
+
+.process-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.process-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.process-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  position: relative;
+  transition: all var(--transition-normal);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.process-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary);
+}
+
+.card-number {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  font-size: 0.875rem;
+}
+
+.card-image-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-lg);
+  border: 1px solid var(--color-border);
+}
+
+.card-content {
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.process-conclusion {
+  text-align: center;
+  margin-top: var(--space-4xl);
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.process-conclusion .conclusion-text {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Desktop layout for process cards */
+@media (min-width: 768px) {
+  .process-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2xl);
+  }
+  
+  .process-card {
+    text-align: center;
+  }
+  
+  .card-content {
+    text-align: center;
+  }
+  
+  .card-image-placeholder {
+    height: 160px;
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .process-flow {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .process-title {
+    font-size: 2rem;
+  }
+  
+  .process-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .process-card {
+    padding: var(--space-xl);
+  }
+  
+  .card-number {
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+  
+  .card-image-placeholder {
+    height: 150px;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+  }
+  
+  .card-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-title {
+    font-size: 1.75rem;
+  }
+  
+  .process-subtitle {
+    font-size: 1rem;
+  }
+  
+  .process-card {
+    padding: var(--space-lg);
+  }
+  
+  .card-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+  }
+  
+  .card-image-placeholder {
+    height: 120px;
+  }
+  
+  .card-title {
+    font-size: 1.125rem;
+  }
+}

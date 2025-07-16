@@ -86,6 +86,15 @@ Preferred communication style: Simple, everyday language.
 - Mobile-responsive design with proper spacing and marker positioning
 - Emphasizes cognitive load and complexity of using ChatGPT for resume writing
 
+### Process Flow Section Implementation
+- Added "Let's make resume writing easy this time" section with 3-step process
+- Implemented card-based design with numbered steps in corners
+- Created responsive layout: vertical stack on mobile, horizontal on desktop
+- Added hover effects with elevation and border color changes
+- Included placeholder image areas for future visual content
+- Used staggered scroll animations for card entrance
+- Emphasized StoryCV's simplicity compared to ChatGPT complexity
+
 ### Previous Changes (July 13, 2025)
 - Added above-the-fold hero section with H1 headline and subtitle
 - Implemented call-to-action buttons with primary/secondary styling
