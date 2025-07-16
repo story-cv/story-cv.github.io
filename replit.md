@@ -104,16 +104,17 @@ Preferred communication style: Simple, everyday language.
 - Included "Join the waitlist" CTA consistent with primary orange branding
 - Clean, minimal design focused on reflection and clarity
 
-### Comparison Table Section Implementation
-- Built responsive scroll-triggered vertical comparison table with sticky header
-- Implemented scroll-snap functionality showing one row at a time in viewport
-- Created 4-column grid: criteria, traditional writer, AI builders, StoryCV
-- Added mobile-first responsive design with vertical stacking on mobile
-- Included feature detection for scroll-snap, sticky positioning, and reduced motion
-- Built comprehensive fallback for unsupported browsers showing all rows stacked
-- Added keyboard navigation (arrow keys) for accessibility
-- Used smooth transitions and fade-in animations for row visibility
-- Highlighted StoryCV column with primary orange branding throughout
+### Comparison Table Section Implementation (Redesigned)
+- Added "Not just different. Actually better." H2 title above comparison
+- Built shadcn-style comparison table with sticky header and single-row display
+- Implemented one-row-at-a-time display with smooth transitions (LeapingAI-inspired)
+- Created card-based layout with gradient highlights for StoryCV column
+- Added auto-advance functionality (4-second intervals) with pause on hover
+- Built comprehensive navigation: progress dots, keyboard arrows, mouse wheel, touch swipe
+- Included mobile-responsive design hiding table header on mobile
+- Used proper shadcn component styling with borders, shadows, and hover effects
+- Implemented smooth cubic-bezier transitions and gradient backgrounds
+- Added content for all 4 comparison areas: Content Help, Storytelling, Speed, Cost
 
 ### Previous Changes (July 13, 2025)
 - Added above-the-fold hero section with H1 headline and subtitle
