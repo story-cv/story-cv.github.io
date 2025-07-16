@@ -107,4 +107,22 @@ document.addEventListener('DOMContentLoaded', function() {
     processCards.forEach(card => {
         cardObserver.observe(card);
     });
+    
+    // Mini hero animation
+    const miniHero = document.querySelector('.mini-hero');
+    
+    const miniHeroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    if (miniHero) {
+        miniHeroObserver.observe(miniHero);
+    }
 });
