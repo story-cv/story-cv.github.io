@@ -125,4 +125,87 @@ document.addEventListener('DOMContentLoaded', function() {
     if (miniHero) {
         miniHeroObserver.observe(miniHero);
     }
+    
+    // Comparison table functionality
+    initComparisonTable();
 });
+
+function initComparisonTable() {
+    const comparisonSection = document.querySelector('.comparison-section');
+    const comparisonRows = document.querySelector('.comparison-rows');
+    const fallbackTable = document.querySelector('.comparison-fallback');
+    const rows = document.querySelectorAll('.comparison-row');
+    
+    if (!comparisonSection || !comparisonRows || !rows.length) return;
+    
+    // Feature detection for scroll-snap and sticky positioning
+    const supportsScrollSnap = CSS.supports('scroll-snap-type', 'y mandatory');
+    const supportsSticky = CSS.supports('position', 'sticky');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    // Check if we should use fallback
+    if (!supportsScrollSnap || !supportsSticky || reducedMotion) {
+        showFallbackTable();
+        return;
+    }
+    
+    // Set up scroll-triggered animations for comparison rows
+    const rowObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.5,
+        root: comparisonRows,
+        rootMargin: '0px'
+    });
+    
+    // Observe all comparison rows
+    rows.forEach(row => {
+        rowObserver.observe(row);
+    });
+    
+    // Add keyboard navigation for accessibility
+    comparisonRows.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            
+            const currentRow = document.querySelector('.comparison-row.visible');
+            if (!currentRow) return;
+            
+            let nextRow;
+            if (e.key === 'ArrowDown') {
+                nextRow = currentRow.nextElementSibling;
+            } else {
+                nextRow = currentRow.previousElementSibling;
+            }
+            
+            if (nextRow && nextRow.classList.contains('comparison-row')) {
+                nextRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+    
+    // Make the container focusable for keyboard navigation
+    comparisonRows.tabIndex = 0;
+    
+    function showFallbackTable() {
+        // Hide the scroll-snap table and show fallback
+        comparisonRows.style.display = 'none';
+        fallbackTable.style.display = 'block';
+        
+        // Copy content to fallback table
+        const fallbackRows = fallbackTable.querySelector('.fallback-rows');
+        rows.forEach(row => {
+            const clonedRow = row.cloneNode(true);
+            clonedRow.classList.add('visible');
+            clonedRow.style.opacity = '1';
+            clonedRow.style.transform = 'none';
+            fallbackRows.appendChild(clonedRow);
+        });
+    }
+}

@@ -1164,3 +1164,229 @@ header picture img:hover {
     line-height: 1.6;
   }
 }
+
+/* Comparison Table Section */
+.comparison-section {
+  padding: 0;
+  background-color: var(--color-bg-primary);
+  min-height: 100vh;
+  position: relative;
+}
+
+.comparison-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Header */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg-primary);
+  border-bottom: 2px solid var(--color-border);
+  padding: var(--space-lg) var(--space-md);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.2fr;
+  gap: var(--space-md);
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-cell {
+  font-weight: var(--font-weight-bold);
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+  text-align: center;
+  padding: var(--space-sm);
+}
+
+.header-cell.highlight-cell {
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+/* Scrollable Rows Container */
+.comparison-rows {
+  flex: 1;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.comparison-row {
+  min-height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.2fr;
+  gap: var(--space-md);
+  align-items: center;
+  padding: var(--space-xl) var(--space-md);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--transition-normal);
+}
+
+.comparison-row.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.row-cell {
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 200px;
+}
+
+.row-cell.label-cell {
+  background-color: var(--color-bg-primary);
+  border: 2px solid var(--color-border);
+}
+
+.row-cell.highlight-cell {
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary);
+}
+
+.row-cell h3 {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.cell-content {
+  width: 100%;
+}
+
+.cell-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .sticky-header {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    text-align: center;
+  }
+  
+  .header-cell {
+    display: none;
+  }
+  
+  .header-cell:first-child {
+    display: block;
+    font-size: 1.125rem;
+  }
+  
+  .comparison-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg) var(--space-md);
+    min-height: calc(100vh - 60px);
+  }
+  
+  .row-cell {
+    min-height: auto;
+    padding: var(--space-md);
+  }
+  
+  .row-cell.label-cell {
+    order: -1;
+    background-color: var(--color-primary);
+    color: white;
+  }
+  
+  .row-cell.label-cell h3 {
+    color: white;
+    font-size: 1.25rem;
+  }
+  
+  .traditional-cell::before {
+    content: "Traditional Resume Writer";
+    display: block;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+    font-size: 0.875rem;
+  }
+  
+  .generic-cell::before {
+    content: "Generic / AI Resume Builders";
+    display: block;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+    font-size: 0.875rem;
+  }
+  
+  .storycv-cell::before {
+    content: "StoryCV (AI-Powered Resume Writer)";
+    display: block;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+    font-size: 0.875rem;
+  }
+}
+
+/* Fallback for non-supporting browsers */
+@supports not (scroll-snap-type: y mandatory) {
+  .comparison-rows {
+    scroll-snap-type: none;
+  }
+  
+  .comparison-row {
+    min-height: auto;
+    margin-bottom: var(--space-xl);
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: var(--space-xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comparison-rows {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+  
+  .comparison-row {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Fallback table styles */
+.comparison-fallback {
+  padding: var(--space-xl);
+}
+
+.fallback-header h2 {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  color: var(--color-text-primary);
+}
+
+.fallback-rows .comparison-row {
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-lg);
+}

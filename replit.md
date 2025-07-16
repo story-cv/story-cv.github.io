@@ -104,6 +104,17 @@ Preferred communication style: Simple, everyday language.
 - Included "Join the waitlist" CTA consistent with primary orange branding
 - Clean, minimal design focused on reflection and clarity
 
+### Comparison Table Section Implementation
+- Built responsive scroll-triggered vertical comparison table with sticky header
+- Implemented scroll-snap functionality showing one row at a time in viewport
+- Created 4-column grid: criteria, traditional writer, AI builders, StoryCV
+- Added mobile-first responsive design with vertical stacking on mobile
+- Included feature detection for scroll-snap, sticky positioning, and reduced motion
+- Built comprehensive fallback for unsupported browsers showing all rows stacked
+- Added keyboard navigation (arrow keys) for accessibility
+- Used smooth transitions and fade-in animations for row visibility
+- Highlighted StoryCV column with primary orange branding throughout
+
 ### Previous Changes (July 13, 2025)
 - Added above-the-fold hero section with H1 headline and subtitle
 - Implemented call-to-action buttons with primary/secondary styling
