@@ -279,3 +279,27 @@ function initComparisonTable() {
     // Start auto-advance
     resetAutoAdvance();
 }
+
+// CTA Banner animation
+const ctaBanner = document.querySelector('.cta-banner');
+
+const ctaBannerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, {
+    threshold: 0.3,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+if (ctaBanner) {
+    // Set initial state
+    ctaBanner.style.opacity = '0';
+    ctaBanner.style.transform = 'translateY(30px)';
+    ctaBanner.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    
+    ctaBannerObserver.observe(ctaBanner);
+}

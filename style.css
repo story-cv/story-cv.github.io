@@ -1409,3 +1409,106 @@ header picture img:hover {
     font-size: 1rem;
   }
 }
+
+/* CTA Banner Section */
+.cta-banner {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  padding: var(--space-2xl) var(--space-md);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-banner-content {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-banner-title {
+  font-size: 3rem;
+  font-weight: var(--font-weight-bold);
+  color: white;
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.cta-banner-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-2xl);
+  font-weight: var(--font-weight-regular);
+}
+
+.cta-banner-button {
+  margin-top: var(--space-xl);
+}
+
+.cta-banner .btn-primary {
+  background-color: white;
+  color: var(--color-primary);
+  border: 2px solid white;
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-md) var(--space-xl);
+  font-size: 1.125rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-normal);
+}
+
+.cta-banner .btn-primary:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.cta-banner .btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Mobile responsive for CTA banner */
+@media (max-width: 768px) {
+  .cta-banner {
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .cta-banner-title {
+    font-size: 2.25rem;
+    margin-bottom: var(--space-md);
+  }
+  
+  .cta-banner-text {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-xl);
+  }
+  
+  .cta-banner .btn-primary {
+    font-size: 1rem;
+    padding: var(--space-md) var(--space-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-banner-title {
+    font-size: 1.875rem;
+  }
+  
+  .cta-banner-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
