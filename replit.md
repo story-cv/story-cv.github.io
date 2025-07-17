@@ -135,6 +135,17 @@ Preferred communication style: Simple, everyday language.
 - Included clear call-to-action messaging and waitlist signup button
 - Designed responsive layout with proper mobile scaling and touch-friendly tooltips
 
+### About Us Section Implementation
+- Added "The humans behind StoryCV" section with comprehensive company story
+- Built philosophy subsection emphasizing quality over quantity approach
+- Created "Our take" section explaining positioning against ATS-focused tools
+- Added "Why StoryCV" highlighted box explaining the product's unique foundation-first approach
+- Implemented founders section with photo placeholders and personal introduction
+- Used secondary background color to visually separate from pricing section
+- Added scroll-triggered staggered animations for each subsection
+- Included external links to Resumey.Pro with proper target and rel attributes
+- Designed mobile-responsive layout with proper photo placeholder scaling
+
 ### Previous Changes (July 13, 2025)
 - Added above-the-fold hero section with H1 headline and subtitle
 - Implemented call-to-action buttons with primary/secondary styling

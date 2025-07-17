@@ -1792,3 +1792,213 @@ header picture img:hover {
     white-space: normal;
   }
 }
+
+/* About Section */
+.about-section {
+  padding: var(--space-2xl) var(--space-md);
+  background-color: var(--color-bg-secondary);
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.about-title {
+  font-size: 3rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.about-intro {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-fast);
+}
+
+.about-link:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+/* Philosophy Section */
+.philosophy-section {
+  margin: var(--space-2xl) 0;
+  text-align: center;
+}
+
+.philosophy-title {
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.philosophy-text {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.philosophy-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Take Section */
+.take-section {
+  margin: var(--space-2xl) 0;
+}
+
+.take-title {
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.take-text {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.why-storycv {
+  background-color: var(--color-bg-primary);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  margin-top: var(--space-xl);
+}
+
+.why-title {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.why-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.why-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Founders Section */
+.founders-section {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+.founders-photos {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.photo-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--color-bg-primary);
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.founders-text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 2.25rem;
+  }
+  
+  .about-intro {
+    font-size: 1.125rem;
+  }
+  
+  .philosophy-title,
+  .take-title {
+    font-size: 1.5rem;
+  }
+  
+  .philosophy-text,
+  .take-text {
+    font-size: 1rem;
+  }
+  
+  .why-storycv {
+    padding: var(--space-lg);
+  }
+  
+  .founders-photos {
+    gap: var(--space-lg);
+  }
+  
+  .photo-placeholder {
+    width: 100px;
+    height: 100px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 1.875rem;
+  }
+  
+  .about-intro {
+    font-size: 1rem;
+  }
+  
+  .founders-photos {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  
+  .photo-placeholder {
+    width: 80px;
+    height: 80px;
+    font-size: 0.625rem;
+  }
+}

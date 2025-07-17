@@ -381,3 +381,27 @@ document.addEventListener('click', (e) => {
         tooltip.classList.remove('show');
     }
 });
+
+// About section animations
+const aboutSections = document.querySelectorAll('.about-header, .philosophy-section, .take-section, .founders-section');
+
+const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+aboutSections.forEach((section, index) => {
+    // Set initial state
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(30px)';
+    section.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
+    
+    aboutObserver.observe(section);
+});
