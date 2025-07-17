@@ -405,3 +405,63 @@ aboutSections.forEach((section, index) => {
     
     aboutObserver.observe(section);
 });
+
+// FAQ accordion functionality
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        const isExpanded = question.getAttribute('aria-expanded') === 'true';
+        const answer = question.nextElementSibling;
+        
+        // Close all other FAQs
+        faqQuestions.forEach(otherQuestion => {
+            if (otherQuestion !== question) {
+                otherQuestion.setAttribute('aria-expanded', 'false');
+                const otherAnswer = otherQuestion.nextElementSibling;
+                otherAnswer.classList.remove('open');
+            }
+        });
+        
+        // Toggle current FAQ
+        if (isExpanded) {
+            question.setAttribute('aria-expanded', 'false');
+            answer.classList.remove('open');
+        } else {
+            question.setAttribute('aria-expanded', 'true');
+            answer.classList.add('open');
+        }
+    });
+});
+
+// FAQ section animation
+const faqHeader = document.querySelector('.faq-header');
+const faqItems = document.querySelectorAll('.faq-item');
+
+const faqObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+// Animate FAQ header
+if (faqHeader) {
+    faqHeader.style.opacity = '0';
+    faqHeader.style.transform = 'translateY(30px)';
+    faqHeader.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    faqObserver.observe(faqHeader);
+}
+
+// Animate FAQ items with stagger
+faqItems.forEach((item, index) => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(30px)';
+    item.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
+    faqObserver.observe(item);
+});
