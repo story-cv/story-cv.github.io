@@ -406,37 +406,56 @@ aboutSections.forEach((section, index) => {
     aboutObserver.observe(section);
 });
 
-// FAQ accordion functionality
-const faqQuestions = document.querySelectorAll('.faq-question');
 
-faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-        const isExpanded = question.getAttribute('aria-expanded') === 'true';
-        const answer = question.nextElementSibling;
+
+// ShadCN Accordion functionality
+const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+accordionTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+        const isOpen = trigger.getAttribute('data-state') === 'open';
+        const content = trigger.nextElementSibling;
         
-        // Close all other FAQs
-        faqQuestions.forEach(otherQuestion => {
-            if (otherQuestion !== question) {
-                otherQuestion.setAttribute('aria-expanded', 'false');
-                const otherAnswer = otherQuestion.nextElementSibling;
-                otherAnswer.classList.remove('open');
+        // Close all other accordions
+        accordionTriggers.forEach(otherTrigger => {
+            if (otherTrigger !== trigger) {
+                otherTrigger.setAttribute('data-state', 'closed');
+                const otherContent = otherTrigger.nextElementSibling;
+                otherContent.setAttribute('data-state', 'closed');
+                otherContent.style.height = '0px';
             }
         });
         
-        // Toggle current FAQ
-        if (isExpanded) {
-            question.setAttribute('aria-expanded', 'false');
-            answer.classList.remove('open');
+        // Toggle current accordion
+        if (isOpen) {
+            trigger.setAttribute('data-state', 'closed');
+            content.setAttribute('data-state', 'closed');
+            content.style.height = '0px';
         } else {
-            question.setAttribute('aria-expanded', 'true');
-            answer.classList.add('open');
+            trigger.setAttribute('data-state', 'open');
+            content.setAttribute('data-state', 'open');
+            
+            // Set height to content height for smooth animation
+            const contentInner = content.querySelector('.accordion-content-inner');
+            const height = contentInner.scrollHeight;
+            content.style.height = height + 'px';
+        }
+    });
+});
+
+// Initialize accordion heights
+document.addEventListener('DOMContentLoaded', () => {
+    const accordionContents = document.querySelectorAll('.accordion-content');
+    accordionContents.forEach(content => {
+        if (content.getAttribute('data-state') === 'closed') {
+            content.style.height = '0px';
         }
     });
 });
 
 // FAQ section animation
 const faqHeader = document.querySelector('.faq-header');
-const faqItems = document.querySelectorAll('.faq-item');
+const accordionItems = document.querySelectorAll('.accordion-item');
 
 const faqObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -458,8 +477,8 @@ if (faqHeader) {
     faqObserver.observe(faqHeader);
 }
 
-// Animate FAQ items with stagger
-faqItems.forEach((item, index) => {
+// Animate accordion items with stagger
+accordionItems.forEach((item, index) => {
     item.style.opacity = '0';
     item.style.transform = 'translateY(30px)';
     item.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
