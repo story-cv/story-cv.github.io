@@ -1588,8 +1588,8 @@ header picture img:hover {
 }
 
 .plan-header.highlight {
-  background-color: var(--color-primary);
-  color: white;
+  background-color: #FCEDDA;
+  color: var(--color-text-primary);
   position: relative;
 }
 
@@ -1605,7 +1605,7 @@ header picture img:hover {
 }
 
 .feature-value.highlight {
-  background-color: rgba(238, 78, 52, 0.05);
+  background-color: #FCEDDA;
   font-weight: var(--font-weight-medium);
 }
 
@@ -1634,12 +1634,14 @@ header picture img:hover {
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
   font-size: 0.75rem;
-  white-space: nowrap;
+  max-width: 280px;
+  white-space: normal;
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
   transition: all var(--transition-fast);
   pointer-events: none;
+  line-height: 1.4;
 }
 
 .tooltip.show {

@@ -317,9 +317,21 @@ tooltipTriggers.forEach(trigger => {
             
             const rect = e.target.getBoundingClientRect();
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
             
-            tooltip.style.left = rect.left + (rect.width / 2) + 'px';
-            tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
+            // Position tooltip above the element, centered
+            let left = rect.left + scrollLeft + (rect.width / 2) - (tooltip.offsetWidth / 2);
+            let top = rect.top + scrollTop - tooltip.offsetHeight - 10;
+            
+            // Keep tooltip within viewport bounds
+            const viewportWidth = window.innerWidth;
+            if (left < 10) left = 10;
+            if (left + tooltip.offsetWidth > viewportWidth - 10) {
+                left = viewportWidth - tooltip.offsetWidth - 10;
+            }
+            
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
         }
     });
     
@@ -339,14 +351,26 @@ tooltipTriggers.forEach(trigger => {
             
             const rect = e.target.getBoundingClientRect();
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
             
-            tooltip.style.left = rect.left + (rect.width / 2) + 'px';
-            tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
+            // Position tooltip above the element, centered
+            let left = rect.left + scrollLeft + (rect.width / 2) - (tooltip.offsetWidth / 2);
+            let top = rect.top + scrollTop - tooltip.offsetHeight - 10;
             
-            // Auto-hide after 3 seconds on mobile
+            // Keep tooltip within viewport bounds
+            const viewportWidth = window.innerWidth;
+            if (left < 10) left = 10;
+            if (left + tooltip.offsetWidth > viewportWidth - 10) {
+                left = viewportWidth - tooltip.offsetWidth - 10;
+            }
+            
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+            
+            // Auto-hide after 4 seconds on mobile (longer for longer text)
             setTimeout(() => {
                 tooltip.classList.remove('show');
-            }, 3000);
+            }, 4000);
         }
     });
 });
