@@ -303,3 +303,57 @@ if (ctaBanner) {
     
     ctaBannerObserver.observe(ctaBanner);
 }
+
+// Tooltip functionality
+const tooltipTriggers = document.querySelectorAll('.tooltip-trigger');
+const tooltip = document.getElementById('tooltip');
+
+tooltipTriggers.forEach(trigger => {
+    trigger.addEventListener('mouseenter', (e) => {
+        const tooltipText = e.target.getAttribute('data-tooltip');
+        if (tooltipText && tooltip) {
+            tooltip.textContent = tooltipText;
+            tooltip.classList.add('show');
+            
+            const rect = e.target.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            tooltip.style.left = rect.left + (rect.width / 2) + 'px';
+            tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
+        }
+    });
+    
+    trigger.addEventListener('mouseleave', () => {
+        if (tooltip) {
+            tooltip.classList.remove('show');
+        }
+    });
+    
+    // Touch support for mobile
+    trigger.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const tooltipText = e.target.getAttribute('data-tooltip');
+        if (tooltipText && tooltip) {
+            tooltip.textContent = tooltipText;
+            tooltip.classList.add('show');
+            
+            const rect = e.target.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            tooltip.style.left = rect.left + (rect.width / 2) + 'px';
+            tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
+            
+            // Auto-hide after 3 seconds on mobile
+            setTimeout(() => {
+                tooltip.classList.remove('show');
+            }, 3000);
+        }
+    });
+});
+
+// Hide tooltip when clicking elsewhere
+document.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('tooltip-trigger') && tooltip) {
+        tooltip.classList.remove('show');
+    }
+});
