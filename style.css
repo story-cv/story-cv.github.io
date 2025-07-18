@@ -236,7 +236,7 @@ header picture img:hover {
 }
 
 .text-orange {
-  color: var(--color-orange);
+  color: #EE4E34;
 }
 
 .container {
@@ -277,7 +277,7 @@ header picture img:hover {
   font-weight: var(--font-weight-bold);
   line-height: 1.1;
   margin-bottom: var(--space-lg);
-  color: var(--color-text-primary);
+  color: #2E2E2E;
   letter-spacing: -0.02em;
 }
 
