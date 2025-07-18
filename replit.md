@@ -93,6 +93,7 @@ Preferred communication style: Simple, everyday language.
 - Added hover effects with elevation and border color changes
 - Included placeholder image areas for future visual content
 - Used staggered scroll animations for card entrance
+- Added Japandi-style dotted connection lines between cards on desktop (subtle dots)
 - Emphasized StoryCV's simplicity compared to ChatGPT complexity
 
 ### Mini Hero Section Implementation

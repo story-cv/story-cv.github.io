@@ -975,6 +975,7 @@ header picture img:hover {
   gap: var(--space-xl);
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 .process-card {
@@ -987,6 +988,7 @@ header picture img:hover {
   transition: all var(--transition-normal);
   opacity: 0;
   transform: translateY(30px);
+  z-index: 1;
 }
 
 .process-card.visible {
@@ -1076,6 +1078,37 @@ header picture img:hover {
 
   .card-image-placeholder {
     height: 160px;
+  }
+
+  /* Subtle connecting dots between cards - Japandi style */
+  .process-cards::before {
+    content: '• • •';
+    position: absolute;
+    top: 50%;
+    left: calc(33.33% + var(--space-md));
+    width: calc(33.33% - var(--space-lg));
+    text-align: center;
+    color: var(--color-border);
+    font-size: 0.5rem;
+    letter-spacing: 0.5rem;
+    transform: translateY(-50%);
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .process-cards::after {
+    content: '• • •';
+    position: absolute;
+    top: 50%;
+    left: calc(66.67% + var(--space-md));
+    width: calc(33.33% - var(--space-lg));
+    text-align: center;
+    color: var(--color-border);
+    font-size: 0.5rem;
+    letter-spacing: 0.5rem;
+    transform: translateY(-50%);
+    z-index: 0;
+    opacity: 0.4;
   }
 }
 
