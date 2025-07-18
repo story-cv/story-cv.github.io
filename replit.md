@@ -198,7 +198,13 @@ Preferred communication style: Simple, everyday language.
 - Updated ChatGPT timeline title to italicize "can": "Yes, you *can* use ChatGPT for your resume"
 - Removed arrows (→) from all ChatGPT timeline step descriptions for cleaner presentation
 - Applied Onest font family to FAQ section for consistent typography throughout site
-- Pricing table already uses correct cream (#FCEDDA) highlight colors matching brand
+- Pricing table updated with white background for free column and light gray for content cells
+- Converted 3 value propositions to bullet points with orange styling
+- Changed Pre-Launch Exclusive box to cream background (#FCEDDA)
+- Removed em dash from mini hero text and split into two sentences
+- Moved "Ready to Tell Your Story?" CTA section after pricing/promo section
+- Updated CTA banner with cream background (#FCEDDA) and dark mode support (#2A2520)
+- Changed CTA button to orange gradient styling with white text for better contrast
 - All waitlist CTAs properly link to https://tally.so/r/wzBlA0 and open in new tabs
 
 ### Previous Changes (July 13, 2025)

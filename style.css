@@ -1495,23 +1495,18 @@ header picture img:hover {
 
 /* CTA Banner Section */
 .cta-banner {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  background-color: #FCEDDA;
   padding: var(--space-2xl) var(--space-md);
-  color: white;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-.cta-banner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-  pointer-events: none;
+/* Dark mode support for CTA banner */
+@media (prefers-color-scheme: dark) {
+  .cta-banner {
+    background-color: #2A2520;
+  }
 }
 
 .cta-banner-content {
@@ -1524,7 +1519,7 @@ header picture img:hover {
 .cta-banner-title {
   font-size: 3rem;
   font-weight: var(--font-weight-bold);
-  color: white;
+  color: var(--color-text-primary);
   margin-bottom: var(--space-lg);
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -1533,7 +1528,7 @@ header picture img:hover {
 .cta-banner-text {
   font-size: 1.25rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text-secondary);
   margin-bottom: var(--space-2xl);
   font-weight: var(--font-weight-regular);
 }
@@ -1543,20 +1538,20 @@ header picture img:hover {
 }
 
 .cta-banner .btn-primary {
-  background-color: white;
-  color: var(--color-primary);
-  border: 2px solid white;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  color: white;
+  border: 2px solid transparent;
   font-weight: var(--font-weight-bold);
   padding: var(--space-md) var(--space-xl);
   font-size: 1.125rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(238, 78, 52, 0.2);
   transition: all var(--transition-normal);
 }
 
 .cta-banner .btn-primary:hover {
-  background-color: rgba(255, 255, 255, 0.95);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(238, 78, 52, 0.3);
+  color: white;
 }
 
 .cta-banner .btn-primary:active {
@@ -1805,7 +1800,7 @@ header picture img:hover {
 
 /* Promo Section */
 .promo-section {
-  background-color: #FCEDDA;
+  background-color: var(--color-bg-secondary);
   border: 1px solid var(--color-primary);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
