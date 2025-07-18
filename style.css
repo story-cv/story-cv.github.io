@@ -969,6 +969,79 @@ header picture img:hover {
   line-height: 1.6;
 }
 
+/* Progress Bar Styling */
+.progress-container {
+  margin-bottom: var(--space-4xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.progress-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--space-lg);
+}
+
+.progress-line {
+  position: absolute;
+  top: 50%;
+  left: var(--space-lg);
+  right: var(--space-lg);
+  height: 2px;
+  background-color: var(--color-border);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.progress-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary) 0%, #C63716 100%);
+  width: var(--progress-width, 0%);
+  transition: width 1s ease-in-out;
+  border-radius: 1px;
+}
+
+.progress-step {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-bg-primary);
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-circle {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  border-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(238, 78, 52, 0.3);
+}
+
+.progress-step.completed .step-circle {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
 .process-cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -986,14 +1059,25 @@ header picture img:hover {
   border: 1px solid var(--color-border);
   position: relative;
   transition: all var(--transition-normal);
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 0.6;
+  transform: translateY(0);
   z-index: 1;
 }
 
-.process-card.visible {
+.process-card.active {
   opacity: 1;
+  border-color: rgba(238, 78, 52, 0.3);
+  box-shadow: 0 8px 24px rgba(238, 78, 52, 0.1);
+  background-color: rgba(238, 78, 52, 0.02);
+}
+
+.process-card.visible {
+  opacity: 0.6;
   transform: translateY(0);
+}
+
+.process-card.visible.active {
+  opacity: 1;
 }
 
 .process-card:hover {
@@ -1080,35 +1164,28 @@ header picture img:hover {
     height: 160px;
   }
 
-  /* Connecting dots between cards - Japandi style */
-  .process-cards::before {
-    content: '• • •';
-    position: absolute;
-    top: 50%;
-    left: 33.33%;
-    width: 33.33%;
-    text-align: center;
-    color: var(--color-primary);
-    font-size: 1rem;
-    letter-spacing: 1rem;
-    transform: translateY(-50%);
-    z-index: 0;
-    opacity: 1;
-  }
 
-  .process-cards::after {
-    content: '• • •';
-    position: absolute;
-    top: 50%;
-    left: 66.67%;
-    width: 33.33%;
-    text-align: center;
-    color: var(--color-primary);
-    font-size: 1rem;
-    letter-spacing: 1rem;
-    transform: translateY(-50%);
-    z-index: 0;
-    opacity: 1;
+}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .progress-line::after {
+    width: 100% !important;
+    transition: none;
+  }
+  
+  .process-card {
+    opacity: 1 !important;
+  }
+  
+  .progress-step {
+    opacity: 1 !important;
+  }
+  
+  .step-circle {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%) !important;
+    border-color: var(--color-primary) !important;
+    color: white !important;
   }
 }
 
@@ -1130,11 +1207,21 @@ header picture img:hover {
     padding: var(--space-xl);
   }
 
-  /* Hide connection dots on mobile */
-  .process-cards::before,
-  .process-cards::after {
-    display: none;
+  .progress-container {
+    margin-bottom: var(--space-2xl);
   }
+
+  .progress-bar {
+    padding: 0 var(--space-md);
+  }
+
+  .step-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+
 
   .card-number {
     top: var(--space-md);

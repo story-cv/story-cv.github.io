@@ -93,7 +93,12 @@ Preferred communication style: Simple, everyday language.
 - Added hover effects with elevation and border color changes
 - Included placeholder image areas for future visual content
 - Used staggered scroll animations for card entrance
-- Added Japandi-style dotted connection lines between cards on desktop (subtle dots)
+- **Replaced dots with animated progress bar**: Added horizontal progress bar above cards with numbered steps
+- **Implemented looping animation**: Progress bar advances through steps 1→2→3 automatically every 2.5 seconds
+- **Subtle card highlighting**: Cards receive gentle orange border and background tint when active
+- **Mobile-responsive**: Progress bar scales appropriately on mobile devices
+- **Accessibility support**: Static fallback for users with reduced motion preferences
+- **Viewport-triggered**: Animation starts when section comes into view and stops when out of view
 - Emphasized StoryCV's simplicity compared to ChatGPT complexity
 
 ### Mini Hero Section Implementation

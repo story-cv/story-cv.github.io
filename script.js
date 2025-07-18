@@ -103,27 +103,100 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', requestTick, { passive: true });
     
-    // Process cards animation
+    // Process cards animation with progress bar
     const processCards = document.querySelectorAll('.process-card');
+    const progressSteps = document.querySelectorAll('.progress-step');
+    const progressLine = document.querySelector('.progress-line');
+    let currentStep = 0;
+    let animationInterval;
     
     const cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                // Add delay for staggered animation
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 150);
+                // Start the animation when cards come into view
+                startProgressAnimation();
+                // Make all cards visible with stagger
+                processCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 150);
+                });
+            } else {
+                // Stop animation when out of view
+                stopProgressAnimation();
             }
         });
     }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.3,
+        rootMargin: '0px 0px -100px 0px'
     });
     
-    // Observe all process cards
-    processCards.forEach(card => {
-        cardObserver.observe(card);
-    });
+    function updateProgress(step) {
+        // Update progress line
+        const progressPercentage = step === 0 ? 0 : (step / 2) * 100;
+        if (progressLine) {
+            progressLine.style.setProperty('--progress-width', `${progressPercentage}%`);
+            progressLine.querySelector('::after') && 
+            (progressLine.style.setProperty('--progress-width', `${progressPercentage}%`));
+        }
+        
+        // Update progress steps
+        progressSteps.forEach((stepEl, index) => {
+            stepEl.classList.remove('active', 'completed');
+            if (index < step) {
+                stepEl.classList.add('completed');
+            } else if (index === step) {
+                stepEl.classList.add('active');
+            }
+        });
+        
+        // Update cards
+        processCards.forEach((card, index) => {
+            card.classList.toggle('active', index === step);
+        });
+    }
+    
+    function startProgressAnimation() {
+        if (animationInterval) return; // Already running
+        
+        currentStep = 0;
+        updateProgress(currentStep);
+        
+        animationInterval = setInterval(() => {
+            currentStep = (currentStep + 1) % 3;
+            updateProgress(currentStep);
+            
+            // Update progress line width
+            if (progressLine) {
+                const progressWidth = currentStep === 0 ? 0 : (currentStep / 2) * 100;
+                progressLine.style.setProperty('--progress-width', `${progressWidth}%`);
+            }
+        }, 2500); // Change step every 2.5 seconds
+    }
+    
+    function stopProgressAnimation() {
+        if (animationInterval) {
+            clearInterval(animationInterval);
+            animationInterval = null;
+        }
+    }
+    
+    // Observe the process section
+    const processSection = document.querySelector('.process-flow');
+    if (processSection) {
+        cardObserver.observe(processSection);
+    }
+    
+    // Static fallback for users who can't see animations
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // Show all steps as active for accessibility
+        processCards.forEach(card => {
+            card.classList.add('visible', 'active');
+        });
+        progressSteps.forEach(step => {
+            step.classList.add('active');
+        });
+    }
     
     // Mini hero animation
     const miniHero = document.querySelector('.mini-hero');
