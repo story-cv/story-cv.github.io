@@ -979,10 +979,16 @@ header picture img:hover {
 
 .progress-bar {
   position: relative;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   padding: 0 var(--space-lg);
+}
+
+.progress-step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .progress-line {
@@ -1008,11 +1014,7 @@ header picture img:hover {
   border-radius: 1px;
 }
 
-.progress-step {
-  position: relative;
-  z-index: 2;
-  transition: all 0.3s ease;
-}
+
 
 .step-circle {
   width: 40px;
@@ -1095,7 +1097,7 @@ header picture img:hover {
   background-color: var(--color-primary);
   color: var(--color-text-inverse);
   border-radius: 50%;
-  display: flex;
+  display: none; /* Hidden by default on desktop */
   align-items: center;
   justify-content: center;
   font-weight: var(--font-weight-bold);
@@ -1146,7 +1148,7 @@ header picture img:hover {
 }
 
 /* Desktop layout for process cards */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .process-cards {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-2xl);
@@ -1164,7 +1166,10 @@ header picture img:hover {
     height: 160px;
   }
 
-
+  /* Hide card numbers on desktop */
+  .card-number {
+    display: none;
+  }
 }
 
 /* Reduced motion fallback */
@@ -1189,8 +1194,15 @@ header picture img:hover {
   }
 }
 
+/* Tablet responsive adjustments */
+@media (max-width: 768px) and (min-width: 481px) {
+  .card-number {
+    display: flex;
+  }
+}
+
 /* Mobile responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .process-flow {
     padding: var(--space-2xl) 0;
   }
@@ -1220,6 +1232,12 @@ header picture img:hover {
     height: 32px;
     font-size: 0.75rem;
   }
+
+  /* Show card numbers on mobile and tablet */
+  .card-number {
+    display: flex;
+  }
+}
 
 
 
