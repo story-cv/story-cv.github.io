@@ -110,17 +110,15 @@ Preferred communication style: Simple, everyday language.
 - Included "Join the waitlist" CTA consistent with primary orange branding
 - Clean, minimal design focused on reflection and clarity
 
-### Comparison Table Section Implementation (Redesigned)
-- Added "Not just different. Actually better." H2 title above comparison
-- Built shadcn-style comparison table with sticky header and single-row display
-- Implemented one-row-at-a-time display with smooth transitions (LeapingAI-inspired)
-- Created card-based layout with gradient highlights for StoryCV column
-- Added auto-advance functionality (4-second intervals) with pause on hover
-- Built comprehensive navigation: progress dots, keyboard arrows, mouse wheel, touch swipe
-- Included mobile-responsive design hiding table header on mobile
-- Used proper shadcn component styling with borders, shadows, and hover effects
-- Implemented smooth cubic-bezier transitions and gradient backgrounds
-- Added content for all 4 comparison areas: Content Help, Storytelling, Speed, Cost
+### Comparison Table Section Implementation (Simplified - July 18, 2025)
+- Completely redesigned as a simple, clean HTML table replacing complex card-based layout
+- Removed all animations, carousels, and JavaScript interactions for maximum simplicity
+- Created 4-column layout: What matters, Traditional, Generic/AI, StoryCV (highlighted)
+- Applied minimal styling with subtle borders and orange accent for StoryCV column
+- Implemented mobile-first responsive design hiding "What matters" column on mobile
+- Used clean typography and generous padding for easy readability
+- Added horizontal scroll on mobile devices for table accessibility
+- Emphasized visual simplicity and user understanding over complex interactions
 
 ### CTA Banner Section Implementation
 - Added "Ready to Tell Your Story?" banner section with compelling messaging

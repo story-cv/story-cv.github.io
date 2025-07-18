@@ -204,34 +204,4 @@ document.addEventListener('DOMContentLoaded', function() {
         miniHeroObserver.observe(miniHero);
     }
     
-    // Comparison table functionality
-    initComparisonTable();
 });
-
-function initComparisonTable() {
-    const singleRows = document.querySelectorAll('.single-row');
-    
-    if (!singleRows.length) return;
-    
-    // Use Intersection Observer to show all rows as user scrolls
-    const comparisonObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    // Observe all rows for scroll-triggered visibility
-    singleRows.forEach(row => {
-        comparisonObserver.observe(row);
-    });
-    
-    // Show first row immediately
-    if (singleRows[0]) {
-        singleRows[0].classList.add('visible');
-    }
-}
