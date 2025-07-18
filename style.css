@@ -1,5 +1,30 @@
 /* Story.CV Landing Page Styles */
 
+/* Header Styles */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-md) 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  text-decoration: none;
+}
+
+.header-logo img {
+  height: 40px;
+  width: auto;
+}
+
 /* CSS Custom Properties for Design System */
 :root {
   /* Typography */
@@ -23,7 +48,7 @@
   --color-bg-tertiary: #f1f5f9;
   
   /* Text Colors */
-  --color-text-primary: #0f172a;
+  --color-text-primary: #2E2E2E;
   --color-text-secondary: #475569;
   --color-text-muted: #64748b;
   --color-text-inverse: #ffffff;
@@ -236,7 +261,7 @@ header picture img:hover {
 }
 
 .text-orange {
-  color: #EE4E34;
+  color: var(--color-orange);
 }
 
 .container {
@@ -277,7 +302,7 @@ header picture img:hover {
   font-weight: var(--font-weight-bold);
   line-height: 1.1;
   margin-bottom: var(--space-lg);
-  color: #2E2E2E;
+  color: var(--color-text-primary);
   letter-spacing: -0.02em;
 }
 
@@ -2381,5 +2406,430 @@ header picture img:hover {
   .social-link svg {
     width: 18px;
     height: 18px;
+  }
+}
+
+/* About Us Page Styles */
+.about-hero {
+  padding: calc(var(--space-2xl) + var(--space-lg)) var(--space-md) var(--space-2xl);
+  background-color: var(--color-bg-primary);
+  text-align: center;
+}
+
+.about-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-hero-title {
+  font-size: 4rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+}
+
+.about-hero-subtitle {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-weight: var(--font-weight-regular);
+}
+
+/* Mission Banner */
+.mission-banner {
+  padding: var(--space-2xl) var(--space-md);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  color: white;
+  text-align: center;
+}
+
+.mission-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mission-title {
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.01em;
+}
+
+.mission-statement {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-sm);
+  line-height: 1.3;
+}
+
+.mission-tagline {
+  font-size: 1.125rem;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Team Section */
+.team-section {
+  padding: var(--space-2xl) var(--space-md);
+  background-color: var(--color-bg-secondary);
+}
+
+.team-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.team-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.team-title {
+  font-size: 3rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.team-philosophy,
+.team-position {
+  background-color: var(--color-bg-primary);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.philosophy-title,
+.position-title {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.philosophy-text,
+.position-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.philosophy-text:last-child,
+.position-text:last-child {
+  margin-bottom: 0;
+}
+
+.why-storycv {
+  background-color: var(--color-bg-secondary);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-primary);
+  margin-top: var(--space-lg);
+}
+
+.why-title {
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.why-text {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Founders Section */
+.founders-section {
+  background-color: var(--color-bg-primary);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.founders-title {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.3;
+}
+
+.founders-grid {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.founder-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.founder-image {
+  width: 100px;
+  height: 100px;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.founder-info {
+  text-align: center;
+}
+
+.founder-name {
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.founder-role {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.founders-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.about-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+}
+
+.about-link:hover {
+  text-decoration: underline;
+}
+
+/* About CTA Section */
+.about-cta {
+  padding: var(--space-2xl) var(--space-md);
+  background-color: var(--color-bg-primary);
+  text-align: center;
+}
+
+.about-cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-cta-title {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+.about-cta-subtitle {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.about-cta-button {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  color: white;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  font-size: 1.125rem;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-md);
+  display: inline-block;
+}
+
+.about-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: white;
+}
+
+/* Header Navigation Updates */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.nav-link {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-text-primary);
+}
+
+.nav-link-active {
+  color: var(--color-text-primary);
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  color: white;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  font-size: 0.875rem;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  color: white;
+}
+
+/* Mobile Responsive for About Page */
+@media (max-width: 768px) {
+  .about-hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .about-hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .mission-title {
+    font-size: 1.5rem;
+  }
+  
+  .mission-statement {
+    font-size: 1.25rem;
+  }
+  
+  .mission-tagline {
+    font-size: 1rem;
+  }
+  
+  .team-title {
+    font-size: 2.25rem;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .team-philosophy,
+  .team-position {
+    padding: var(--space-lg);
+  }
+  
+  .founders-grid {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  
+  .about-cta-title {
+    font-size: 2rem;
+  }
+  
+  .header-nav {
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero {
+    padding: calc(var(--space-xl) + var(--space-lg)) var(--space-sm) var(--space-xl);
+  }
+  
+  .about-hero-title {
+    font-size: 2rem;
+  }
+  
+  .about-hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .mission-banner {
+    padding: var(--space-xl) var(--space-sm);
+  }
+  
+  .team-section {
+    padding: var(--space-xl) var(--space-sm);
+  }
+  
+  .team-philosophy,
+  .team-position {
+    padding: var(--space-md);
+  }
+  
+  .founders-section {
+    padding: var(--space-lg);
+  }
+  
+  .founder-image {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .photo-placeholder {
+    font-size: 0.625rem;
+  }
+  
+  .about-cta {
+    padding: var(--space-xl) var(--space-sm);
+  }
+  
+  .about-cta-title {
+    font-size: 1.75rem;
+  }
+  
+  .header-nav {
+    gap: var(--space-sm);
+  }
+  
+  .nav-link {
+    font-size: 0.875rem;
   }
 }
