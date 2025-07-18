@@ -20,9 +20,30 @@
   text-decoration: none;
 }
 
-.header-logo img {
+.header-logo .logo-light,
+.header-logo .logo-dark {
   height: 40px;
   width: auto;
+  display: block;
+}
+
+/* Dark mode logo switching */
+@media (prefers-color-scheme: dark) {
+  .header-logo .logo-light {
+    display: none;
+  }
+  .header-logo .logo-dark {
+    display: block;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .header-logo .logo-light {
+    display: block;
+  }
+  .header-logo .logo-dark {
+    display: none;
+  }
 }
 
 /* CSS Custom Properties for Design System */
@@ -2223,27 +2244,29 @@ header picture img:hover {
   margin-bottom: var(--space-md);
 }
 
-.footer-logo img {
+.footer-logo .logo-light,
+.footer-logo .logo-dark {
   height: 32px;
   width: auto;
-}
-
-.footer-logo-light {
   display: block;
 }
 
-.footer-logo-dark {
-  display: none;
-}
-
-/* Dark mode logo switching */
+/* Dark mode footer logo switching */
 @media (prefers-color-scheme: dark) {
-  .footer-logo-light {
+  .footer-logo .logo-light {
     display: none;
   }
-  
-  .footer-logo-dark {
+  .footer-logo .logo-dark {
     display: block;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .footer-logo .logo-light {
+    display: block;
+  }
+  .footer-logo .logo-dark {
+    display: none;
   }
 }
 
@@ -2438,38 +2461,74 @@ header picture img:hover {
   font-weight: var(--font-weight-regular);
 }
 
-/* Mission Banner */
-.mission-banner {
+/* Founders Hero Section */
+.founders-hero-section {
   padding: var(--space-2xl) var(--space-md);
-  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
-  color: white;
+  background-color: var(--color-bg-primary);
   text-align: center;
 }
 
-.mission-content {
-  max-width: 600px;
+.founders-hero-content {
+  max-width: 800px;
   margin: 0 auto;
 }
 
-.mission-title {
-  font-size: 2rem;
+.founders-hero-title {
+  font-size: 3rem;
   font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-md);
-  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: var(--space-xl);
+}
+
+.founders-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: var(--space-lg) 0 0 0;
+  text-align: center;
+}
+
+/* Mission Banner */
+.mission-banner {
+  padding: calc(var(--space-2xl) + var(--space-lg)) var(--space-md);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  color: white;
+}
+
+.mission-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.mission-left {
+  text-align: left;
+}
+
+.mission-right {
+  text-align: left;
+}
+
+.mission-title {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-primary);
 }
 
 .mission-statement {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: var(--font-weight-medium);
-  margin-bottom: var(--space-sm);
-  line-height: 1.3;
-}
-
-.mission-tagline {
-  font-size: 1.125rem;
-  opacity: 0.9;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.3;
+  color: white;
 }
 
 /* Team Section */
@@ -2738,16 +2797,22 @@ header picture img:hover {
     font-size: 1.25rem;
   }
   
+  .founders-hero-title {
+    font-size: 2.25rem;
+  }
+  
+  .mission-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    text-align: center;
+  }
+  
   .mission-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   
   .mission-statement {
-    font-size: 1.25rem;
-  }
-  
-  .mission-tagline {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   
   .team-title {
@@ -2791,8 +2856,24 @@ header picture img:hover {
     font-size: 1.125rem;
   }
   
+  .founders-hero-section {
+    padding: var(--space-xl) var(--space-sm);
+  }
+  
+  .founders-hero-title {
+    font-size: 1.75rem;
+  }
+  
   .mission-banner {
     padding: var(--space-xl) var(--space-sm);
+  }
+  
+  .mission-title {
+    font-size: 1.5rem;
+  }
+  
+  .mission-statement {
+    font-size: 1.25rem;
   }
   
   .team-section {
@@ -2802,10 +2883,6 @@ header picture img:hover {
   .team-philosophy,
   .team-position {
     padding: var(--space-md);
-  }
-  
-  .founders-section {
-    padding: var(--space-lg);
   }
   
   .founder-image {

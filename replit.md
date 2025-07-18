@@ -179,6 +179,16 @@ Preferred communication style: Simple, everyday language.
 - Added footer navigation link to About Us page from main landing page
 - Built comprehensive mobile responsive design for all screen sizes
 
+### About Us Page Redesign (July 18, 2025)
+- Moved "Meet the Founders" section directly below page title
+- Redesigned mission banner as two-column layout with orange H2 title on left
+- Simplified mission statement to single line: "Make expert resume writing accessible to everyone"
+- Moved mission banner below founders section for better content flow
+- Center-aligned founders description text for improved visual balance
+- Moved "Why StoryCV" box outside "Our Take" section as standalone element
+- Fixed logo display issues in header and footer with proper dark/light mode switching
+- Applied consistent brand colors with primary orange (#EE4E34) for mission title
+
 ### Previous Changes (July 13, 2025)
 - Added above-the-fold hero section with H1 headline and subtitle
 - Implemented call-to-action buttons with primary/secondary styling
