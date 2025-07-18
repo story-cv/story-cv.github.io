@@ -989,6 +989,9 @@ header picture img:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
 .progress-line {
@@ -999,7 +1002,7 @@ header picture img:hover {
   height: 2px;
   background-color: var(--color-border);
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 0;
 }
 
 .progress-line::after {
@@ -1394,9 +1397,8 @@ header picture img:hover {
 
 /* Comparison Table Section */
 .comparison-section {
-  padding: var(--space-2xl) var(--space-md);
+  padding: var(--space-6xl) var(--space-md);
   background-color: var(--color-bg-primary);
-  min-height: 100vh;
   position: relative;
 }
 
@@ -1411,7 +1413,8 @@ header picture img:hover {
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
   text-align: center;
-  margin-bottom: var(--space-2xl);
+  margin-top: var(--space-4xl);
+  margin-bottom: var(--space-6xl);
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
@@ -1480,25 +1483,25 @@ header picture img:hover {
 
 /* Single Row Display */
 .single-row-container {
-  min-height: 70vh;
   position: relative;
-  overflow: hidden;
 }
 
 .single-row {
-  position: absolute;
   width: 100%;
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(30px);
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
+  margin-bottom: var(--space-4xl);
 }
 
 .single-row.active {
   opacity: 1;
   transform: translateY(0);
-  pointer-events: auto;
-  position: relative;
+}
+
+.single-row.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .row-label {
@@ -1516,7 +1519,7 @@ header picture img:hover {
 
 .row-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-lg);
   margin-top: var(--space-xl);
 }
@@ -1556,16 +1559,7 @@ header picture img:hover {
 }
 
 .card-header {
-  font-weight: var(--font-weight-bold);
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
-  margin-bottom: var(--space-md);
-}
-
-.comparison-card.highlight .card-header {
-  color: var(--color-primary);
+  display: none; /* Hide card headers since sticky header provides labels */
 }
 
 .card-content {
@@ -1580,33 +1574,18 @@ header picture img:hover {
   font-weight: var(--font-weight-bold);
 }
 
-/* Progress Indicators */
-.progress-indicators {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-md);
-  margin-top: var(--space-2xl);
+.comparison-card.what-matters {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-text-muted);
+  font-weight: var(--font-weight-bold);
 }
 
-.progress-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid var(--color-border);
-  background-color: transparent;
-  cursor: pointer;
-  transition: all var(--transition-normal);
+.comparison-card.what-matters .card-content {
+  text-align: center;
+  color: var(--color-text-primary);
 }
 
-.progress-dot:hover {
-  border-color: var(--color-primary);
-  transform: scale(1.2);
-}
 
-.progress-dot.active {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-}
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
@@ -1626,6 +1605,10 @@ header picture img:hover {
   .row-grid {
     grid-template-columns: 1fr;
     gap: var(--space-md);
+  }
+  
+  .comparison-card.what-matters {
+    display: none; /* Hide what-matters column on mobile */
   }
 
   .comparison-card {
