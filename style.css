@@ -1080,35 +1080,35 @@ header picture img:hover {
     height: 160px;
   }
 
-  /* Subtle connecting dots between cards - Japandi style */
+  /* Connecting dots between cards - Japandi style */
   .process-cards::before {
     content: '• • •';
     position: absolute;
     top: 50%;
-    left: calc(33.33% + var(--space-md));
-    width: calc(33.33% - var(--space-lg));
+    left: 33.33%;
+    width: 33.33%;
     text-align: center;
-    color: var(--color-border);
-    font-size: 0.5rem;
-    letter-spacing: 0.5rem;
+    color: var(--color-primary);
+    font-size: 1rem;
+    letter-spacing: 1rem;
     transform: translateY(-50%);
     z-index: 0;
-    opacity: 0.4;
+    opacity: 1;
   }
 
   .process-cards::after {
     content: '• • •';
     position: absolute;
     top: 50%;
-    left: calc(66.67% + var(--space-md));
-    width: calc(33.33% - var(--space-lg));
+    left: 66.67%;
+    width: 33.33%;
     text-align: center;
-    color: var(--color-border);
-    font-size: 0.5rem;
-    letter-spacing: 0.5rem;
+    color: var(--color-primary);
+    font-size: 1rem;
+    letter-spacing: 1rem;
     transform: translateY(-50%);
     z-index: 0;
-    opacity: 0.4;
+    opacity: 1;
   }
 }
 
@@ -1128,6 +1128,12 @@ header picture img:hover {
 
   .process-card {
     padding: var(--space-xl);
+  }
+
+  /* Hide connection dots on mobile */
+  .process-cards::before,
+  .process-cards::after {
+    display: none;
   }
 
   .card-number {
@@ -3045,4 +3051,4 @@ header picture img:hover {
   .nav-link {
     font-size: 0.875rem;
   }
-}
+}/* Cache bust Fri Jul 18 06:59:23 AM UTC 2025 */
