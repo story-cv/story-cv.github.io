@@ -1,5 +1,22 @@
 // Timeline scroll animations and sticky header functionality
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // Mission banner animation observer for About Us page
+    const missionBanner = document.querySelector('.mission-banner');
+    if (missionBanner) {
+        const missionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        missionObserver.observe(missionBanner);
+    }
     const stickyHeader = document.getElementById('sticky-header');
     const timelineSection = document.getElementById('chatgpt-section');
     const timelineSteps = document.querySelectorAll('.timeline-step');

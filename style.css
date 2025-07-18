@@ -62,6 +62,7 @@
   --color-secondary: #64748b;
   --color-accent: #EE4E34;
   --color-orange: #EE4E34;
+  --color-cream: #FCEDDA;
   
   /* Background Colors */
   --color-bg-primary: #ffffff;
@@ -2492,9 +2493,17 @@ header picture img:hover {
 
 /* Mission Banner */
 .mission-banner {
-  padding: calc(var(--space-2xl) + var(--space-lg)) var(--space-md);
+  padding: calc(var(--space-2xl) * 2) var(--space-md);
   background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
   color: white;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.mission-banner.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .mission-content {
@@ -2502,16 +2511,18 @@ header picture img:hover {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-2xl);
+  gap: var(--space-md);
   align-items: center;
 }
 
 .mission-left {
-  text-align: left;
+  text-align: right;
+  padding-right: var(--space-lg);
 }
 
 .mission-right {
   text-align: left;
+  padding-left: var(--space-lg);
 }
 
 .mission-title {
@@ -2807,6 +2818,16 @@ header picture img:hover {
     text-align: center;
   }
   
+  .mission-left {
+    text-align: center;
+    padding-right: 0;
+  }
+  
+  .mission-right {
+    text-align: center;
+    padding-left: 0;
+  }
+  
   .mission-title {
     font-size: 2rem;
   }
@@ -2865,7 +2886,17 @@ header picture img:hover {
   }
   
   .mission-banner {
-    padding: var(--space-xl) var(--space-sm);
+    padding: calc(var(--space-xl) * 1.5) var(--space-sm);
+  }
+  
+  .mission-left {
+    text-align: center;
+    padding-right: 0;
+  }
+  
+  .mission-right {
+    text-align: center;
+    padding-left: 0;
   }
   
   .mission-title {
