@@ -596,6 +596,15 @@ header picture img:hover {
   transition: all var(--transition-normal);
 }
 
+.advantage-icon-placeholder {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+  opacity: 0.1;
+}
+
 .advantage-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
@@ -613,6 +622,33 @@ header picture img:hover {
   font-size: 1rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.advantage-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.advantage-list li {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-lg);
+  position: relative;
+}
+
+.advantage-list li:before {
+  content: "•";
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  position: absolute;
+  left: 0;
+}
+
+.advantage-list li:last-child {
   margin-bottom: 0;
 }
 
@@ -2054,6 +2090,7 @@ header picture img:hover {
 .faq-section {
   padding: var(--space-2xl) var(--space-md);
   background-color: var(--color-bg-primary);
+  font-family: 'Onest', system-ui, -apple-system, sans-serif;
 }
 
 .faq-content {

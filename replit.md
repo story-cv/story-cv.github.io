@@ -189,6 +189,18 @@ Preferred communication style: Simple, everyday language.
 - Fixed logo display issues in header and footer with proper dark/light mode switching
 - Applied consistent brand colors with primary orange (#EE4E34) for mission title
 
+### Launch Preparation Updates (July 18, 2025)
+- Updated all primary CTA buttons to open in new tabs (target="_blank" rel="noopener noreferrer")
+- Modified hero section "you" text to be italicized for emphasis: "We don't ask *you* to figure out what sounds good"
+- Redesigned "Better than human resume writer" section with new title: "Everything a traditional resume writer offers. And everything they don't."
+- Converted advantages section from paragraphs to bullet point lists for better readability
+- Added icon placeholders to advantage cards for future visual enhancement
+- Updated ChatGPT timeline title to italicize "can": "Yes, you *can* use ChatGPT for your resume"
+- Removed arrows (→) from all ChatGPT timeline step descriptions for cleaner presentation
+- Applied Onest font family to FAQ section for consistent typography throughout site
+- Pricing table already uses correct cream (#FCEDDA) highlight colors matching brand
+- All waitlist CTAs properly link to https://tally.so/r/wzBlA0 and open in new tabs
+
 ### Previous Changes (July 13, 2025)
 - Added above-the-fold hero section with H1 headline and subtitle
 - Implemented call-to-action buttons with primary/secondary styling
