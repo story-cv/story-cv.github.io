@@ -512,12 +512,12 @@ header picture img:hover {
   align-items: center;
 }
 
-.visual-placeholder {
+.value-props-image {
   width: 100%;
-  height: 300px;
-  background-color: var(--color-bg-tertiary);
+  height: auto;
+  max-width: 600px;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
 }
 
 /* Responsive Design for Value Props */
@@ -545,8 +545,8 @@ header picture img:hover {
     order: 1;
   }
 
-  .visual-placeholder {
-    height: 200px;
+  .value-props-image {
+    max-width: 100%;
   }
 }
 
@@ -559,8 +559,8 @@ header picture img:hover {
     font-size: 1rem;
   }
 
-  .visual-placeholder {
-    height: 150px;
+  .value-props-image {
+    border-radius: var(--radius-md);
   }
 }
 
