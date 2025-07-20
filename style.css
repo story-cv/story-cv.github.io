@@ -596,13 +596,21 @@ header picture img:hover {
   transition: all var(--transition-normal);
 }
 
-.advantage-icon-placeholder {
+.advantage-icon {
   width: 48px;
   height: 48px;
-  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(238, 78, 52, 0.1);
   border-radius: var(--radius-md);
   margin-bottom: var(--space-lg);
-  opacity: 0.1;
+  color: var(--color-primary);
+}
+
+.advantage-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .advantage-card:hover {
