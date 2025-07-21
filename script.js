@@ -1,5 +1,8 @@
 // Document ready with improved scroll animations
+console.log('Script loading...');
+alert('JavaScript is working! You should see tabs working now.');
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - script starting');
     // Hero section animation
     const heroSection = document.querySelector('.hero');
     
@@ -204,75 +207,64 @@ document.addEventListener('DOMContentLoaded', function() {
         miniHeroObserver.observe(miniHero);
     }
     
-    // Initialize tabs functionality
+    // Initialize tabs functionality - with immediate execution test
+    console.log('About to initialize tabs...');
     initializeTabs();
+    console.log('Tabs initialization called');
     
     // Initialize comparison section animation
     initializeComparisonAnimation();
 });
 
-// Tabs functionality for comparison section
+// Tabs functionality for comparison section - simplified
 function initializeTabs() {
-    console.log('Initializing tabs...');
+    console.log('=== TABS INITIALIZATION STARTING ===');
     
-    // Use a more direct approach with event delegation
-    const tabsContainer = document.querySelector('.tabs-nav');
+    // Simple approach: direct button listeners
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-panel');
     
-    if (!tabsContainer) {
-        console.log('Tabs container not found');
+    console.log('Found buttons:', buttons.length);
+    console.log('Found panels:', panels.length);
+    
+    if (buttons.length === 0 || panels.length === 0) {
+        console.error('NO BUTTONS OR PANELS FOUND!');
         return;
     }
     
-    console.log('Tabs container found, adding event listener');
-    
-    // Use event delegation on the container
-    tabsContainer.addEventListener('click', function(e) {
-        console.log('Click event detected on tabs container');
+    buttons.forEach((button, index) => {
+        console.log(`Setting up button ${index}: ${button.getAttribute('data-tab')}`);
         
-        // Check if clicked element is a tab button
-        const button = e.target.closest('.tab-button');
-        if (!button) {
-            console.log('Clicked element is not a tab button');
-            return;
-        }
-        
-        e.preventDefault();
-        console.log('Tab button clicked:', button.getAttribute('data-tab'));
-        
-        const targetTab = button.getAttribute('data-tab');
-        
-        // Get all buttons and panels fresh each time
-        const allButtons = document.querySelectorAll('.tab-button');
-        const allPanels = document.querySelectorAll('.tab-panel');
-        
-        console.log('Found buttons:', allButtons.length, 'panels:', allPanels.length);
-        
-        // Remove active from all
-        allButtons.forEach(btn => {
-            btn.classList.remove('active');
-            console.log('Removed active from button:', btn.getAttribute('data-tab'));
-        });
-        
-        allPanels.forEach(panel => {
-            panel.classList.remove('active');
-            console.log('Removed active from panel:', panel.getAttribute('data-panel'));
-        });
-        
-        // Add active to clicked button
-        button.classList.add('active');
-        console.log('Added active to button:', targetTab);
-        
-        // Find and activate corresponding panel
-        const targetPanel = document.querySelector(`[data-panel="${targetTab}"]`);
-        if (targetPanel) {
-            targetPanel.classList.add('active');
-            console.log('Added active to panel:', targetTab);
-        } else {
-            console.log('Target panel not found for:', targetTab);
-        }
+        button.onclick = function(e) {
+            e.preventDefault();
+            console.log('=== BUTTON CLICKED ===');
+            console.log('Clicked button:', this.getAttribute('data-tab'));
+            
+            const targetTab = this.getAttribute('data-tab');
+            
+            // Remove active from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Remove active from all panels  
+            panels.forEach(panel => panel.classList.remove('active'));
+            
+            // Add active to clicked button
+            this.classList.add('active');
+            
+            // Add active to target panel
+            const targetPanel = document.querySelector(`[data-panel="${targetTab}"]`);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+                console.log('SUCCESS: Panel activated for', targetTab);
+            } else {
+                console.error('FAILED: No panel found for', targetTab);
+            }
+            
+            console.log('=== BUTTON CLICK COMPLETE ===');
+        };
     });
     
-    console.log('Tab initialization complete');
+    console.log('=== TABS INITIALIZATION COMPLETE ===');
 }
 
 // Comparison section scroll animation
