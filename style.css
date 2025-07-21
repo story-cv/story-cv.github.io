@@ -100,6 +100,8 @@
   --space-2xl: 3rem;      /* 48px */
   --space-3xl: 4rem;      /* 64px */
   --space-4xl: 6rem;      /* 96px */
+  --space-6xl: 8rem;      /* 128px */
+  --space-8xl: 12rem;     /* 192px */
 
   /* Border Radius */
   --radius-sm: 0.25rem;   /* 4px */
@@ -1411,8 +1413,8 @@ header picture img:hover {
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
   text-align: center;
-  margin-top: var(--space-6xl);
-  margin-bottom: var(--space-6xl);
+  margin-top: var(--space-8xl);
+  margin-bottom: var(--space-8xl);
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
@@ -1485,16 +1487,22 @@ header picture img:hover {
 .comparison-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-xl);
+  gap: 0;
   margin-top: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
 .comparison-item {
   padding: var(--space-xl);
-  border-radius: var(--radius-lg);
   background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
   transition: all var(--transition-normal);
+}
+
+.comparison-item:last-child {
+  border-right: none;
 }
 
 .comparison-item:hover {

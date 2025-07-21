@@ -213,10 +213,20 @@ function initializeTabs() {
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabPanels = document.querySelectorAll('.tab-panel');
     
-    if (!tabButtons.length || !tabPanels.length) return;
+    console.log('Tab buttons found:', tabButtons.length);
+    console.log('Tab panels found:', tabPanels.length);
     
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
+    if (!tabButtons.length || !tabPanels.length) {
+        console.log('No tabs or panels found - exiting');
+        return;
+    }
+    
+    tabButtons.forEach((button, index) => {
+        console.log(`Setting up button ${index}:`, button.getAttribute('data-tab'));
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Tab clicked:', button.getAttribute('data-tab'));
+            
             const targetTab = button.getAttribute('data-tab');
             
             // Remove active class from all buttons and panels
@@ -226,8 +236,10 @@ function initializeTabs() {
             // Add active class to clicked button and corresponding panel
             button.classList.add('active');
             const targetPanel = document.querySelector(`[data-panel="${targetTab}"]`);
+            console.log('Target panel found:', targetPanel ? 'yes' : 'no');
             if (targetPanel) {
                 targetPanel.classList.add('active');
+                console.log('Panel activated for:', targetTab);
             }
         });
     });
