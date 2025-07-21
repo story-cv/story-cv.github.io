@@ -517,7 +517,6 @@ header picture img:hover {
   height: auto;
   max-width: 600px;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
 }
 
 /* Responsive Design for Value Props */
@@ -1328,22 +1327,26 @@ header picture img:hover {
   margin: 0 auto;
 }
 
-.illustration-placeholder {
-  width: 200px;
-  height: 150px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 2px dashed var(--color-border);
-  border-radius: var(--radius-xl);
+.mini-hero-illustration {
   margin: 0 auto var(--space-2xl);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.placeholder-text {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  font-weight: var(--font-weight-medium);
+.mini-hero-image {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  border-radius: var(--radius-lg);
+}
+
+/* Mobile responsive adjustments for mini-hero */
+@media (max-width: 480px) {
+  .mini-hero-image {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+  }
 }
 
 .mini-hero-title {
@@ -1373,10 +1376,8 @@ header picture img:hover {
     padding: 40px 0;
   }
 
-  .illustration-placeholder {
-    width: 150px;
-    height: 120px;
-    margin-bottom: var(--space-xl);
+  .mini-hero-image {
+    max-width: 400px;
   }
 
   .mini-hero-title {
@@ -1395,9 +1396,8 @@ header picture img:hover {
     padding: 32px 0;
   }
 
-  .illustration-placeholder {
-    width: 120px;
-    height: 100px;
+  .mini-hero-image {
+    max-width: 300px;
   }
 
   .mini-hero-title {
