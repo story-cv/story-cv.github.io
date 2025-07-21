@@ -1425,7 +1425,6 @@ header picture img:hover {
   justify-content: center;
   gap: var(--space-sm);
   margin-bottom: var(--space-2xl);
-  border-bottom: 2px solid var(--color-border);
   padding-bottom: var(--space-lg);
 }
 
@@ -2076,8 +2075,14 @@ header picture img:hover {
 
 /* About Section */
 .about-section {
-  padding: var(--space-2xl) var(--space-md);
+  padding: var(--space-6xl) var(--space-md);
   background-color: var(--color-bg-secondary);
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: var(--space-xl) var(--space-md);
+  }
 }
 
 .about-content {
@@ -2145,7 +2150,7 @@ header picture img:hover {
 .founders-note-text {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   margin-bottom: var(--space-lg);
 }
 
@@ -2290,6 +2295,14 @@ header picture img:hover {
   color: var(--color-text-secondary);
   max-width: 600px;
   margin: 0 auto;
+}
+
+.founders-text.centered {
+  text-align: center;
+}
+
+.founders-text.centered {
+  text-align: center;
 }
 
 /* Mobile Responsive */
