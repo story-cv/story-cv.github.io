@@ -2789,7 +2789,19 @@ header picture img:hover {
   font-size: 1.5rem;
   line-height: 1.4;
   color: var(--color-text-secondary);
-  margin: 0;
+  margin: 0 auto var(--space-lg);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  max-width: 700px;
+}
+
+.about-hero-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 auto;
+  text-align: center;
+  max-width: 600px;
   font-weight: var(--font-weight-regular);
 }
 
@@ -2834,8 +2846,8 @@ header picture img:hover {
   padding: calc(var(--space-2xl) * 2) var(--space-md);
   background-color: var(--color-cream);
   color: var(--color-text-primary);
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
   transition: all 0.8s ease-out;
 }
 
@@ -3147,6 +3159,10 @@ header picture img:hover {
     font-size: 1.25rem;
   }
 
+  .about-hero-description {
+    font-size: 1rem;
+  }
+
   .founders-hero-title {
     font-size: 2.25rem;
   }
@@ -3214,6 +3230,10 @@ header picture img:hover {
 
   .about-hero-subtitle {
     font-size: 1.125rem;
+  }
+
+  .about-hero-description {
+    font-size: 0.95rem;
   }
 
   .founders-hero-section {
