@@ -213,52 +213,66 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Tabs functionality for comparison section
 function initializeTabs() {
-    // Wait for DOM to be fully loaded
-    setTimeout(() => {
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabPanels = document.querySelectorAll('.tab-panel');
+    console.log('Initializing tabs...');
+    
+    // Use a more direct approach with event delegation
+    const tabsContainer = document.querySelector('.tabs-nav');
+    
+    if (!tabsContainer) {
+        console.log('Tabs container not found');
+        return;
+    }
+    
+    console.log('Tabs container found, adding event listener');
+    
+    // Use event delegation on the container
+    tabsContainer.addEventListener('click', function(e) {
+        console.log('Click event detected on tabs container');
         
-        console.log('Tab buttons found:', tabButtons.length);
-        console.log('Tab panels found:', tabPanels.length);
-        
-        if (!tabButtons.length || !tabPanels.length) {
-            console.log('No tabs or panels found - exiting');
+        // Check if clicked element is a tab button
+        const button = e.target.closest('.tab-button');
+        if (!button) {
+            console.log('Clicked element is not a tab button');
             return;
         }
         
-        tabButtons.forEach((button, index) => {
-            console.log(`Setting up button ${index}:`, button.getAttribute('data-tab'));
-            
-            // Remove any existing event listeners
-            button.removeEventListener('click', handleTabClick);
-            
-            // Add new event listener
-            button.addEventListener('click', handleTabClick, true);
+        e.preventDefault();
+        console.log('Tab button clicked:', button.getAttribute('data-tab'));
+        
+        const targetTab = button.getAttribute('data-tab');
+        
+        // Get all buttons and panels fresh each time
+        const allButtons = document.querySelectorAll('.tab-button');
+        const allPanels = document.querySelectorAll('.tab-panel');
+        
+        console.log('Found buttons:', allButtons.length, 'panels:', allPanels.length);
+        
+        // Remove active from all
+        allButtons.forEach(btn => {
+            btn.classList.remove('active');
+            console.log('Removed active from button:', btn.getAttribute('data-tab'));
         });
         
-        function handleTabClick(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const button = e.currentTarget;
-            const targetTab = button.getAttribute('data-tab');
-            
-            console.log('Tab clicked:', targetTab);
-            
-            // Remove active class from all buttons and panels
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabPanels.forEach(panel => panel.classList.remove('active'));
-            
-            // Add active class to clicked button and corresponding panel
-            button.classList.add('active');
-            const targetPanel = document.querySelector(`[data-panel="${targetTab}"]`);
-            console.log('Target panel found:', targetPanel ? 'yes' : 'no');
-            if (targetPanel) {
-                targetPanel.classList.add('active');
-                console.log('Panel activated for:', targetTab);
-            }
+        allPanels.forEach(panel => {
+            panel.classList.remove('active');
+            console.log('Removed active from panel:', panel.getAttribute('data-panel'));
+        });
+        
+        // Add active to clicked button
+        button.classList.add('active');
+        console.log('Added active to button:', targetTab);
+        
+        // Find and activate corresponding panel
+        const targetPanel = document.querySelector(`[data-panel="${targetTab}"]`);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+            console.log('Added active to panel:', targetTab);
+        } else {
+            console.log('Target panel not found for:', targetTab);
         }
-    }, 100);
+    });
+    
+    console.log('Tab initialization complete');
 }
 
 // Comparison section scroll animation
