@@ -367,44 +367,87 @@
             <div class="comparison-container">
                 <h2 class="comparison-title">Not just different. Actually better.</h2>
                 
-                <div class="table-wrapper">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th class="what-matters-header">What matters</th>
-                                <th class="traditional-header">Traditional Resume Writer</th>
-                                <th class="generic-header">Generic / AI Resume Builders</th>
-                                <th class="storycv-header">StoryCV
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="what-matters-cell"><strong>Content Help</strong></td>
-                                <td class="traditional-cell">Filtered through one person's background, subjective</td>
-                                <td class="generic-cell">May auto-generate bullets, but lacks the depth and accuracy.</td>
-                                <td class="storycv-cell">Smarter support. Guided questions for depth and nuance.</td>
-                            </tr>
-                            <tr>
-                                <td class="what-matters-cell"><strong>Storytelling</strong></td>
-                                <td class="traditional-cell">May miss context, especially related to your particular industry.</td>
-                                <td class="generic-cell">Prioritizes keywords over clarity or flow.</td>
-                                <td class="storycv-cell">Adapts to your industry, role, and unique voice, every single time.</td>
-                            </tr>
-                            <tr>
-                                <td class="what-matters-cell"><strong>Speed</strong></td>
-                                <td class="traditional-cell">Takes weeks. Limited to one person's schedule and workload.</td>
-                                <td class="generic-cell">Fast, but generic output.</td>
-                                <td class="storycv-cell">Instant + thoughtful drafts in minutes.</td>
-                            </tr>
-                            <tr>
-                                <td class="what-matters-cell"><strong>Cost</strong></td>
-                                <td class="traditional-cell"><strong>$$$</strong> Expensive. Often $200–$1000+ per resume.</td>
-                                <td class="generic-cell"><strong>$</strong> Easy on the wallet, but often low on impact.</td>
-                                <td class="storycv-cell"><strong>$$</strong> Better results without the bloated bill.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Tabs Navigation -->
+                <div class="tabs-nav">
+                    <button class="tab-button active" data-tab="content-help">Content Help</button>
+                    <button class="tab-button" data-tab="storytelling">Storytelling</button>
+                    <button class="tab-button" data-tab="speed">Speed</button>
+                    <button class="tab-button" data-tab="cost">Cost</button>
+                </div>
+                
+                <!-- Tabs Content -->
+                <div class="tabs-content">
+                    <!-- Content Help Panel -->
+                    <div class="tab-panel active" data-panel="content-help">
+                        <div class="comparison-grid">
+                            <div class="comparison-item traditional">
+                                <h4 class="comparison-label">Traditional Resume Writer</h4>
+                                <p class="comparison-description">Filtered through one person's background, subjective</p>
+                            </div>
+                            <div class="comparison-item generic">
+                                <h4 class="comparison-label">Generic / AI Resume Builders</h4>
+                                <p class="comparison-description">May auto-generate bullets, but lacks the depth and accuracy.</p>
+                            </div>
+                            <div class="comparison-item storycv">
+                                <h4 class="comparison-label">StoryCV</h4>
+                                <p class="comparison-description">Smarter support. Guided questions for depth and nuance.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Storytelling Panel -->
+                    <div class="tab-panel" data-panel="storytelling">
+                        <div class="comparison-grid">
+                            <div class="comparison-item traditional">
+                                <h4 class="comparison-label">Traditional Resume Writer</h4>
+                                <p class="comparison-description">May miss context, especially related to your particular industry.</p>
+                            </div>
+                            <div class="comparison-item generic">
+                                <h4 class="comparison-label">Generic / AI Resume Builders</h4>
+                                <p class="comparison-description">Prioritizes keywords over clarity or flow.</p>
+                            </div>
+                            <div class="comparison-item storycv">
+                                <h4 class="comparison-label">StoryCV</h4>
+                                <p class="comparison-description">Adapts to your industry, role, and unique voice, every single time.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Speed Panel -->
+                    <div class="tab-panel" data-panel="speed">
+                        <div class="comparison-grid">
+                            <div class="comparison-item traditional">
+                                <h4 class="comparison-label">Traditional Resume Writer</h4>
+                                <p class="comparison-description">Takes weeks. Limited to one person's schedule and workload.</p>
+                            </div>
+                            <div class="comparison-item generic">
+                                <h4 class="comparison-label">Generic / AI Resume Builders</h4>
+                                <p class="comparison-description">Fast, but generic output.</p>
+                            </div>
+                            <div class="comparison-item storycv">
+                                <h4 class="comparison-label">StoryCV</h4>
+                                <p class="comparison-description">Instant + thoughtful drafts in minutes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cost Panel -->
+                    <div class="tab-panel" data-panel="cost">
+                        <div class="comparison-grid">
+                            <div class="comparison-item traditional">
+                                <h4 class="comparison-label">Traditional Resume Writer</h4>
+                                <p class="comparison-description"><strong>$$$</strong> Expensive. Often $200–$1000+ per resume.</p>
+                            </div>
+                            <div class="comparison-item generic">
+                                <h4 class="comparison-label">Generic / AI Resume Builders</h4>
+                                <p class="comparison-description"><strong>$</strong> Easy on the wallet, but often low on impact.</p>
+                            </div>
+                            <div class="comparison-item storycv">
+                                <h4 class="comparison-label">StoryCV</h4>
+                                <p class="comparison-description"><strong>$$</strong> Better results without the bloated bill.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
