@@ -2126,7 +2126,7 @@ header picture img:hover {
 }
 
 .philosophy-box {
-  border: 2px solid var(--color-primary);
+  border: 1px solid var(--color-primary);
   background-color: var(--color-cream);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
@@ -2203,29 +2203,56 @@ header picture img:hover {
 
 /* Founders Section */
 .founders-section {
-  margin-top: var(--space-2xl);
   text-align: center;
+  margin: var(--space-2xl) 0;
 }
 
-.founders-photos {
+.founders-grid {
   display: flex;
   justify-content: center;
-  gap: var(--space-xl);
+  gap: var(--space-2xl);
   margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
 }
 
-.photo-placeholder {
+.founder-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.founder-photo {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-color: var(--color-bg-primary);
-  border: 2px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  font-style: italic;
+  overflow: hidden;
+  border: 3px solid var(--color-primary);
+  background-color: var(--color-bg-tertiary);
+}
+
+.founder-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.founder-info {
+  text-align: center;
+}
+
+.founder-name {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.founder-role {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 .founders-text {
@@ -2260,14 +2287,13 @@ header picture img:hover {
     padding: var(--space-lg);
   }
 
-  .founders-photos {
-    gap: var(--space-lg);
+  .founders-grid {
+    gap: var(--space-xl);
   }
 
-  .photo-placeholder {
+  .founder-photo {
     width: 100px;
     height: 100px;
-    font-size: 0.75rem;
   }
 }
 
@@ -2280,16 +2306,13 @@ header picture img:hover {
     font-size: 1rem;
   }
 
-  .founders-photos {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-md);
+  .founders-grid {
+    gap: var(--space-xl);
   }
-
-  .photo-placeholder {
-    width: 80px;
-    height: 80px;
-    font-size: 0.625rem;
+  
+  .founder-photo {
+    width: 100px;
+    height: 100px;
   }
 }
 
