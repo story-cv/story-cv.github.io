@@ -2296,6 +2296,8 @@ header picture img:hover {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Mobile Responsive */
