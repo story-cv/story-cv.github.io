@@ -589,7 +589,7 @@ header picture img:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(238, 78, 52, 0.1);
+  background-color: var(--color-cream);
   border-radius: var(--radius-md);
   margin-bottom: var(--space-lg);
   color: var(--color-primary);
@@ -1562,7 +1562,7 @@ header picture img:hover {
 
 /* StoryCV styling */
 .comparison-item.storycv {
-  background-color: rgba(238, 78, 52, 0.05);
+  background-color: var(--color-cream);
   border-color: var(--color-primary);
   border-width: 2px;
 }
@@ -1816,7 +1816,7 @@ header picture img:hover {
 }
 
 .pricing-intro {
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text-secondary);
   max-width: 600px;
@@ -2123,6 +2123,15 @@ header picture img:hover {
 .philosophy-section {
   margin: var(--space-2xl) 0;
   text-align: center;
+}
+
+.philosophy-box {
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-cream);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .philosophy-title {
