@@ -2295,13 +2295,6 @@ header picture img:hover {
   color: var(--color-text-secondary);
   max-width: 600px;
   margin: 0 auto;
-}
-
-.founders-text.centered {
-  text-align: center;
-}
-
-.founders-text.centered {
   text-align: center;
 }
 
