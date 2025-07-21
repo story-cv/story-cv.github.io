@@ -2241,11 +2241,11 @@ header picture img:hover {
   margin: var(--space-2xl) 0;
 }
 
-.founders-grid {
+.founders-hero-section .founders-grid {
   display: flex;
   justify-content: center;
-  gap: var(--space-2xl);
-  margin-bottom: var(--space-xl);
+  gap: var(--space-4xl);
+  margin-bottom: var(--space-2xl);
   flex-wrap: wrap;
 }
 
@@ -2253,7 +2253,28 @@ header picture img:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-lg);
+  transition: transform 0.3s ease;
+}
+
+.founder-card:hover {
+  transform: translateY(-5px);
+}
+
+.founders-hero-section .founder-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--color-primary);
+  background-color: var(--color-bg-tertiary);
+  box-shadow: 0 8px 32px rgba(238, 78, 52, 0.15);
+  transition: all 0.3s ease;
+}
+
+.founders-hero-section .founder-photo:hover {
+  box-shadow: 0 12px 40px rgba(238, 78, 52, 0.25);
+  transform: scale(1.05);
 }
 
 .founder-photo {
@@ -2294,9 +2315,9 @@ header picture img:hover {
   line-height: 1.6;
   color: var(--color-text-secondary);
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto !important;
   text-align: center !important;
-  padding: 0;
+  padding: 0 !important;
   box-sizing: border-box;
   display: block;
   width: 100%;
@@ -2744,9 +2765,10 @@ header picture img:hover {
 
 /* About Us Page Styles */
 .about-hero {
-  padding: calc(var(--space-2xl) + var(--space-lg)) var(--space-md) var(--space-2xl);
-  background-color: var(--color-bg-primary);
+  padding: calc(var(--space-4xl) + var(--space-lg)) var(--space-md) var(--space-2xl);
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, #F8F9FA 100%);
   text-align: center;
+  position: relative;
 }
 
 .about-hero-content {
@@ -2773,31 +2795,38 @@ header picture img:hover {
 
 /* Founders Hero Section */
 .founders-hero-section {
-  padding: var(--space-2xl) var(--space-md);
-  background-color: var(--color-bg-primary);
+  padding: var(--space-4xl) var(--space-md);
+  background: linear-gradient(135deg, #FCEDDA 0%, #F5E6D3 100%);
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .founders-hero-content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .founders-hero-title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-bottom: var(--space-xl);
+  line-height: 1.1;
+  margin-bottom: var(--space-2xl);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.founders-text {
-  font-size: 1rem;
-  line-height: 1.6;
+.founders-hero-section .founders-text {
+  font-size: 1.25rem;
+  line-height: 1.7;
   color: var(--color-text-secondary);
-  margin: var(--space-lg) 0 0 0;
+  margin: var(--space-lg) auto 0;
   text-align: center;
+  max-width: 700px;
+  font-weight: var(--font-weight-medium);
 }
 
 /* Mission Banner */
@@ -2854,7 +2883,8 @@ header picture img:hover {
 /* Team Section */
 .team-section {
   padding: var(--space-2xl) var(--space-md);
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border);
 }
 
 .team-content {
@@ -2935,8 +2965,8 @@ header picture img:hover {
   margin: 0;
 }
 
-/* Founders Section */
-.founders-section {
+/* About Us Page - Founders Section */
+.about-founders-section {
   background-color: var(--color-bg-primary);
   padding: var(--space-xl);
   border-radius: var(--radius-lg);
