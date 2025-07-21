@@ -1966,7 +1966,7 @@ header picture img:hover {
 
 /* Promo Section */
 .promo-section {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
   border: 1px solid var(--color-primary);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
@@ -2119,37 +2119,62 @@ header picture img:hover {
   text-decoration: underline;
 }
 
-/* Philosophy Section */
-.philosophy-section {
+/* Founders Note Section */
+.founders-note-section {
   margin: var(--space-2xl) 0;
-  text-align: center;
+  text-align: left;
 }
 
-.philosophy-box {
-  border: 1px solid var(--color-primary);
-  background-color: var(--color-cream);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  max-width: 600px;
+.founders-note-content {
+  max-width: 700px;
   margin: 0 auto;
 }
 
-.philosophy-title {
+.founders-note-title {
   font-size: 1.75rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
+  margin-bottom: var(--space-xl);
+  line-height: 1.3;
+}
+
+.founders-note-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
   margin-bottom: var(--space-lg);
 }
 
-.philosophy-text {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-md);
+.founders-note-text:last-of-type {
+  margin-bottom: var(--space-xl);
 }
 
-.philosophy-text:last-child {
-  margin-bottom: 0;
+.founders-signature {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.signature-text {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.signature-title {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .founders-note-content {
+    padding: 0 var(--space-md);
+  }
+  
+  .founders-note-title {
+    font-size: 1.5rem;
+  }
 }
 
 /* Take Section */
