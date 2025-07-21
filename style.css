@@ -1533,6 +1533,18 @@ header picture img:hover {
   align-items: center;
 }
 
+/* Ensure desktop layout works properly */
+@media (min-width: 769px) {
+  .cta-banner-content {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+  }
+  
+  .cta-banner-text-column {
+    text-align: left;
+  }
+}
+
 .cta-banner-text-column {
   text-align: left;
 }
@@ -1613,7 +1625,8 @@ header picture img:hover {
   }
 
   .cta-banner-image {
-    max-width: 400px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .cta-banner-title {
@@ -1634,11 +1647,16 @@ header picture img:hover {
 
 @media (max-width: 480px) {
   .cta-banner {
-    padding: var(--space-2xl) var(--space-md);
+    padding: var(--space-2xl) var(--space-sm);
+  }
+
+  .cta-banner-content {
+    gap: var(--space-xl);
   }
 
   .cta-banner-image {
-    max-width: 300px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .cta-banner-title {
