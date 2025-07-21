@@ -206,28 +206,44 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize tabs functionality
     initializeTabs();
+    
+    // Initialize comparison section animation
+    initializeComparisonAnimation();
 });
 
 // Tabs functionality for comparison section
 function initializeTabs() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabPanels = document.querySelectorAll('.tab-panel');
-    
-    console.log('Tab buttons found:', tabButtons.length);
-    console.log('Tab panels found:', tabPanels.length);
-    
-    if (!tabButtons.length || !tabPanels.length) {
-        console.log('No tabs or panels found - exiting');
-        return;
-    }
-    
-    tabButtons.forEach((button, index) => {
-        console.log(`Setting up button ${index}:`, button.getAttribute('data-tab'));
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log('Tab clicked:', button.getAttribute('data-tab'));
+    // Wait for DOM to be fully loaded
+    setTimeout(() => {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+        
+        console.log('Tab buttons found:', tabButtons.length);
+        console.log('Tab panels found:', tabPanels.length);
+        
+        if (!tabButtons.length || !tabPanels.length) {
+            console.log('No tabs or panels found - exiting');
+            return;
+        }
+        
+        tabButtons.forEach((button, index) => {
+            console.log(`Setting up button ${index}:`, button.getAttribute('data-tab'));
             
+            // Remove any existing event listeners
+            button.removeEventListener('click', handleTabClick);
+            
+            // Add new event listener
+            button.addEventListener('click', handleTabClick, true);
+        });
+        
+        function handleTabClick(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const button = e.currentTarget;
             const targetTab = button.getAttribute('data-tab');
+            
+            console.log('Tab clicked:', targetTab);
             
             // Remove active class from all buttons and panels
             tabButtons.forEach(btn => btn.classList.remove('active'));
@@ -241,6 +257,64 @@ function initializeTabs() {
                 targetPanel.classList.add('active');
                 console.log('Panel activated for:', targetTab);
             }
+        }
+    }, 100);
+}
+
+// Comparison section scroll animation
+function initializeComparisonAnimation() {
+    const comparisonSection = document.querySelector('.comparison-section');
+    const comparisonTitle = document.querySelector('.comparison-title');
+    const tabsNav = document.querySelector('.tabs-nav');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    
+    if (!comparisonSection) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Animate title
+                if (comparisonTitle) {
+                    comparisonTitle.style.opacity = '0';
+                    comparisonTitle.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        comparisonTitle.style.transition = 'all 0.6s ease-out';
+                        comparisonTitle.style.opacity = '1';
+                        comparisonTitle.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+                
+                // Animate tabs navigation
+                if (tabsNav) {
+                    tabsNav.style.opacity = '0';
+                    tabsNav.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        tabsNav.style.transition = 'all 0.6s ease-out';
+                        tabsNav.style.opacity = '1';
+                        tabsNav.style.transform = 'translateY(0)';
+                    }, 300);
+                }
+                
+                // Animate active tab panel
+                const activePanel = document.querySelector('.tab-panel.active');
+                if (activePanel) {
+                    activePanel.style.opacity = '0';
+                    activePanel.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        activePanel.style.transition = 'all 0.6s ease-out';
+                        activePanel.style.opacity = '1';
+                        activePanel.style.transform = 'translateY(0)';
+                    }, 500);
+                }
+                
+                // Only animate once
+                observer.unobserve(entry.target);
+            }
         });
+    }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -100px 0px'
     });
+    
+    observer.observe(comparisonSection);
 }

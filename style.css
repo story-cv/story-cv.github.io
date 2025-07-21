@@ -1413,8 +1413,8 @@ header picture img:hover {
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
   text-align: center;
-  margin-top: var(--space-8xl);
-  margin-bottom: var(--space-8xl);
+  margin-top: var(--space-6xlxl);
+  margin-bottom: var(--space-6xl);
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
@@ -1481,6 +1481,32 @@ header picture img:hover {
   display: block;
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Animation styles for comparison section */
+.comparison-section {
+  overflow: hidden;
+}
+
+.comparison-title,
+.tabs-nav,
+.tab-panel {
+  transition: all 0.6s ease-out;
+}
+
+.tab-panel.active {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Comparison Grid */
