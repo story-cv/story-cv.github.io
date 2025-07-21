@@ -1,0 +1,43 @@
+
+#### **2. `style.css` (Visuals & Layout)**
+
+* **Tab Navigation Styling:**
+    * Style `.tabs-nav` to arrange your buttons horizontally (e)`display: flex;`).
+    * Style `.tab-button` for appearance (padding, background, border, cursor).
+    * Define `.tab-button.active` to clearly show which tab is currently selected (e.g., different background, border-bottom).
+* **Tab Content Panels Styling:**
+    * Style `.tabs-content` as a container for all your comparison details (e.g., padding, border).
+    * **Crucial for Functionality:** Set `.tab-panel { display: none; }` by default.
+    * **Crucial for Functionality:** Set `.tab-panel.active { display: block; }` (or `flex`/`grid` if you're laying out items horizontally within the panel).
+    * Style individual comparison items within panels (e.g., `.comparison-item`) for layout and appearance. Recreate the red line highlight for StoryCV using `border-left` or similar on your StoryCV comparison item's class.
+
+#### **3. `script.js` (Interactivity)**
+
+* **Get Elements:**
+    ```javascript
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    ```
+* **Add Event Listeners:**
+    ```javascript
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Logic to activate/deactivate tabs and panels
+            // 1. Remove 'active' class from all buttons and panels
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+
+            // 2. Add 'active' class to the clicked button
+            button.classList.add('active');
+
+            // 3. Get the target panel's data-panel value from the button's data-tab
+            const targetPanelId = button.dataset.tab;
+
+            // 4. Find and add 'active' class to the corresponding panel
+            const targetPanel = document.querySelector(`.tab-panel[data-panel="${targetPanelId}"]`);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+            }
+        });
+    });
+    ```
