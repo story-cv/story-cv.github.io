@@ -2126,6 +2126,10 @@ header picture img:hover {
 }
 
 .founders-note-content {
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-cream);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
   max-width: 700px;
   margin: 0 auto;
 }
@@ -2169,7 +2173,7 @@ header picture img:hover {
 
 @media (max-width: 768px) {
   .founders-note-content {
-    padding: 0 var(--space-md);
+    margin: 0 var(--space-md);
   }
   
   .founders-note-title {
