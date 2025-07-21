@@ -2782,7 +2782,7 @@ header picture img:hover {
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
   line-height: 1.1;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
 }
 
 .about-hero-subtitle {
