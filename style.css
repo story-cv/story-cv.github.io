@@ -1483,6 +1483,15 @@ header picture img:hover {
   transform: translateY(0);
 }
 
+/* Section Divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  margin: var(--space-2xl) auto;
+  max-width: 600px;
+  opacity: 0.6;
+}
+
 /* Animation styles for comparison section */
 .comparison-section {
   overflow: hidden;
@@ -1945,40 +1954,14 @@ header picture img:hover {
   border: 1px solid var(--color-border);
 }
 
-/* Value Bullets */
-.value-bullets {
+/* Pricing Intro Section (moved after table) */
+.pricing-intro-section {
   margin: var(--space-2xl) 0;
   text-align: center;
 }
 
-.value-bullet-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.value-bullet-list li {
-  font-size: 1.125rem;
-  color: var(--color-text-secondary);
+.pricing-intro-section .pricing-intro {
   margin-bottom: var(--space-md);
-  padding-left: var(--space-lg);
-  position: relative;
-  line-height: 1.5;
-}
-
-.value-bullet-list li:before {
-  content: "•";
-  color: var(--color-primary);
-  font-weight: var(--font-weight-bold);
-  position: absolute;
-  left: 0;
-}
-
-.value-bullet-list li:last-child {
-  margin-bottom: 0;
 }
 
 /* Promo Section */

@@ -1,6 +1,4 @@
 // Document ready with improved scroll animations
-console.log('Script loading...');
-alert('JavaScript is working! You should see tabs working now.');
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM Content Loaded - script starting');
     // Hero section animation
