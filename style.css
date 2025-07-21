@@ -2295,9 +2295,11 @@ header picture img:hover {
   color: var(--color-text-secondary);
   max-width: 600px;
   margin: 0 auto;
-  text-align: center;
+  text-align: center !important;
   padding: 0;
   box-sizing: border-box;
+  display: block;
+  width: 100%;
 }
 
 /* Mobile Responsive */
