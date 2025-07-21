@@ -480,30 +480,21 @@ header picture img:hover {
   gap: var(--space-lg);
 }
 
-.value-prop-intro {
-  font-size: 1.125rem;
-  color: var(--color-text-primary);
-  margin-bottom: 0;
-  font-weight: var(--font-weight-regular);
+.value-prop-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
-.value-prop-intro strong {
+.value-prop-content p {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.value-prop-content p strong {
   font-weight: var(--font-weight-bold);
-}
-
-.value-prop-item {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 0;
-  line-height: 1.6;
-}
-
-.value-prop-description {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 0;
-  line-height: 1.6;
-  margin-top: var(--space-md);
 }
 
 .value-props-visual {
@@ -516,7 +507,6 @@ header picture img:hover {
   width: 100%;
   height: auto;
   max-width: 600px;
-  border-radius: var(--radius-lg);
 }
 
 /* Responsive Design for Value Props */
@@ -554,12 +544,8 @@ header picture img:hover {
     font-size: 1.75rem;
   }
 
-  .value-prop-intro {
-    font-size: 1rem;
-  }
-
-  .value-props-image {
-    border-radius: var(--radius-md);
+  .value-prop-content p {
+    font-size: 0.95rem;
   }
 }
 
@@ -1338,14 +1324,12 @@ header picture img:hover {
   width: 100%;
   height: auto;
   max-width: 500px;
-  border-radius: var(--radius-lg);
 }
 
 /* Mobile responsive adjustments for mini-hero */
 @media (max-width: 480px) {
   .mini-hero-image {
     max-width: 100%;
-    border-radius: var(--radius-md);
   }
 }
 
