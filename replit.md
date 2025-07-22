@@ -165,6 +165,9 @@ Preferred communication style: Simple, everyday language.
 - **Increased FAQ font size** from 0.875rem to 1rem for better readability (July 22, 2025)
 - **Fixed comparison section alignment** by setting consistent heights for Speed and Cost rows (July 22, 2025)
 - **Added bold emphasis** to key comparison phrases: "May miss nuances", "Limited by one person's writing style", "Prioritizes keywords over clarity", "Auto-generates generic bullets and content" (July 22, 2025)
+- **Comprehensive mobile responsiveness overhaul** targeting iPhone XR (414px) and mobile devices (July 22, 2025)
+- **Enhanced ChatGPT timeline mobile alignment** with improved timeline marker positioning (July 22, 2025)
+- **Updated pricing section icons** with stroke-width="3" for better visibility while maintaining stroke-width="2" for other sections (July 22, 2025)
 
 ### Footer Section Implementation
 - Added professional footer with logo, tagline, and brand positioning

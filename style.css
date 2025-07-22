@@ -845,7 +845,7 @@ header picture img:hover {
   }
 
   .timeline-marker {
-    left: calc(-1 * var(--space-md) - 8px);
+    left: calc(-1 * var(--space-md) - 7px);
     width: 14px;
     height: 14px;
   }
@@ -2154,6 +2154,7 @@ header picture img:hover {
   margin-right: 8px;
   vertical-align: text-bottom;
   display: inline-block;
+  stroke-width: 3 !important;
 }
 
 .icon-ban {
@@ -2161,6 +2162,11 @@ header picture img:hover {
   margin-right: 8px;
   vertical-align: text-bottom;
   display: inline-block;
+  stroke-width: 3 !important;
+}
+
+.info-icon {
+  stroke-width: 3 !important;
 }
 
 .info-icon {
