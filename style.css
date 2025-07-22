@@ -1858,39 +1858,42 @@ header picture img:hover {
   color: var(--color-primary) !important;
 }
 
-/* Remove old tooltip styling to prevent conflicts */
+/* Tooltip Trigger Styles */
 .tooltip-trigger {
-  cursor: help !important;
-  text-decoration: none !important;
+  cursor: help;
   position: relative;
 }
 
 /* Tooltip Styles */
-#tooltip {
+.tooltip {
   position: absolute;
-  background-color: #333;
+  background-color: var(--color-text-primary);
   color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  line-height: 1.4;
-  max-width: 250px;
-  z-index: 1000;
-  display: none;
-  pointer-events: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  max-width: 280px;
   white-space: normal;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  pointer-events: none;
 }
 
-#tooltip::before {
+.tooltip.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip::before {
   content: '';
   position: absolute;
   top: 100%;
   left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #333 transparent transparent transparent;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-text-primary);
 }
 
 .pricing-table {

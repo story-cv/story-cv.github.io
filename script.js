@@ -272,40 +272,22 @@ function initializeTooltips() {
     const tooltipTriggers = document.querySelectorAll('.tooltip-trigger');
     const tooltip = document.getElementById('tooltip');
     
-    if (!tooltip) {
-        console.log('Tooltip element not found');
-        return;
-    }
+    if (!tooltip) return;
     
-    console.log('Found tooltip triggers:', tooltipTriggers.length);
-    
-    tooltipTriggers.forEach((trigger, index) => {
-        const infoIcon = trigger.querySelector('.info-icon');
-        console.log(`Trigger ${index}:`, !!trigger, 'Info icon found:', !!infoIcon);
-        
-        if (infoIcon) {
-            infoIcon.addEventListener('mouseenter', (e) => {
-                console.log('Info icon hovered');
-                const tooltipText = trigger.getAttribute('data-tooltip');
-                console.log('Tooltip text:', tooltipText);
-                
-                tooltip.textContent = tooltipText;
-                tooltip.style.display = 'block';
-                
-                // Position tooltip
-                const rect = e.target.getBoundingClientRect();
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-                
-                tooltip.style.left = (rect.left + scrollLeft + (rect.width / 2) - (tooltip.offsetWidth / 2)) + 'px';
-                tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
-            });
+    tooltipTriggers.forEach(trigger => {
+        trigger.addEventListener('mouseenter', (e) => {
+            const tooltipText = e.target.getAttribute('data-tooltip');
+            tooltip.textContent = tooltipText;
+            tooltip.style.display = 'block';
             
-            infoIcon.addEventListener('mouseleave', () => {
-                console.log('Info icon mouse leave');
-                tooltip.style.display = 'none';
-            });
-        }
+            const rect = e.target.getBoundingClientRect();
+            tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+            tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
+        });
+        
+        trigger.addEventListener('mouseleave', () => {
+            tooltip.style.display = 'none';
+        });
     });
 }
 
