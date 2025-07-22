@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Story.CV - Professional Resume Writer Powered by AI</title>
-    <meta name="description" content="The only resume writer that truly tells your story. We interview you, dig out what matters, and rewrite your resume like a pro. Stop optimizing for ATS - start telling your story.">
+    <title>The AI Resume Writer That Tells Your Story Best.</title>
+    <meta name="description" content="Your career is more than bullet points. Here's a resume writer that asks better questions, so you can tell a better story.">
     <meta name="keywords" content="resume writer, professional resume, AI resume, career coaching, job application, ATS optimization, resume writing service">
     <meta name="author" content="Story.CV">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/logo-light.svg">
+    
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Story.CV - Professional Resume Writer Powered by AI">
-    <meta property="og:description" content="The only resume writer that truly tells your story. We interview you, dig out what matters, and rewrite your resume like a pro.">
+    <meta property="og:title" content="The AI Resume Writer That Tells Your Story Best.">
+    <meta property="og:description" content="Your career is more than bullet points. Here's a resume writer that asks better questions, so you can tell a better story.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://story.cv">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Story.CV - Professional Resume Writer Powered by AI">
-    <meta name="twitter:description" content="The only resume writer that truly tells your story. We interview you, dig out what matters, and rewrite your resume like a pro.">
+    <meta name="twitter:title" content="The AI Resume Writer That Tells Your Story Best.">
+    <meta name="twitter:description" content="Your career is more than bullet points. Here's a resume writer that asks better questions, so you can tell a better story.">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://story.cv">
@@ -30,16 +33,49 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Structured Data -->
+    <!-- Structured Data - Website -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Story.CV",
+      "alternateName": "The AI Resume Writer That Tells Your Story Best",
+      "url": "https://story.cv",
+      "description": "Your career is more than bullet points. Here's a resume writer that asks better questions, so you can tell a better story.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://story.cv/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Structured Data - Professional Service -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "Story.CV",
-      "description": "Professional resume writing service powered by AI that tells your story through personalized interviews and expert rewriting.",
+      "description": "AI-powered professional resume writing service that interviews you to understand your story and creates compelling resumes that stand out.",
       "url": "https://story.cv",
       "serviceType": "Resume Writing Service",
       "areaServed": "Worldwide",
+      "provider": {
+        "@type": "Organization",
+        "name": "Story.CV",
+        "founders": [
+          {
+            "@type": "Person",
+            "name": "Kavya",
+            "jobTitle": "Marketing & Product"
+          },
+          {
+            "@type": "Person", 
+            "name": "Sagar",
+            "jobTitle": "Product & Tech"
+          }
+        ]
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Resume Writing Services",
@@ -49,11 +85,90 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Professional Resume Writing",
-              "description": "Personalized resume writing service that includes interviews to extract your story and professional rewriting."
+              "description": "AI-powered resume writing with personalized interviews to extract your story and professional rewriting."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "79",
+              "priceCurrency": "USD"
             }
           }
         ]
       }
+    }
+    </script>
+
+    <!-- Structured Data - FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is StoryCV?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "StoryCV is an intelligent AI resume writer. It helps you create a resume that truly tells your story, going beyond basic keyword optimization so you actually stand out."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is StoryCV different from other AI resume builders or templates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unlike generic AI resume builders or templates that simply guess or fill in blanks, StoryCV acts as a professional resume writer. We personally \"interview\" you through our intelligent system to understand your unique experience, delivering a custom-written resume that truly captures your story and gets you noticed. We don't just build; we write."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the \"interviewing\" process work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our system asks targeted questions to understand your industry, role, and accomplishments. This allows us to uncover key details and rewrite your resume professionally, on your terms and without the need for live calls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does StoryCV help my resume pass ATS (Applicant Tracking Systems)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, ATS compatibility is built in. Our primary focus, however, is on crafting a compelling resume that truly tells your story. This approach ensures your resume not only navigates ATS effectively but also resonates with human recruiters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Story.CV more effective than using ChatGPT or other generic AI resume builders?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Unlike general-purpose tools, Story.CV is an AI resume writer specifically engineered for professional resume creation. It guides you with industry knowledge, focuses on compelling storytelling, and applies a professional polish that generic tools cannot match."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast is StoryCV?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's fast. You receive clear, effective resume drafts in minutes, not weeks. We provide a powerful, rewritten resume on the same day, not after several business days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is StoryCV affordable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We offer professional resume writer quality without the typical high cost. Our aim is to provide excellent resume help that is accessible, with no hidden fees or unexpected upsells. You get results without compromise."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I'm interested in the waitlist. Is there any commitment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no commitment to join the waitlist. You will receive a 50% off coupon code after we launch, which you can use if you choose to utilize the platform."
+          }
+        }
+      ]
     }
     </script>
 </head>
