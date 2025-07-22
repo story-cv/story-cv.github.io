@@ -210,6 +210,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeTabs();
     console.log('Tabs initialization called');
     
+    // Initialize accordion functionality
+    console.log('About to initialize accordion...');
+    initializeAccordion();
+    console.log('Accordion initialization called');
+    
     // Initialize new tabbed comparison functionality
     initializeNewComparisonTabs();
     
@@ -423,4 +428,75 @@ function initializeComparisonAnimation() {
     });
     
     observer.observe(comparisonSection);
+}
+
+// Accordion functionality
+function initializeAccordion() {
+    const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+    
+    accordionTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const currentItem = this.closest('.accordion-item');
+            const currentContent = currentItem.querySelector('.accordion-content');
+            const currentState = this.getAttribute('data-state');
+            
+            // Close all other accordion items
+            accordionTriggers.forEach(otherTrigger => {
+                if (otherTrigger !== this) {
+                    const otherItem = otherTrigger.closest('.accordion-item');
+                    const otherContent = otherItem.querySelector('.accordion-content');
+                    
+                    otherTrigger.setAttribute('data-state', 'closed');
+                    otherContent.setAttribute('data-state', 'closed');
+                    otherContent.style.height = '0px';
+                }
+            });
+            
+            // Toggle current accordion item
+            if (currentState === 'closed' || !currentState) {
+                this.setAttribute('data-state', 'open');
+                currentContent.setAttribute('data-state', 'open');
+                
+                // Set height to auto temporarily to measure content
+                currentContent.style.height = 'auto';
+                const height = currentContent.scrollHeight;
+                currentContent.style.height = '0px';
+                
+                // Force reflow then animate to full height
+                requestAnimationFrame(() => {
+                    currentContent.style.height = height + 'px';
+                });
+                
+                // After transition ends, set to auto for responsive behavior
+                setTimeout(() => {
+                    if (currentContent.getAttribute('data-state') === 'open') {
+                        currentContent.style.height = 'auto';
+                    }
+                }, 200);
+                
+            } else {
+                this.setAttribute('data-state', 'closed');
+                currentContent.setAttribute('data-state', 'closed');
+                
+                // Get current height and animate to 0
+                const height = currentContent.scrollHeight;
+                currentContent.style.height = height + 'px';
+                
+                requestAnimationFrame(() => {
+                    currentContent.style.height = '0px';
+                });
+            }
+        });
+    });
+    
+    // Initialize heights
+    accordionTriggers.forEach(trigger => {
+        const content = trigger.closest('.accordion-item').querySelector('.accordion-content');
+        const state = trigger.getAttribute('data-state');
+        
+        if (state === 'closed' || !state) {
+            content.style.height = '0px';
+            content.setAttribute('data-state', 'closed');
+        }
+    });
 }
