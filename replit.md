@@ -162,6 +162,9 @@ Preferred communication style: Simple, everyday language.
 - Designed mobile-responsive layout with proper touch interaction support
 - Applied consistent styling with secondary background and proper spacing
 - **Removed all bold formatting** from FAQ answers for cleaner text presentation (July 22, 2025)
+- **Increased FAQ font size** from 0.875rem to 1rem for better readability (July 22, 2025)
+- **Fixed comparison section alignment** by setting consistent heights for Speed and Cost rows (July 22, 2025)
+- **Added bold emphasis** to key comparison phrases: "May miss nuances", "Limited by one person's writing style", "Prioritizes keywords over clarity", "Auto-generates generic bullets and content" (July 22, 2025)
 
 ### Footer Section Implementation
 - Added professional footer with logo, tagline, and brand positioning
