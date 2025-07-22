@@ -189,18 +189,47 @@ header picture img:hover {
   opacity: 0.8;
 }
 
-/* Responsive Design */
+/* Responsive Design - Mobile First */
 @media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  header {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  main {
+    padding: 0; /* Remove main padding, let sections handle their own */
+  }
+
+  footer {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  header picture img {
+    height: 36px;
+  }
+
+  /* Ensure proper container spacing on mobile */
+  .container {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
   html {
     font-size: 14px;
   }
 
   header {
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-md);
   }
 
   main {
-    padding: var(--space-md);
+    padding: 0;
   }
 
   footer {
@@ -210,19 +239,11 @@ header picture img:hover {
   header picture img {
     height: 32px;
   }
-}
 
-@media (max-width: 480px) {
-  header {
-    padding: var(--space-sm);
-  }
-
-  main {
-    padding: var(--space-sm);
-  }
-
-  footer {
-    padding: var(--space-lg) var(--space-sm);
+  /* Mobile container spacing */
+  .container {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
   }
 }
 
@@ -493,8 +514,18 @@ header picture img:hover {
 }
 
 @media (max-width: 480px) {
+  .value-props {
+    padding: var(--space-xl) 0;
+  }
+
   .value-props-title {
     font-size: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: var(--space-xl);
+  }
+
+  .value-props-content {
+    gap: var(--space-xl);
   }
 
   .value-prop-content p {
@@ -624,8 +655,18 @@ header picture img:hover {
 }
 
 @media (max-width: 480px) {
+  .advantages {
+    padding: var(--space-2xl) 0;
+  }
+
   .advantages-title {
     font-size: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: var(--space-xl);
+  }
+
+  .advantages-grid {
+    gap: var(--space-md);
   }
 
   .advantage-card {
@@ -634,10 +675,12 @@ header picture img:hover {
 
   .advantage-headline {
     font-size: 1rem;
+    margin-bottom: var(--space-sm);
   }
 
-  .advantage-description {
+  .advantage-list li {
     font-size: 0.9rem;
+    line-height: 1.5;
   }
 }
 
@@ -825,8 +868,18 @@ header picture img:hover {
 }
 
 @media (max-width: 480px) {
+  .chatgpt-timeline {
+    padding: var(--space-2xl) 0;
+  }
+
+  .timeline-header {
+    margin-bottom: var(--space-2xl);
+  }
+
   .timeline-title {
     font-size: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
   }
 
   .timeline-subtitle {
@@ -851,7 +904,20 @@ header picture img:hover {
     height: 12px;
   }
 
+  .timeline-content {
+    padding-left: var(--space-sm);
+  }
+
   .step-title {
+    font-size: 1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .step-description {
+    font-size: 0.875rem;
+  }
+
+  .conclusion-text {
     font-size: 1rem;
   }
 }
@@ -1160,15 +1226,14 @@ header picture img:hover {
   }
 
   .process-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
   }
 
   .process-subtitle {
-    font-size: 1.125rem;
-  }
-
-  .process-card {
-    padding: var(--space-xl);
+    font-size: 1rem;
+    line-height: 1.5;
   }
 
   .progress-container {
@@ -1176,41 +1241,47 @@ header picture img:hover {
   }
 
   .progress-bar {
-    padding: 0 var(--space-md);
+    padding: 0 var(--space-sm);
   }
 
   .step-circle {
-    width: 32px;
-    height: 32px;
-    font-size: 0.75rem;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
   }
 
-  /* Show card numbers on mobile and tablet */
+  .process-cards {
+    gap: var(--space-lg);
+  }
+
+  .process-card {
+    padding: var(--space-lg);
+  }
+
   .card-number {
     display: flex;
-  }
-}
-
-
-
-  .card-number {
-    top: var(--space-md);
-    right: var(--space-md);
     width: 28px;
     height: 28px;
-    font-size: 0.75rem;
-  }
-
-  .process-step-image {
-    max-width: 100%;
+    top: var(--space-md);
+    right: var(--space-md);
   }
 
   .card-title {
     font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
   }
 
   .card-description {
     font-size: 0.9rem;
+  }
+
+  .process-conclusion {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-lg);
+  }
+
+  .conclusion-text {
+    font-size: 1rem;
   }
 }
 
@@ -1840,6 +1911,44 @@ header picture img:hover {
   
   .vs-content p {
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabbed-comparison-section {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .tabbed-comparison-title {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .comparison-tab {
+    font-size: 0.8rem;
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .vs-company {
+    font-size: 0.9rem;
+  }
+
+  .vs-divider {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vs-text {
+    font-size: 0.875rem;
+  }
+
+  .vs-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .topic-label {
+    font-size: 0.75rem;
   }
 }
 
