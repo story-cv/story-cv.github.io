@@ -263,6 +263,35 @@ function initializeTabs() {
     });
     
     console.log('=== TABS INITIALIZATION COMPLETE ===');
+    
+    // Initialize tooltip functionality for info icons only
+    initializeTooltips();
+}
+
+function initializeTooltips() {
+    const tooltipTriggers = document.querySelectorAll('.tooltip-trigger');
+    const tooltip = document.getElementById('tooltip');
+    
+    if (!tooltip) return;
+    
+    tooltipTriggers.forEach(trigger => {
+        const infoIcon = trigger.querySelector('.info-icon');
+        if (infoIcon) {
+            infoIcon.addEventListener('mouseenter', (e) => {
+                const tooltipText = trigger.getAttribute('data-tooltip');
+                tooltip.textContent = tooltipText;
+                tooltip.style.display = 'block';
+                
+                const rect = e.target.getBoundingClientRect();
+                tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+                tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
+            });
+            
+            infoIcon.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none';
+            });
+        }
+    });
 }
 
 // Comparison section scroll animation
