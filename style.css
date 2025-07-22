@@ -1789,7 +1789,7 @@ header picture img:hover {
 }
 
 .pricing-content {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -1896,7 +1896,7 @@ header picture img:hover {
 
 .pricing-table {
   width: 100%;
-  min-width: 650px;
+  min-width: 800px;
   border-collapse: collapse;
   background-color: white;
   border-radius: var(--radius-lg);
