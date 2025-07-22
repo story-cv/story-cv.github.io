@@ -1831,6 +1831,29 @@ header picture img:hover {
   border: 1px solid var(--color-border);
 }
 
+/* Icon Styles for Pricing Table */
+.icon-check {
+  color: #22c55e;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.icon-ban {
+  color: #ef4444;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.info-icon {
+  color: #6b7280;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.info-icon:hover {
+  color: var(--color-primary);
+}
+
 .pricing-table {
   width: 100%;
   border-collapse: collapse;
@@ -1871,7 +1894,9 @@ header picture img:hover {
   text-align: center;
   font-size: 0.875rem;
   color: var(--color-text-secondary);
-  background-color: #f8f9fa;
+  background-color: white;
+  padding: var(--space-md);
+  vertical-align: middle;
 }
 
 .feature-value.highlight {
