@@ -210,6 +210,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeTabs();
     console.log('Tabs initialization called');
     
+    // Initialize new tabbed comparison functionality
+    initializeNewComparisonTabs();
+    
     // Initialize comparison section animation
     initializeComparisonAnimation();
 });
@@ -266,6 +269,59 @@ function initializeTabs() {
     
     // Initialize tooltip functionality for info icons only
     initializeTooltips();
+}
+
+// New Tabbed Comparison Functionality
+function initializeNewComparisonTabs() {
+    console.log('=== NEW COMPARISON TABS STARTING ===');
+    
+    const comparisonTabs = document.querySelectorAll('.comparison-tab');
+    const comparisonPanels = document.querySelectorAll('.comparison-panel');
+    
+    console.log('Found comparison tabs:', comparisonTabs.length);
+    console.log('Found comparison panels:', comparisonPanels.length);
+    
+    if (comparisonTabs.length === 0 || comparisonPanels.length === 0) {
+        console.log('No new comparison tabs found - this is normal if section not loaded yet');
+        return;
+    }
+    
+    comparisonTabs.forEach((tab, index) => {
+        console.log(`Setting up comparison tab ${index}: ${tab.getAttribute('data-tab')}`);
+        
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('=== COMPARISON TAB CLICKED ===');
+            console.log('Clicked tab:', this.getAttribute('data-tab'));
+            
+            const targetTab = this.getAttribute('data-tab');
+            
+            // Remove active from all tabs
+            comparisonTabs.forEach(t => t.classList.remove('active'));
+            
+            // Remove active from all panels
+            comparisonPanels.forEach(panel => panel.classList.remove('active'));
+            
+            // Add active to clicked tab
+            this.classList.add('active');
+            
+            // Add active to target panel
+            const targetPanel = document.getElementById(`${targetTab}-panel`);
+            if (targetPanel) {
+                // Small delay for smooth transition
+                setTimeout(() => {
+                    targetPanel.classList.add('active');
+                }, 50);
+                console.log('SUCCESS: Comparison panel activated for', targetTab);
+            } else {
+                console.error('FAILED: No comparison panel found for', targetTab);
+            }
+            
+            console.log('=== COMPARISON TAB CLICK COMPLETE ===');
+        });
+    });
+    
+    console.log('=== NEW COMPARISON TABS COMPLETE ===');
 }
 
 function initializeTooltips() {

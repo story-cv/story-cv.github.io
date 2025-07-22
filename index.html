@@ -448,6 +448,237 @@
                 </div>
             </div>
         </section>
+
+        <!-- New Tabbed Comparison Section -->
+        <section class="tabbed-comparison-section">
+            <div class="container">
+                <div class="tabbed-comparison-content">
+                    <h2 class="tabbed-comparison-title">See The Difference</h2>
+                    
+                    <!-- Toggle Buttons -->
+                    <div class="comparison-tabs">
+                        <button class="comparison-tab active" data-tab="traditional">Traditional Writer vs StoryCV</button>
+                        <button class="comparison-tab" data-tab="generic">Generic AI vs StoryCV</button>
+                    </div>
+                    
+                    <!-- Traditional vs StoryCV Comparison -->
+                    <div class="comparison-panel active" id="traditional-panel">
+                        <div class="vs-comparison-container">
+                            <div class="vs-header">
+                                <div class="vs-company left">Traditional Resume Writer</div>
+                                <div class="vs-divider">
+                                    <span class="vs-text">VS</span>
+                                </div>
+                                <div class="vs-company right highlight">StoryCV</div>
+                            </div>
+                            
+                            <!-- Content Help Row -->
+                            <div class="vs-row">
+                                <div class="vs-left">
+                                    <div class="vs-content">
+                                        <p>Filtered through one person's background and perspective. May miss nuances specific to your industry or role.</p>
+                                    </div>
+                                </div>
+                                <div class="vs-center">
+                                    <div class="vs-topic">
+                                        <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M9 11H5a2 2 0 0 0-2 2v3c0 1.1.9 2 2 2h4m6-6h4a2 2 0 0 1 2 2v3c0 1.1-.9 2-2 2h-4"/>
+                                            <path d="M8 21V10a3 3 0 0 1 6 0v11"/>
+                                        </svg>
+                                        <span class="topic-label">Content Help</span>
+                                    </div>
+                                </div>
+                                <div class="vs-right highlight">
+                                    <div class="vs-content">
+                                        <p><strong>Smarter support.</strong> Guided questions designed to extract depth and nuance from your unique experience.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Storytelling Row -->
+                            <div class="vs-row">
+                                <div class="vs-left">
+                                    <div class="vs-content">
+                                        <p>Limited by one person's writing style and industry knowledge. May miss context that's crucial for your specific field.</p>
+                                    </div>
+                                </div>
+                                <div class="vs-center">
+                                    <div class="vs-topic">
+                                        <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                            <polyline points="14,2 14,8 20,8"/>
+                                            <line x1="16" y1="13" x2="8" y2="13"/>
+                                            <line x1="16" y1="17" x2="8" y2="17"/>
+                                            <polyline points="10,9 9,9 8,9"/>
+                                        </svg>
+                                        <span class="topic-label">Storytelling</span>
+                                    </div>
+                                </div>
+                                <div class="vs-right highlight">
+                                    <div class="vs-content">
+                                        <p><strong>Adapts to your industry, role, and unique voice</strong> every single time. Captures the nuances that matter most.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Speed Row -->
+                            <div class="vs-row">
+                                <div class="vs-left">
+                                    <div class="vs-content">
+                                        <p><strong>Takes weeks.</strong> Limited by one person's schedule, workload, and availability for revisions.</p>
+                                    </div>
+                                </div>
+                                <div class="vs-center">
+                                    <div class="vs-topic">
+                                        <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span class="topic-label">Speed</span>
+                                    </div>
+                                </div>
+                                <div class="vs-right highlight">
+                                    <div class="vs-content">
+                                        <p><strong>Instant + thoughtful drafts in minutes.</strong> Professional quality without the wait time.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Cost Row -->
+                            <div class="vs-row">
+                                <div class="vs-left">
+                                    <div class="vs-content">
+                                        <p><strong>$$$</strong><br>Expensive. Often $200–$1000+ per resume with limited revision rounds.</p>
+                                    </div>
+                                </div>
+                                <div class="vs-center">
+                                    <div class="vs-topic">
+                                        <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="1" x2="12" y2="23"/>
+                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                        </svg>
+                                        <span class="topic-label">Cost</span>
+                                    </div>
+                                </div>
+                                <div class="vs-right highlight">
+                                    <div class="vs-content">
+                                        <p><strong>$$</strong><br>Better results without the bloated bill. Professional quality at a fair price.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Generic AI vs StoryCV Comparison -->
+                    <div class="comparison-panel" id="generic-panel">
+                        <div class="vs-comparison-container">
+                            <div class="vs-header">
+                                <div class="vs-company left">Generic / AI Resume Builders</div>
+                                <div class="vs-divider">
+                                    <span class="vs-text">VS</span>
+                                </div>
+                                <div class="vs-company right highlight">StoryCV</div>
+                            </div>
+                            
+                            <!-- Content Help Row -->
+                            <div class="vs-row">
+                                <div class="vs-left">
+                                    <div class="vs-content">
+                                        <p>Auto-generates generic bullets and content. Lacks the depth and accuracy needed for compelling storytelling.</p>
+                                    </div>
+                                </div>
+                                <div class="vs-center">
+                                    <div class="vs-topic">
+                                        <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M9 11H5a2 2 0 0 0-2 2v3c0 1.1.9 2 2 2h4m6-6h4a2 2 0 0 1 2 2v3c0 1.1-.9 2-2 2h-4"/>
+                                            <path d="M8 21V10a3 3 0 0 1 6 0v11"/>
+                                        </svg>
+                                        <span class="topic-label">Content Help</span>
+                                    </div>
+                                </div>
+                                <div class="vs-right highlight">
+                                    <div class="vs-content">
+                                        <p><strong>Smarter support.</strong> Guided questions designed to extract depth and nuance from your unique experience.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Storytelling Row -->
+                            <div class="vs-row">
+                                <div class="vs-left">
+                                    <div class="vs-content">
+                                        <p>Prioritizes keywords over clarity and flow. Generic templates that don't capture your unique value proposition.</p>
+                                    </div>
+                                </div>
+                                <div class="vs-center">
+                                    <div class="vs-topic">
+                                        <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                            <polyline points="14,2 14,8 20,8"/>
+                                            <line x1="16" y1="13" x2="8" y2="13"/>
+                                            <line x1="16" y1="17" x2="8" y2="17"/>
+                                            <polyline points="10,9 9,9 8,9"/>
+                                        </svg>
+                                        <span class="topic-label">Storytelling</span>
+                                    </div>
+                                </div>
+                                <div class="vs-right highlight">
+                                    <div class="vs-content">
+                                        <p><strong>Adapts to your industry, role, and unique voice</strong> every single time. Captures the nuances that matter most.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Speed Row -->
+                            <div class="vs-row">
+                                <div class="vs-left">
+                                    <div class="vs-content">
+                                        <p><strong>Fast, but generic output.</strong> Quick generation but lacks personalization and professional polish.</p>
+                                    </div>
+                                </div>
+                                <div class="vs-center">
+                                    <div class="vs-topic">
+                                        <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span class="topic-label">Speed</span>
+                                    </div>
+                                </div>
+                                <div class="vs-right highlight">
+                                    <div class="vs-content">
+                                        <p><strong>Instant + thoughtful drafts in minutes.</strong> Professional quality without the wait time.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Cost Row -->
+                            <div class="vs-row">
+                                <div class="vs-left">
+                                    <div class="vs-content">
+                                        <p><strong>$</strong><br>Easy on the wallet, but often low on impact. You get what you pay for.</p>
+                                    </div>
+                                </div>
+                                <div class="vs-center">
+                                    <div class="vs-topic">
+                                        <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="1" x2="12" y2="23"/>
+                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                        </svg>
+                                        <span class="topic-label">Cost</span>
+                                    </div>
+                                </div>
+                                <div class="vs-right highlight">
+                                    <div class="vs-content">
+                                        <p><strong>$$</strong><br>Better results without the bloated bill. Professional quality at a fair price.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <!-- Section Divider -->
         <div class="section-divider"></div>
@@ -593,7 +824,7 @@
                         <h3 class="promo-title">Pre-Launch Exclusive: 50% OFF</h3>
                         <p class="promo-text">Join our waitlist today and lock in your resume rewrite for just <strong>$39</strong> (normally $79).</p>
                         <p class="promo-deadline">Offer ends when we launch.</p>
-                        <p class="promo-commitment">No commitment today. Just join the waitlist — and we'll send you a special 50% OFF coupon after launch. Use it only if and when StoryCV feels right for you.</p>
+                        <p class="promo-commitment">No commitment today. Just join the waitlist and we'll send you a special 50% OFF coupon after launch. Use it only if and when StoryCV feels right for you.</p>
                         <div class="promo-cta">
                             <a href="https://tally.so/r/wzBlA0" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Join the waitlist</a>
                         </div>

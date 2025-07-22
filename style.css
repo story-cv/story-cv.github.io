@@ -1577,6 +1577,268 @@ header picture img:hover {
 
 /* Removed dark mode CTA banner styles */
 
+/* New Tabbed Comparison Section */
+.tabbed-comparison-section {
+  background-color: var(--color-bg-primary);
+  padding: var(--space-6xl) var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.tabbed-comparison-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tabbed-comparison-title {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  line-height: 1.2;
+}
+
+/* Tab Navigation */
+.comparison-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-3xl);
+  flex-wrap: wrap;
+}
+
+.comparison-tab {
+  background: transparent;
+  border: 2px solid var(--color-border);
+  color: var(--color-text-secondary);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.comparison-tab:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.comparison-tab.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Comparison Panels */
+.comparison-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--transition-normal);
+}
+
+.comparison-panel.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* VS Comparison Container */
+.vs-comparison-container {
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* VS Header */
+.vs-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: var(--space-lg);
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.vs-company {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.vs-company.highlight {
+  color: var(--color-primary);
+}
+
+.vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  margin: 0 var(--space-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.vs-text {
+  color: white;
+  font-weight: var(--font-weight-bold);
+  font-size: 1.125rem;
+}
+
+/* VS Rows */
+.vs-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 120px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.vs-row:last-child {
+  border-bottom: none;
+}
+
+.vs-left,
+.vs-right {
+  padding: var(--space-lg);
+}
+
+.vs-right.highlight {
+  background-color: #fef7f3;
+  border-left: 3px solid var(--color-primary);
+}
+
+.vs-content p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.vs-content strong {
+  color: var(--color-text-primary);
+}
+
+.vs-right.highlight .vs-content p {
+  color: var(--color-text-primary);
+}
+
+/* VS Center Topic */
+.vs-center {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-md);
+  border-left: 1px solid var(--color-border-light);
+  border-right: 1px solid var(--color-border-light);
+  background-color: #f8fafc;
+}
+
+.vs-topic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+  min-width: 100px;
+}
+
+.topic-icon {
+  color: var(--color-primary);
+  stroke-width: 2;
+}
+
+.topic-label {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .tabbed-comparison-section {
+    padding: var(--space-4xl) var(--space-md);
+  }
+  
+  .tabbed-comparison-title {
+    font-size: 2rem;
+    margin-bottom: var(--space-xl);
+  }
+  
+  .comparison-tabs {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  
+  .comparison-tab {
+    width: 100%;
+    max-width: 300px;
+    padding: var(--space-md);
+    font-size: 0.875rem;
+  }
+  
+  .vs-header {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    text-align: center;
+  }
+  
+  .vs-company {
+    font-size: 1rem;
+  }
+  
+  .vs-divider {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+  }
+  
+  .vs-text {
+    font-size: 1rem;
+  }
+  
+  .vs-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    min-height: auto;
+    padding: var(--space-md);
+  }
+  
+  .vs-center {
+    order: -1;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+  }
+  
+  .vs-left,
+  .vs-right {
+    padding: var(--space-md);
+  }
+  
+  .vs-right.highlight {
+    border-left: none;
+    border-top: 3px solid var(--color-primary);
+    border-radius: var(--radius-md);
+  }
+  
+  .vs-content p {
+    font-size: 0.9rem;
+  }
+}
+
 .cta-banner-content {
   max-width: 1200px;
   margin: 0 auto;
