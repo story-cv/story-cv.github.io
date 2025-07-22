@@ -272,21 +272,41 @@ function initializeTooltips() {
     const tooltipTriggers = document.querySelectorAll('.tooltip-trigger');
     const tooltip = document.getElementById('tooltip');
     
-    if (!tooltip) return;
+    console.log('Tooltip element:', tooltip);
+    console.log('Tooltip triggers found:', tooltipTriggers.length);
     
-    tooltipTriggers.forEach(trigger => {
+    if (!tooltip) {
+        console.error('Tooltip element with ID "tooltip" not found');
+        return;
+    }
+    
+    tooltipTriggers.forEach((trigger, index) => {
+        console.log(`Setting up trigger ${index}:`, trigger.getAttribute('data-tooltip'));
+        
         trigger.addEventListener('mouseenter', (e) => {
             const tooltipText = e.target.getAttribute('data-tooltip');
-            tooltip.textContent = tooltipText;
-            tooltip.style.display = 'block';
+            console.log('Showing tooltip:', tooltipText);
             
-            const rect = e.target.getBoundingClientRect();
-            tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
-            tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
+            if (tooltipText) {
+                tooltip.textContent = tooltipText;
+                tooltip.style.display = 'block';
+                tooltip.style.opacity = '1';
+                tooltip.style.visibility = 'visible';
+                
+                const rect = e.target.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                
+                tooltip.style.left = (rect.left + scrollLeft + (rect.width / 2) - (tooltip.offsetWidth / 2)) + 'px';
+                tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
+            }
         });
         
         trigger.addEventListener('mouseleave', () => {
+            console.log('Hiding tooltip');
             tooltip.style.display = 'none';
+            tooltip.style.opacity = '0';
+            tooltip.style.visibility = 'hidden';
         });
     });
 }

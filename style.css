@@ -1865,35 +1865,33 @@ header picture img:hover {
 }
 
 /* Tooltip Styles */
-.tooltip {
+#tooltip {
   position: absolute;
-  background-color: var(--color-text-primary);
+  background-color: #2e2e2e;
   color: white;
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
-  font-size: 0.75rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
   max-width: 280px;
   white-space: normal;
   z-index: 1000;
+  display: none;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s, visibility 0.2s;
   pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  line-height: 1.4;
 }
 
-.tooltip.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.tooltip::before {
+#tooltip::before {
   content: '';
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: var(--color-text-primary);
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #2e2e2e transparent transparent transparent;
 }
 
 .pricing-table {
