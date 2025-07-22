@@ -1715,7 +1715,6 @@ header picture img:hover {
 
 .vs-right.highlight {
   background-color: #fef7f3;
-  border-left: 3px solid var(--color-primary);
 }
 
 .vs-content p {
