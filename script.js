@@ -281,7 +281,7 @@ function initializeTooltips() {
     
     tooltipTriggers.forEach((trigger, index) => {
         const infoIcon = trigger.querySelector('.info-icon');
-        console.log(`Trigger ${index}:`, trigger, 'Info icon:', infoIcon);
+        console.log(`Trigger ${index}:`, !!trigger, 'Info icon found:', !!infoIcon);
         
         if (infoIcon) {
             infoIcon.addEventListener('mouseenter', (e) => {

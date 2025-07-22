@@ -1858,8 +1858,15 @@ header picture img:hover {
   color: var(--color-primary) !important;
 }
 
+/* Remove old tooltip styling to prevent conflicts */
+.tooltip-trigger {
+  cursor: help !important;
+  text-decoration: none !important;
+  position: relative;
+}
+
 /* Tooltip Styles */
-.tooltip {
+#tooltip {
   position: absolute;
   background-color: #333;
   color: white;
@@ -1867,14 +1874,15 @@ header picture img:hover {
   border-radius: 4px;
   font-size: 0.875rem;
   line-height: 1.4;
-  max-width: 200px;
+  max-width: 250px;
   z-index: 1000;
   display: none;
   pointer-events: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  white-space: normal;
 }
 
-.tooltip::before {
+#tooltip::before {
   content: '';
   position: absolute;
   top: 100%;
