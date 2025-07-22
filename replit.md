@@ -161,6 +161,7 @@ Preferred communication style: Simple, everyday language.
 - Used scroll-triggered staggered animations for engaging section entrance
 - Designed mobile-responsive layout with proper touch interaction support
 - Applied consistent styling with secondary background and proper spacing
+- **Removed all bold formatting** from FAQ answers for cleaner text presentation (July 22, 2025)
 
 ### Footer Section Implementation
 - Added professional footer with logo, tagline, and brand positioning
