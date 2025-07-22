@@ -20,30 +20,10 @@
   text-decoration: none;
 }
 
-.header-logo .logo-light,
-.header-logo .logo-dark {
+.header-logo img {
   height: 40px;
   width: auto;
   display: block;
-}
-
-/* Dark mode logo switching */
-@media (prefers-color-scheme: dark) {
-  .header-logo .logo-light {
-    display: none;
-  }
-  .header-logo .logo-dark {
-    display: block;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .header-logo .logo-light {
-    display: block;
-  }
-  .header-logo .logo-dark {
-    display: none;
-  }
 }
 
 /* CSS Custom Properties for Design System */
@@ -125,28 +105,7 @@
   --z-tooltip: 1060;
 }
 
-/* Dark Mode Color Overrides */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Background Colors - Dark Mode */
-    --color-bg-primary: #0f172a;
-    --color-bg-secondary: #1e293b;
-    --color-bg-tertiary: #334155;
-
-    /* Text Colors - Dark Mode */
-    --color-text-primary: #f8fafc;
-    --color-text-secondary: #cbd5e1;
-    --color-text-muted: #94a3b8;
-
-    /* Border Colors - Dark Mode */
-    --color-border: #334155;
-    --color-border-light: #475569;
-
-    /* Adjust primary colors for dark mode contrast */
-    --color-primary: #EE4E34;
-    --color-primary-hover: #d63824;
-  }
-}
+/* Removed dark mode - light mode only */
 
 /* Base Styles */
 * {
@@ -205,11 +164,7 @@ header {
   background-color: rgba(255, 255, 255, 0.95);
 }
 
-@media (prefers-color-scheme: dark) {
-  header {
-    background-color: rgba(15, 23, 42, 0.95);
-  }
-}
+/* Removed dark mode header styles */
 
 main {
   min-height: calc(100vh - 120px); /* Adjust based on header/footer height */
@@ -341,11 +296,7 @@ header picture img:hover {
   margin-right: auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  .hero-subtitle {
-    color: white;
-  }
-}
+/* Removed dark mode hero subtitle styles */
 
 .hero-cta {
   display: flex;
@@ -735,11 +686,7 @@ header picture img:hover {
   transform: translateY(0);
 }
 
-@media (prefers-color-scheme: dark) {
-  .timeline-sticky-header {
-    background-color: rgba(15, 23, 42, 0.95);
-  }
-}
+/* Removed dark mode timeline header styles */
 
 .sticky-title {
   font-size: 1.5rem;
@@ -1628,12 +1575,7 @@ header picture img:hover {
   overflow: hidden;
 }
 
-/* Dark mode support for CTA banner */
-@media (prefers-color-scheme: dark) {
-  .cta-banner {
-    background-color: #2A2520;
-  }
-}
+/* Removed dark mode CTA banner styles */
 
 .cta-banner-content {
   max-width: 1200px;
@@ -2644,30 +2586,10 @@ header picture img:hover {
   margin-bottom: var(--space-md);
 }
 
-.footer-logo .logo-light,
-.footer-logo .logo-dark {
+.footer-logo img {
   height: 32px;
   width: auto;
   display: block;
-}
-
-/* Dark mode footer logo switching */
-@media (prefers-color-scheme: dark) {
-  .footer-logo .logo-light {
-    display: none;
-  }
-  .footer-logo .logo-dark {
-    display: block;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .footer-logo .logo-light {
-    display: block;
-  }
-  .footer-logo .logo-dark {
-    display: none;
-  }
 }
 
 .footer-tagline {

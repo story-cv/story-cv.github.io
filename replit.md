@@ -193,6 +193,15 @@ Preferred communication style: Simple, everyday language.
 - Fixed logo display issues in header and footer with proper dark/light mode switching
 - Applied consistent brand colors with primary orange (#EE4E34) for mission title
 
+### Dark Mode Removal (July 22, 2025)
+- **Completely removed dark mode functionality** to simplify maintenance and focus on light mode only
+- Removed all `@media (prefers-color-scheme: dark)` CSS blocks throughout the codebase
+- Updated both index.html and about-us.html to use only `logo-with-text-light.svg`
+- Simplified header and footer logo CSS to target `img` elements directly
+- Cleaned up all dark mode color overrides and theme switching logic
+- Updated design system to be light mode only with simplified CSS architecture
+- All visual elements now use consistent light mode styling without dark mode variants
+
 ### Launch Preparation Updates (July 18, 2025)
 - Updated all primary CTA buttons to open in new tabs (target="_blank" rel="noopener noreferrer")
 - Modified hero section "you" text to be italicized for emphasis: "We don't ask *you* to figure out what sounds good"
@@ -207,7 +216,7 @@ Preferred communication style: Simple, everyday language.
 - Changed Pre-Launch Exclusive box to cream background (#FCEDDA)
 - Removed em dash from mini hero text and split into two sentences
 - Moved "Ready to Tell Your Story?" CTA section after pricing/promo section
-- Updated CTA banner with cream background (#FCEDDA) and dark mode support (#2A2520)
+- Updated CTA banner with cream background (#FCEDDA) and dark mode support (now removed)
 - Changed CTA button to orange gradient styling with white text for better contrast
 - All waitlist CTAs properly link to https://tally.so/r/wzBlA0 and open in new tabs
 
