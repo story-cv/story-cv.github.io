@@ -207,8 +207,8 @@ Preferred communication style: Simple, everyday language.
 - Built tabbed interface with toggle between "Traditional Writer vs StoryCV" and "Generic AI vs StoryCV"
 - Implemented center column design with four key topics: Content Help, Storytelling, Speed, and Cost
 - Added specific Lucide icons in primary orange color for each topic:
-  - Content Help: table-of-contents icon
-  - Storytelling: scroll-text icon  
+  - Content Help: list icon (clean bullet-point list design)
+  - Storytelling: file-text icon (document with text lines)
   - Speed: clock icon
   - Cost: dollar-sign icon
 - Created side-by-side comparison layout with StoryCV column highlighted in orange accent
@@ -216,6 +216,10 @@ Preferred communication style: Simple, everyday language.
 - Added smooth tab switching functionality with JavaScript event handlers
 - Integrated visual "VS" circular divider in primary orange color
 - Applied consistent branding with primary orange (#EE4E34) throughout section
+- **Removed old comparison table section entirely** to clean up duplicate content
+- **Fixed vs-center height** to match vs-left and vs-right columns for visual balance
+- **Updated pricing table icons** with stroke-width="3" for better visibility
+- **Changed partial preview icon** to circle-dashed with deep yellow (#DAA520) color to indicate partial status
 
 ### Launch Preparation Updates (July 18, 2025)
 - Updated all primary CTA buttons to open in new tabs (target="_blank" rel="noopener noreferrer")
