@@ -173,6 +173,8 @@ Preferred communication style: Simple, everyday language.
 - **Updated social media meta tags** with resume-writer-interview.webp as Open Graph and Twitter Card image for better social sharing (July 22, 2025)
 - **Optimized mobile spacing** in above-the-fold section with balanced top/bottom padding and ChatGPT timeline section for better mobile experience (July 23, 2025)
 - **Hidden timeline sticky header** on tablet and mobile devices for cleaner mobile layout (July 23, 2025)
+- **Added minimum height** to above-the-fold section on mobile (60vh tablets, 55vh phones) for better visual balance (July 23, 2025)
+- **Implemented mobile service tags** in comparison section showing "Traditional", "Generic AI", and "StoryCV" labels for clarity on mobile devices (July 23, 2025)
 
 ### Footer Section Implementation
 - Added professional footer with logo, tagline, and brand positioning

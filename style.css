@@ -372,7 +372,7 @@ header picture img:hover {
 /* Responsive Design for Hero */
 @media (max-width: 768px) {
   .hero {
-    min-height: auto;
+    min-height: 60vh;
     padding: var(--space-2xl) 0 var(--space-xl);
   }
 
@@ -399,6 +399,7 @@ header picture img:hover {
 
 @media (max-width: 480px) {
   .hero {
+    min-height: 55vh;
     padding: var(--space-xl) 0 var(--space-lg);
   }
 
@@ -1914,6 +1915,29 @@ header picture img:hover {
   .vs-left,
   .vs-right {
     padding: var(--space-md);
+    position: relative;
+  }
+
+  /* Mobile Service Tags */
+  .vs-left::before,
+  .vs-right::before {
+    content: attr(data-service);
+    position: absolute;
+    top: var(--space-xs);
+    right: var(--space-xs);
+    background-color: var(--color-text-secondary);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+
+  .vs-right.highlight::before {
+    background-color: var(--color-primary);
   }
   
   .vs-right.highlight {
