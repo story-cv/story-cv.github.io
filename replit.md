@@ -175,6 +175,7 @@ Preferred communication style: Simple, everyday language.
 - **Hidden timeline sticky header** on tablet and mobile devices for cleaner mobile layout (July 23, 2025)
 - **Added minimum height** to above-the-fold section on mobile (60vh tablets, 55vh phones) for better visual balance (July 23, 2025)
 - **Implemented mobile service tags** in comparison section showing "Traditional", "Generic AI", and "StoryCV" labels for clarity on mobile devices (July 23, 2025)
+- **Updated Traditional comparison mobile tags** to show "Traditional Writer" instead of "Generic AI" for accurate labeling in Traditional vs StoryCV comparison panel (July 23, 2025)
 - **Fixed pricing table tooltips** with enhanced JavaScript functionality supporting both hover and click interactions for mobile compatibility (July 23, 2025)
 - **Optimized mobile pricing table** by reducing minimum width from 800px to 350px on mobile, with tighter spacing and smaller icons for better viewport fit (July 23, 2025)
 
