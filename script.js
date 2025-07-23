@@ -346,31 +346,44 @@ function initializeTooltips() {
         
         // Handle both hover and click for mobile compatibility
         const showTooltip = (e) => {
-            const tooltipText = e.target.closest('.tooltip-trigger').getAttribute('data-tooltip');
+            const triggerElement = e.target.closest('.tooltip-trigger');
+            const tooltipText = triggerElement ? triggerElement.getAttribute('data-tooltip') : null;
             console.log('Showing tooltip:', tooltipText);
             
             if (tooltipText) {
-                tooltip.textContent = tooltipText;
+                tooltip.innerHTML = tooltipText; // Use innerHTML to support rich text
                 tooltip.style.display = 'block';
-                tooltip.style.opacity = '1';
-                tooltip.style.visibility = 'visible';
                 tooltip.classList.add('show');
                 
-                const rect = e.target.closest('.tooltip-trigger').getBoundingClientRect();
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-                
-                // Position tooltip above the trigger
-                const tooltipLeft = rect.left + scrollLeft + (rect.width / 2) - (tooltip.offsetWidth / 2);
-                const tooltipTop = rect.top + scrollTop - tooltip.offsetHeight - 10;
-                
-                tooltip.style.left = Math.max(10, tooltipLeft) + 'px';
-                tooltip.style.top = tooltipTop + 'px';
-                
-                // If tooltip would go off screen, position it below instead
-                if (tooltipTop < 0) {
-                    tooltip.style.top = (rect.bottom + scrollTop + 10) + 'px';
-                }
+                // Wait for tooltip to be rendered so we can get its dimensions
+                requestAnimationFrame(() => {
+                    const rect = triggerElement.getBoundingClientRect();
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                    
+                    // Position tooltip above the trigger
+                    let tooltipLeft = rect.left + scrollLeft + (rect.width / 2) - (tooltip.offsetWidth / 2);
+                    let tooltipTop = rect.top + scrollTop - tooltip.offsetHeight - 15;
+                    
+                    // Keep tooltip within viewport bounds
+                    const viewportWidth = window.innerWidth;
+                    if (tooltipLeft < 10) tooltipLeft = 10;
+                    if (tooltipLeft + tooltip.offsetWidth > viewportWidth - 10) {
+                        tooltipLeft = viewportWidth - tooltip.offsetWidth - 10;
+                    }
+                    
+                    // If tooltip would go off screen top, position it below instead
+                    if (tooltipTop < 0) {
+                        tooltipTop = rect.bottom + scrollTop + 10;
+                        // Update arrow position for bottom placement
+                        tooltip.classList.add('tooltip-below');
+                    } else {
+                        tooltip.classList.remove('tooltip-below');
+                    }
+                    
+                    tooltip.style.left = tooltipLeft + 'px';
+                    tooltip.style.top = tooltipTop + 'px';
+                });
             }
         };
         

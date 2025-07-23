@@ -2204,12 +2204,9 @@ header picture img:hover {
 
 .info-icon {
   stroke-width: 3 !important;
-}
-
-.info-icon {
   color: #6b7280 !important;
+  cursor: help;
   margin-left: 4px;
-  cursor: pointer;
   vertical-align: text-top;
   display: inline-block;
 }
@@ -2222,6 +2219,7 @@ header picture img:hover {
 .tooltip-trigger {
   cursor: help;
   position: relative;
+  display: inline-block;
 }
 
 /* Tooltip Styles */
@@ -2261,6 +2259,11 @@ header picture img:hover {
   border-color: #2e2e2e transparent transparent transparent;
 }
 
+#tooltip.tooltip-below::before {
+  top: -10px;
+  border-color: transparent transparent #2e2e2e transparent;
+}
+
 .pricing-table {
   width: 100%;
   min-width: 600px;
@@ -2272,13 +2275,15 @@ header picture img:hover {
 
 .pricing-table th,
 .pricing-table td {
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--space-xl) var(--space-md);
   text-align: left;
   border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+  line-height: 1.5;
 }
 
 .feature-header {
-  width: 40%;
+  width: 30%;
 }
 
 .plan-header {
@@ -2466,7 +2471,7 @@ header picture img:hover {
   }
 
   .feature-header {
-    width: 35%;
+    width: 30%;
   }
 
   .plan-header {
@@ -2503,7 +2508,7 @@ header picture img:hover {
   }
 
   .feature-header {
-    width: 45%; /* Wider feature column on mobile */
+    width: 35%; /* Reduced feature column on mobile */
   }
 
   .plan-header {
