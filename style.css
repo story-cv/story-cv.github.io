@@ -372,8 +372,8 @@ header picture img:hover {
 /* Responsive Design for Hero */
 @media (max-width: 768px) {
   .hero {
-    min-height: calc(100vh - 70px);
-    padding: var(--space-2xl) 0;
+    min-height: auto;
+    padding: var(--space-xl) 0;
   }
 
   .hero-title {
@@ -398,6 +398,10 @@ header picture img:hover {
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding: var(--space-lg) 0;
+  }
+
   .hero-title {
     font-size: 2rem;
     line-height: 1.2;
@@ -707,7 +711,7 @@ header picture img:hover {
 .timeline-subtitle {
   font-size: 1.25rem;
   color: var(--color-text-secondary);
-  margin-bottom: 0;
+  margin-bottom: var(--space-lg);
 }
 
 .timeline-sticky-header {
@@ -829,7 +833,11 @@ header picture img:hover {
   }
 
   .timeline-sticky-header {
-    top: 70px;
+    display: none;
+  }
+
+  .timeline-subtitle {
+    margin-bottom: var(--space-md);
   }
 
   .sticky-title {
@@ -884,6 +892,11 @@ header picture img:hover {
 
   .timeline-subtitle {
     font-size: 1rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .timeline-sticky-header {
+    display: none;
   }
 
   .sticky-title {
