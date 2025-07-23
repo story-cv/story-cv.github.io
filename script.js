@@ -218,6 +218,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize new tabbed comparison functionality
     initializeNewComparisonTabs();
     
+    // Initialize tooltips for pricing table
+    console.log('About to initialize tooltips...');
+    initializeTooltips();
+    
     // Initialize comparison section animation
     initializeComparisonAnimation();
 });
@@ -330,11 +334,17 @@ function initializeNewComparisonTabs() {
 }
 
 function initializeTooltips() {
+    console.log('=== TOOLTIP INITIALIZATION STARTING ===');
     const tooltipTriggers = document.querySelectorAll('.tooltip-trigger');
     const tooltip = document.getElementById('tooltip');
     
     console.log('Tooltip element:', tooltip);
     console.log('Tooltip triggers found:', tooltipTriggers.length);
+    
+    // Debug: log each trigger and its tooltip text
+    tooltipTriggers.forEach((trigger, index) => {
+        console.log(`Trigger ${index}:`, trigger, 'data-tooltip:', trigger.getAttribute('data-tooltip'));
+    });
     
     if (!tooltip) {
         console.error('Tooltip element with ID "tooltip" not found');
@@ -348,12 +358,21 @@ function initializeTooltips() {
         const showTooltip = (e) => {
             const triggerElement = e.target.closest('.tooltip-trigger');
             const tooltipText = triggerElement ? triggerElement.getAttribute('data-tooltip') : null;
-            console.log('Showing tooltip:', tooltipText);
+            console.log('=== SHOWING TOOLTIP ===');
+            console.log('Trigger element:', triggerElement);
+            console.log('Tooltip text:', tooltipText);
+            console.log('Tooltip element exists:', !!tooltip);
             
-            if (tooltipText) {
-                tooltip.innerHTML = tooltipText; // Use innerHTML to support rich text
+            if (tooltipText && tooltip) {
+                tooltip.innerHTML = tooltipText;
                 tooltip.style.display = 'block';
+                tooltip.style.opacity = '1';
+                tooltip.style.visibility = 'visible';
                 tooltip.classList.add('show');
+                
+                console.log('Tooltip content set to:', tooltip.innerHTML);
+                console.log('Tooltip display style:', tooltip.style.display);
+                console.log('Tooltip computed style display:', window.getComputedStyle(tooltip).display);
                 
                 // Wait for tooltip to be rendered so we can get its dimensions
                 requestAnimationFrame(() => {
@@ -375,7 +394,6 @@ function initializeTooltips() {
                     // If tooltip would go off screen top, position it below instead
                     if (tooltipTop < 0) {
                         tooltipTop = rect.bottom + scrollTop + 10;
-                        // Update arrow position for bottom placement
                         tooltip.classList.add('tooltip-below');
                     } else {
                         tooltip.classList.remove('tooltip-below');
@@ -383,7 +401,12 @@ function initializeTooltips() {
                     
                     tooltip.style.left = tooltipLeft + 'px';
                     tooltip.style.top = tooltipTop + 'px';
+                    
+                    console.log('Tooltip positioned at:', tooltipLeft, tooltipTop);
+                    console.log('Tooltip final visibility:', tooltip.style.visibility);
                 });
+            } else {
+                console.log('Cannot show tooltip - missing text or element');
             }
         };
         
