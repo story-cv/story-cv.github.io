@@ -1942,7 +1942,7 @@ header picture img:hover {
   
   .vs-right.highlight {
     border-left: none;
-    border-top: 3px solid var(--color-primary);
+    border-top: none;
     border-radius: var(--radius-md);
   }
   
