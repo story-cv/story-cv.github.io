@@ -344,8 +344,9 @@ function initializeTooltips() {
     tooltipTriggers.forEach((trigger, index) => {
         console.log(`Setting up trigger ${index}:`, trigger.getAttribute('data-tooltip'));
         
-        trigger.addEventListener('mouseenter', (e) => {
-            const tooltipText = e.target.getAttribute('data-tooltip');
+        // Handle both hover and click for mobile compatibility
+        const showTooltip = (e) => {
+            const tooltipText = e.target.closest('.tooltip-trigger').getAttribute('data-tooltip');
             console.log('Showing tooltip:', tooltipText);
             
             if (tooltipText) {
@@ -353,22 +354,75 @@ function initializeTooltips() {
                 tooltip.style.display = 'block';
                 tooltip.style.opacity = '1';
                 tooltip.style.visibility = 'visible';
+                tooltip.classList.add('show');
                 
-                const rect = e.target.getBoundingClientRect();
+                const rect = e.target.closest('.tooltip-trigger').getBoundingClientRect();
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
                 
-                tooltip.style.left = (rect.left + scrollLeft + (rect.width / 2) - (tooltip.offsetWidth / 2)) + 'px';
-                tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
+                // Position tooltip above the trigger
+                const tooltipLeft = rect.left + scrollLeft + (rect.width / 2) - (tooltip.offsetWidth / 2);
+                const tooltipTop = rect.top + scrollTop - tooltip.offsetHeight - 10;
+                
+                tooltip.style.left = Math.max(10, tooltipLeft) + 'px';
+                tooltip.style.top = tooltipTop + 'px';
+                
+                // If tooltip would go off screen, position it below instead
+                if (tooltipTop < 0) {
+                    tooltip.style.top = (rect.bottom + scrollTop + 10) + 'px';
+                }
             }
-        });
+        };
         
-        trigger.addEventListener('mouseleave', () => {
+        const hideTooltip = () => {
             console.log('Hiding tooltip');
             tooltip.style.display = 'none';
             tooltip.style.opacity = '0';
             tooltip.style.visibility = 'hidden';
+            tooltip.classList.remove('show');
+        };
+        
+        // Mouse events for desktop
+        trigger.addEventListener('mouseenter', showTooltip);
+        trigger.addEventListener('mouseleave', hideTooltip);
+        
+        // Click events for mobile/touch devices
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (tooltip.classList.contains('show')) {
+                hideTooltip();
+            } else {
+                showTooltip(e);
+            }
         });
+        
+        // Also listen on the info icon specifically
+        const infoIcon = trigger.querySelector('.info-icon');
+        if (infoIcon) {
+            infoIcon.addEventListener('mouseenter', showTooltip);
+            infoIcon.addEventListener('mouseleave', hideTooltip);
+            infoIcon.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (tooltip.classList.contains('show')) {
+                    hideTooltip();
+                } else {
+                    showTooltip(e);
+                }
+            });
+        }
+    });
+    
+    // Hide tooltip when clicking elsewhere
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.tooltip-trigger')) {
+            tooltip.style.display = 'none';
+            tooltip.style.opacity = '0';
+            tooltip.style.visibility = 'hidden';
+            tooltip.classList.remove('show');
+        }
     });
 }
 

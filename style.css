@@ -2234,13 +2234,20 @@ header picture img:hover {
   font-size: 0.875rem;
   max-width: 280px;
   white-space: normal;
-  z-index: 1000;
+  z-index: var(--z-tooltip);
   display: none;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   line-height: 1.4;
+  transition: all 0.2s ease;
+}
+
+#tooltip.show {
+  opacity: 1;
+  visibility: visible;
+  display: block;
 }
 
 #tooltip::before {
@@ -2256,7 +2263,7 @@ header picture img:hover {
 
 .pricing-table {
   width: 100%;
-  min-width: 800px;
+  min-width: 600px;
   border-collapse: collapse;
   background-color: white;
   border-radius: var(--radius-lg);
@@ -2484,21 +2491,42 @@ header picture img:hover {
     font-size: 1.875rem;
   }
 
+  .pricing-table {
+    min-width: 350px; /* Much smaller for mobile */
+  }
+
   .pricing-table th,
   .pricing-table td {
-    padding: var(--space-sm);
-    font-size: 0.75rem;
+    padding: var(--space-xs) 4px;
+    font-size: 0.7rem;
+    line-height: 1.3;
+  }
+
+  .feature-header {
+    width: 45%; /* Wider feature column on mobile */
   }
 
   .plan-header {
-    font-size: 0.75rem;
-    line-height: 1.2;
+    width: 27.5%;
+    font-size: 0.65rem;
+    line-height: 1.1;
+    padding: var(--space-xs) 2px;
+  }
+
+  .feature-value {
+    padding: var(--space-xs) 2px;
   }
 
   .tooltip {
-    font-size: 0.625rem;
-    max-width: 200px;
+    font-size: 0.6rem;
+    max-width: 180px;
     white-space: normal;
+  }
+
+  /* Make icons smaller on mobile */
+  .icon-check, .icon-ban, .info-icon {
+    width: 12px;
+    height: 12px;
   }
 }
 
