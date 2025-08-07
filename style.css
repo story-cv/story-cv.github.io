@@ -114,6 +114,366 @@
   box-sizing: border-box;
 }
 
+/* Privacy Policy Styles */
+.privacy-policy-main {
+  padding: calc(var(--header-height) + 2rem) 0 0 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.privacy-policy-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.privacy-policy-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.privacy-policy-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.privacy-policy-effective-date {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.privacy-policy-intro {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Table of Contents */
+.privacy-policy-toc {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #e2e8f0;
+}
+
+.privacy-policy-toc h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.privacy-policy-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.privacy-policy-toc li {
+  margin: 0;
+}
+
+.privacy-policy-toc a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+.privacy-policy-toc a:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Privacy Policy Content */
+.privacy-policy-content {
+  margin-bottom: 3rem;
+}
+
+.privacy-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #e2e8f0;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
+}
+
+.privacy-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--accent-color);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 2rem;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+.section-intro {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Information Types */
+.info-types {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.info-type {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.info-type h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.info-type p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Lists */
+.purpose-list, .sharing-list, .rights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.purpose-list li, .sharing-list li, .rights-list li {
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.purpose-list li:last-child, .sharing-list li:last-child, .rights-list li:last-child {
+  border-bottom: none;
+}
+
+.purpose-list li::before, .sharing-list li::before, .rights-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+/* Contact Info */
+.contact-info {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--accent-color);
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.email-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.email-link:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+/* Privacy Policy CTA */
+.privacy-policy-cta {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, var(--primary-color), #2563eb);
+  border-radius: 16px;
+  color: white;
+  margin-top: 3rem;
+}
+
+.privacy-policy-cta h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.privacy-policy-cta p {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.privacy-policy-cta .cta-button.large {
+  background: white;
+  color: var(--primary-color);
+  font-size: 1.125rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+}
+
+.privacy-policy-cta .cta-button.large:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .privacy-policy-main {
+    padding-top: calc(var(--header-height-mobile) + 1rem);
+  }
+  
+  .privacy-policy-wrapper {
+    padding: 0 0.75rem;
+  }
+  
+  .privacy-policy-title {
+    font-size: 2.25rem;
+  }
+  
+  .privacy-policy-header {
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+  }
+  
+  .privacy-policy-toc {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .privacy-policy-toc ul {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .privacy-section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .section-title::before {
+    height: 1.5rem;
+  }
+  
+  .privacy-policy-cta {
+    padding: 2rem 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .privacy-policy-cta h3 {
+    font-size: 1.75rem;
+  }
+  
+  .info-types {
+    gap: 1rem;
+  }
+  
+  .info-type {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-policy-title {
+    font-size: 2rem;
+  }
+  
+  .privacy-policy-toc {
+    padding: 1rem;
+  }
+  
+  .privacy-section {
+    padding: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .section-title::before {
+    width: 100%;
+    height: 2px;
+  }
+  
+  .privacy-policy-cta {
+    padding: 1.5rem 1rem;
+  }
+  
+  .privacy-policy-cta h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus states for accessibility */
+.privacy-policy-toc a:focus,
+.email-link:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;

@@ -1,0 +1,36 @@
+Effective Date: 01 Aug 2025
+This Privacy Policy describes how StoryCV ("we", "our", or "us") collects, uses, and discloses your information when you use our website and services.
+1. Information We Collect
+We collect the following types of information:
+Personal Information: When you sign up for an account, we collect your name and email address. If you sign up using a social login (Google, LinkedIn), we access the information you permit through those platforms.
+User Inputs: This includes resume content, chat interactions, and voice inputs you provide.
+Payment Information: Payments are processed through Stripe. We do not store your full payment details.
+Analytics Data: We use Google Analytics to collect anonymized usage data to improve our services.
+2. Use of Your Information
+We use your data for the following purposes:
+To provide and maintain our services
+To personalize your experience
+To communicate with you
+To process transactions and apply parity pricing
+To analyze usage trends and improve functionality
+3. Storage and Security
+All data is stored securely on servers hosted by Digital Ocean. We implement technical and organizational measures to protect your information from unauthorized access, loss, or misuse.
+4. Sharing of Information
+We only share your information with third parties in the following cases:
+With service providers (Google, Stripe, Parity Deals, Digital Ocean) that assist in operating StoryCV
+As required by law or to protect our legal rights
+5. Your Data Rights
+You have the right to:
+Access the personal data we hold about you
+Correct any inaccuracies
+Request deletion of your data
+Object to certain processing
+To exercise these rights, contact us at write@story.cv
+6. Cookies and Tracking Technologies
+We use cookies and similar technologies to enhance your experience. Where required by law, we display a cookie banner to obtain consent.
+7. Children's Privacy
+StoryCV is not intended for children under the age of 16. We do not knowingly collect personal data from children.
+8. Changes to This Privacy Policy
+We may update this Privacy Policy from time to time. We will notify you by revising the "Effective Date" at the top of this page.
+9. Contact Us
+If you have questions or concerns about this policy, email us at write@story.cv
