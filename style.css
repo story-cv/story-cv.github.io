@@ -314,6 +314,36 @@
   font-size: 1.125rem;
 }
 
+/* Privacy Section Lists - Terms of Service styling */
+.privacy-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.privacy-section ul li {
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.privacy-section ul li:last-child {
+  border-bottom: none;
+}
+
+.privacy-section ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
 /* Contact Info */
 .contact-info {
   margin-top: 1.5rem;
