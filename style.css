@@ -131,6 +131,9 @@
   text-align: center;
   margin-bottom: 3rem;
   padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .privacy-policy-title {
@@ -202,8 +205,8 @@
 }
 
 .privacy-policy-toc a:hover {
-  background: var(--primary-color);
-  color: white;
+  background: var(--color-primary);
+  color: white !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -336,7 +339,7 @@
 .privacy-policy-cta {
   text-align: center;
   padding: 3rem 2rem;
-  background: linear-gradient(135deg, var(--primary-color), #2563eb);
+  background: linear-gradient(135deg, var(--color-primary), #C63716);
   border-radius: 16px;
   color: white;
   margin-top: 3rem;
@@ -355,17 +358,24 @@
 }
 
 .privacy-policy-cta .cta-button.large {
-  background: white;
-  color: var(--primary-color);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  color: white;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
   font-size: 1.125rem;
-  padding: 1rem 2rem;
-  font-weight: 600;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-md);
+  border: none;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .privacy-policy-cta .cta-button.large:hover {
-  background: var(--accent-color);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
+  color: white;
 }
 
 /* Mobile Responsiveness */
