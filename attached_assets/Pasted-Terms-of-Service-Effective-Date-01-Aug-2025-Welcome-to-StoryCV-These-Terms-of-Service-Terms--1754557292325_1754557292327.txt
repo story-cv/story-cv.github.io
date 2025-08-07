@@ -1,0 +1,82 @@
+Terms of Service
+Effective Date: 01-Aug-2025
+Welcome to StoryCV! These Terms of Service ("Terms") govern your use of StoryCV (the "Service"), operated by Rad Radium Pte Ltd, a company incorporated in Singapore ("we", "our", "us").
+By using StoryCV, you agree to these Terms.
+
+1. Who can use StoryCV
+You must be at least 18 years old or have legal capacity in your country to agree to these Terms. By using the Service, you confirm that you meet these requirements.
+
+2. Your StoryCV Account
+To access the Service, you’ll need to create an account. You agree to:
+Provide accurate and complete information.
+
+
+Keep your login credentials secure.
+
+
+Not share your account or impersonate others.
+
+
+We offer social logins via Google and LinkedIn for convenience.
+
+3. What you can do with StoryCV
+You’re welcome to use StoryCV to create, edit, and manage resumes and related career documents. You may not:
+Use the Service for unlawful or harmful activities.
+
+
+Reverse-engineer or interfere with our systems.
+
+
+Resell or redistribute the Service without permission.
+
+
+We reserve the right to suspend or terminate accounts that violate these Terms.
+
+4. Intellectual Property
+All content on StoryCV (excluding content you upload) — including the website, design, AI systems, and branding — is owned by Rad Radium Pte Ltd or its licensors.
+By using StoryCV, you retain ownership of your uploaded or generated resume content, but you grant us a limited license to use it solely for the purpose of providing the Service.
+
+5. Payments and Subscriptions
+Some features of StoryCV are paid. We use Stripe to process payments securely. Prices may vary based on location (we use Parity Deals for fair pricing).
+All fees are listed in USD unless stated otherwise. Paid subscriptions are non-refundable unless required by law.
+
+6. Termination
+You can delete your account anytime. We may suspend or terminate your access to the Service if:
+You violate these Terms.
+
+
+We’re required to by law.
+
+
+We discontinue the Service.
+
+
+We’ll try to give you notice when possible.
+
+7. Disclaimer of Warranties
+StoryCV is provided “as is.” We do our best to offer a reliable service, but we don’t make guarantees about:
+The accuracy of resume suggestions or AI-generated content.
+
+
+The availability or performance of the Service.
+
+
+Use StoryCV at your own risk.
+
+8. Limitation of Liability
+To the fullest extent allowed by law, Rad Radium Pte Ltd shall not be liable for indirect, incidental, or consequential damages, or any loss of data or profits resulting from your use of the Service.
+Our total liability is limited to the amount you paid us in the 3 months before any claim.
+
+9. Privacy
+Your privacy matters. Our Privacy Policy explains how we collect, use, and protect your personal data. By using the Service, you agree to that policy.
+
+10. Changes to These Terms
+We may update these Terms from time to time. If the changes are significant, we’ll let you know via email or on the site.
+Continued use of StoryCV after changes means you accept the updated Terms.
+
+11. Governing Law
+These Terms are governed by the laws of Singapore. Any disputes will be resolved in the courts of Singapore.
+
+12. Contact
+If you have questions or concerns, write to us at: write@story.cv
+
