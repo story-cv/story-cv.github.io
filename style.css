@@ -339,10 +339,11 @@
 .privacy-policy-cta {
   text-align: center;
   padding: 3rem 2rem;
-  background: linear-gradient(135deg, var(--color-primary), #C63716);
+  background: var(--color-bg-tertiary);
   border-radius: 16px;
   color: white;
   margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .privacy-policy-cta h3 {
@@ -3926,6 +3927,23 @@ header picture img:hover {
 }
 
 /* Header Navigation Updates */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-left: auto;
+}
+
 .header-nav {
   display: flex;
   align-items: center;
@@ -4111,6 +4129,14 @@ header picture img:hover {
 
   .header-nav {
     gap: var(--space-sm);
+  }
+
+  .nav {
+    padding: 0 var(--space-md);
+  }
+  
+  .nav-links {
+    gap: var(--space-md);
   }
 
   .nav-link {
