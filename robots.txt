@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://story.cv/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow access to CSS and JS files
+Allow: /*.css
+Allow: /*.js
+
+# Allow access to images
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+
+# Block access to sensitive files (if any exist)
+Disallow: /.*
+Disallow: /*.log
+Disallow: /replit.md
+Disallow: /.replit
