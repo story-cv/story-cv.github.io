@@ -7,38 +7,51 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-VPTTZV8ERX');
+      gtag('config', 'G-VPTTZV8ERX', { 'anonymize_ip': true }); // Anonymize IP for privacy
+      // Function to be called when consent is given
+      function gtag_report_conversion(url) {
+        var callback = window.opener.gtag;
+        callback('event', 'conversion', {
+            'send_to': 'AW-YOUR_CONVERSION_ID/YOUR_CONVERSION_LABEL',
+            'event_callback': function() {
+                if(typeof(url) != 'undefined') {
+                    window einen_window.location = url;
+                }
+            }
+        });
+        return false;
+      }
     </script>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - StoryCV</title>
     <meta name="description" content="Learn how StoryCV protects your privacy and handles your personal information. Our comprehensive privacy policy explains our data collection and usage practices.">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/logo-light.svg">
     <link rel="alternate icon" href="/favicon.ico">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Privacy Policy - StoryCV">
     <meta property="og:description" content="Learn how StoryCV protects your privacy and handles your personal information.">
     <meta property="og:image" content="/logo-with-text-light.svg">
     <meta property="og:url" content="https://story.cv/privacy-policy">
     <meta property="og:type" content="website">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Privacy Policy - StoryCV">
     <meta name="twitter:description" content="Learn how StoryCV protects your privacy and handles your personal information.">
     <meta name="twitter:image" content="/logo-with-text-light.svg">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Schema Markup -->
     <script type="application/ld+json">
     {
@@ -63,7 +76,7 @@
         <div class="container">
             <div class="nav">
                 <a href="/" class="logo">
-                    <img src="logo-with-text-light.svg" alt="StoryCV Logo" height="32">
+                    <img src="logo-light.svg" alt="StoryCV Logo" height="32">
                 </a>
                 <nav class="nav-links">
                     <a href="/" class="nav-link">Home</a>
@@ -107,23 +120,23 @@
                     <section id="information-we-collect" class="privacy-section">
                         <h2 class="section-title">1. Information We Collect</h2>
                         <p class="section-intro">We collect the following types of information:</p>
-                        
+
                         <div class="info-types">
                             <div class="info-type">
                                 <h3>Personal Information</h3>
                                 <p>When you sign up for an account, we collect your name and email address. If you sign up using a social login (Google, LinkedIn), we access the information you permit through those platforms.</p>
                             </div>
-                            
+
                             <div class="info-type">
                                 <h3>User Inputs</h3>
                                 <p>This includes resume content, chat interactions, and voice inputs you provide.</p>
                             </div>
-                            
+
                             <div class="info-type">
                                 <h3>Payment Information</h3>
                                 <p>Payments are processed through Stripe. We do not store your full payment details.</p>
                             </div>
-                            
+
                             <div class="info-type">
                                 <h3>Analytics Data</h3>
                                 <p>We use Google Analytics to collect anonymized usage data to improve our services.</p>
@@ -212,6 +225,7 @@
     <div id="footer-container"></div>
 
     <script src="footer.js"></script>
+    <script src="cookie-banner.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

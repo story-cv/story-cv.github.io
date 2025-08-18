@@ -8,6 +8,11 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
+      // Set default consent state
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
+
       gtag('config', 'G-VPTTZV8ERX');
     </script>
 
@@ -1165,6 +1170,7 @@
 
     <!-- JavaScript -->
     <script src="footer.js"></script>
+    <script src="cookie-banner.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
