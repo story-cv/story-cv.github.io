@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Story.CV Blog</title>
+    <description>Expert resume writing tips, career advice, and job search strategies from Story.CV</description>
+    <link>https://story.cv/blog.html</link>
+    <atom:link href="https://story.cv/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Aug 2025 00:00:00 GMT</lastBuildDate>
+    <pubDate>Sun, 18 Aug 2025 00:00:00 GMT</pubDate>
+    <ttl>60</ttl>
+    
+    <item>
+      <title>How to Write a Resume That Actually Gets You Interviews</title>
+      <description>Most resumes get rejected in 6 seconds. Learn the proven strategies that make hiring managers stop scrolling and start calling you for interviews.</description>
+      <link>https://story.cv/blog/how-to-write-resume-that-gets-interviews.html</link>
+      <guid>https://story.cv/blog/how-to-write-resume-that-gets-interviews.html</guid>
+      <pubDate>Sun, 18 Aug 2025 00:00:00 GMT</pubDate>
+      <category>Resume Tips</category>
+    </item>
+    
+    <item>
+      <title>5 Job Search Mistakes That Are Killing Your Chances</title>
+      <description>Avoid these common pitfalls that keep qualified candidates from landing interviews.</description>
+      <link>https://story.cv/blog/5-job-search-mistakes-killing-your-chances.html</link>
+      <guid>https://story.cv/blog/5-job-search-mistakes-killing-your-chances.html</guid>
+      <pubDate>Thu, 15 Aug 2025 00:00:00 GMT</pubDate>
+      <category>Career Strategy</category>
+    </item>
+    
+    <item>
+      <title>How to Change Careers Successfully: A Complete Guide</title>
+      <description>Step-by-step strategies for making a successful career transition at any stage.</description>
+      <link>https://story.cv/blog/how-to-change-careers-successfully.html</link>
+      <guid>https://story.cv/blog/how-to-change-careers-successfully.html</guid>
+      <pubDate>Mon, 12 Aug 2025 00:00:00 GMT</pubDate>
+      <category>Career Development</category>
+    </item>
+    
+    <item>
+      <title>10 Smart Questions to Ask in Every Job Interview</title>
+      <description>Stand out from other candidates by asking these thoughtful questions that show your genuine interest.</description>
+      <link>https://story.cv/blog/interview-questions-you-should-ask.html</link>
+      <guid>https://story.cv/blog/interview-questions-you-should-ask.html</guid>
+      <pubDate>Sat, 10 Aug 2025 00:00:00 GMT</pubDate>
+      <category>Interview Tips</category>
+    </item>
+  </channel>
+</rss>
