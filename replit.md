@@ -1,7 +1,7 @@
-# Story.CV - Professional Resume Writer Powered by AI
+# StoryCV - Professional Resume Writer Powered by AI
 
 ## Overview
-Story.CV is an AI-powered professional resume writing application designed to help users create compelling resumes. It aims to make expert resume writing accessible to everyone, providing a solution that is both efficient and high-quality, differentiating itself from generic AI builders or traditional human writers. The project focuses on a modern, responsive web application with a clean user interface.
+StoryCV is an AI-powered professional resume writing application designed to help users create compelling resumes. It aims to make expert resume writing accessible to everyone, providing a solution that is both efficient and high-quality, differentiating itself from generic AI builders or traditional human writers. The project focuses on a modern, responsive web application with a clean user interface.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.
