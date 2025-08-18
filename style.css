@@ -1,5 +1,8 @@
 /* Story.CV Landing Page Styles */
 
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+
 /* Header Styles */
 .header {
   position: sticky;
@@ -532,6 +535,7 @@ body {
 
 /* Typography Base */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
   font-weight: var(--font-weight-bold);
   line-height: 1.2;
   color: var(--color-text-primary);
@@ -4549,6 +4553,7 @@ header picture img:hover {
 }
 
 .blog-hero-title {
+  font-family: var(--font-primary);
   font-size: 3rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
@@ -4675,6 +4680,7 @@ header picture img:hover {
 }
 
 .article-title {
+  font-family: var(--font-primary);
   font-size: 1.5rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
@@ -4793,6 +4799,7 @@ header picture img:hover {
 }
 
 .blog-post-title {
+  font-family: var(--font-primary);
   font-size: 3.5rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
