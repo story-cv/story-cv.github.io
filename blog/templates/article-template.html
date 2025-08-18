@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}} | StoryCV Blog</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{DESCRIPTION}}">
+    <meta name="keywords" content="{{KEYWORDS}}">
+    <meta name="author" content="StoryCV">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{TITLE}}">
+    <meta property="og:description" content="{{DESCRIPTION}}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://story.cv/blog/articles/{{SLUG}}.html">
+    <meta property="og:site_name" content="StoryCV">
+    <meta property="article:published_time" content="{{PUBLISH_DATE}}">
+    <meta property="article:author" content="StoryCV Team">
+    <meta property="article:section" content="{{CATEGORY}}">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{TITLE}}">
+    <meta name="twitter:description" content="{{DESCRIPTION}}">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{TITLE}}",
+        "description": "{{DESCRIPTION}}",
+        "author": {
+            "@type": "Organization",
+            "name": "StoryCV"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "StoryCV",
+            "url": "https://story.cv"
+        },
+        "datePublished": "{{PUBLISH_DATE_SHORT}}",
+        "dateModified": "{{PUBLISH_DATE_SHORT}}",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://story.cv/blog/articles/{{SLUG}}.html"
+        }
+    }
+    </script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../style.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPTTZV8ERX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VPTTZV8ERX');
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-logo">
+                    <a href="../../index.html">
+                        <img src="../../logo-with-text-light.svg" alt="StoryCV" height="28">
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="../../index.html" class="nav-link">Home</a>
+                    <a href="../../about-us.html" class="nav-link">About</a>
+                    <a href="../../blog.html" class="nav-link">Blog</a>
+                    <a href="https://tally.so/r/wzBlA0" target="_blank" class="nav-cta">Join the waitlist</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Blog Post Header -->
+        <section class="blog-post-header">
+            <div class="container">
+                <div class="blog-post-meta">
+                    <a href="../../blog.html" class="back-to-blog">← Back to Blog</a>
+                    <div class="post-categories">
+                        <span class="post-category">{{CATEGORY}}</span>
+                    </div>
+                </div>
+                <h1 class="blog-post-title">{{TITLE}}</h1>
+                <div class="blog-post-info">
+                    <span class="post-date">{{DISPLAY_DATE}}</span>
+                    <span class="post-read-time">{{READ_TIME}} min read</span>
+                    <span class="post-author">By StoryCV Team</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Image -->
+        <section class="blog-post-image">
+            <div class="container">
+                <img src="../images/{{FEATURED_IMAGE}}" alt="{{IMAGE_ALT}}" class="post-featured-image">
+            </div>
+        </section>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-content">
+            <div class="container">
+                <div class="blog-post-body">
+                    {{CONTENT}}
+                </div>
+
+                <!-- Related Posts -->
+                <section class="related-posts">
+                    <h3>Related Articles</h3>
+                    <div class="related-posts-grid">
+                        {{RELATED_POSTS}}
+                    </div>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer Section -->
+    <div id="footer-container"></div>
+
+    <script src="../../footer.js"></script>
+    <script src="../../script.js"></script>
+</body>
+</html>
