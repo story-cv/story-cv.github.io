@@ -4730,28 +4730,7 @@ header picture img:hover {
   text-decoration: underline;
 }
 
-/* Blog Newsletter */
-.blog-newsletter {
-  padding: var(--space-4xl) var(--space-md);
-  background-color: var(--color-cream);
-  text-align: center;
-}
 
-.newsletter-content h2 {
-  font-size: 2.5rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-lg);
-}
-
-.newsletter-content p {
-  font-size: 1.125rem;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-xl);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 /* Blog Post Styles */
 .blog-post-header {
@@ -5125,10 +5104,6 @@ header picture img:hover {
     font-size: 1.75rem;
   }
 
-  .newsletter-content h2 {
-    font-size: 2rem;
-  }
-
   .related-posts-grid {
     grid-template-columns: 1fr;
   }
@@ -5158,7 +5133,4 @@ header picture img:hover {
     margin: var(--space-lg) 0;
   }
 
-  .newsletter-content h2 {
-    font-size: 1.75rem;
   }
-}
