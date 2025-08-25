@@ -8,7 +8,7 @@ function createFooter() {
                 <!-- Logo and Tagline -->
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="logo-with-text-light.svg" alt="Story.CV">
+                        <img src="logo-with-text-light.svg" alt="Story.CV" onerror="this.src='./logo-with-text-light.svg'">
                     </div>
                     <p class="footer-tagline">The only resume writer that truly tells your story.</p>
                 </div>
