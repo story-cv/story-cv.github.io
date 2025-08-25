@@ -1,0 +1,284 @@
+The only student resume template you’ll ever need
+
+SEO title: Student resume template with real examples you can copy
+Meta description: Real student resume examples you can copy. Perfect for internships, part-time jobs, and your first full-time position.
+
+
+
+Looking at student resume templates feels overwhelming at first. Too many formats. Too many rules. And if you don’t have much experience yet, it feels even harder to fill a page without sounding fake.
+But a student resume doesn’t need to be complicated. It needs to be clear. Your contact details, your education, a few lines about what you’ve done so far like projects, part-time jobs and even volunteering. That’s enough to get started.
+
+What is the best format for a student resume?
+One page. One column. Clear headings. Bullet points. Reverse chronological order. Most recent things at the top. Margins between 0.5 and 1 inch. Font size 10.5–12, readable, no script fonts. Sans serif fonts for resume is recommended.
+That’s it. 
+Why this format works
+It matches how recruiters scan. Left to right, top to bottom.
+
+
+It is ATS friendly. No text in images or tables.
+
+
+It makes tradeoffs obvious. You highlight proof in the first ⅓ of the page.
+
+
+How to write a good resume as a student?
+Focus on relevance. Show what you did, not what your responsibilities were. Use numbers when you can. Keep bullets short. Each bullet should answer: “Why should they care?”
+Example:
+Built a web app for a class project used by 30+ classmates to track deadlines.
+Managed weekly events for a campus club, growing attendance from 40 to 120 students.
+
+What are the sections of a resume
+Contact info: name, email, LinkedIn, portfolio/GitHub.
+Education: degree, university, graduation date, GPA if strong, relevant coursework.
+Experience: internships, part-time jobs, projects.
+Skills: tools, languages, software.
+Optional: extracurriculars, volunteer work, awards.
+
+Default layout
+Contact and links
+
+
+Headline or target role
+
+
+Education
+
+
+Skills
+
+
+Projects and coursework
+
+
+Experience (internships, part-time, freelance)
+
+
+Leadership and activities
+
+
+Awards and extras
+
+
+Save as PDF unless the employer asks for Word.
+Put your strongest section higher. If projects are your proof, move them above experience.
+If you are struggling to stick to one page, remember: a resume is a decision tool, not a biography. Show proof of skills the job needs. Hide everything else.
+Margins, fonts, and layout specs
+Margins. 0.75 to 1 inch on all sides. If you need space, go 0.5 inch, never less.
+
+
+Font size. 10.5 to 12 for body, 12 to 14 for headings.
+
+
+Fonts. Any clean system font. No script fonts. Avoid icons.
+
+
+Line spacing. 1.0 to 1.15. Add 2 to 4 pt space after each section.
+
+
+File name. firstname_lastname_resume_role.pdf
+
+Can you put extracurricular activities on a resume?
+Yes. Treat them as leadership and impact.
+Good examples
+President, FinTech Society — grew membership from 60 to 140, secured 3 sponsor partners.
+
+
+Captain, Volleyball Team — coordinated 12-player schedule and led training that improved set success by 18 percent.
+
+
+Organizer, Women in Tech Hackathon — raised 8,000 in funding, managed 120 participants.
+
+
+Avoid
+Listing passive memberships without outcomes.
+
+Your resume’s job is to earn a shortlisting. The hiring manager’s job is to reduce risk. Use numbers and outcomes to lower that risk.
+Can you put babysitting on a resume?
+Yes. Frame it as paid work with scope and outcomes.
+Examples
+Babysitter, self-employed — managed care for two children ages 4 and 7, improved homework completion from 50 percent to 100 percent over 3 months.
+
+
+Tutor and caregiver — created a 6-week reading plan, raised reading level by one grade.
+
+
+
+
+
+
+What makes a good student template
+Use these criteria to judge any template.
+Simple structure. One column. No tables.
+
+
+Scannable headings. Education, Skills, Projects, Experience.
+
+
+Keyword-friendly. Text, not images.
+
+
+Tight spacing. Enough white space to breathe, but not wasteful.
+
+
+Proof-first. Bullets show outcomes, not tasks.
+
+
+We include three free templates below: Focus, Projects-first, and Research. Download links are at the end of this article.
+
+
+
+You now know which sections to include and how to structure a student resume. Filling it in and making it look sharp is where most students get stuck. That’s where StoryCV can help. It takes your experience, projects, and skills, and turns them into a resume ready to send to recruiters in minutes.
+
+
+
+
+Student resume examples for internships
+
+Niche down. Aim each version at one role. Software engineering intern, data analyst intern, product design intern, research assistant, operations associate.
+Software engineering intern
+Built a full-stack CRUD app used by 35 peers. Cut manual tracking time by 3 hours per week.
+
+
+Wrote unit tests that raised coverage from 0 to 72 percent across key modules.
+
+
+Refactored API calls to reduce average response time from 420 ms to 180 ms.
+
+
+Data analyst intern
+Cleaned 120,000-row survey dataset. Reduced processing time by 60 percent.
+
+
+Automated weekly KPI dashboard in spreadsheets. Saved team 2 hours weekly.
+
+
+A/B tested landing copy. Improved click-through by 14 percent.
+
+
+Marketing intern
+Planned 4-week TikTok content calendar. Grew followers from 0 to 1,800.
+
+
+Ran UTM-tagged email campaign to 3,200 students. 32 percent open, 6 percent click.
+
+
+Negotiated 3 campus partnerships that added 220 signups.
+
+
+
+
+Student resumes don’t need to be perfect. They need to show you can learn, contribute, and take responsibility. That’s enough to get in the door.
+
+
+
+Copy-ready student resume templates
+Internship resume template
+# Name Lastname
+City, ST | email@school.edu | 555-555-5555 | [LinkedIn](https://linkedin.com/in/name) | [Portfolio](https://name.dev)
+
+**Software Engineering Intern**
+
+---
+
+## Education
+**BSc in Computer Science**, University Name, City — May 2027  
+GPA: 3.7/4.0  
+Relevant coursework: Data Structures, Databases, Web Development, Algorithms
+
+---
+
+## Skills
+**Languages:** Python, JavaScript, SQL  
+**Frameworks/Tools:** React, Flask, Git, PostgreSQL, Docker  
+**Other:** REST APIs, Unit Testing, Agile
+
+---
+
+## Projects
+**Task Tracker App** — React, Flask, PostgreSQL  
+- Built a full-stack CRUD application used by 35 peers, reducing manual tracking by 3 hours per week  
+- Implemented automated unit tests (12 tests, 72% coverage) and deployed with CI/CD on Render  
+- Integrated email notifications to alert users of overdue tasks
+
+**Campus Events Website** — Next.js, Firebase  
+- Created a platform to list student events, attended by 500+ users in first month  
+- Added RSVP and calendar integration features
+
+---
+
+## Experience
+**IT Support Assistant**, Campus IT — Sep 2024 to May 2025  
+- Resolved 15 technical support tickets weekly, cutting average resolution time by 22%  
+- Created a 10-page “Quick Fix Guide” accessed by 900+ students  
+
+**Peer Tutor**, University CS Department — Jan 2024 to May 2024  
+- Tutored 10 students weekly in Python and SQL, improving average grades by 1 full letter
+
+---
+
+## Leadership & Awards
+**Treasurer**, Coding Club — managed $4,500 annual budget; secured 2 external sponsors  
+**Dean’s List** — 2024
+
+
+
+
+
+First-job CV template (graduate)
+# Name Lastname
+City, ST | email@school.edu | 555-555-5555 | [LinkedIn](https://linkedin.com/in/name) | [Portfolio](https://name.dev)
+
+**Graduate Data Analyst**
+
+---
+
+## Summary
+Data analyst skilled in survey analytics, dashboards, and data visualization. Delivered 3 projects that automated reporting, streamlined workflows, and improved decision-making for student organizations.
+
+---
+
+## Education
+**BSc in Information Systems**, University Name — May 2026  
+GPA: 3.8/4.0  
+Relevant coursework: Statistics, SQL, Python, Data Visualization, Business Analytics
+
+---
+
+## Skills
+**Analysis & Tools:** SQL, Python (pandas, NumPy), Excel, R  
+**Visualization:** Tableau, Looker Studio, Matplotlib  
+**Other:** Data cleaning, Dashboard automation, KPI tracking
+
+---
+
+## Projects
+**Student Services Dashboard** — SQL, Python, Looker Studio  
+- Consolidated data from 3 sources and automated weekly reporting for 5 users  
+- Identified bottlenecks that reduced response time from 5 days to 2  
+
+**Event Attendance Predictor** — Python, scikit-learn  
+- Built a predictive model to forecast student event attendance with 85% accuracy  
+- Presented insights to student council to optimize event planning
+
+---
+
+## Experience
+**Marketing Intern**, ABC Nonprofit — Jan 2025 to Apr 2025  
+- Cleaned 120,000-row survey dataset, reducing processing time by 60%  
+- Built UTM tracking dashboards; improved campaign CTR by 14%  
+
+**Research Assistant**, University Business Lab — Sep 2024 to Dec 2024  
+- Conducted data analysis on consumer behavior surveys (2,000+ responses)  
+- Prepared visual reports that were used in 3 published student papers
+
+---
+
+## Leadership & Awards
+**Organizer**, Data Club Datathon — managed 80 participants, raised $6,000 in sponsorships  
+**Scholarship Recipient** — 2024
+
+
+
+
+
+Templates are a start, but you don’t have to do this alone. StoryCV uses AI to turn your student resume template into a polished, recruiter-ready resume in minutes.
