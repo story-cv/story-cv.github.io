@@ -4829,7 +4829,7 @@ header picture img:hover {
 
 .post-featured-image {
   width: 100%;
-  max-width: 800px;
+  max-width: 500px;
   margin: 0 auto;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
@@ -4899,34 +4899,83 @@ header picture img:hover {
   color: var(--color-text-primary);
 }
 
-/* Example Boxes */
+/* Example Boxes - Modular Base Styles */
 .example-box {
-  padding: var(--space-lg);
+  padding: var(--space-xl);
   border-radius: var(--radius-md);
   margin: var(--space-xl) 0;
   border-left: 4px solid;
-}
-
-.good-example {
-  background-color: #f0fdf4;
-  border-left-color: #22c55e;
-}
-
-.bad-example {
-  background-color: #fef2f2;
-  border-left-color: #ef4444;
+  border: 1px solid;
 }
 
 .example-box h4 {
-  margin: 0 0 var(--space-sm) 0 !important;
+  margin: 0 0 var(--space-md) 0 !important;
   font-size: 1rem !important;
   font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 .example-box p {
   margin: 0 !important;
   font-style: italic;
 }
+
+.example-box ul {
+  margin: var(--space-sm) 0 0 0 !important;
+  padding-left: var(--space-lg);
+}
+
+.example-box li {
+  margin-bottom: var(--space-xs) !important;
+}
+
+/* Good Example Variant */
+.good-example {
+  background-color: #f0fdf4;
+  border-left-color: #22c55e;
+  border-color: #bbf7d0;
+}
+
+.good-example h4 {
+  color: #166534;
+}
+
+/* Bad Example Variant */
+.bad-example {
+  background-color: #fef2f2;
+  border-left-color: #ef4444;
+  border-color: #fecaca;
+}
+
+.bad-example h4 {
+  color: #991b1b;
+}
+
+/* Info Example Variant */
+.info-example {
+  background-color: #eff6ff;
+  border-left-color: #3b82f6;
+  border-color: #bfdbfe;
+}
+
+.info-example h4 {
+  color: #1e40af;
+}
+
+/* Warning Example Variant */
+.warning-example {
+  background-color: #fffbeb;
+  border-left-color: #f59e0b;
+  border-color: #fed7aa;
+}
+
+.warning-example h4 {
+  color: #92400e;
+}
+
+
 
 .formula-box {
   background-color: var(--color-cream);
