@@ -4732,6 +4732,36 @@ header picture img:hover {
 
 
 
+/* Markdown Template Styling */
+.markdown-template {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+.markdown-template pre {
+  margin: 0;
+  padding: var(--space-lg);
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  background: transparent;
+  border: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.markdown-template code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--color-text-primary);
+}
+
 /* Blog Post Styles */
 .blog-post-header {
   padding: var(--space-4xl) var(--space-md) var(--space-2xl);
