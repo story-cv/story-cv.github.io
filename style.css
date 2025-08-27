@@ -2971,7 +2971,7 @@ header picture img:hover {
   line-height: 1.2;
 }
 
-.about-intro {
+.about-note {
   font-size: 1.25rem;
   line-height: 1.6;
   color: var(--color-text-secondary);
@@ -3025,23 +3025,6 @@ header picture img:hover {
   margin-bottom: var(--space-xl);
 }
 
-.founders-signature {
-  margin-top: var(--space-xl);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--color-border);
-}
-
-.signature-text {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-xs);
-}
-
-.signature-title {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  margin: 0;
-}
 
 @media (max-width: 768px) {
   .founders-note-content {
@@ -3114,7 +3097,7 @@ header picture img:hover {
     font-size: 2.25rem;
   }
 
-  .about-intro {
+  .about-note {
     font-size: 1.125rem;
   }
 
@@ -3147,7 +3130,7 @@ header picture img:hover {
     font-size: 1.875rem;
   }
 
-  .about-intro {
+  .about-note {
     font-size: 1rem;
   }
 
