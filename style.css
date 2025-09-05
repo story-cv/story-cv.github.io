@@ -4126,6 +4126,31 @@ header picture img:hover {
   padding: var(--space-xl);
 }
 
+.featured-article .article-title {
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: var(--space-md) 0 var(--space-lg);
+  line-height: 1.3;
+}
+
+.featured-article .article-title a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.featured-article .article-title a:hover {
+  color: var(--color-primary);
+}
+
+.featured-article .article-excerpt {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
 .featured-article-image {
   position: relative;
   overflow: hidden;
