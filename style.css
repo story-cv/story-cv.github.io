@@ -5277,7 +5277,8 @@ header picture img:hover {
   flex-direction: column;
   width: 100%;
   max-width: 300px;
-  height: 380px;
+  min-height: 380px;
+  height: auto;
 }
 
 .related-article-card:hover {
@@ -5311,12 +5312,14 @@ header picture img:hover {
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
+  min-height: 0;
 }
 
 .related-article-top {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  margin-bottom: var(--space-md);
 }
 
 .related-article-meta {
@@ -5364,7 +5367,11 @@ header picture img:hover {
   font-size: 0.9rem;
   line-height: 1.5;
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
+  flex-grow: 1;
+  overflow: visible;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .related-article-link {
@@ -5399,7 +5406,8 @@ header picture img:hover {
   }
   
   .related-article-card {
-    height: 360px;
+    min-height: 360px;
+    height: auto;
     max-width: 320px;
   }
   
@@ -5428,7 +5436,8 @@ header picture img:hover {
   }
   
   .related-article-card {
-    height: 340px;
+    min-height: 340px;
+    height: auto;
     max-width: 280px;
   }
   
