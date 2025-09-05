@@ -4152,12 +4152,13 @@ header picture img:hover {
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--space-2xl);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-xl);
   margin-top: var(--space-2xl);
-  max-width: 1000px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 var(--space-md);
 }
 
 .blog-card {
@@ -4567,40 +4568,41 @@ header picture img:hover {
 /* Related Posts */
 .related-posts {
   margin: var(--space-4xl) 0 0;
-  padding: var(--space-2xl) 0 0;
+  padding: var(--space-2xl) var(--space-md) 0;
   border-top: 2px solid var(--color-border);
-  max-width: 800px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .related-posts h3 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin: 0 0 var(--space-xl) 0 !important;
+  margin: 0 0 var(--space-lg) 0 !important;
   text-align: center;
 }
 
 .related-posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-xl);
-  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 400px;
   margin: 0 auto;
 }
 
 .related-post {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
   transition: all 0.3s ease;
   border: 1px solid var(--color-border);
+  background-color: var(--color-bg-primary);
 }
 
 .related-post:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .related-post-link {
@@ -4611,8 +4613,9 @@ header picture img:hover {
 
 .related-post img {
   width: 100%;
-  height: 150px;
+  height: 120px;
   object-fit: cover;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
 .related-post-content {
