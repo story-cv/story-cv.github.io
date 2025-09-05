@@ -24,7 +24,15 @@ class RelatedArticles {
     // Get related articles excluding current article
     getRelatedArticles(currentUrl, maxArticles = 3) {
         return this.articles
-            .filter(article => article.url !== currentUrl)
+            .filter(article => {
+                // Check multiple URL formats to ensure matching
+                const articlePath = article.url.replace(/^\/+/, '');
+                const currentPath = currentUrl.replace(/^\/+/, '');
+                const isMatch = articlePath === currentPath || 
+                               article.url === currentUrl ||
+                               currentUrl.includes(articlePath.split('/').pop());
+                return !isMatch;
+            })
             .slice(0, maxArticles);
     }
 
@@ -49,14 +57,16 @@ class RelatedArticles {
                                 <img src="${article.image}" alt="${article.title}" loading="lazy">
                             </div>
                             <div class="related-article-content">
-                                <div class="related-article-meta">
-                                    <span class="related-article-category">${article.category}</span>
-                                    <span class="related-article-read-time">${article.readTime}</span>
+                                <div class="related-article-top">
+                                    <div class="related-article-meta">
+                                        <span class="related-article-category">${article.category}</span>
+                                        <span class="related-article-read-time">${article.readTime}</span>
+                                    </div>
+                                    <h3 class="related-article-title">
+                                        <a href="${article.url}">${article.title}</a>
+                                    </h3>
+                                    <p class="related-article-excerpt">${article.excerpt}</p>
                                 </div>
-                                <h3 class="related-article-title">
-                                    <a href="${article.url}">${article.title}</a>
-                                </h3>
-                                <p class="related-article-excerpt">${article.excerpt}</p>
                                 <a href="${article.url}" class="related-article-link">Read article →</a>
                             </div>
                         </article>`;
