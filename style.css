@@ -5258,11 +5258,12 @@ header picture img:hover {
 
 .related-articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-lg);
-  max-width: 900px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+  gap: var(--space-xl);
+  max-width: 700px;
   margin: 0 auto;
   padding: 0 var(--space-md);
+  justify-content: center;
 }
 
 .related-article-card {
@@ -5274,25 +5275,29 @@ header picture img:hover {
   border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
-  height: 420px;
+  width: 100%;
+  max-width: 300px;
+  height: 380px;
 }
 
 .related-article-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .related-article-image {
   position: relative;
   overflow: hidden;
-  height: 180px;
+  height: 160px;
   flex-shrink: 0;
+  background-color: var(--color-bg-secondary);
 }
 
 .related-article-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.3s ease;
 }
 
@@ -5390,12 +5395,12 @@ header picture img:hover {
   .related-articles-grid {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
-    max-width: 420px;
+    max-width: 320px;
   }
   
   .related-article-card {
-    height: auto;
-    min-height: 380px;
+    height: 360px;
+    max-width: 320px;
   }
   
   .related-article-content {
@@ -5403,7 +5408,7 @@ header picture img:hover {
   }
   
   .related-article-image {
-    height: 160px;
+    height: 140px;
   }
 }
 
@@ -5418,12 +5423,13 @@ header picture img:hover {
   }
   
   .related-articles-grid {
-    max-width: 320px;
+    max-width: 280px;
     padding: 0 var(--space-sm);
   }
   
   .related-article-card {
-    min-height: 360px;
+    height: 340px;
+    max-width: 280px;
   }
   
   .related-article-meta {
@@ -5433,10 +5439,10 @@ header picture img:hover {
   }
   
   .related-article-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
   
   .related-article-image {
-    height: 140px;
+    height: 120px;
   }
 }
