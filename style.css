@@ -4155,6 +4155,9 @@ header picture img:hover {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: var(--space-2xl);
   margin-top: var(--space-2xl);
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .blog-card {
@@ -4427,7 +4430,6 @@ header picture img:hover {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
   margin: var(--space-xl) 0;
 }
 
@@ -4440,7 +4442,6 @@ header picture img:hover {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
 }
 
 .image-caption {
@@ -4568,6 +4569,9 @@ header picture img:hover {
   margin: var(--space-4xl) 0 0;
   padding: var(--space-2xl) 0 0;
   border-top: 2px solid var(--color-border);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .related-posts h3 {
@@ -4582,6 +4586,8 @@ header picture img:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-xl);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .related-post {
