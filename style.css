@@ -5499,6 +5499,7 @@ header picture img:hover {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .student-hero-title {
@@ -6411,157 +6412,330 @@ header picture img:hover {
   margin-bottom: var(--space-lg);
 }
 
+/* Additional mobile fixes */
+.student-hero,
+.student-struggles,
+.tools-problem,
+.student-solution,
+.transformation-example,
+.how-it-works,
+.confidence-building,
+.student-testimonial,
+.student-cta,
+.join-community {
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 /* Mobile Responsive Styles for Student Page */
 @media (max-width: 768px) {
   .student-hero {
-    padding: 80px 0;
+    padding: 60px 0;
   }
   
   .student-hero .container {
     grid-template-columns: 1fr;
-    gap: 64px;
+    gap: 40px;
     text-align: center;
+    padding: 0 20px;
   }
   
   .student-hero-title {
-    font-size: 2.75rem;
+    font-size: 2.5rem;
     line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  
+  .student-hero-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 32px;
   }
   
   .resume-mockup {
     width: 280px;
     padding: 24px;
     transform: rotate(0deg);
+    margin: 0 auto;
   }
   
   .thinking-bubble {
-    right: -40px;
-    top: -35px;
-    font-size: 0.8rem;
-    padding: 10px 14px;
+    right: -35px;
+    top: -30px;
+    font-size: 0.75rem;
+    padding: 8px 12px;
+  }
+  
+  .student-struggles,
+  .student-solution,
+  .tools-problem,
+  .how-it-works,
+  .confidence-building,
+  .student-testimonial,
+  .transformation-example {
+    padding: 60px 0;
+  }
+  
+  .student-cta {
+    padding: 80px 0;
+  }
+  
+  .container {
+    padding: 0 20px;
   }
   
   .struggles-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
-  }
-  
-  .resume-journey {
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-  
-  .journey-arrow {
-    transform: rotate(90deg);
-  }
-  
-  .transformation-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-  }
-  
-  .arrow-column {
-    order: 2;
-  }
-  
-  .transformation-arrow {
-    transform: rotate(90deg);
-  }
-  
-  .before-after {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-  }
-  
-  .steps-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-  }
-  
-  .confidence-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-    text-align: center;
-  }
-  
-  .cta-title {
-    font-size: 2rem;
-  }
-  
-  .testimonial-card {
-    padding: var(--space-2xl);
-  }
-  
-  .testimonial-card blockquote {
-    font-size: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .student-hero {
-    padding: 60px 0;
-  }
-  
-  .student-hero-title {
-    font-size: 2.25rem;
-    line-height: 1.1;
-  }
-  
-  .student-hero-subtitle {
-    font-size: 1.125rem;
-    line-height: 1.5;
-  }
-  
-  .resume-mockup {
-    width: 240px;
-    padding: 20px;
-  }
-  
-  .thinking-bubble {
-    right: -25px;
-    top: -30px;
-    font-size: 0.75rem;
-    padding: 8px 12px;
+    gap: 24px;
+    margin-bottom: 60px;
   }
   
   .struggle-card {
     padding: 32px 24px;
   }
   
-  .benefit-card {
-    padding: 40px 24px;
+  .resume-journey {
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px 20px;
+    overflow-x: auto;
+  }
+  
+  .journey-step {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .journey-arrow {
+    transform: rotate(90deg);
+    font-size: 1.25rem;
+  }
+  
+  .transformation-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .arrow-column {
+    order: 2;
+    min-height: auto;
+    padding: 16px 0;
+  }
+  
+  .transformation-arrow {
+    transform: rotate(90deg);
+    font-size: 1.5rem;
+  }
+  
+  .before-after {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
   }
   
   .step-card {
     padding: 40px 24px;
   }
   
-  .student-struggles,
-  .student-solution,
-  .tools-problem,
-  .how-it-works {
-    padding: 80px 0;
-  }
-  
-  .transformation-example,
-  .student-cta {
-    padding: 80px 0;
+  .confidence-content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: center;
   }
   
   .cta-title {
-    font-size: 1.75rem;
+    font-size: 2rem;
+    line-height: 1.1;
   }
   
   .cta-subtitle {
     font-size: 1.125rem;
   }
   
+  .testimonial-card {
+    padding: 48px 32px;
+    margin: 0 20px;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+  }
+  
+  .testimonial-card blockquote {
+    font-size: 1.375rem;
+    line-height: 1.3;
+  }
+  
+  .solution-benefits {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .benefit-card {
+    padding: 40px 24px;
+  }
+  
+  .example-scenario {
+    padding: 32px 20px;
+    margin-bottom: 48px;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-hero {
+    padding: 50px 0;
+  }
+  
+  .student-hero .container {
+    padding: 0 16px;
+  }
+  
+  .student-hero-title {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  
+  .student-hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+  
+  .resume-mockup {
+    width: 220px;
+    padding: 18px;
+  }
+  
+  .thinking-bubble {
+    right: -20px;
+    top: -25px;
+    font-size: 0.7rem;
+    padding: 6px 10px;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+  
+  .student-struggles,
+  .student-solution,
+  .tools-problem,
+  .how-it-works,
+  .confidence-building,
+  .student-testimonial,
+  .transformation-example {
+    padding: 50px 0;
+  }
+  
+  .student-cta {
+    padding: 60px 0;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+  
+  .struggle-card,
+  .benefit-card,
+  .step-card {
+    padding: 28px 20px;
+  }
+  
+  .struggle-icon,
+  .benefit-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+  
+  .resume-journey {
+    padding: 24px 16px;
+    gap: 12px;
+  }
+  
+  .step-content h4 {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  .help-status {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+  
+  .transformation-grid {
+    gap: 24px;
+  }
+  
+  .example-scenario {
+    padding: 24px 16px;
+    margin-bottom: 32px;
+  }
+  
+  .scenario-header h3 {
+    font-size: 1.125rem;
+  }
+  
+  .experience-item,
+  .relevant-item {
+    font-size: 0.85rem;
+    padding: 12px 16px;
+  }
+  
+  .cta-title {
+    font-size: 1.75rem;
+    line-height: 1.1;
+  }
+  
+  .cta-subtitle {
+    font-size: 1rem;
+  }
+  
+  .cta-offer {
+    padding: 32px 20px;
+    margin-bottom: 32px;
+  }
+  
   .offer-details {
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: 12px;
+  }
+  
+  .discounted-price {
+    font-size: 2rem;
+  }
+  
+  .original-price {
+    font-size: 1.25rem;
   }
   
   .testimonial-card {
-    padding: var(--space-xl);
+    padding: 32px 24px;
+    margin: 0 16px;
+  }
+  
+  .testimonial-card blockquote {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+  
+  .btn-large {
+    padding: 14px 28px;
+    font-size: 1rem;
   }
 }
