@@ -19,6 +19,7 @@ function createHeader() {
                 <nav class="header-nav">
                     <a href="${basePath}about-us.html" class="nav-link">About</a>
                     <a href="${basePath}blog.html" class="nav-link">Blog</a>
+                    <a href="${basePath}student-resume.html" class="nav-link">For Students</a>
                     <a href="https://tally.so/r/wzBlA0" target="_blank" rel="noopener noreferrer" class="nav-cta">Join the waitlist</a>
                 </nav>
             </div>
