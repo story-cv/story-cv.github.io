@@ -5458,11 +5458,38 @@ header picture img:hover {
 
 /* Student Landing Page Styles */
 
+/* Enhanced color palette for student page */
+:root {
+  --color-cream: #fcedda;
+  --color-cream-light: #fef6eb;
+  --color-cream-dark: #f5e1c8;
+  --color-soft-blue: #f0f9ff;
+  --color-soft-green: #f0fdf4;
+  --color-soft-red: #fef2f2;
+  --color-warm-gray: #f9fafb;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+}
+
 /* Student Hero Section */
 .student-hero {
-  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
-  padding: var(--space-4xl) 0;
+  background: linear-gradient(135deg, var(--color-cream-light) 0%, var(--color-cream) 100%);
+  padding: 120px 0;
   overflow: hidden;
+  position: relative;
+}
+
+.student-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.03) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .student-hero .container {
@@ -5475,22 +5502,38 @@ header picture img:hover {
 }
 
 .student-hero-title {
-  font-size: 3.5rem;
-  font-weight: var(--font-weight-bold);
-  line-height: 1.1;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-lg);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #1f2937;
+  margin-bottom: 24px;
+  letter-spacing: -0.025em;
 }
 
 .highlight-text {
   color: var(--color-primary);
+  position: relative;
+}
+
+.highlight-text::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+  border-radius: 4px;
+  z-index: -1;
+  opacity: 0.8;
 }
 
 .student-hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.375rem;
   line-height: 1.6;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-2xl);
+  color: #6b7280;
+  margin-bottom: 48px;
+  font-weight: 400;
 }
 
 .student-hero-cta {
@@ -5516,12 +5559,20 @@ header picture img:hover {
 
 .resume-mockup {
   background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-xl);
-  padding: var(--space-xl);
-  width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08),
+              0 10px 25px -3px rgba(0, 0, 0, 0.06);
+  padding: 32px;
+  width: 320px;
   position: relative;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transform: rotate(-2deg);
+  transition: all 0.3s ease;
+}
+
+.resume-mockup:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.12);
 }
 
 .resume-header {
@@ -5567,15 +5618,21 @@ header picture img:hover {
 
 .thinking-bubble {
   position: absolute;
-  top: -40px;
-  right: -60px;
-  background: var(--color-primary);
+  top: -45px;
+  right: -70px;
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
   color: white;
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-lg);
+  padding: 12px 16px;
+  border-radius: 16px;
   font-size: 0.875rem;
-  font-weight: var(--font-weight-medium);
-  box-shadow: var(--shadow-md);
+  font-weight: 500;
+  box-shadow: 0 10px 25px -3px rgba(59, 130, 246, 0.3);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
 .thinking-bubble::after {
@@ -5597,29 +5654,31 @@ header picture img:hover {
 
 /* Student Struggles Section */
 .student-struggles {
-  padding: var(--space-4xl) 0;
-  background-color: var(--color-bg-primary);
+  padding: 100px 0;
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-warm-gray) 100%);
 }
 
 .struggles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-xl);
-  margin-bottom: var(--space-4xl);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-bottom: 80px;
 }
 
 .struggle-card {
   text-align: center;
-  padding: var(--space-xl);
-  background: var(--color-bg-secondary);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 40px 32px;
+  background: white;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
 }
 
 .struggle-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-cream-dark);
 }
 
 .struggle-icon {
@@ -5641,21 +5700,25 @@ header picture img:hover {
 
 .struggles-conclusion {
   text-align: center;
-  padding: var(--space-2xl);
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
-  border-radius: var(--radius-lg);
-  color: white;
+  padding: 48px;
+  background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+  border-radius: 24px;
+  color: #374151;
+  border: 2px solid rgba(245, 225, 200, 0.5);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.06);
 }
 
 .struggles-conclusion h3 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.025em;
 }
 
 /* Tools Problem Section */
 .tools-problem {
-  padding: var(--space-4xl) 0;
-  background-color: var(--color-bg-secondary);
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--color-neutral-50) 0%, var(--color-cream-light) 100%);
 }
 
 .problem-intro {
@@ -5674,12 +5737,14 @@ header picture img:hover {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-4xl);
-  padding: var(--space-2xl);
+  gap: 24px;
+  margin-bottom: 80px;
+  padding: 48px;
   background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  border-radius: 32px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.04),
+              0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .journey-step {
@@ -5751,8 +5816,8 @@ header picture img:hover {
 
 /* Student Solution Section */
 .student-solution {
-  padding: var(--space-4xl) 0;
-  background-color: var(--color-bg-primary);
+  padding: 100px 0;
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-cream-light) 100%);
 }
 
 .solution-intro {
@@ -5768,23 +5833,42 @@ header picture img:hover {
 
 .solution-benefits {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-xl);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
 }
 
 .benefit-card {
   text-align: center;
-  padding: var(--space-2xl);
+  padding: 48px 32px;
   background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-border);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 28px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(252, 237, 218, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-cream-dark) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .benefit-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-cream-dark);
+}
+
+.benefit-card:hover::before {
+  opacity: 1;
 }
 
 .benefit-icon {
@@ -6092,8 +6176,8 @@ header picture img:hover {
 
 /* Confidence Building Section */
 .confidence-building {
-  padding: var(--space-4xl) 0;
-  background-color: var(--color-bg-secondary);
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--color-neutral-50) 0%, var(--color-cream-light) 100%);
 }
 
 .confidence-content {
@@ -6193,18 +6277,26 @@ header picture img:hover {
 }
 
 .testimonial-card blockquote {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-style: italic;
-  line-height: 1.5;
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-lg);
+  line-height: 1.4;
+  color: #374151;
+  margin: 24px 0 32px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
 }
 
 .testimonial-card cite {
-  font-size: 1rem;
-  font-weight: var(--font-weight-medium);
+  font-size: 1.125rem;
+  font-weight: 500;
   color: var(--color-primary);
   font-style: normal;
+  position: relative;
+}
+
+.testimonial-card cite::before {
+  content: '— ';
+  opacity: 0.6;
 }
 
 /* Student CTA Section */
@@ -6230,10 +6322,12 @@ header picture img:hover {
 
 .cta-offer {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  padding: var(--space-2xl);
-  margin-bottom: var(--space-2xl);
+  border-radius: 24px;
+  padding: 48px;
+  margin-bottom: 48px;
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 .offer-badge {
@@ -6319,23 +6413,32 @@ header picture img:hover {
 
 /* Mobile Responsive Styles for Student Page */
 @media (max-width: 768px) {
+  .student-hero {
+    padding: 80px 0;
+  }
+  
   .student-hero .container {
     grid-template-columns: 1fr;
-    gap: var(--space-2xl);
+    gap: 64px;
     text-align: center;
   }
   
   .student-hero-title {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
+    line-height: 1.1;
   }
   
   .resume-mockup {
-    width: 250px;
+    width: 280px;
+    padding: 24px;
+    transform: rotate(0deg);
   }
   
   .thinking-bubble {
-    right: -30px;
-    font-size: 0.75rem;
+    right: -40px;
+    top: -35px;
+    font-size: 0.8rem;
+    padding: 10px 14px;
   }
   
   .struggles-grid {
@@ -6395,35 +6498,54 @@ header picture img:hover {
 }
 
 @media (max-width: 480px) {
+  .student-hero {
+    padding: 60px 0;
+  }
+  
   .student-hero-title {
-    font-size: 2rem;
+    font-size: 2.25rem;
+    line-height: 1.1;
   }
   
   .student-hero-subtitle {
     font-size: 1.125rem;
+    line-height: 1.5;
   }
   
   .resume-mockup {
-    width: 220px;
-    padding: var(--space-md);
+    width: 240px;
+    padding: 20px;
   }
   
   .thinking-bubble {
-    right: -20px;
+    right: -25px;
     top: -30px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    padding: 8px 12px;
   }
   
   .struggle-card {
-    padding: var(--space-lg);
+    padding: 32px 24px;
   }
   
   .benefit-card {
-    padding: var(--space-lg);
+    padding: 40px 24px;
   }
   
   .step-card {
-    padding: var(--space-lg);
+    padding: 40px 24px;
+  }
+  
+  .student-struggles,
+  .student-solution,
+  .tools-problem,
+  .how-it-works {
+    padding: 80px 0;
+  }
+  
+  .transformation-example,
+  .student-cta {
+    padding: 80px 0;
   }
   
   .cta-title {
