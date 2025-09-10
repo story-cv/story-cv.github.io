@@ -5741,7 +5741,8 @@ body.mobile-menu-open {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  overflow: hidden;
+  padding: 0 var(--space-4xl);
+  overflow: visible;
 }
 
 .student-hero-title {
@@ -5862,7 +5863,7 @@ body.mobile-menu-open {
 .thinking-bubble {
   position: absolute;
   top: -45px;
-  right: -45px;
+  right: -30px;
   background: #f8f9fa;
   color: #374151;
   padding: 12px 16px;
@@ -5872,6 +5873,7 @@ body.mobile-menu-open {
   box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
   border: 1px solid #e5e7eb;
   animation: float 3s ease-in-out infinite;
+  z-index: 10;
 }
 
 @keyframes float {
