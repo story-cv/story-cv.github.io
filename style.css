@@ -5999,13 +5999,13 @@ body.mobile-menu-open {
 
 /* Animation styles */
 .animated-card {
-  transform: translateX(-100%);
+  transform: translateY(20px);
   opacity: 0;
-  transition: all 1s ease-out;
+  transition: all 0.8s ease-out;
 }
 
 .animated-card.visible {
-  transform: translateX(0);
+  transform: translateY(0);
   opacity: 1;
 }
 
