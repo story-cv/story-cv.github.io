@@ -18,6 +18,11 @@ function createHeader() {
                         <img src="${basePath}logo-with-text-light.svg" alt="Story.CV">
                     </a>
                     <nav class="nav">
+                        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                        </button>
                         <div class="nav-links">
                             <div class="header-nav">
                                 <a href="${basePath}about-us.html" class="nav-link">About</a>
@@ -49,6 +54,44 @@ function createHeader() {
                 link.classList.add('nav-link-active');
             }
         });
+
+        // Mobile menu functionality
+        const mobileMenuToggle = headerContainer.querySelector('.mobile-menu-toggle');
+        const navLinksContainer = headerContainer.querySelector('.nav-links');
+        
+        if (mobileMenuToggle && navLinksContainer) {
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                
+                this.setAttribute('aria-expanded', !isExpanded);
+                this.classList.toggle('active');
+                navLinksContainer.classList.toggle('active');
+                
+                // Prevent body scroll when menu is open
+                document.body.classList.toggle('mobile-menu-open', !isExpanded);
+            });
+
+            // Close menu when clicking on nav links
+            const allNavLinks = headerContainer.querySelectorAll('.nav-link, .nav-cta');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenuToggle.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    document.body.classList.remove('mobile-menu-open');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!headerContainer.contains(event.target)) {
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenuToggle.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    document.body.classList.remove('mobile-menu-open');
+                }
+            });
+        }
     }
 }
 
