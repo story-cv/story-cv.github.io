@@ -5024,21 +5024,45 @@ header picture img:hover {
 }
 
 /* Header Navigation Updates */
-.nav {
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-md) 0;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-lg);
+}
+
+.header-logo {
+  text-decoration: none;
+}
+
+.header-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: var(--space-lg);
-  margin-left: auto;
 }
 
 .header-nav {
@@ -5053,6 +5077,7 @@ header picture img:hover {
   text-decoration: none;
   font-weight: var(--font-weight-medium);
   transition: color var(--transition-fast);
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -5073,12 +5098,83 @@ header picture img:hover {
   font-size: 0.875rem;
   transition: all var(--transition-fast);
   box-shadow: var(--shadow-sm);
+  white-space: nowrap;
 }
 
 .nav-cta:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
   color: white;
+}
+
+/* Mobile Header Responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: var(--space-md) 0;
+  }
+
+  .header-content {
+    padding: 0 var(--space-md);
+  }
+
+  .header-logo img {
+    height: 36px;
+  }
+
+  .header-nav {
+    gap: var(--space-md);
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+  }
+
+  .nav-cta {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-content {
+    padding: 0 var(--space-sm);
+  }
+
+  .header-logo img {
+    height: 32px;
+  }
+
+  .header-nav {
+    gap: var(--space-sm);
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
+
+  .nav-cta {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-nav {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    padding: var(--space-xs) 0;
+  }
+
+  .nav-cta {
+    order: -1;
+    width: 100%;
+    text-align: center;
+    margin-bottom: var(--space-xs);
+  }
 }
 
 /* Mobile Responsive for About Page */
