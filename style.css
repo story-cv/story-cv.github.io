@@ -5124,6 +5124,21 @@ header picture img:hover {
   position: relative;
 }
 
+/* Mobile Menu Close Button */
+.mobile-menu-close {
+  display: none;
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: var(--z-fixed);
+}
+
 .hamburger-line {
   display: block;
   width: 20px;
@@ -5144,6 +5159,26 @@ header picture img:hover {
 
 .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.close-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+}
+
+.close-line:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-line:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* Prevent body scroll when mobile menu is open */
@@ -5193,6 +5228,12 @@ body.mobile-menu-open {
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
+  }
+
+  .nav-links.active .mobile-menu-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .header-nav {
