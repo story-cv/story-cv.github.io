@@ -5945,15 +5945,15 @@ body.mobile-menu-open {
 /* Desktop alternating layout */
 @media (min-width: 1024px) {
   .struggle-card:nth-child(1) {
-    flex-direction: row;
-  }
-  
-  .struggle-card:nth-child(2) {
     flex-direction: row-reverse;
   }
   
-  .struggle-card:nth-child(3) {
+  .struggle-card:nth-child(2) {
     flex-direction: row;
+  }
+  
+  .struggle-card:nth-child(3) {
+    flex-direction: row-reverse;
   }
 }
 
