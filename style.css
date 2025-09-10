@@ -5942,6 +5942,21 @@ body.mobile-menu-open {
   border-color: var(--color-cream-dark);
 }
 
+/* Desktop alternating layout */
+@media (min-width: 1024px) {
+  .struggle-card:nth-child(1) {
+    flex-direction: row;
+  }
+  
+  .struggle-card:nth-child(2) {
+    flex-direction: row-reverse;
+  }
+  
+  .struggle-card:nth-child(3) {
+    flex-direction: row;
+  }
+}
+
 .struggle-visual {
   flex-shrink: 0;
   width: 350px;
