@@ -5862,14 +5862,15 @@ body.mobile-menu-open {
 .thinking-bubble {
   position: absolute;
   top: -45px;
-  right: -70px;
-  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
-  color: white;
+  right: -45px;
+  background: #f8f9fa;
+  color: #374151;
   padding: 12px 16px;
   border-radius: 16px;
   font-size: 0.875rem;
   font-weight: 500;
-  box-shadow: 0 10px 25px -3px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
   animation: float 3s ease-in-out infinite;
 }
 
@@ -5887,7 +5888,7 @@ body.mobile-menu-open {
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid var(--color-primary);
+  border-top: 8px solid #f8f9fa;
 }
 
 @keyframes pulse {
