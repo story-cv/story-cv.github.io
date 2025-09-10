@@ -6144,6 +6144,12 @@ body.mobile-menu-open {
   display: none;
 }
 
+/* Final step marker styling */
+.final-step .timeline-marker.complete {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
 .problem-summary {
   text-align: center;
 }
