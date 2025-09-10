@@ -6761,14 +6761,30 @@ body.mobile-menu-open {
     padding: 0 20px;
   }
 
-  .struggles-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    margin-bottom: 60px;
+  .struggles-cards {
+    gap: 32px;
   }
-
+  
   .struggle-card {
+    flex-direction: column;
+    text-align: center;
     padding: 32px 24px;
+    gap: 24px;
+  }
+  
+  .struggle-visual {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  
+  .struggle-question {
+    font-size: 1.25rem;
+  }
+  
+  .struggle-body {
+    font-size: 1rem;
   }
 
   .resume-journey {
@@ -6924,7 +6940,26 @@ body.mobile-menu-open {
     margin-bottom: 32px;
   }
 
-  .struggle-card,
+  .struggle-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 20px;
+    gap: 20px;
+  }
+  
+  .struggle-visual {
+    width: 100%;
+    height: 160px;
+  }
+  
+  .struggle-question {
+    font-size: 1.125rem;
+  }
+  
+  .struggle-body {
+    font-size: 0.95rem;
+  }
+  
   .benefit-card,
   .step-card {
     padding: 28px 20px;
