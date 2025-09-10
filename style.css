@@ -6038,18 +6038,37 @@ body.mobile-menu-open {
 }
 
 .resume-journey {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0;
   margin-bottom: 80px;
-  padding: 48px;
+  padding: 60px 40px;
   background: white;
-  border-radius: 32px;
+  border-radius: 24px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.04),
               0 10px 10px -5px rgba(0, 0, 0, 0.02);
   border: 1px solid rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+/* Dotted connecting line */
+.resume-journey::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  right: 40px;
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right, 
+    #cbd5e1 0px, 
+    #cbd5e1 8px, 
+    transparent 8px, 
+    transparent 16px
+  );
+  z-index: 1;
+  transform: translateY(-50%);
 }
 
 .journey-step {
@@ -6057,28 +6076,41 @@ body.mobile-menu-open {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-width: 120px;
-  flex: 1;
+  position: relative;
+  z-index: 2;
+  padding: 0 12px;
 }
 
 .step-number {
-  width: 40px;
-  height: 40px;
-  background: var(--color-primary);
-  color: white;
+  width: 32px;
+  height: 32px;
+  background: #f8fafc;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-sm);
+  font-weight: 500;
+  margin-bottom: 16px;
+  font-size: 0.875rem;
+  z-index: 3;
+  position: relative;
+}
+
+.final-step .step-number {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  font-size: 1rem;
 }
 
 .step-content h4 {
-  font-size: 0.875rem;
-  font-weight: var(--font-weight-medium);
-  margin-bottom: var(--space-xs);
   color: var(--color-text-primary);
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .help-status {
@@ -6103,10 +6135,13 @@ body.mobile-menu-open {
   color: #16a34a;
 }
 
+.help-status.complete {
+  background: var(--color-primary);
+  color: white;
+}
+
 .journey-arrow {
-  font-size: 1.5rem;
-  color: var(--color-text-muted);
-  font-weight: bold;
+  display: none;
 }
 
 .problem-summary {
