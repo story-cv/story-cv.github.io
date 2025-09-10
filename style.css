@@ -6854,20 +6854,38 @@ body.mobile-menu-open {
   }
 
   .resume-journey {
-    flex-direction: column;
-    gap: 16px;
+    grid-template-columns: 1fr;
+    gap: 24px;
     padding: 32px 20px;
-    overflow-x: auto;
+  }
+  
+  /* Vertical dotted line for mobile */
+  .resume-journey::before {
+    top: 40px;
+    bottom: 40px;
+    left: 50%;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background-image: repeating-linear-gradient(
+      to bottom, 
+      #cbd5e1 0px, 
+      #cbd5e1 8px, 
+      transparent 8px, 
+      transparent 16px
+    );
+    transform: translateX(-50%);
   }
 
   .journey-step {
-    min-width: auto;
-    width: 100%;
+    flex-direction: row;
+    text-align: left;
+    gap: 16px;
+    padding: 0;
   }
-
-  .journey-arrow {
-    transform: rotate(90deg);
-    font-size: 1.25rem;
+  
+  .step-number {
+    flex-shrink: 0;
   }
 
   .transformation-grid {
@@ -7042,16 +7060,16 @@ body.mobile-menu-open {
 
   .resume-journey {
     padding: 24px 16px;
-    gap: 12px;
+    gap: 20px;
   }
 
   .step-content h4 {
-    font-size: 0.8rem;
-    text-align: center;
+    font-size: 1rem;
+    text-align: left;
   }
 
   .help-status {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     padding: 4px 8px;
   }
 
