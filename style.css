@@ -5916,6 +5916,17 @@ body.mobile-menu-open {
   margin-bottom: 60px;
 }
 
+/* Center aligned section titles */
+.section-title.centered {
+  display: block !important;
+  text-align: center !important;
+  border-bottom: none !important;
+}
+
+.section-title.centered::before {
+  display: none !important;
+}
+
 .struggles-cards {
   display: flex;
   flex-direction: column;
