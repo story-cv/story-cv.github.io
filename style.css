@@ -5482,6 +5482,7 @@ body.mobile-menu-open {
     font-size: 0.875rem;
   }
 }
+
 /* Related Articles Section */
 .related-articles {
   background-color: var(--color-bg-secondary);
@@ -5635,28 +5636,28 @@ body.mobile-menu-open {
   .related-articles {
     padding: var(--space-2xl) 0;
   }
-  
+
   .related-articles-title {
     font-size: 1.5rem;
     margin-bottom: var(--space-xl);
   }
-  
+
   .related-articles-grid {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
     max-width: 320px;
   }
-  
+
   .related-article-card {
     min-height: 360px;
     height: auto;
     max-width: 320px;
   }
-  
+
   .related-article-content {
     padding: var(--space-md);
   }
-  
+
   .related-article-image {
     height: 140px;
   }
@@ -5667,32 +5668,32 @@ body.mobile-menu-open {
     padding: var(--space-xl) 0;
     margin-top: var(--space-2xl);
   }
-  
+
   .related-articles-title {
     font-size: 1.25rem;
   }
-  
+
   .related-articles-grid {
     max-width: 280px;
     padding: 0 var(--space-sm);
   }
-  
+
   .related-article-card {
     min-height: 340px;
     height: auto;
     max-width: 280px;
   }
-  
+
   .related-article-meta {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-xs);
   }
-  
+
   .related-article-title {
     font-size: 0.95rem;
   }
-  
+
   .related-article-image {
     height: 120px;
   }
@@ -5785,6 +5786,12 @@ body.mobile-menu-open {
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-sm);
+}
+
+@media (max-width: 768px) {
+  .student-hero-cta {
+    align-items: center;
+  }
 }
 
 .hero-note {
@@ -6682,39 +6689,39 @@ body.mobile-menu-open {
   .student-hero {
     padding: 60px 0;
   }
-  
+
   .student-hero .container {
     grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
     padding: 0 20px;
   }
-  
+
   .student-hero-title {
     font-size: 2.5rem;
     line-height: 1.1;
     margin-bottom: 20px;
   }
-  
+
   .student-hero-subtitle {
     font-size: 1.125rem;
     margin-bottom: 32px;
   }
-  
+
   .resume-mockup {
     width: 280px;
     padding: 24px;
     transform: rotate(0deg);
     margin: 0 auto;
   }
-  
+
   .thinking-bubble {
     right: -35px;
     top: -30px;
     font-size: 0.75rem;
     padding: 8px 12px;
   }
-  
+
   .student-struggles,
   .student-solution,
   .tools-problem,
@@ -6724,109 +6731,109 @@ body.mobile-menu-open {
   .transformation-example {
     padding: 60px 0;
   }
-  
+
   .student-cta {
     padding: 80px 0;
   }
-  
+
   .container {
     padding: 0 20px;
   }
-  
+
   .struggles-grid {
     grid-template-columns: 1fr;
     gap: 24px;
     margin-bottom: 60px;
   }
-  
+
   .struggle-card {
     padding: 32px 24px;
   }
-  
+
   .resume-journey {
     flex-direction: column;
     gap: 16px;
     padding: 32px 20px;
     overflow-x: auto;
   }
-  
+
   .journey-step {
     min-width: auto;
     width: 100%;
   }
-  
+
   .journey-arrow {
     transform: rotate(90deg);
     font-size: 1.25rem;
   }
-  
+
   .transformation-grid {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  
+
   .arrow-column {
     order: 2;
     min-height: auto;
     padding: 16px 0;
   }
-  
+
   .transformation-arrow {
     transform: rotate(90deg);
     font-size: 1.5rem;
   }
-  
+
   .before-after {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  
+
   .steps-grid {
     grid-template-columns: 1fr;
     gap: 32px;
     margin-bottom: 48px;
   }
-  
+
   .step-card {
     padding: 40px 24px;
   }
-  
+
   .confidence-content {
     grid-template-columns: 1fr;
     gap: 48px;
     text-align: center;
   }
-  
+
   .cta-title {
     font-size: 2rem;
     line-height: 1.1;
   }
-  
+
   .cta-subtitle {
     font-size: 1.125rem;
   }
-  
+
   .testimonial-card {
     padding: 48px 32px;
     margin: 0 20px;
     max-width: calc(100vw - 40px);
     box-sizing: border-box;
   }
-  
+
   .testimonial-card blockquote {
     font-size: 1.375rem;
     line-height: 1.3;
   }
-  
+
   .solution-benefits {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  
+
   .benefit-card {
     padding: 40px 24px;
   }
-  
+
   .example-scenario {
     padding: 32px 20px;
     margin-bottom: 48px;
@@ -6838,39 +6845,39 @@ body.mobile-menu-open {
   .student-hero {
     padding: 50px 0;
   }
-  
+
   .student-hero .container {
     padding: 0 16px;
   }
-  
+
   .student-hero-title {
     font-size: 2rem;
     line-height: 1.1;
     margin-bottom: 16px;
   }
-  
+
   .student-hero-subtitle {
     font-size: 1rem;
     line-height: 1.5;
     margin-bottom: 28px;
   }
-  
+
   .resume-mockup {
     width: 220px;
     padding: 18px;
   }
-  
+
   .thinking-bubble {
     right: -20px;
     top: -25px;
     font-size: 0.7rem;
     padding: 6px 10px;
   }
-  
+
   .container {
     padding: 0 16px;
   }
-  
+
   .student-struggles,
   .student-solution,
   .tools-problem,
@@ -6880,105 +6887,105 @@ body.mobile-menu-open {
   .transformation-example {
     padding: 50px 0;
   }
-  
+
   .student-cta {
     padding: 60px 0;
   }
-  
+
   .section-title {
     font-size: 1.75rem;
     line-height: 1.2;
     margin-bottom: 24px;
   }
-  
+
   .section-subtitle {
     font-size: 1rem;
     margin-bottom: 32px;
   }
-  
+
   .struggle-card,
   .benefit-card,
   .step-card {
     padding: 28px 20px;
   }
-  
+
   .struggle-icon,
   .benefit-icon {
     font-size: 2rem;
     margin-bottom: 16px;
   }
-  
+
   .resume-journey {
     padding: 24px 16px;
     gap: 12px;
   }
-  
+
   .step-content h4 {
     font-size: 0.8rem;
     text-align: center;
   }
-  
+
   .help-status {
     font-size: 0.7rem;
     padding: 4px 8px;
   }
-  
+
   .transformation-grid {
     gap: 24px;
   }
-  
+
   .example-scenario {
     padding: 24px 16px;
     margin-bottom: 32px;
   }
-  
+
   .scenario-header h3 {
     font-size: 1.125rem;
   }
-  
+
   .experience-item,
   .relevant-item {
     font-size: 0.85rem;
     padding: 12px 16px;
   }
-  
+
   .cta-title {
     font-size: 1.75rem;
     line-height: 1.1;
   }
-  
+
   .cta-subtitle {
     font-size: 1rem;
   }
-  
+
   .cta-offer {
     padding: 32px 20px;
     margin-bottom: 32px;
   }
-  
+
   .offer-details {
     flex-direction: column;
     gap: 12px;
   }
-  
+
   .discounted-price {
     font-size: 2rem;
   }
-  
+
   .original-price {
     font-size: 1.25rem;
   }
-  
+
   .testimonial-card {
     padding: 32px 24px;
     margin: 0 16px;
   }
-  
+
   .testimonial-card blockquote {
     font-size: 1.25rem;
     line-height: 1.3;
   }
-  
+
   .btn-large {
     padding: 14px 28px;
     font-size: 1rem;
