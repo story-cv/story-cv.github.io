@@ -592,6 +592,25 @@ function initializeAccordion() {
 }
 
 // Scroll Animation for Student Page
+document.addEventListener('DOMContentLoaded', function() {
+    // Intersection Observer for animated cards
+    const animatedCards = document.querySelectorAll('.animated-card');
+    
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    animatedCards.forEach(card => {
+        cardObserver.observe(card);
+    });
+});
 function initializeScrollAnimations() {
     const animatedCards = document.querySelectorAll('.animated-card');
     
