@@ -7243,4 +7243,184 @@ body.mobile-menu-open {
     padding: 14px 28px;
     font-size: 1rem;
   }
+  
+}
+
+/* Resume Comparison Section */
+.resume-comparison {
+  margin-top: 60px;
+}
+
+.comparison-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.comparison-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.comparison-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.comparison-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.resume-before,
+.resume-after {
+  position: relative;
+}
+
+.resume-label {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.resume-before .resume-label {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.resume-after .resume-label {
+  background: var(--color-primary);
+  color: white;
+}
+
+.resume-content {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.resume-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.resume-header h4 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.contact-info {
+  color: #64748b;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.contact-info a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.resume-section {
+  margin-bottom: 24px;
+}
+
+.resume-section h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  font-size: 1rem;
+}
+
+.resume-section p {
+  color: #334155;
+  margin: 0 0 12px 0;
+  font-size: 0.95rem;
+}
+
+.entry {
+  margin-bottom: 16px;
+}
+
+.entry strong {
+  color: #1e293b;
+}
+
+.entry em {
+  color: #64748b;
+  font-style: italic;
+}
+
+.resume-section ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.resume-section li {
+  color: #334155;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+/* After section animation */
+.animated-resume {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.animated-resume.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Highlight improvements in after section */
+.resume-after strong {
+  background: linear-gradient(120deg, rgba(248, 154, 35, 0.1) 0%, rgba(248, 154, 35, 0.1) 100%);
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+/* Mobile styles for resume comparison */
+@media (max-width: 768px) {
+  .comparison-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .comparison-title {
+    font-size: 1.5rem;
+  }
+  
+  .comparison-subtitle {
+    font-size: 1rem;
+  }
+  
+  .resume-content {
+    padding: 24px 20px;
+  }
+  
+  .resume-header h4 {
+    font-size: 1.5rem;
+  }
 }

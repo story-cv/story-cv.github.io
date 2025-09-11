@@ -604,10 +604,10 @@ function initializeAccordion() {
 
 // Scroll Animation for Student Page
 document.addEventListener('DOMContentLoaded', function() {
-    // Intersection Observer for animated cards
-    const animatedCards = document.querySelectorAll('.animated-card');
+    // Intersection Observer for animated cards and resume comparisons
+    const animatedElements = document.querySelectorAll('.animated-card, .animated-resume');
     
-    const cardObserver = new IntersectionObserver((entries) => {
+    const elementObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
@@ -618,14 +618,14 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -50px 0px'
     });
 
-    animatedCards.forEach(card => {
-        cardObserver.observe(card);
+    animatedElements.forEach(element => {
+        elementObserver.observe(element);
     });
 });
 function initializeScrollAnimations() {
-    const animatedCards = document.querySelectorAll('.animated-card');
+    const animatedElements = document.querySelectorAll('.animated-card, .animated-resume');
     
-    if (animatedCards.length === 0) return;
+    if (animatedElements.length === 0) return;
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -639,8 +639,8 @@ function initializeScrollAnimations() {
         rootMargin: '0px 0px -50px 0px'
     });
     
-    animatedCards.forEach(card => {
-        observer.observe(card);
+    animatedElements.forEach(element => {
+        observer.observe(element);
     });
 }
 
