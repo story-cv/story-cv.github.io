@@ -57,14 +57,25 @@ document.addEventListener('DOMContentLoaded', function() {
         advantageObserver.observe(card);
     });
     
-    // Timeline section with scroll-triggered animations
+    // Timeline section with scroll-triggered animations and progressive filling
     const timelineSteps = document.querySelectorAll('.timeline-step');
+    const timelineLine = document.querySelector('.timeline-line');
     const timelineHeader = document.querySelector('.timeline-sticky-header');
+    let visibleStepsCount = 0;
     
     const timelineObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
                 entry.target.classList.add('visible');
+                visibleStepsCount++;
+                
+                // Update timeline progress
+                if (timelineLine) {
+                    // Remove all progress classes
+                    timelineLine.className = timelineLine.className.replace(/progress-\d+/g, '');
+                    // Add new progress class
+                    timelineLine.classList.add(`progress-${visibleStepsCount}`);
+                }
             }
         });
     }, {
