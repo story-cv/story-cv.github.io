@@ -1161,9 +1161,33 @@ header picture img:hover {
   left: var(--space-lg);
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: 4px;
   background-color: var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
 }
+
+.timeline-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, var(--color-primary) 0%, #C63716 100%);
+  transition: height 0.6s ease-out;
+  border-radius: 2px;
+}
+
+.timeline-line.progress-0::after { height: 0%; }
+.timeline-line.progress-1::after { height: 12.5%; }
+.timeline-line.progress-2::after { height: 25%; }
+.timeline-line.progress-3::after { height: 37.5%; }
+.timeline-line.progress-4::after { height: 50%; }
+.timeline-line.progress-5::after { height: 62.5%; }
+.timeline-line.progress-6::after { height: 75%; }
+.timeline-line.progress-7::after { height: 87.5%; }
+.timeline-line.progress-8::after { height: 100%; }
 
 .timeline-step {
   position: relative;
@@ -1180,14 +1204,40 @@ header picture img:hover {
 
 .timeline-marker {
   position: absolute;
-  left: calc(-1 * var(--space-lg) - 8px);
+  left: calc(-1 * var(--space-lg) - 10px);
   top: var(--space-xs);
-  width: 16px;
-  height: 16px;
-  background-color: var(--color-primary);
-  border: 3px solid var(--color-bg-primary);
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-bg-primary);
+  border: 3px solid var(--color-border);
   border-radius: 50%;
   z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.timeline-step.visible .timeline-marker {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(238, 78, 52, 0.2);
+  transform: scale(1.1);
+}
+
+.timeline-step.visible .timeline-marker::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0;
+  animation: checkmark-appear 0.3s ease 0.4s forwards;
+}
+
+@keyframes checkmark-appear {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
 .timeline-content {
@@ -1256,12 +1306,17 @@ header picture img:hover {
 
   .timeline-line {
     left: var(--space-md);
+    width: 3px;
   }
 
   .timeline-marker {
-    left: calc(-1 * var(--space-md) - 7px);
-    width: 14px;
-    height: 14px;
+    left: calc(-1 * var(--space-md) - 9px);
+    width: 18px;
+    height: 18px;
+  }
+
+  .timeline-step.visible .timeline-marker::after {
+    font-size: 10px;
   }
 
   .timeline-content {
@@ -1315,12 +1370,17 @@ header picture img:hover {
 
   .timeline-line {
     left: var(--space-sm);
+    width: 2px;
   }
 
   .timeline-marker {
-    left: calc(-1 * var(--space-sm) - 6px);
-    width: 12px;
-    height: 12px;
+    left: calc(-1 * var(--space-sm) - 8px);
+    width: 16px;
+    height: 16px;
+  }
+
+  .timeline-step.visible .timeline-marker::after {
+    font-size: 8px;
   }
 
   .timeline-content {
@@ -6159,17 +6219,7 @@ body.mobile-menu-open {
   margin-top: var(--space-lg);
 }
 
-.final-step::before {
-  content: '🎉';
-  position: absolute;
-  top: -15px;
-  right: 20px;
-  font-size: 2rem;
-  background: white;
-  padding: var(--space-sm);
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
+
 
 .final-step .timeline-marker {
   background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
