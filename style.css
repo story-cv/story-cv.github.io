@@ -6118,6 +6118,10 @@ body.mobile-menu-open {
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-md);
   font-weight: var(--font-weight-medium);
+  display: inline-block;
+  width: auto;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .help-status.not-addressed {
