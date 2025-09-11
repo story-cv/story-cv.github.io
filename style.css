@@ -6149,9 +6149,75 @@ body.mobile-menu-open {
 }
 
 /* Final step marker styling */
-.final-step .timeline-marker.complete {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+.final-step {
+  position: relative;
+  padding: var(--space-xl);
+  background: linear-gradient(135deg, var(--color-cream-light) 0%, var(--color-cream) 100%);
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 10px 25px -3px rgba(238, 78, 52, 0.1);
+  margin-top: var(--space-lg);
+}
+
+.final-step::before {
+  content: '🎉';
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  font-size: 2rem;
+  background: white;
+  padding: var(--space-sm);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.final-step .timeline-marker {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  border: 3px solid white;
+  width: 24px;
+  height: 24px;
+  box-shadow: 0 4px 12px rgba(238, 78, 52, 0.3);
+  animation: pulse-success 2s infinite;
+}
+
+.final-step .timeline-content {
+  padding-left: var(--space-xl);
+}
+
+.final-step .step-title {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.final-step .step-description {
+  font-size: 1.125rem;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.final-step .help-status.complete {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
+  color: white;
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(238, 78, 52, 0.2);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@keyframes pulse-success {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(238, 78, 52, 0.3);
+  }
+  50% { 
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(238, 78, 52, 0.4);
+  }
 }
 
 .problem-summary {
