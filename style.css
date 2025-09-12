@@ -1225,27 +1225,8 @@ header picture img:hover {
   background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
   border-color: var(--color-primary);
   box-shadow: 0 4px 12px rgba(238, 78, 52, 0.2);
-  transform: scale(1;
+  transform: scale(1.1);
   color: white;
-}.1);
-}
-
-.timeline-step.visible .timeline-marker::after {
-  content: '✓';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  opacity: 0;
-  animation: checkmark-appear 0.3s ease 0.4s forwards;
-}
-
-@keyframes checkmark-appear {
-  from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
 .timeline-content {
