@@ -57,14 +57,25 @@ document.addEventListener('DOMContentLoaded', function() {
         advantageObserver.observe(card);
     });
     
-    // Timeline section with scroll-triggered animations
+    // Timeline section with scroll-triggered animations and progressive filling
     const timelineSteps = document.querySelectorAll('.timeline-step');
+    const timelineLine = document.querySelector('.timeline-line');
     const timelineHeader = document.querySelector('.timeline-sticky-header');
+    let visibleStepsCount = 0;
     
     const timelineObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
                 entry.target.classList.add('visible');
+                visibleStepsCount++;
+                
+                // Update timeline progress
+                if (timelineLine) {
+                    // Remove all progress classes
+                    timelineLine.className = timelineLine.className.replace(/progress-\d+/g, '');
+                    // Add new progress class
+                    timelineLine.classList.add(`progress-${visibleStepsCount}`);
+                }
             }
         });
     }, {
@@ -589,4 +600,61 @@ function initializeAccordion() {
             content.setAttribute('data-state', 'closed');
         }
     });
+}
+
+// Scroll Animation for Student Page
+document.addEventListener('DOMContentLoaded', function() {
+    // Intersection Observer for all animated elements
+    const animatedElements = document.querySelectorAll('.animated-card, .animated-resume, .fade-in-up, .fade-in-up-delayed, .fade-in-sequence');
+    
+    const elementObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Handle sequenced animations with delay
+                if (entry.target.classList.contains('fade-in-sequence')) {
+                    const delay = parseInt(entry.target.dataset.delay) || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                } else {
+                    entry.target.classList.add('visible');
+                }
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    animatedElements.forEach(element => {
+        elementObserver.observe(element);
+    });
+});
+function initializeScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.animated-card, .animated-resume');
+    
+    if (animatedElements.length === 0) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Initialize scroll animations when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeScrollAnimations);
+} else {
+    initializeScrollAnimations();
 }

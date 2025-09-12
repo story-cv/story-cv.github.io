@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Resume Builder | AI-Powered Resume Writer for University Students - StoryCV</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Create a standout student resume with StoryCV's AI-powered resume builder. Transform your university experiences into a compelling student resume that lands internships and jobs. Designed specifically for college students.">
+    <meta name="keywords" content="student resume, student resume builder, university resume, college student resume, student resume template, internship resume, AI resume writer for students, resume help for students">
+    <meta name="author" content="StoryCV">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://story.cv/student-resume">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Student Resume Builder | AI-Powered Resume Writer for University Students">
+    <meta property="og:description" content="Create a standout student resume with StoryCV's AI-powered resume builder. Transform your university experiences into a compelling student resume that lands internships and jobs.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://story.cv/student-resume">
+    <meta property="og:site_name" content="StoryCV">
+    <meta property="og:image" content="https://story.cv/student-resume-hero.webp">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Student Resume Builder | AI-Powered Resume Writer for University Students">
+    <meta name="twitter:description" content="Create a standout student resume with StoryCV's AI-powered resume builder. Transform your university experiences into a compelling student resume that lands internships and jobs.">
+    <meta name="twitter:image" content="https://story.cv/student-resume-hero.webp">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Student Resume Builder - StoryCV",
+        "description": "AI-powered student resume builder designed specifically for university students and college graduates. Create compelling student resumes that showcase academic experiences and land internships.",
+        "url": "https://story.cv/student-resume",
+        "keywords": "student resume, student resume builder, university resume, college student resume",
+        "mainEntity": {
+            "@type": "SoftwareApplication",
+            "name": "StoryCV Student Resume Builder",
+            "description": "AI-powered student resume builder that helps university students create professional resumes from their academic experiences",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web Browser",
+            "offers": {
+                "@type": "Offer",
+                "price": "39",
+                "priceCurrency": "USD",
+                "description": "Student resume building service"
+            },
+            "provider": {
+                "@type": "Organization",
+                "name": "StoryCV",
+                "url": "https://story.cv"
+            },
+            "audience": {
+                "@type": "Audience",
+                "audienceType": "University Students, College Students"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://story.cv"
+                },
+                {
+                    "@type": "ListItem", 
+                    "position": 2,
+                    "name": "Student Resume",
+                    "item": "https://story.cv/student-resume"
+                }
+            ]
+        }
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div id="header-container"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="student-hero">
+            <div class="container">
+                <div class="student-hero-content">
+                    <h1 class="student-hero-title">
+                        Struggling with a <span class="highlight-text">blank resume?</span>
+                    </h1>
+                    <p class="student-hero-subtitle">
+                        You're not alone. Most students don't know what to write. StoryCV helps you turn your experiences into a compelling resume that actually gets you interviews.
+                    </p>
+                    <div class="student-hero-cta">
+                        <a href="https://tally.so/r/wzBlA0" class="btn btn-primary btn-large">
+                            Get Your Student Resume
+                        </a>
+                        <p class="hero-note">Join 50% off pre-launch. No commitment required.</p>
+                    </div>
+                </div>
+                <div class="student-hero-visual">
+                    <div class="blank-resume-visual">
+                        <div class="resume-mockup">
+                            <div class="resume-header">
+                                <div class="name-placeholder"></div>
+                                <div class="contact-placeholder"></div>
+                            </div>
+                            <div class="resume-section">
+                                <div class="section-title">Experience</div>
+                                <div class="blank-line"></div>
+                                <div class="blank-line short"></div>
+                                <div class="blank-line"></div>
+                            </div>
+                            <div class="resume-section">
+                                <div class="section-title">Education</div>
+                                <div class="blank-line"></div>
+                                <div class="blank-line short"></div>
+                            </div>
+                            <div class="thinking-bubble">
+                                <p>Woah, I'm blank.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Struggles Section -->
+        <section class="student-struggles">
+            <div class="container">
+                <h2 class="section-title centered">Why is my resume so hard to write?</h2>
+
+                <div class="struggles-cards">
+                    <div class="struggle-card animated-card" data-animation="slide-left">
+                        <div class="struggle-visual">
+                            <img src="student-resume/coursework-to-resume.webp" alt="Translating coursework into resume skills" loading="lazy">
+                        </div>
+                        <div class="struggle-content">
+                            <h3 class="struggle-question">How do I translate my coursework into skills for resume?</h3>
+                            <p class="struggle-body">Your degree proves you can learn, but it doesn't always show what you can actually do. You know you have skills, but how do you prove them on paper?</p>
+                        </div>
+                    </div>
+
+                    <div class="struggle-card animated-card" data-animation="slide-left">
+                        <div class="struggle-visual">
+                            <img src="student-resume/one-page-resume.webp" alt="Deciding what to include on one page resume" loading="lazy">
+                        </div>
+                        <div class="struggle-content">
+                            <h3 class="struggle-question">What do I leave out? It all feels important.</h3>
+                            <p class="struggle-body">You've worked hard on everything. You're afraid if you cut something, you'll lose a chance. But every unnecessary detail makes it harder for them to find your value.</p>
+                        </div>
+                    </div>
+
+                    <div class="struggle-card animated-card" data-animation="slide-left">
+                        <div class="struggle-visual">
+                            <img src="student-resume/stand-out-student-resume.webp" alt="Standing out with student resume" loading="lazy">
+                        </div>
+                        <div class="struggle-content">
+                            <h3 class="struggle-question">How do I stand out when everyone has similar experiences?</h3>
+                            <p class="struggle-body">Everyone's resume looks the same. The problem isn't your background; it's how you're presenting it.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="empathy-message" style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: var(--color-slate-50); border-radius: 12px;">
+                    <p style="font-size: 1.1rem; color: var(--color-slate-700); margin: 0;">We get it. These challenges are real, and you're not alone in feeling this way.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Tools Problem Section -->
+        <section class="tools-problem">
+            <div class="container">
+                <div class="problem-intro">
+                    <h2 class="section-title centered">The problem isn't the resume template. It's the content.</h2>
+                    <p class="section-subtitle">Most resume builders help with the last mile, but there's more to this journey.</p>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+
+                    <div class="timeline-step" data-step="1">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h4 class="step-title">Gather all your content in one place</h4>
+                            <p class="step-description">You have a lot of information. Getting it all down is the first step.</p>
+                            <div class="help-status not-addressed">Current tools don't help</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step" data-step="2">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h4 class="step-title">Prioritize what matters</h4>
+                            <p class="step-description">Not everything you have done belongs on your resume. You have to decide what to leave out.</p>
+                            <div class="help-status not-addressed">Current tools don't help</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step" data-step="3">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h4 class="step-title">Create a cohesive story</h4>
+                            <p class="step-description">Your experiences should tell a clear story. Connecting the dots is the challenge.</p>
+                            <div class="help-status not-addressed">Current tools don't help</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step" data-step="4">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h4 class="step-title">Make It Look Good</h4>
+                            <p class="step-description">Formatting is the easy part. The real work is in the content.</p>
+                            <div class="help-status addressed">Current tools help</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step" data-step="5">
+                        <div class="timeline-marker">5</div>
+                        <div class="timeline-content">
+                            <h4 class="step-title">ATS optimization and job matching</h4>
+                            <p class="step-description">There are robots reading your resume first. Your content may not be optimized for them.</p>
+                            <div class="help-status addressed">Current tools help</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step final-step" data-step="9">
+                        <div class="timeline-marker complete"></div>
+                        <div class="timeline-content">
+                            <h4 class="step-title">Your resume is ready, but is it good enough?</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="problem-summary">
+                    <h3>None of the resume tools help with the fundamentals.</h3>
+                    <p>Most tools assume you already know what to say and how to say it.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- StoryCV Solution Section -->
+        <section class="student-solution">
+            <div class="container">
+                <div class="solution-intro fade-in-up">
+                    <h2 class="solution-headline">We take away your burden of drafting a high-quality resume.</h2>
+                    <p class="solution-description">Stop struggling with blank pages. Let us turn your experiences into compelling achievements.</p>
+                </div>
+
+                <div class="resume-comparison">
+                    <div class="comparison-header">
+                        <h3 class="comparison-title">See the transformation</h3>
+                        <p class="comparison-subtitle">From a basic resume to one that tells a compelling story</p>
+                    </div>
+
+                    <div class="comparison-layout">
+                        <div class="resume-before">
+                            <div class="resume-label">Before</div>
+                            <div class="resume-content">
+                                <div class="resume-header">
+                                    <h4>Olivia Davies</h4>
+                                    <p class="contact-info">olivia.davies@email.com | 07700 900500 | linkedin.com/in/oliviadavies</p>
+                                </div>
+
+                                <div class="resume-section">
+                                    <h5>Summary</h5>
+                                    <p>A motivated student at the University of Manchester looking for an internship in the digital marketing industry. I have a passion for social media and have done several projects at university.</p>
+                                </div>
+
+                                <div class="resume-section">
+                                    <h5>Education</h5>
+                                    <div class="entry">
+                                        <strong>The University of Manchester</strong> | Manchester, UK<br>
+                                        <em>2022 – Present</em><br>
+                                        BSc (Hons) Marketing, 2:1
+                                        <ul>
+                                            <li>Studied modules like Digital Marketing and Consumer Behaviour.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="resume-section">
+                                    <h5>Experience</h5>
+                                    <div class="entry">
+                                        <strong>Social Media Manager,</strong> University Society<br>
+                                        <em>Sep 2023 - May 2024</em>
+                                        <ul>
+                                            <li>Managed the society's social media accounts.</li>
+                                            <li>Created content and posted regularly.</li>
+                                            <li>Helped promote our events.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="resume-section">
+                                    <h5>Skills</h5>
+                                    <ul>
+                                        <li><strong>Digital:</strong> Social media, content creation, Microsoft Office</li>
+                                        <li><strong>Personal:</strong> Teamwork, communication, organisation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resume-after animated-resume">
+                            <div class="resume-label">After</div>
+                            <div class="resume-content">
+                                <div class="resume-header">
+                                    <h4>Olivia Davies</h4>
+                                    <p class="contact-info">olivia.davies@email.com | 07700 900500 | <a href="https://www.linkedin.com/in/oliviadavies">linkedin.com/in/oliviadavies</a></p>
+                                </div>
+
+                                <div class="resume-section">
+                                    <h5>Professional Summary</h5>
+                                    <p>Results-driven Marketing student with a passion for building engaged online communities. Proven ability to drive audience growth and increase engagement through data-informed digital content strategies. Seeking to leverage my practical skills in a dynamic marketing internship to contribute to brand growth and campaign success.</p>
+                                </div>
+
+                                <div class="resume-section">
+                                    <h5>Education</h5>
+                                    <div class="entry">
+                                        <strong>The University of Manchester</strong> | Manchester, UK<br>
+                                        <em>2022 – Present</em><br>
+                                        <strong>BSc (Hons) Marketing</strong>, Upper Second-Class Honours (2:1)
+                                        <ul>
+                                            <li><strong>Key Project:</strong> Led a team of four to develop and execute a comprehensive digital marketing plan for a fictional sustainable brand, resulting in a mock campaign that surpassed all key performance indicators (KPIs) for reach and engagement.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="resume-section">
+                                    <h5>Experience</h5>
+                                    <div class="entry">
+                                        <strong>Social Media Manager,</strong> University Marketing Society<br>
+                                        <em>Sep 2023 - May 2024</em>
+                                        <ul>
+                                            <li>Drove content strategy for all social channels (Instagram, LinkedIn, and TikTok), resulting in a <strong>40% increase in follower count</strong> to over 800 members.</li>
+                                            <li>Designed and executed targeted promotional campaigns for 15+ society events, leading to a <strong>20% rise in average event attendance.</strong></li>
+                                            <li>Analysed weekly performance metrics using native analytics to optimise posting times and content types, boosting overall engagement rates by <strong>30%</strong>.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="resume-section">
+                                    <h5>Skills</h5>
+                                    <ul>
+                                        <li><strong>Digital Marketing:</strong> Social Media Strategy, Content Creation, SEO Fundamentals, Email Marketing, Audience Engagement</li>
+                                        <li><strong>Data & Analytics:</strong> Social Media Analytics, Campaign Tracking</li>
+                                        <li><strong>Software:</strong> Adobe Express, Canva, Hootsuite, Microsoft Office Suite</li>
+                                        <li><strong>Interpersonal:</strong> Collaborative Leadership, Project Organisation, Public Speaking</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="works-header fade-in-up">
+                    <h2 class="works-title">Three simple steps to your perfect resume</h2>
+                    <p class="works-subtitle">No complex prompts. No hours of writing. Just clarity.</p>
+                </div>
+
+                <div class="steps-flow">
+                    <div class="step-item fade-in-sequence" data-delay="0">
+                        <div class="step-indicator">
+                            <span class="step-number">1</span>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Answer targeted questions</h3>
+                            <p class="step-description">We ask smart questions about your experiences. You simply answer.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-connector"></div>
+
+                    <div class="step-item fade-in-sequence" data-delay="200">
+                        <div class="step-indicator">
+                            <span class="step-number">2</span>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Get instant results</h3>
+                            <p class="step-description">Your experiences become compelling achievements with quantified impact.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-connector"></div>
+
+                    <div class="step-item fade-in-sequence" data-delay="400">
+                        <div class="step-indicator">
+                            <span class="step-number">3</span>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Download & apply</h3>
+                            <p class="step-description">Your professional resume is ready. Time to land interviews.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="works-footer fade-in-up-delayed">
+                    <p class="works-promise">AI that works for you, not the other way around.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confidence Building Section -->
+        <section class="confidence-building">
+            <div class="container">
+                <div class="confidence-content">
+                    <div class="confidence-text">
+                        <h2 class="section-title">Clarity builds confidence</h2>
+                        <p class="confidence-description">
+                            Ownership of their narrative is cornerstone to career readiness. You won't just get a better resume. You'll leave with a clearer view of what you've done.
+                        </p>
+                        <div class="confidence-benefits">
+                            <div class="benefit-point">
+                                <span class="check-icon">✓</span>
+                                <span>Understand your unique value proposition</span>
+                            </div>
+                            <div class="benefit-point">
+                                <span class="check-icon">✓</span>
+                                <span>Articulate achievements confidently in interviews</span>
+                            </div>
+                            <div class="benefit-point">
+                                <span class="check-icon">✓</span>
+                                <span>Build a compelling professional narrative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="confidence-visual">
+                        <div class="student-journey-visual">
+                            <div class="journey-stage confused">
+                                <div class="stage-emoji">😰</div>
+                                <div class="stage-text">Confused about experiences</div>
+                            </div>
+                            <div class="journey-arrow-down">↓</div>
+                            <div class="journey-stage confident">
+                                <div class="stage-emoji">😊</div>
+                                <div class="stage-text">Clear on value & impact</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="student-testimonial">
+            <div class="container">
+                <div class="testimonial-spotlight fade-in-up">
+                    <div class="famewall-container">
+                        <div class="famewall-share-embed" data-src="storycv" data-uuid="bb540608-b374-4947-94e3-1d4229cf3cc5"></div>
+                        
+                        <!-- Single authentic testimonial -->
+                        <div class="testimonials-fallback">
+                            <div class="testimonial-card single-testimonial">
+                                <div class="testimonial-content">
+                                    <p>"I couldn't imagine doing my resume this neatly by myself. Thanks StoryCV"</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-info">
+                                        <span class="author-name">Pallavi P J</span>
+                                        <span class="author-title">Bank Professional</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="student-cta">
+            <div class="container">
+                <div class="cta-focus fade-in-up">
+                    <h2 class="cta-headline">Ready to turn your experiences into a compelling resume?</h2>
+                    <p class="cta-promise">Join thousands of students who've already transformed their job search.</p>
+
+                    <div class="cta-offer-card">
+                        <div class="offer-highlight">
+                            <span class="offer-label">Pre-Launch Exclusive</span>
+                            <div class="price-display">
+                                <span class="price-main">$39</span>
+                                <span class="price-original">$79</span>
+                            </div>
+                            <span class="savings-badge">Save 50%</span>
+                        </div>
+                        
+                        <div class="offer-action">
+                            <a href="https://tally.so/r/wzBlA0" class="cta-button">
+                                Join the Waitlist
+                            </a>
+                            <p class="cta-note">No payment today. Lock in your 50% discount for launch.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join Community Section -->
+        <section class="join-community">
+            <div class="container">
+                <div class="community-content">
+                    <h3>Connect with other students</h3>
+                    <p>Get resume tips, share experiences, and stay updated on new features</p>
+                    <a href="https://www.reddit.com/r/StoryCV/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                        Join the community →
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <div id="footer-container"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="https://embed.famewall.io/singleFrame.js" defer></script>
+</body>
+</html>
