@@ -7403,11 +7403,14 @@ body.mobile-menu-open {
 
 /* Fallback testimonials */
 .testimonials-fallback {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+  display: flex;
+  justify-content: center;
   position: relative;
   z-index: 1;
+}
+
+.single-testimonial {
+  max-width: 500px;
 }
 
 .testimonial-card {
