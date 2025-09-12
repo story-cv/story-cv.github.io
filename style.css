@@ -7218,6 +7218,371 @@ body.mobile-menu-open {
   border-radius: 2px;
 }
 
+/* Animation Classes */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-up-delayed {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out 0.2s;
+}
+
+.fade-in-up-delayed.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-sequence {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in-sequence.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Redesigned StoryCV Solution Section */
+.student-solution {
+  padding: 120px 0;
+  background: linear-gradient(135deg, #fafbfc 0%, #f4f6f8 100%);
+}
+
+.solution-intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 80px;
+}
+
+.solution-headline {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.solution-description {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Redesigned How It Works Section */
+.how-it-works {
+  padding: 120px 0;
+  background: white;
+}
+
+.works-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 80px;
+}
+
+.works-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.works-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.steps-flow {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.step-indicator {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.step-number {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.step-content {
+  flex: 1;
+  padding-top: 8px;
+}
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.step-description {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.step-connector {
+  width: 2px;
+  height: 40px;
+  background: #e2e8f0;
+  margin: -24px auto 8px 30px;
+}
+
+.works-footer {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.works-promise {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Redesigned Testimonial Section */
+.student-testimonial {
+  padding: 100px 0;
+  background: #fafbfc;
+}
+
+.testimonial-spotlight {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonial-quote {
+  margin-bottom: 40px;
+}
+
+.testimonial-quote p {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  margin: 0;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.author-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.author-title {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+/* Redesigned CTA Section */
+.student-cta {
+  padding: 120px 0;
+  background: white;
+}
+
+.cta-focus {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-headline {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.cta-promise {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 48px;
+}
+
+.cta-offer-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+}
+
+.offer-highlight {
+  margin-bottom: 32px;
+}
+
+.offer-label {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.price-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.price-main {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.price-original {
+  font-size: 1.5rem;
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}
+
+.savings-badge {
+  display: inline-block;
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.offer-action {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 32px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+}
+
+.cta-button:hover {
+  background: #e67e22;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(248, 154, 35, 0.3);
+}
+
+.cta-note {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Mobile styles for redesigned sections */
+@media (max-width: 768px) {
+  .solution-headline,
+  .cta-headline {
+    font-size: 2.25rem;
+  }
+  
+  .works-title {
+    font-size: 2rem;
+  }
+  
+  .testimonial-quote p {
+    font-size: 1.5rem;
+  }
+  
+  .step-item {
+    gap: 20px;
+  }
+  
+  .step-indicator {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .step-connector {
+    margin-left: 25px;
+  }
+  
+  .cta-offer-card {
+    padding: 32px 24px;
+  }
+  
+  .price-main {
+    font-size: 2.5rem;
+  }
+  
+  .student-solution,
+  .how-it-works,
+  .student-cta {
+    padding: 80px 0;
+  }
+  
+  .student-testimonial {
+    padding: 60px 0;
+  }
+}
+
 /* Mobile styles for resume comparison */
 @media (max-width: 768px) {
   .comparison-layout {

@@ -604,13 +604,21 @@ function initializeAccordion() {
 
 // Scroll Animation for Student Page
 document.addEventListener('DOMContentLoaded', function() {
-    // Intersection Observer for animated cards and resume comparisons
-    const animatedElements = document.querySelectorAll('.animated-card, .animated-resume');
+    // Intersection Observer for all animated elements
+    const animatedElements = document.querySelectorAll('.animated-card, .animated-resume, .fade-in-up, .fade-in-up-delayed, .fade-in-sequence');
     
     const elementObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                // Handle sequenced animations with delay
+                if (entry.target.classList.contains('fade-in-sequence')) {
+                    const delay = parseInt(entry.target.dataset.delay) || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                } else {
+                    entry.target.classList.add('visible');
+                }
             }
         });
     }, {
