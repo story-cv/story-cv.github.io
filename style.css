@@ -7386,6 +7386,83 @@ body.mobile-menu-open {
   text-align: center;
 }
 
+/* Famewall Widget Styling */
+.famewall-container {
+  position: relative;
+  width: 100%;
+}
+
+.famewall-share-embed {
+  width: 100%;
+  min-height: 400px;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+
+/* Fallback testimonials */
+.testimonials-fallback {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
+.testimonial-content p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  font-style: italic;
+  margin: 0 0 24px 0;
+}
+
+.testimonial-author {
+  display: flex;
+  justify-content: center;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.author-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.author-title {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Hide fallback when Famewall loads */
+.famewall-share-embed iframe ~ .testimonials-fallback,
+.famewall-share-embed:has(iframe) + .testimonials-fallback {
+  display: none;
+}
+
+/* On mobile, show single column */
+@media (max-width: 768px) {
+  .testimonials-fallback {
+    grid-template-columns: 1fr;
+  }
+}
+
 .testimonial-quote {
   margin-bottom: 40px;
 }
