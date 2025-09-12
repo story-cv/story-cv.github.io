@@ -1213,13 +1213,21 @@ header picture img:hover {
   border-radius: 50%;
   z-index: 2;
   transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
 }
 
 .timeline-step.visible .timeline-marker {
   background: linear-gradient(135deg, var(--color-primary) 0%, #C63716 100%);
   border-color: var(--color-primary);
   box-shadow: 0 4px 12px rgba(238, 78, 52, 0.2);
-  transform: scale(1.1);
+  transform: scale(1;
+  color: white;
+}.1);
 }
 
 .timeline-step.visible .timeline-marker::after {
