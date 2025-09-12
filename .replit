@@ -24,6 +24,15 @@ task = "shell.exec"
 args = "python -m http.server 5000"
 waitForPort = 5000
 
+[[workflows.workflow]]
+name = "Update Sitemap"
+author = 43771092
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python generate_sitemap.py"
+
 [[ports]]
 localPort = 5000
 externalPort = 80
