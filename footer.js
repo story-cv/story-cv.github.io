@@ -47,6 +47,25 @@ function createFooter() {
                 </div>
             </div>
 
+            <!-- Business Details -->
+            <div class="footer-business">
+                <div class="business-info">
+                    <div class="business-details">
+                        <span class="business-name">Rad Radium Pte. Ltd.</span>
+                        <span class="business-separator">•</span>
+                        <span class="business-reg">UEN: 202124283W</span>
+                    </div>
+                    <div class="business-contact">
+                        <span class="business-address">17 Hazel Park Terrace, Singapore 678944</span>
+                        <span class="business-separator">•</span>
+                        <a href="mailto:write@story.cv" class="business-email">write@story.cv</a>
+                    </div>
+                </div>
+                <div class="made-in-singapore">
+                    Made with ❤️ in Singapore
+                </div>
+            </div>
+
             <!-- Legal Links -->
             <div class="footer-legal">
                 <div class="legal-links">

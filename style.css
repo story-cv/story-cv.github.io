@@ -3469,8 +3469,60 @@ header picture img:hover {
   color: white;
 }
 
-.footer-legal {
+/* Business Details Section */
+.footer-business {
   padding-top: var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.business-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.business-details,
+.business-contact {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.business-name {
+  font-weight: var(--font-weight-medium);
+}
+
+.business-separator {
+  color: var(--color-text-secondary);
+  opacity: 0.5;
+}
+
+.business-email {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.business-email:hover {
+  color: var(--color-text-secondary);
+}
+
+.made-in-singapore {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.footer-legal {
+  padding-top: var(--space-md);
   border-top: 1px solid var(--color-border);
   display: flex;
   justify-content: space-between;
@@ -3531,6 +3583,17 @@ header picture img:hover {
     align-self: stretch;
     text-align: center;
     padding: var(--space-md) var(--space-lg);
+  }
+
+  .footer-business {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .business-details,
+  .business-contact {
+    flex-wrap: wrap;
   }
 
   .footer-legal {
