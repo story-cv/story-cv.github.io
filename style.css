@@ -7662,24 +7662,6 @@ body.mobile-menu-open {
   padding-top: 32px;
 }
 
-.cta-button {
-  display: inline-block;
-  background: var(--color-primary);
-  color: white;
-  padding: 16px 32px;
-  border-radius: 12px;
-  font-size: 1.125rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  margin-bottom: 16px;
-}
-
-.cta-button:hover {
-  background: #e67e22;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(248, 154, 35, 0.3);
-}
 
 .cta-note {
   font-size: 0.95rem;
