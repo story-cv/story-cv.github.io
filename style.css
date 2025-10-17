@@ -3616,6 +3616,12 @@ header picture img:hover {
     flex-wrap: wrap;
   }
 
+  .footer-badges {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
   .footer-legal {
     flex-direction: column;
     align-items: flex-start;
@@ -3652,6 +3658,11 @@ header picture img:hover {
   .social-link svg {
     width: 18px;
     height: 18px;
+  }
+
+  .twelve-tools-badge img {
+    width: 150px;
+    height: auto;
   }
 }
 
