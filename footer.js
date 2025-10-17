@@ -61,8 +61,13 @@ function createFooter() {
                         <a href="mailto:write@story.cv" class="business-email">write@story.cv</a>
                     </div>
                 </div>
-                <div class="made-in-singapore">
-                    Made with ❤️ in Singapore
+                <div class="footer-badges">
+                    <div class="made-in-singapore">
+                        Made with ❤️ in Singapore
+                    </div>
+                    <a href="https://twelve.tools" target="_blank" class="twelve-tools-badge">
+                        <img src="https://twelve.tools/badge0-dark.svg" alt="Featured on Twelve Tools" width="200" height="54">
+                    </a>
                 </div>
             </div>
 
