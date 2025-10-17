@@ -3515,10 +3515,30 @@ header picture img:hover {
   color: var(--color-text-secondary);
 }
 
+.footer-badges {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
 .made-in-singapore {
   font-size: 0.75rem;
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-medium);
+}
+
+.twelve-tools-badge {
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.twelve-tools-badge:hover {
+  opacity: 0.8;
+}
+
+.twelve-tools-badge img {
+  display: block;
+  height: auto;
 }
 
 .footer-legal {
