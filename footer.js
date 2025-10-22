@@ -41,8 +41,8 @@ function createFooter() {
                             </svg>
                         </a>
                     </div>
-                    <a href="https://tally.so/r/wzBlA0" target="_blank" rel="noopener noreferrer" class="footer-cta-button">
-                        Join the waitlist
+                    <a href="https://write.story.cv" target="_blank" rel="noopener noreferrer" class="footer-cta-button">
+                        Write my resume
                     </a>
                 </div>
             </div>
