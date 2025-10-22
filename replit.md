@@ -3,6 +3,10 @@
 ## Overview
 StoryCV is an AI-powered professional resume writing application designed to help users create compelling resumes. It aims to make expert resume writing accessible to everyone, providing a solution that is both efficient and high-quality, differentiating itself from generic AI builders or traditional human writers. The project focuses on a modern, responsive web application with a clean user interface.
 
+## Recent Changes
+- **October 22, 2025**: Updated all CTA buttons across the website from "Join the waitlist" to "Write my resume" with new link to https://write.story.cv
+- **October 17, 2025**: Integrated Twelve Tools badge in footer with mobile-responsive styling
+
 ## User Preferences
 Preferred communication style: Simple, everyday language.
 
