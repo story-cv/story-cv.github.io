@@ -3,6 +3,14 @@ class RelatedArticles {
     constructor() {
         this.articles = [
             {
+                title: "Passing the ATS filter: 90/10 Rule and the Human Filter",
+                excerpt: "Stop wasting time on ATS keywords. Understand why your resume fails the human test & how a foundation-first career narrative is the only strategy that gets you hired.",
+                image: "/blog/images/ATS filter versus recruiter.webp",
+                url: "/blog/articles/ats-filter-90-10-rule.html",
+                category: "Resume Tips",
+                readTime: "4 min read"
+            },
+            {
                 title: "The #1 Question to Ask Before Hiring a Resume Writer",
                 excerpt: "Job seekers usually try two quick fixes: free AI or paid services. But what if both paths lead to the same dead end?",
                 image: "/blog/images/what-is-resume-writer.webp",
