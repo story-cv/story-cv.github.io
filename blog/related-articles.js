@@ -3,7 +3,7 @@ class RelatedArticles {
     constructor() {
         this.articles = [
             {
-                title: "Passing the ATS filter: 90/10 Rule and the Human Filter",
+                title: "Passing the ATS is the easiest (and the most pointless) part",
                 excerpt: "Stop wasting time on ATS keywords. Understand why your resume fails the human test & how a foundation-first career narrative is the only strategy that gets you hired.",
                 image: "/blog/images/ATS filter versus recruiter.webp",
                 url: "/blog/articles/ats-filter-90-10-rule.html",
