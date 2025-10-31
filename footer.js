@@ -1,4 +1,3 @@
-
 // Footer component that can be included on any page
 function createFooter() {
     return `
@@ -65,7 +64,10 @@ function createFooter() {
                     <div class="made-in-singapore">
                         Made with ❤️ in Singapore
                     </div>
-                    <a href="https://twelve.tools" target="_blank" class="twelve-tools-badge">
+                    <a href="https://www.producthunt.com/products/storycv?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-storycv" target="_blank" rel="noopener noreferrer" class="producthunt-badge">
+                        <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=996890&theme=light&t=1761896471862" alt="StoryCV - The only resume writer that truly tells your story. | Product Hunt" width="250" height="54">
+                    </a>
+                    <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer" class="twelve-tools-badge">
                         <img src="https://twelve.tools/badge0-dark.svg" alt="Featured on Twelve Tools" width="200" height="54">
                     </a>
                 </div>
