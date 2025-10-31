@@ -4921,6 +4921,12 @@ header picture img:hover {
   font-size: 1.125rem;
   padding: 1rem 2rem;
   box-shadow: 0 4px 12px rgba(238, 78, 52, 0.2);
+  color: white !important;
+  font-weight: 600;
+}
+
+.blog-cta .btn:hover {
+  color: white !important;
 }
 
 /* Related Posts */
