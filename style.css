@@ -4923,10 +4923,12 @@ header picture img:hover {
   box-shadow: 0 4px 12px rgba(238, 78, 52, 0.2);
   color: white !important;
   font-weight: 600;
+  text-decoration: none;
 }
 
 .blog-cta .btn:hover {
   color: white !important;
+  text-decoration: none;
 }
 
 /* Related Posts */
