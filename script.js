@@ -548,6 +548,7 @@ function initializeAccordion() {
                     const otherContent = otherItem.querySelector('.accordion-content');
                     
                     otherTrigger.setAttribute('data-state', 'closed');
+                    otherTrigger.setAttribute('aria-expanded', 'false');
                     otherContent.setAttribute('data-state', 'closed');
                     otherContent.style.height = '0px';
                 }
@@ -556,6 +557,7 @@ function initializeAccordion() {
             // Toggle current accordion item
             if (currentState === 'closed' || !currentState) {
                 this.setAttribute('data-state', 'open');
+                this.setAttribute('aria-expanded', 'true');
                 currentContent.setAttribute('data-state', 'open');
                 
                 // Set height to auto temporarily to measure content
@@ -577,6 +579,7 @@ function initializeAccordion() {
                 
             } else {
                 this.setAttribute('data-state', 'closed');
+                this.setAttribute('aria-expanded', 'false');
                 currentContent.setAttribute('data-state', 'closed');
                 
                 // Get current height and animate to 0
