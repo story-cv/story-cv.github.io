@@ -4,6 +4,7 @@
 StoryCV is an AI-powered professional resume writing application designed to help users create compelling resumes. It aims to make expert resume writing accessible to everyone, providing a solution that is both efficient and high-quality, differentiating itself from generic AI builders or traditional human writers. The project focuses on a modern, responsive web application with a clean user interface.
 
 ## Recent Changes
+- **November 4, 2025**: Redesigned Pricing section with storytelling 2-tier card layout ("The First Chapter" free tier and "The Full Story" $29/month with Founding User Price badge), using brand color #ee4e34 for premium tier accents and hover effects
 - **November 3, 2025**: Redesigned FAQ section with modern two-column layout (left: title/CTA panel, right: accordion), using brand color #ee4e34 for accents and left border highlights, with full ARIA accessibility support
 - **October 22, 2025**: Updated all CTA buttons across the website from "Join the waitlist" to "Write my resume" with new link to https://write.story.cv
 - **October 17, 2025**: Integrated Twelve Tools badge in footer with mobile-responsive styling
@@ -19,8 +20,8 @@ Preferred communication style: Simple, everyday language.
 - **Typography**: Onest font family from Google Fonts.
 - **Responsive Design**: Mobile-first approach using viewport meta tag.
 - **Theming**: Light mode only.
-- **Key Sections**: Includes a hero section, "Why Your Resume Will Finally Stand Out," "Why we're better than a human resume writer" (advantages), a 6-step ChatGPT timeline, a 3-step process flow, a mini hero section for emotional clarity, a tabbed comparison section (Traditional vs. StoryCV, Generic AI vs. StoryCV), pricing, about us, and FAQ sections.
-- **Interactive Elements**: Two-column FAQ layout with sticky left panel and accordion questions, scroll-triggered animations, and interactive tooltips.
+- **Key Sections**: Includes a hero section, "Why Your Resume Will Finally Stand Out," "Why we're better than a human resume writer" (advantages), a 6-step ChatGPT timeline, a 3-step process flow, a mini hero section for emotional clarity, a tabbed comparison section (Traditional vs. StoryCV, Generic AI vs. StoryCV), two-tier pricing with narrative "chapter" theme, about us, and FAQ sections.
+- **Interactive Elements**: Two-column FAQ layout with sticky left panel and accordion questions, two-card pricing layout with hover effects and featured badge, scroll-triggered animations.
 
 ### Backend Architecture
 - **Current State**: No backend implemented.
