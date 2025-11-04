@@ -70,6 +70,9 @@ function createFooter() {
                     <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer" class="twelve-tools-badge">
                         <img src="https://twelve.tools/badge0-dark.svg" alt="Featured on Twelve Tools" width="200" height="54">
                     </a>
+                    <a href="https://supadr.com?utm_source=story.cv&utm_medium=badge&utm_campaign=supadr" target="_blank" rel="noopener noreferrer" class="supadr-badge">
+                        <img src="https://supadr.com/api/badge/story.cv.svg" alt="Domain Rating for story.cv" width="280" height="64">
+                    </a>
                 </div>
             </div>
 
