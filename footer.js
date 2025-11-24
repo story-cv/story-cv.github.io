@@ -46,6 +46,13 @@ function createFooter() {
                 </div>
             </div>
 
+            <!-- Made in Singapore -->
+            <div class="footer-made-in">
+                <div class="made-in-singapore">
+                    Made with ❤️ in Singapore
+                </div>
+            </div>
+
             <!-- Business Details -->
             <div class="footer-business">
                 <div class="business-info">
@@ -61,9 +68,6 @@ function createFooter() {
                     </div>
                 </div>
                 <div class="footer-badges">
-                    <div class="made-in-singapore">
-                        Made with ❤️ in Singapore
-                    </div>
                     <a href="https://www.producthunt.com/products/storycv?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-storycv" target="_blank" rel="noopener noreferrer" class="producthunt-badge">
                         <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=996890&theme=light&t=1761896471862" alt="StoryCV - The only resume writer that truly tells your story. | Product Hunt" width="250" height="54">
                     </a>

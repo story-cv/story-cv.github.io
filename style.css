@@ -3760,6 +3760,19 @@ header picture img:hover {
   color: white;
 }
 
+/* Made in Singapore Section */
+.footer-made-in {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  text-align: center;
+}
+
+.footer-made-in .made-in-singapore {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
 /* Business Details Section */
 .footer-business {
   padding-top: var(--space-lg);
@@ -3810,12 +3823,6 @@ header picture img:hover {
   display: flex;
   align-items: center;
   gap: var(--space-lg);
-}
-
-.made-in-singapore {
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-  font-weight: var(--font-weight-medium);
 }
 
 .twelve-tools-badge {
