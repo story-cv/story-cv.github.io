@@ -73,6 +73,9 @@ function createFooter() {
                     <a href="https://supadr.com?utm_source=story.cv&utm_medium=badge&utm_campaign=supadr" target="_blank" rel="noopener noreferrer" class="supadr-badge">
                         <img src="https://supadr.com/api/badge/story.cv.svg" alt="Domain Rating for story.cv" width="280" height="64">
                     </a>
+                    <a href="https://openhunts.com/projects/storycv" target="_blank" rel="noopener noreferrer" class="openhunts-badge" title="OpenHunts Top 1 Daily Winner">
+                        <img src="https://openhunts.com/images/badges/top1-light.png" alt="OpenHunts Top 1 Daily Winner" style="width: 195px; height: auto;">
+                    </a>
                 </div>
             </div>
 
