@@ -632,6 +632,27 @@ document.addEventListener('DOMContentLoaded', function() {
     animatedElements.forEach(element => {
         elementObserver.observe(element);
     });
+
+    // Trust Badges Animation
+    const trustBadges = document.querySelectorAll('.trust-badge');
+    
+    if (trustBadges.length > 0) {
+        const badgeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    badgeObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        trustBadges.forEach(badge => {
+            badgeObserver.observe(badge);
+        });
+    }
 });
 function initializeScrollAnimations() {
     const animatedElements = document.querySelectorAll('.animated-card, .animated-resume');
