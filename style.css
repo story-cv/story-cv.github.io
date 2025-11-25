@@ -1271,7 +1271,7 @@ header picture img:hover {
   left: 0;
   width: 100%;
   height: 0%;
-  background: #d4a574;
+  background: linear-gradient(180deg, var(--color-primary) 0%, #C63716 100%);
   transition: height 0.6s ease-out;
   border-radius: 2px;
 }
@@ -1295,11 +1295,16 @@ header picture img:hover {
   opacity: 0;
   transform: translateY(30px);
   transition: all var(--transition-slow);
+  cursor: pointer;
 }
 
 .timeline-step.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.timeline-step.visible:hover {
+  transform: translateY(0) translateX(8px);
 }
 
 .timeline-marker {
@@ -1322,11 +1327,20 @@ header picture img:hover {
 }
 
 .timeline-step.visible .timeline-marker {
-  background: #d4a574;
-  border-color: #d4a574;
-  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.2);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(238, 78, 52, 0.3);
   transform: scale(1.1);
   color: white;
+}
+
+.timeline-step:hover .timeline-marker {
+  transform: scale(1.25);
+  box-shadow: 0 6px 16px rgba(238, 78, 52, 0.4);
+}
+
+.timeline-step:hover .timeline-content {
+  opacity: 0.8;
 }
 
 /* Special styling for the final step */
