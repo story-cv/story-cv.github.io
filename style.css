@@ -3403,9 +3403,29 @@ header picture img:hover {
 }
 
 .founders-note-text:last-of-type {
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
 }
 
+.founder-signature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.founder-signature-photo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-primary);
+}
+
+.founder-signature-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-slate-800);
+}
 
 @media (max-width: 768px) {
   .founders-note-content {
@@ -5717,6 +5737,9 @@ header picture img:hover {
 .founder-image {
   width: 100px;
   height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-primary);
 }
 
 .photo-placeholder {
@@ -5754,7 +5777,23 @@ header picture img:hover {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text-secondary);
-  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.founders-text a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+}
+
+.founders-text a:hover {
+  text-decoration: underline;
+}
+
+.founders-text em {
+  font-style: italic;
+  color: var(--color-text-primary);
 }
 
 .about-link {
