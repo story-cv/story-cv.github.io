@@ -80,7 +80,7 @@ function createFooter() {
                     <a href="https://openhunts.com/projects/storycv" target="_blank" rel="noopener noreferrer" class="openhunts-badge" title="OpenHunts Top 1 Daily Winner">
                         <img src="https://openhunts.com/images/badges/top1-light.png" alt="OpenHunts Top 1 Daily Winner" style="width: 195px; height: auto;">
                     </a>
-                    <a href="https://tinylaunch.com" target="_blank" rel="noopener noreferrer" class="tinylaunch-badge">
+                    <a href="https://www.tinylaunch.com/launch/6915" target="_blank" rel="noopener noreferrer" class="tinylaunch-badge">
                         <img src="https://tinylaunch.com/tinylaunch_badge_featured_on.svg" alt="TinyLaunch Badge" style="width: 202px; height: auto;">
                     </a>
                 </div>
