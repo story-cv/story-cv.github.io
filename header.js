@@ -14,7 +14,7 @@ function createHeader() {
         <header class="header">
             <div class="container">
                 <div class="header-content">
-                    <a href="${basePath}index.html" class="header-logo">
+                    <a href="${basePath}" class="header-logo">
                         <img src="${basePath}logo-with-text-light.svg" alt="Story.CV">
                     </a>
                     <nav class="nav">
@@ -46,15 +46,17 @@ function createHeader() {
         headerContainer.innerHTML = headerHTML;
         
         // Set active nav link based on current page
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const currentPath = window.location.pathname;
         const navLinks = headerContainer.querySelectorAll('.nav-link');
         
         navLinks.forEach(link => {
             const href = link.getAttribute('href');
-            const linkFileName = href.split('/').pop();
-            if (linkFileName === currentPage || 
-                (currentPage === '' && linkFileName === 'index.html') ||
-                (currentPage === 'index.html' && linkFileName === 'index.html')) {
+            const linkPath = href.split('/').pop();
+            const pagePath = currentPath.split('/').pop().replace('.html', '');
+            
+            if (linkPath === pagePath || 
+                (pagePath === '' && linkPath === '') ||
+                (pagePath === 'index' && linkPath === '')) {
                 link.classList.add('nav-link-active');
             }
         });
