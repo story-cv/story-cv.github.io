@@ -14,8 +14,8 @@ function createHeader() {
         <header class="header">
             <div class="container">
                 <div class="header-content">
-                    <a href="${basePath}" class="header-logo">
-                        <img src="${basePath}logo-with-text-light.svg" alt="Story.CV">
+                    <a href="/" class="header-logo">
+                        <img src="/logo-with-text-light.svg" alt="Story.CV">
                     </a>
                     <nav class="nav">
                         <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
