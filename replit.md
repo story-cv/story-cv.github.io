@@ -4,6 +4,8 @@
 StoryCV is an AI-powered professional resume writing application designed to help users create compelling resumes. It aims to make expert resume writing accessible to everyone, providing a solution that is both efficient and high-quality, differentiating itself from generic AI builders or traditional human writers. The project focuses on a modern, responsive web application with a clean user interface.
 
 ## Recent Changes
+- **November 25, 2025**: Reinstated Kavya's founder information - added circular photo signature in homepage "Resume writing became a game of keywords" section, and full founders section on About Us page with bio and links to Resumey.Pro and StoryCV
+- **November 25, 2025**: Implemented clean URL structure (moved about-us.html, privacy-policy.html, etc. to folder/index.html format), updated all navigation links to use absolute paths without .html extensions
 - **November 24, 2025**: Added trust badges section below hero featuring Product Hunt, Twelve Tools, OpenHunts, and Tiny Launches badges with modular CSS Grid layout (auto-fit), grayscale-to-color hover effects, and staggered fade-in animations
 - **November 4, 2025**: Redesigned Pricing section with storytelling 2-tier card layout ("The First Chapter" free tier and "The Full Story" $29/month with Founding User Price badge), using brand color #ee4e34 for premium tier accents and hover effects
 - **November 3, 2025**: Redesigned FAQ section with modern two-column layout (left: title/CTA panel, right: accordion), using brand color #ee4e34 for accents and left border highlights, with full ARIA accessibility support
