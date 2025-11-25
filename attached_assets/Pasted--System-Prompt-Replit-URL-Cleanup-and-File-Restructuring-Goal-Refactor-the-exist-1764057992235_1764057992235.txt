@@ -1,0 +1,44 @@
+## ⚙️ System Prompt: Replit URL Cleanup and File Restructuring
+
+### **Goal**
+
+Refactor the existing Replit project's file structure and server configuration to achieve **clean, extension-less URLs** (e.g., from `/about.html` to `/about`).
+
+### **Current State**
+
+* **Files:** All pages use the `.html` extension (e.g., `about.html`, `contact.html`).
+* **URLs:** Served URLs include the `.html` extension (e.g., `https://myproject.replit.co/about.html`).
+
+### **Desired State**
+
+1.  **New File Structure:** Create a folder for every page slug, and rename the page file to `index.html` inside that folder.
+    * `about.html` $\rightarrow$ `about/index.html`
+    * `contact.html` $\rightarrow$ `contact/index.html`
+    * The main homepage (`index.html`) should remain in the root directory.
+
+2.  **New URLs:** The server must automatically map the directory name to the `index.html` file within it.
+    * `/about` $\rightarrow$ serves `about/index.html`
+    * `/contact` $\rightarrow$ serves `contact/index.html`
+
+### **Required Actions**
+
+The AI must perform and document the following two steps:
+
+#### **1. File System Refactoring**
+
+* **Identify** all top-level `.html` files (excluding the root `index.html`).
+* **Move & Rename:** For each `slug.html`, create a directory `slug` and move/rename the file to `slug/index.html`.
+* **Link Update:** **Crucially**, update all internal links (`<a>` tags) within *all* HTML files to use the new extension-less paths (e.g., change `<a href="about.html">` to `<a href="/about">`).
+
+#### **2. Server/Routing Configuration**
+
+* **Identify** the current server technology (Node.js/Express, Python/Flask, or Static Server).
+* **Implement Configuration:** Modify the relevant server file (`server.js`, `app.py`, `.replit`, `nginx.conf`, etc.) to ensure the server automatically looks for and serves **`index.html`** when a directory path is requested. This enables clean URLs.
+
+### **Output**
+
+The AI should provide the following deliverable steps:
+
+1.  A **list of all file operations** (move/rename commands).
+2.  The **code changes** for a representative affected HTML file showing the updated link paths.
+3.  The **new/modified server configuration code** needed for the extension-less URLs.
