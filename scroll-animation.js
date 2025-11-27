@@ -22,7 +22,6 @@
   // Initialize when DOM is ready
   document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
-    initStickyCards();
   });
 
   function initScrollReveal() {
