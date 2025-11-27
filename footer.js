@@ -83,6 +83,9 @@ function createFooter() {
                     <a href="https://www.tinylaunch.com/launch/6915" target="_blank" rel="noopener noreferrer" class="tinylaunch-badge">
                         <img src="https://tinylaunch.com/tinylaunch_badge_featured_on.svg" alt="TinyLaunch Badge" style="width: 202px; height: auto;">
                     </a>
+                    <a href="https://ufind.best/products/storycv?utm_source=storycv" target="_blank" rel="noopener noreferrer" class="ufind-badge">
+                        <img src="https://ufind.best/badges/ufind-best-badge-light.svg" alt="Featured on ufind.best" width="150">
+                    </a>
                 </div>
             </div>
 
