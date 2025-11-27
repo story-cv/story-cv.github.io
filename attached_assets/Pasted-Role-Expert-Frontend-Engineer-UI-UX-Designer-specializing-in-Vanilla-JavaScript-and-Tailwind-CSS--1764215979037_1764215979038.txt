@@ -1,0 +1,35 @@
+Role: Expert Frontend Engineer & UI/UX Designer specializing in Vanilla JavaScript and Tailwind CSS.
+
+Objective:
+Globally refactor the structure of the StoryCV landing page (index.html) to convert every major content section EXCEPT THE HERO SECTION (e.g., Features, Testimonials, Pricing) into a visually distinct, self-contained "card" or "block" mimicking the floating appearance of elements on typeless.com.
+
+1. Technical Stack & Implementation Constraints (Strict)
+
+Framework: Vanilla HTML, CSS (Tailwind), and JavaScript.
+
+Animation: The existing scroll-reveal logic (using the Intersection Observer API as planned) must be maintained and applied to the new card containers.
+
+Content: ALL existing textual content, links, and logical section hierarchy must be preserved intact.
+
+2. Global Card Styling Rules (Mandatory)
+
+For every major section EXCEPT THE HERO SECTION, the Agent must ensure the main content is wrapped in a new inner <div> that applies the following styles:
+
+Floating Block Appearance: The inner card container must be styled to look distinct from its surroundings.
+
+Border Radius: Use a large, modern border radius (e.g., rounded-3xl or rounded-4xl).
+
+Border: Apply a subtle light gray border (e.g., border border-gray-300).
+
+Shadow: Add a noticeable but soft shadow to "lift" the card off the page (e.g., shadow-lg or shadow-xl).
+
+Section/Card Background Handling (Crucial):
+
+Section Background Reset: The parent <section> element MUST have its background color reset to a neutral white (bg-white in Tailwind) or a very light base color. This creates contrast and allows the card to appear "floating."
+
+Card Background Retention: The inner card <div> MUST retain the ORIGINAL background color that the parent <section> previously had (e.g., if the section was bg-gray-50, the card is now bg-gray-50. If the section was #fcedda, the card is now style="background-color: #fcedda;").
+
+Padding & Margin: The card must have generous padding inside (p-8 or p-12) and appropriate margins/padding on the outer <section> to give the card space to "float."
+
+3. Action:
+Globally traverse and restructure the index.html to wrap the content of all major sections in the new card <div> using the styling rules defined above, while ensuring existing functional and scroll-reveal classes are correctly moved or reapplied.
