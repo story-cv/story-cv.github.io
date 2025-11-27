@@ -4020,7 +4020,7 @@ header picture img:hover {
 .footer-made-in {
   padding-top: var(--space-lg);
   padding-bottom: var(--space-sm);
-  text-align: center;
+  text-align: left;
 }
 
 .footer-made-in .made-in-singapore {
