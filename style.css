@@ -924,6 +924,34 @@ header picture img:hover {
   margin-bottom: var(--space-lg);
 }
 
+.trust-badges-scroll {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.trust-badges-track {
+  display: flex;
+  gap: var(--space-2xl);
+  padding: var(--space-lg) 0;
+  animation: scrollBadges 25s linear infinite;
+  width: fit-content;
+}
+
+@keyframes scrollBadges {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.trust-badges-track:hover {
+  animation-play-state: paused;
+}
+
 .trust-badges-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -977,6 +1005,11 @@ header picture img:hover {
 @media (max-width: 768px) {
   .trust-badges {
     padding: var(--space-xl) 0;
+  }
+
+  .trust-badges-track {
+    gap: var(--space-lg);
+    animation: scrollBadges 20s linear infinite;
   }
 
   .trust-badges-grid {

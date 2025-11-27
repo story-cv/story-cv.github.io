@@ -89,6 +89,9 @@ function createFooter() {
                     <a href="https://findly.tools/storycv?utm_source=storycv" target="_blank" rel="noopener noreferrer" class="findly-badge">
                         <img src="https://findly.tools/badges/findly-tools-badge-light.svg" alt="Featured on findly.tools" width="150">
                     </a>
+                    <a target="_blank" href="https://goodaitools.com" class="goodaitools-badge">
+                        <img src="https://goodaitools.com/assets/images/badge.png" alt="Good AI Tools" height="54">
+                    </a>
                 </div>
             </div>
 
