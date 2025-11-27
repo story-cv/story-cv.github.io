@@ -86,6 +86,9 @@ function createFooter() {
                     <a href="https://ufind.best/products/storycv?utm_source=storycv" target="_blank" rel="noopener noreferrer" class="ufind-badge">
                         <img src="https://ufind.best/badges/ufind-best-badge-light.svg" alt="Featured on ufind.best" width="150">
                     </a>
+                    <a href="https://findly.tools/storycv?utm_source=storycv" target="_blank" rel="noopener noreferrer" class="findly-badge">
+                        <img src="https://findly.tools/badges/findly-tools-badge-light.svg" alt="Featured on findly.tools" width="150">
+                    </a>
                 </div>
             </div>
 
