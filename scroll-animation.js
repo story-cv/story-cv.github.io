@@ -15,8 +15,7 @@
 
   // Sticky card configuration
   const stickyConfig = {
-    baseTop: 80,        // Starting top position (accounts for header)
-    topIncrement: 16,   // How much to increment top for each card
+    baseTop: 80,        // All cards stick at same top position (accounts for header)
     baseZIndex: 10      // Starting z-index
   };
 
@@ -81,9 +80,8 @@
     sectionWrappers.forEach((section, index) => {
       section.classList.add('sticky-card-section');
       
-      // Calculate sticky top position (staggered so cards peek behind)
-      const topPosition = stickyConfig.baseTop + (index * stickyConfig.topIncrement);
-      section.style.setProperty('--sticky-top', `${topPosition}px`);
+      // All cards stick at the same top position for clean overlap effect
+      section.style.setProperty('--sticky-top', `${stickyConfig.baseTop}px`);
       
       // Set z-index (higher for later cards so they stack on top)
       const zIndex = stickyConfig.baseZIndex + index;
@@ -102,8 +100,7 @@
         } else {
           sectionWrappers.forEach((section, index) => {
             section.classList.add('sticky-card-section');
-            const topPosition = stickyConfig.baseTop + (index * stickyConfig.topIncrement);
-            section.style.setProperty('--sticky-top', `${topPosition}px`);
+            section.style.setProperty('--sticky-top', `${stickyConfig.baseTop}px`);
             const zIndex = stickyConfig.baseZIndex + index;
             section.style.setProperty('--sticky-z', zIndex);
           });
