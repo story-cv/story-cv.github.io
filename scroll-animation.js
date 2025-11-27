@@ -1,7 +1,7 @@
 /**
- * Scroll Reveal Animations
+ * Scroll Reveal Animations & Sticky Card Effect
  * Uses Intersection Observer API to trigger smooth reveal animations
- * as elements enter the viewport.
+ * and creates a typeless.com-style stacking card effect on scroll.
  */
 
 (function() {
@@ -13,8 +13,18 @@
     rootMargin: '0px 0px -50px 0px'
   };
 
+  // Sticky card configuration
+  const stickyConfig = {
+    baseTop: 80,        // Starting top position (accounts for header)
+    topIncrement: 16,   // How much to increment top for each card
+    baseZIndex: 10      // Starting z-index
+  };
+
   // Initialize when DOM is ready
-  document.addEventListener('DOMContentLoaded', initScrollReveal);
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
+    initStickyCards();
+  });
 
   function initScrollReveal() {
     const revealElements = document.querySelectorAll('.scroll-reveal');
@@ -52,5 +62,53 @@
 
     // Observe all reveal elements
     revealElements.forEach(el => observer.observe(el));
+  }
+
+  function initStickyCards() {
+    // Only apply on desktop
+    if (window.innerWidth <= 768) {
+      return;
+    }
+
+    // Get all section-wrapper elements (these contain the floating cards)
+    const sectionWrappers = document.querySelectorAll('.section-wrapper');
+    
+    if (!sectionWrappers.length) {
+      return;
+    }
+
+    // Apply sticky positioning to each section
+    sectionWrappers.forEach((section, index) => {
+      section.classList.add('sticky-card-section');
+      
+      // Calculate sticky top position (staggered so cards peek behind)
+      const topPosition = stickyConfig.baseTop + (index * stickyConfig.topIncrement);
+      section.style.setProperty('--sticky-top', `${topPosition}px`);
+      
+      // Set z-index (higher for later cards so they stack on top)
+      const zIndex = stickyConfig.baseZIndex + index;
+      section.style.setProperty('--sticky-z', zIndex);
+    });
+
+    // Handle resize - disable sticky on mobile
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (window.innerWidth <= 768) {
+          sectionWrappers.forEach(section => {
+            section.classList.remove('sticky-card-section');
+          });
+        } else {
+          sectionWrappers.forEach((section, index) => {
+            section.classList.add('sticky-card-section');
+            const topPosition = stickyConfig.baseTop + (index * stickyConfig.topIncrement);
+            section.style.setProperty('--sticky-top', `${topPosition}px`);
+            const zIndex = stickyConfig.baseZIndex + index;
+            section.style.setProperty('--sticky-z', zIndex);
+          });
+        }
+      }, 100);
+    });
   }
 })();

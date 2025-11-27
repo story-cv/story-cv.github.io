@@ -148,6 +148,34 @@
   padding: var(--space-3xl) 0;
 }
 
+/* ============================================
+   Sticky Card Scroll Effect (typeless-style)
+   ============================================ */
+.sticky-card-section {
+  position: sticky;
+  top: var(--sticky-top, 80px);
+  z-index: var(--sticky-z, 1);
+  margin-bottom: 0;
+  transition: transform 0.1s ease-out;
+}
+
+.sticky-card-section .floating-card {
+  box-shadow: 0 -8px 30px -10px rgb(0 0 0 / 0.15), 
+              0 20px 25px -5px rgb(0 0 0 / 0.08), 
+              0 8px 10px -6px rgb(0 0 0 / 0.06);
+}
+
+/* Scale down slightly as cards go behind */
+.sticky-card-section.behind-card {
+  transform: scale(0.98);
+}
+
+/* Ensure hero section is not sticky */
+.hero {
+  position: relative;
+  z-index: 0;
+}
+
 /* Floating card container */
 .floating-card {
   border-radius: 1.5rem;
@@ -205,6 +233,12 @@
     padding: var(--space-xl) var(--space-md);
     margin-left: var(--space-sm);
     margin-right: var(--space-sm);
+  }
+  
+  /* Disable sticky effect on mobile for better UX */
+  .sticky-card-section {
+    position: relative;
+    top: auto;
   }
 }
 
