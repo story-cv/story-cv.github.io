@@ -4,6 +4,8 @@
 StoryCV is an AI-powered professional resume writing application designed to help users create compelling resumes. It aims to make expert resume writing accessible to everyone, providing a solution that is both efficient and high-quality, differentiating itself from generic AI builders or traditional human writers. The project focuses on a modern, responsive web application with a clean user interface.
 
 ## Recent Changes
+- **November 27, 2025**: Implemented floating card design system across all major sections (except hero). Each section now features visually distinct, self-contained cards with rounded corners (1.5rem), subtle borders, soft shadows, and generous padding. Section backgrounds reset to white with cards retaining original background colors (cream #FCEDDA, gray #f8fafc, or white) to create floating appearance inspired by typeless.com
+- **November 27, 2025**: Added scroll-triggered reveal animations using Intersection Observer API with fade-in effects (0.7s transitions, 32px translateY) across all major sections
 - **November 25, 2025**: Reinstated Kavya's founder information - added circular photo signature in homepage "Resume writing became a game of keywords" section, and full founders section on About Us page with bio and links to Resumey.Pro and StoryCV
 - **November 25, 2025**: Implemented clean URL structure (moved about-us.html, privacy-policy.html, etc. to folder/index.html format), updated all navigation links to use absolute paths without .html extensions
 - **November 24, 2025**: Added trust badges section below hero featuring Product Hunt, Twelve Tools, OpenHunts, and Tiny Launches badges with modular CSS Grid layout (auto-fit), grayscale-to-color hover effects, and staggered fade-in animations
@@ -25,6 +27,7 @@ Preferred communication style: Simple, everyday language.
 - **Theming**: Light mode only.
 - **Key Sections**: Includes a hero section, trust badges section (Product Hunt, Twelve Tools, OpenHunts, Tiny Launches), "Why Your Resume Will Finally Stand Out," "Why we're better than a human resume writer" (advantages), a 6-step ChatGPT timeline, a 3-step process flow, a mini hero section for emotional clarity, a tabbed comparison section (Traditional vs. StoryCV, Generic AI vs. StoryCV), two-tier pricing with narrative "chapter" theme, about us, and FAQ sections.
 - **Interactive Elements**: Modular trust badges grid with grayscale hover effects and scroll-triggered staggered animations, two-column FAQ layout with sticky left panel and accordion questions, two-card pricing layout with hover effects and featured badge, scroll-triggered animations.
+- **Floating Card Design**: All major sections (except hero) wrapped in floating card containers with 1.5rem border-radius, subtle gray border (#e5e7eb), soft shadow (shadow-xl equivalent), generous internal padding, and section backgrounds reset to white for contrast. Cards use `.floating-card`, `.floating-card-cream`, `.floating-card-gray`, `.floating-card-white` classes.
 
 ### Backend Architecture
 - **Current State**: No backend implemented.
