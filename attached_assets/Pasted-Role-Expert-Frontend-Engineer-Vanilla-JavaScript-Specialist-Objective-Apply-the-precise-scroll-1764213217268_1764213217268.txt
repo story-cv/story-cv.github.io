@@ -1,0 +1,58 @@
+Role: Expert Frontend Engineer & Vanilla JavaScript Specialist.
+
+Objective:
+Apply the precise scroll-triggered reveal animations from typeless.com to the existing StoryCV landing page content. The goal is to mimic the fluid, sliding-up motion for all major content blocks as the user scrolls. This MUST be achieved using Vanilla JavaScript's Intersection Observer API and Tailwind CSS classes—DO NOT USE REACT OR FRAMER MOTION.
+
+1. Technical Stack & Implementation (Strict)
+
+Framework: Vanilla HTML, CSS, and JavaScript.
+
+Styling: Tailwind CSS (Must be used for layout and minimalist typography).
+
+Animation Tool: Intersection Observer API combined with CSS transitions/keyframes.
+
+File Strategy:
+
+Modify HTML: Add the base utility classes (opacity-0, translate-y-8, transition-all, duration-700, ease-out) and a marker class (.scroll-reveal) to all elements that need the reveal effect.
+
+Create New JS File: Create a single, new file named scroll-animation.js containing the entire IntersectionObserver logic.
+
+Keep Existing Files: Do not modify the content of header.js, footer.js, or other existing JS files, only the main HTML structure and the new JS file.
+
+2. Content Constraint (Strict)
+
+You must preserve ALL existing headlines, subheadlines, feature descriptions, and body text.
+
+Do not summarize, omit, or replace any existing textual content.
+
+3. Design & Animation Specifications (The "Typeless" Scroll Effect)
+
+Aesthetic Foundation: Apply a radical minimalist style using Tailwind CSS: high contrast (near-black text on near-white background), extensive whitespace, and clean sans-serif typography (e.g., Inter).
+
+Default State (HTML): Every element that is scrolled into view must start:
+
+opacity-0 (hidden)
+
+translate-y-8 (slightly offset down)
+
+transition-all duration-700 ease-out (set up the CSS transition)
+
+Revealed State (JS/Observer): The Intersection Observer must add a single class (e.g., .visible) which removes the initial offset and sets opacity to 1.
+
+.visible class definition (via Tailwind): opacity-100 translate-y-0.
+
+Staggering: Implement a slight delay (e.g., using data-delay attributes on the HTML elements and reading these in the JavaScript) on sequential elements within a section (like list items or paragraphs) to mimic the smooth staggered entry.
+
+4. Execution Plan
+
+Ensure a sticky, low-profile Navbar exists at the top, potentially using backdrop-blur-md.
+
+Update the main HTML structure with the necessary scroll-reveal classes and import the new scroll-animation.js file at the bottom of the body.
+
+Create and implement the logic in scroll-animation.js.
+
+Action:
+
+Create the necessary scroll-animation.js file.
+
+Refactor the main HTML content with the required Tailwind utility classes and scroll-reveal markers to implement the specified minimalist styling and the Intersection Observer logic.
