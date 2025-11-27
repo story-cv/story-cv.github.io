@@ -138,6 +138,76 @@
   }
 }
 
+/* ============================================
+   Floating Card Container Styles
+   ============================================ */
+
+/* Section wrapper - resets to white background */
+.section-wrapper {
+  background-color: #ffffff;
+  padding: var(--space-3xl) 0;
+}
+
+/* Floating card container */
+.floating-card {
+  border-radius: 1.5rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.06);
+  padding: var(--space-2xl) var(--space-xl);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Extra large floating card for special sections */
+.floating-card-xl {
+  border-radius: 2rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+  padding: var(--space-3xl) var(--space-2xl);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Card with cream background */
+.floating-card-cream {
+  background-color: var(--color-cream);
+}
+
+/* Card with light gray background */
+.floating-card-gray {
+  background-color: var(--color-bg-secondary);
+}
+
+/* Card with white background */
+.floating-card-white {
+  background-color: #ffffff;
+}
+
+/* Subtle hover effect for cards */
+.floating-card:hover,
+.floating-card-xl:hover {
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.12);
+}
+
+/* Responsive adjustments for floating cards */
+@media (max-width: 768px) {
+  .section-wrapper {
+    padding: var(--space-xl) 0;
+  }
+  
+  .floating-card {
+    border-radius: 1rem;
+    padding: var(--space-xl) var(--space-md);
+    margin-left: var(--space-sm);
+    margin-right: var(--space-sm);
+  }
+  
+  .floating-card-xl {
+    border-radius: 1.25rem;
+    padding: var(--space-xl) var(--space-md);
+    margin-left: var(--space-sm);
+    margin-right: var(--space-sm);
+  }
+}
+
 /* Privacy Policy Styles */
 .privacy-policy-main {
   padding: calc(var(--header-height) + 2rem) 0 0 0;
