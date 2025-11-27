@@ -117,6 +117,27 @@
   box-sizing: border-box;
 }
 
+/* Scroll Reveal Animation Styles */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Privacy Policy Styles */
 .privacy-policy-main {
   padding: calc(var(--header-height) + 2rem) 0 0 0;
