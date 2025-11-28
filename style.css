@@ -2134,7 +2134,7 @@ header picture img:hover {
 /* Comparison Table Section */
 .comparison-section {
   padding: var(--space-6xl) var(--space-md);
-  background-color: var(--color-bg-primary);
+  background-color: #fbf8f3;
 }
 
 .comparison-container {
@@ -2842,7 +2842,7 @@ header picture img:hover {
 /* Pricing Section */
 .pricing-section {
   padding: var(--space-4xl) var(--space-md);
-  background-color: var(--color-bg-primary);
+  background-color: #fbf8f3;
   font-family: 'Onest', system-ui, -apple-system, sans-serif;
 }
 
@@ -3706,7 +3706,7 @@ header picture img:hover {
 /* FAQ Section - Two Column Layout */
 .faq-section {
   padding: var(--space-4xl) var(--space-md);
-  background-color: var(--color-bg-primary);
+  background-color: #fbf8f3;
   font-family: 'Onest', system-ui, -apple-system, sans-serif;
 }
 
@@ -7228,7 +7228,7 @@ body.mobile-menu-open {
 /* Student Solution Section */
 .student-solution {
   padding: 100px 0;
-  background-color: #f9fafc;
+  background-color: #fbf8f3;
 }
 
 .solution-intro {
@@ -7304,7 +7304,7 @@ body.mobile-menu-open {
 /* How It Works Section */
 .how-it-works {
   padding: var(--space-4xl) 0;
-  background-color: var(--color-bg-primary);
+  background-color: #fbf8f3;
 }
 
 .steps-grid {
