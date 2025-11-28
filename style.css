@@ -158,6 +158,10 @@
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+.floating-card.no-shadow {
+  box-shadow: none !important;
+}
+
 /* Extra large floating card for special sections */
 .floating-card-xl {
   border-radius: 2rem;
