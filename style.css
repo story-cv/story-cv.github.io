@@ -1060,7 +1060,7 @@ header picture img:hover {
 /* Value Props Section */
 .value-props {
   padding: var(--space-4xl) 0;
-  background-color: #fbf8f3;
+  background-color: #ffffff;
 }
 
 .value-props-title {
