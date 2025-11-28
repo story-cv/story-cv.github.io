@@ -786,7 +786,7 @@ header picture img:hover {
   display: flex;
   align-items: center;
   padding: var(--space-4xl) 0;
-  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  background-color: #fbf8f3;
 }
 
 .hero-content {
@@ -910,7 +910,7 @@ header picture img:hover {
 /* Trust Badges Section */
 .trust-badges {
   padding: var(--space-2xl) 0;
-  background-color: var(--color-bg-primary);
+  background-color: #fbf8f3;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -1060,7 +1060,7 @@ header picture img:hover {
 /* Value Props Section */
 .value-props {
   padding: var(--space-4xl) 0;
-  background-color: var(--color-bg-primary);
+  background-color: #fbf8f3;
 }
 
 .value-props-title {
@@ -1169,7 +1169,7 @@ header picture img:hover {
 /* Advantages Section */
 .advantages {
   padding: var(--space-4xl) 0;
-  background-color: var(--color-bg-secondary);
+  background-color: #fbf8f3;
 }
 
 .advantages-title {
