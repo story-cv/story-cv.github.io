@@ -1684,7 +1684,7 @@ header picture img:hover {
 /* Process Flow Section */
 .process-flow {
   padding: var(--space-4xl) 0;
-  background-color: var(--color-bg-secondary);
+  background-color: #ffffff;
 }
 
 .process-header {
