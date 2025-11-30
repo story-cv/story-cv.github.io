@@ -171,6 +171,7 @@
 
 .floating-card.no-shadow {
   box-shadow: none !important;
+  border: none;
 }
 
 /* Extra large floating card for special sections */
