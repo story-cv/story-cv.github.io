@@ -1194,11 +1194,11 @@ header picture img:hover {
 }
 
 .advantage-card {
-  background-color: var(--color-bg-primary);
+  background-color: #f6f1eb;
   padding: var(--space-2xl);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-border);
+  box-shadow: none;
+  border: none;
   transition: all var(--transition-normal);
 }
 
