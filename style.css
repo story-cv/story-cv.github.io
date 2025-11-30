@@ -29,6 +29,17 @@
   display: block;
 }
 
+/* Text Selection Color */
+::selection {
+  background-color: #fcedda;
+  color: inherit;
+}
+
+::-moz-selection {
+  background-color: #fcedda;
+  color: inherit;
+}
+
 /* CSS Custom Properties for Design System */
 :root {
   /* Typography */
