@@ -1380,7 +1380,10 @@ header picture img:hover {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  padding-left: var(--space-2xl);
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .timeline-line {
