@@ -3466,7 +3466,7 @@ header picture img:hover {
 /* About Section */
 .about-section {
   padding: var(--space-6xl) var(--space-md);
-  background-color: var(--color-bg-secondary);
+  background-color: #fbf8f3;
 }
 
 @media (max-width: 768px) {
