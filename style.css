@@ -922,7 +922,7 @@ header picture img:hover {
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-bg-tertiary);
+  background-color: #ffffff;
   border-color: var(--color-primary);
   color: var(--color-primary);
   transform: translateY(-2px);
