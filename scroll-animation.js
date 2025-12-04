@@ -22,7 +22,40 @@
   // Initialize when DOM is ready
   document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
+    initWigglyUnderline();
   });
+
+  /**
+   * Wiggly Underline Animation
+   * Triggers the "writing" effect for the hero headline underline
+   */
+  function initWigglyUnderline() {
+    const wigglyPath = document.querySelector('.wiggly-path');
+    
+    if (!wigglyPath) {
+      return;
+    }
+
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // Show line immediately for users who prefer reduced motion
+      wigglyPath.style.strokeDashoffset = '0';
+      return;
+    }
+
+    // Calculate actual path length and set initial state
+    const pathLength = wigglyPath.getTotalLength();
+    wigglyPath.style.strokeDasharray = pathLength;
+    wigglyPath.style.strokeDashoffset = pathLength;
+    wigglyPath.style.transition = 'stroke-dashoffset 1.5s ease-out';
+
+    // Trigger animation after a short delay for impact
+    setTimeout(() => {
+      wigglyPath.style.strokeDashoffset = '0';
+    }, 800);
+  }
 
   function initScrollReveal() {
     const revealElements = document.querySelectorAll('.scroll-reveal');
