@@ -27,7 +27,7 @@
 
   /**
    * Wiggly Underline Animation
-   * Triggers the "writing" effect for the hero headline underline
+   * Triggers the "writing" effect for the hero headline underline with continuous loop
    */
   function initWigglyUnderline() {
     const wigglyPath = document.querySelector('.wiggly-path');
@@ -49,11 +49,27 @@
     const pathLength = wigglyPath.getTotalLength();
     wigglyPath.style.strokeDasharray = pathLength;
     wigglyPath.style.strokeDashoffset = pathLength;
-    wigglyPath.style.transition = 'stroke-dashoffset 1.5s ease-out';
+    wigglyPath.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
 
-    // Trigger animation after a short delay for impact
-    setTimeout(() => {
+    // Animation loop function
+    function animateWigglyLine() {
+      // Draw the line
       wigglyPath.style.strokeDashoffset = '0';
+      
+      // After line is fully drawn, wait a moment then erase it
+      setTimeout(() => {
+        wigglyPath.style.strokeDashoffset = pathLength;
+        
+        // After erasing, wait a moment then start again
+        setTimeout(() => {
+          animateWigglyLine();
+        }, 800); // Pause before restarting
+      }, 2000); // Keep line visible for 2 seconds
+    }
+
+    // Start the animation after initial delay
+    setTimeout(() => {
+      animateWigglyLine();
     }, 800);
   }
 
