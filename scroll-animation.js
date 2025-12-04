@@ -58,12 +58,21 @@
       
       // After line is fully drawn, wait a moment then erase it
       setTimeout(() => {
-        wigglyPath.style.strokeDashoffset = pathLength;
+        // Ensure full erasure by using negative offset
+        wigglyPath.style.strokeDashoffset = -pathLength;
         
-        // After erasing, wait a moment then start again
+        // After erasing, wait a moment then reset and start again
         setTimeout(() => {
-          animateWigglyLine();
-        }, 800); // Pause before restarting
+          // Reset to starting position without animation
+          wigglyPath.style.transition = 'none';
+          wigglyPath.style.strokeDashoffset = pathLength;
+          
+          // Re-enable transition after a brief moment
+          setTimeout(() => {
+            wigglyPath.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+            animateWigglyLine();
+          }, 50);
+        }, 1600); // Wait for erase animation to complete (1.5s) + small buffer
       }, 2000); // Keep line visible for 2 seconds
     }
 
