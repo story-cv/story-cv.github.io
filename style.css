@@ -2960,7 +2960,7 @@ header picture img:hover {
 
 /* Featured Card (Premium Tier) */
 .pricing-card-featured {
-  border-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
   box-shadow: 0 0 0 1px var(--color-primary);
 }
 
