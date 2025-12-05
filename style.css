@@ -2945,7 +2945,7 @@ header picture img:hover {
 .pricing-card {
   background-color: white;
   border-radius: var(--radius-lg);
-  border: 2px solid var(--color-border);
+  border: none;
   padding: var(--space-2xl);
   display: flex;
   flex-direction: column;
@@ -2958,9 +2958,14 @@ header picture img:hover {
   box-shadow: var(--shadow-lg);
 }
 
+/* Free plan card */
+.pricing-card:not(.pricing-card-featured) {
+  border: none;
+}
+
 /* Featured Card (Premium Tier) */
 .pricing-card-featured {
-  border: 1px solid var(--color-primary);
+  border: 0.5px solid var(--color-primary);
   box-shadow: 0 0 0 1px var(--color-primary);
 }
 
