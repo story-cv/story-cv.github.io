@@ -92,6 +92,9 @@ function createFooter() {
                     <a target="_blank" href="https://goodaitools.com" class="goodaitools-badge">
                         <img src="https://goodaitools.com/assets/images/badge.png" alt="Good AI Tools" height="54">
                     </a>
+                    <a href="https://turbo0.com/item/storycv" target="_blank" rel="noopener noreferrer" class="turbo0-badge">
+                        <img src="https://img.turbo0.com/badge-listed-light.svg" alt="Listed on Turbo0" style="height: 54px; width: auto;">
+                    </a>
                 </div>
             </div>
 
