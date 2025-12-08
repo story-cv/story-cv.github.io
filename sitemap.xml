@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://story.cv</loc>
-    <lastmod>2025-10-22</lastmod>
+    <loc>https://story.cv/</loc>
+    <lastmod>2025-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://story.cv/about-us.html</loc>
-    <lastmod>2025-10-22</lastmod>
+    <loc>https://story.cv/about-us/</loc>
+    <lastmod>2025-12-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://story.cv/student-resume.html</loc>
-    <lastmod>2025-10-22</lastmod>
+    <loc>https://story.cv/student-resume/</loc>
+    <lastmod>2025-12-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://story.cv/blog.html</loc>
-    <lastmod>2025-10-23</lastmod>
+    <loc>https://story.cv/blog/</loc>
+    <lastmod>2025-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://story.cv/privacy-policy.html</loc>
-    <lastmod>2025-10-22</lastmod>
+    <loc>https://story.cv/privacy-policy/</loc>
+    <lastmod>2025-12-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://story.cv/terms-of-service.html</loc>
-    <lastmod>2025-10-22</lastmod>
+    <loc>https://story.cv/terms-of-service/</loc>
+    <lastmod>2025-12-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://story.cv/blog/articles/student-resume-template-with-real-examples.html</loc>
-    <lastmod>2025-09-12</lastmod>
+    <loc>https://story.cv/blog/articles/student-resume-template-with-real-examples/</loc>
+    <lastmod>2025-12-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://story.cv/blog/articles/what-is-resume-writer.html</loc>
-    <lastmod>2025-09-12</lastmod>
+    <loc>https://story.cv/blog/articles/what-is-resume-writer/</loc>
+    <lastmod>2025-12-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://story.cv/blog/articles/ats-filter-90-10-rule.html</loc>
-    <lastmod>2025-10-23</lastmod>
+    <loc>https://story.cv/blog/articles/ats-filter-90-10-rule/</loc>
+    <lastmod>2025-12-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
