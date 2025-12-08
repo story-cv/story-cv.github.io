@@ -6,7 +6,7 @@ class RelatedArticles {
                 title: "Passing the ATS is the easiest (and the most pointless) part",
                 excerpt: "Stop wasting time on ATS keywords. Understand why your resume fails the human test & how a foundation-first career narrative is the only strategy that gets you hired.",
                 image: "/blog/images/ATS filter versus recruiter.webp",
-                url: "/blog/articles/ats-filter-90-10-rule.html",
+                url: "/blog/articles/ats-filter-90-10-rule/",
                 category: "Resume Tips",
                 readTime: "4 min read"
             },
@@ -14,7 +14,7 @@ class RelatedArticles {
                 title: "The #1 Question to Ask Before Hiring a Resume Writer",
                 excerpt: "Job seekers usually try two quick fixes: free AI or paid services. But what if both paths lead to the same dead end?",
                 image: "/blog/images/what-is-resume-writer.webp",
-                url: "/blog/articles/what-is-resume-writer.html",
+                url: "/blog/articles/what-is-resume-writer/",
                 category: "Career Advice",
                 readTime: "8 min read"
             },
@@ -22,7 +22,7 @@ class RelatedArticles {
                 title: "The only student resume template you'll ever need",
                 excerpt: "Real student resume examples you can copy. Perfect for internships, part-time jobs, and your first full-time position.",
                 image: "/blog/images/student-resume-template.webp", 
-                url: "/blog/articles/student-resume-template-with-real-examples.html",
+                url: "/blog/articles/student-resume-template-with-real-examples/",
                 category: "Resume Tips",
                 readTime: "3 min read"
             }

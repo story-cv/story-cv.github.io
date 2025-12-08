@@ -3,18 +3,18 @@
   <channel>
     <title>StoryCV Blog</title>
     <description>Expert resume writing tips, career advice, and job search strategies from StoryCV</description>
-    <link>https://story.cv/blog.html</link>
+    <link>https://story.cv/blog/</link>
     <atom:link href="https://story.cv/blog/feed.xml" rel="self" type="application/rss+xml" />
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jan 2025 00:00:00 GMT</lastBuildDate>
-    <pubDate>Thu, 23 Jan 2025 00:00:00 GMT</pubDate>
+    <lastBuildDate>Sun, 08 Dec 2025 00:00:00 GMT</lastBuildDate>
+    <pubDate>Sun, 08 Dec 2025 00:00:00 GMT</pubDate>
     <ttl>60</ttl>
     
     <item>
       <title>Passing the ATS filter: 90/10 Rule and the Human Filter</title>
       <description>Stop wasting time on ATS keywords. Understand why your resume fails the human test &amp; how a foundation-first career narrative is the only strategy that gets you hired.</description>
-      <link>https://story.cv/blog/articles/ats-filter-90-10-rule.html</link>
-      <guid>https://story.cv/blog/articles/ats-filter-90-10-rule.html</guid>
+      <link>https://story.cv/blog/articles/ats-filter-90-10-rule/</link>
+      <guid>https://story.cv/blog/articles/ats-filter-90-10-rule/</guid>
       <pubDate>Thu, 23 Jan 2025 00:00:00 GMT</pubDate>
       <category>Resume Tips</category>
     </item>
@@ -22,8 +22,8 @@
     <item>
       <title>The #1 Question to Ask Before Hiring a Resume Writer</title>
       <description>Job seekers usually try two quick fixes: free AI or paid services. But what if both paths lead to the same dead end? Learn the strategic approach that actually works.</description>
-      <link>https://story.cv/blog/articles/what-is-resume-writer.html</link>
-      <guid>https://story.cv/blog/articles/what-is-resume-writer.html</guid>
+      <link>https://story.cv/blog/articles/what-is-resume-writer/</link>
+      <guid>https://story.cv/blog/articles/what-is-resume-writer/</guid>
       <pubDate>Thu, 05 Sep 2025 00:00:00 GMT</pubDate>
       <category>Career Advice</category>
     </item>
@@ -31,46 +31,10 @@
     <item>
       <title>The only student resume template you'll ever need</title>
       <description>Real student resume examples you can copy. Perfect for internships, part-time jobs, and your first full-time position.</description>
-      <link>https://story.cv/blog/articles/student-resume-template-with-real-examples.html</link>
-      <guid>https://story.cv/blog/articles/student-resume-template-with-real-examples.html</guid>
+      <link>https://story.cv/blog/articles/student-resume-template-with-real-examples/</link>
+      <guid>https://story.cv/blog/articles/student-resume-template-with-real-examples/</guid>
       <pubDate>Sun, 25 Aug 2025 00:00:00 GMT</pubDate>
       <category>Resume Tips</category>
-    </item>
-    
-    <item>
-      <title>How to Write a Resume That Actually Gets You Interviews</title>
-      <description>Most resumes get rejected in 6 seconds. Learn the proven strategies that make hiring managers stop scrolling and start calling you for interviews.</description>
-      <link>https://story.cv/blog/articles/how-to-write-resume-that-gets-interviews.html</link>
-      <guid>https://story.cv/blog/articles/how-to-write-resume-that-gets-interviews.html</guid>
-      <pubDate>Sun, 18 Aug 2025 00:00:00 GMT</pubDate>
-      <category>Resume Tips</category>
-    </item>
-    
-    <item>
-      <title>5 Job Search Mistakes That Are Killing Your Chances</title>
-      <description>Avoid these common pitfalls that keep qualified candidates from landing interviews.</description>
-      <link>https://story.cv/blog/articles/5-job-search-mistakes-killing-your-chances.html</link>
-      <guid>https://story.cv/blog/articles/5-job-search-mistakes-killing-your-chances.html</guid>
-      <pubDate>Thu, 15 Aug 2025 00:00:00 GMT</pubDate>
-      <category>Career Strategy</category>
-    </item>
-    
-    <item>
-      <title>How to Change Careers Successfully: A Complete Guide</title>
-      <description>Step-by-step strategies for making a successful career transition at any stage.</description>
-      <link>https://story.cv/blog/articles/how-to-change-careers-successfully.html</link>
-      <guid>https://story.cv/blog/articles/how-to-change-careers-successfully.html</guid>
-      <pubDate>Mon, 12 Aug 2025 00:00:00 GMT</pubDate>
-      <category>Career Development</category>
-    </item>
-    
-    <item>
-      <title>10 Smart Questions to Ask in Every Job Interview</title>
-      <description>Stand out from other candidates by asking these thoughtful questions that show your genuine interest.</description>
-      <link>https://story.cv/blog/articles/interview-questions-you-should-ask.html</link>
-      <guid>https://story.cv/blog/articles/interview-questions-you-should-ask.html</guid>
-      <pubDate>Sat, 10 Aug 2025 00:00:00 GMT</pubDate>
-      <category>Interview Tips</category>
     </item>
   </channel>
 </rss>
