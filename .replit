@@ -2,6 +2,7 @@ modules = ["nodejs-20", "python-3.11"]
 
 [nix]
 channel = "stable-24_05"
+packages = ["libxcrypt"]
 
 [workflows]
 runButton = "Project"
@@ -13,16 +14,7 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Story.CV Server"
-
-[[workflows.workflow]]
-name = "Story.CV Server"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python -m http.server 5000"
-waitForPort = 5000
+args = "StoryCV Backend"
 
 [[workflows.workflow]]
 name = "Update Sitemap"
@@ -33,33 +25,21 @@ mode = "sequential"
 task = "shell.exec"
 args = "python generate_sitemap.py"
 
+[[workflows.workflow]]
+name = "StoryCV Backend"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python -m uvicorn src.main:app --host 0.0.0.0 --port 5000 --reload"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[[ports]]
-localPort = 36269
-externalPort = 3000
-
-[[ports]]
-localPort = 40485
-externalPort = 3001
-
-[[ports]]
-localPort = 41389
-externalPort = 3002
-
-[[ports]]
-localPort = 44397
-externalPort = 4200
-
-[[ports]]
-localPort = 46789
-externalPort = 3003
-
-[[ports]]
-localPort = 46859
-externalPort = 5000
 
 [agent]
 expertMode = true
