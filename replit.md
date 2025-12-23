@@ -4,6 +4,7 @@
 StoryCV is an AI-powered professional resume writing application designed to help users create compelling resumes. It aims to make expert resume writing accessible to everyone, providing a solution that is both efficient and high-quality, differentiating itself from generic AI builders or traditional human writers. The project focuses on a modern, responsive web application with a clean user interface.
 
 ## Recent Changes
+- **December 23, 2025**: Implemented database-backed blog system with FastAPI backend. Blog posts stored as Markdown in PostgreSQL, converted to HTML at save time. Features include: Outrank webhook endpoint for automated content publishing (POST /api/webhooks/outrank with HMAC signature verification), dynamic blog listing page (/blog), article detail pages (/blog/articles/{slug}), dynamic RSS feed generation. Migrated 3 existing static articles to database. All static pages (landing, about, etc.) now served via FastAPI with clean URLs.
 - **December 4, 2025**: Added wiggly hand-drawn underline animation to "your story" in hero headline. Uses inline SVG with stroke-dasharray/dashoffset animation technique for "writing" effect on page load (1.5s ease-out, 800ms delay). Fully responsive with reduced stroke-width on mobile. Respects prefers-reduced-motion preference.
 - **November 27, 2025**: Implemented floating card design system across all major sections (except hero). Each section now features visually distinct, self-contained cards with rounded corners (1.5rem), subtle borders, soft shadows, and generous padding. Section backgrounds reset to white with cards retaining original background colors (cream #FCEDDA, gray #f8fafc, or white) to create floating appearance inspired by typeless.com
 - **November 27, 2025**: Added scroll-triggered reveal animations using Intersection Observer API with fade-in effects (0.7s transitions, 32px translateY) across all major sections
@@ -31,8 +32,18 @@ Preferred communication style: Simple, everyday language.
 - **Floating Card Design**: All major sections (except hero) wrapped in floating card containers with 1.5rem border-radius, subtle gray border (#e5e7eb), soft shadow (shadow-xl equivalent), generous internal padding, and section backgrounds reset to white for contrast. Cards use `.floating-card`, `.floating-card-cream`, `.floating-card-gray`, `.floating-card-white` classes.
 
 ### Backend Architecture
-- **Current State**: No backend implemented.
-- **Planned**: Future integration with AI services for resume generation and potential use of Drizzle ORM for data persistence.
+- **Framework**: FastAPI (Python 3.11) with uvicorn server
+- **Database**: PostgreSQL (Replit-managed) with SQLAlchemy ORM
+- **Blog System**: Database-backed blog with Markdown storage
+  - `blog_posts` table: id, slug, title, description, markdown_body, html_body, category, tags, featured_image, status, published_at, etc.
+  - Markdown converted to HTML using python-markdown library on save
+  - Clean URLs: `/blog/articles/{slug}` (no .html or trailing slashes required)
+- **Webhook Integration**: POST `/api/webhooks/outrank` for automated content publishing
+  - HMAC-SHA256 signature verification using `OUTRANK_WEBHOOK_SECRET` environment variable
+  - Accepts JSON payload with article metadata and Markdown content
+  - Auto-generates excerpt and read time if not provided
+- **Templates**: Jinja2 templates in `/templates/blog/` for dynamic blog pages
+- **Static Files**: All existing static pages served via FastAPI catch-all route
 
 ### Technical Implementations
 - **SEO Optimization**: Comprehensive meta tags, structured data (Website, ProfessionalService, FAQPage schema markup), and social media meta tags.
