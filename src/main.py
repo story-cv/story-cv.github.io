@@ -31,7 +31,12 @@ async def home(request: Request):
 
 @app.get("/about-us", response_class=HTMLResponse)
 async def about_us(request: Request):
-    return HTMLResponse(content=(BASE_DIR / "about-us" / "index.html").read_text(), status_code=200)
+    return templates.TemplateResponse(
+        "about-us.html",
+        {
+            "request": request
+        },
+    )
 
 
 @app.get("/student-resume", response_class=HTMLResponse)
