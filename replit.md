@@ -49,6 +49,31 @@ Preferred communication style: Simple, everyday language.
 - **SEO Optimization**: Comprehensive meta tags, structured data (Website, ProfessionalService, FAQPage schema markup), and social media meta tags.
 - **Accessibility**: Focus on clean typography, readable font sizes, mobile-friendly interactions, and full ARIA support for accordion elements (aria-expanded, aria-controls).
 
+## Blog Image Specifications
+
+Standard aspect ratios and dimensions for all blog imagery:
+
+| Type | Resolution (px) | Aspect Ratio | Use Case |
+|------|-----------------|--------------|----------|
+| Feature / Hero | 1200 × 675 | 16:9 | Top of post, wide header, OG image |
+| Blog Card Thumbnail | 800 × 600 | 4:3 | Article cards on /blog listing page |
+| Social / Quote Card | 1080 × 1080 | 1:1 | Instagram, LinkedIn, or square embeds |
+| Annotated Screenshot | 1200 × 800 | 3:2 | Step-by-step tutorials, UI examples |
+| Infographic / Data Visual | 1200 × auto | Flexible (maintain legibility) | Charts, diagrams, data visuals |
+| In-Body Content Image | 1200 × 800 | 3:2 | Standard images within article content |
+
+### File Guidelines
+- **Format**: WebP preferred, JPG fallback; PNG only for transparency
+- **Max file size**: 100-150 KB for standard images, 200 KB max for hero/feature
+- **Resolution**: 72 PPI (web standard)
+- **Naming**: Use descriptive filenames (e.g., `student-resume-example-2025.webp`)
+- **Compression**: Always compress before upload using TinyPNG, Squoosh, or similar
+
+### CSS Implementation
+- `.blog-post-body img`: Auto-constrained to max-width 100%, centered, with rounded corners and subtle shadow
+- `.related-post-image img`: Fixed height 140px with object-fit: cover for consistent card layout
+- `.post-featured-image`: Full-width responsive with border-radius
+
 ## External Dependencies
 
 - **Google Fonts**: Onest font family.
