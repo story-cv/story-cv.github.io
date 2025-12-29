@@ -71,8 +71,9 @@ Standard aspect ratios and dimensions for all blog imagery:
 
 ### CSS Implementation
 - `.blog-post-body img`: Auto-constrained to max-width 100%, centered, with rounded corners and subtle shadow
-- `.related-post-image img`: Fixed height 140px with object-fit: cover for consistent card layout
-- `.post-featured-image`: Full-width responsive with border-radius
+- `.related-post-image`: Enforces 4:3 aspect ratio with object-fit: cover for consistent related article cards
+- `.post-featured-image`: Enforces 16:9 aspect ratio (max-width 800px) with object-fit: cover for article hero images
+- `.featured-article-image`: Enforces 4:3 aspect ratio for blog listing featured article thumbnail
 
 ## External Dependencies
 
