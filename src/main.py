@@ -1,13 +1,19 @@
 import os
+import json
 import secrets
+import logging
 from datetime import datetime
 from pathlib import Path
 from fastapi import FastAPI, Request, Depends, HTTPException, Header
-from fastapi.responses import HTMLResponse, Response
+from fastapi.responses import HTMLResponse, Response, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.exceptions import RequestValidationError
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 from src.database import engine, get_db, Base
 from src.models import BlogPost, PostStatus
@@ -23,6 +29,18 @@ templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 app.mount("/blog/images", StaticFiles(directory=str(BASE_DIR / "blog" / "images")), name="blog_images")
 app.mount("/static", StaticFiles(directory=str(BASE_DIR)), name="static")
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    body = await request.body()
+    logger.error(f"Validation error for {request.url.path}")
+    logger.error(f"Request body: {body.decode('utf-8', errors='replace')}")
+    logger.error(f"Validation errors: {exc.errors()}")
+    return JSONResponse(
+        status_code=422,
+        content={"detail": exc.errors(), "body": body.decode('utf-8', errors='replace')[:500]}
+    )
 
 
 @app.get("/", response_class=HTMLResponse)
