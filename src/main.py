@@ -1,4 +1,5 @@
 import os
+import secrets
 from datetime import datetime
 from pathlib import Path
 from fastapi import FastAPI, Request, Depends, HTTPException, Header
@@ -11,7 +12,7 @@ from sqlalchemy import desc
 from src.database import engine, get_db, Base
 from src.models import BlogPost, PostStatus
 from src.schemas import OutrankWebhookPayload
-from src.utils import markdown_to_html, generate_excerpt, verify_webhook_signature, calculate_read_time
+from src.utils import markdown_to_html, generate_excerpt, calculate_read_time
 
 Base.metadata.create_all(bind=engine)
 
@@ -148,14 +149,14 @@ async def outrank_webhook(
     request: Request,
     payload: OutrankWebhookPayload,
     db: Session = Depends(get_db),
-    x_outrank_signature: str = Header(None, alias="X-Outrank-Signature")
+    authorization: str = Header(None, alias="Authorization")
 ):
-    webhook_secret = os.environ.get("OUTRANK_WEBHOOK_SECRET")
+    access_token = os.environ.get("OUTRANK_ACCESS_TOKEN")
     
-    if webhook_secret:
-        body = await request.body()
-        if not verify_webhook_signature(body, x_outrank_signature, webhook_secret):
-            raise HTTPException(status_code=401, detail="Invalid signature")
+    if access_token:
+        expected_header = f"Bearer {access_token}"
+        if not authorization or not secrets.compare_digest(authorization, expected_header):
+            raise HTTPException(status_code=401, detail="Invalid access token")
     
     html_body = markdown_to_html(payload.markdown_body)
     excerpt = payload.excerpt or generate_excerpt(payload.markdown_body)

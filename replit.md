@@ -39,7 +39,7 @@ Preferred communication style: Simple, everyday language.
   - Markdown converted to HTML using python-markdown library on save
   - Clean URLs: `/blog/articles/{slug}` (no .html or trailing slashes required)
 - **Webhook Integration**: POST `/api/webhooks/outrank` for automated content publishing
-  - HMAC-SHA256 signature verification using `OUTRANK_WEBHOOK_SECRET` environment variable
+  - Bearer token authentication using `OUTRANK_ACCESS_TOKEN` environment variable (Header: `Authorization: Bearer <token>`)
   - Accepts JSON payload with article metadata and Markdown content
   - Auto-generates excerpt and read time if not provided
 - **Templates**: Jinja2 templates in `/templates/blog/` for dynamic blog pages
