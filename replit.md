@@ -40,8 +40,10 @@ Preferred communication style: Simple, everyday language.
   - Clean URLs: `/blog/articles/{slug}` (no .html or trailing slashes required)
 - **Webhook Integration**: POST `/api/webhooks/outrank` for automated content publishing
   - Bearer token authentication using `OUTRANK_ACCESS_TOKEN` environment variable (Header: `Authorization: Bearer <token>`)
-  - Accepts JSON payload with article metadata and Markdown content
-  - Auto-generates excerpt and read time if not provided
+  - Accepts Outrank webhook format: `{event_type, timestamp, data: {articles: [...]}}`
+  - Each article: `{id, title, content_markdown, content_html, meta_description, created_at, image_url, slug, tags}`
+  - Auto-generates excerpt and read time from content_markdown
+  - Publishes articles immediately (status: published)
 - **Templates**: Jinja2 templates in `/templates/blog/` for dynamic blog pages
 - **Static Files**: All existing static pages served via FastAPI catch-all route
 

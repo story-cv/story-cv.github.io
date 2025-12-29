@@ -4,21 +4,26 @@ from datetime import datetime
 from uuid import UUID
 
 
-class OutrankWebhookPayload(BaseModel):
-    slug: str = Field(..., min_length=1, max_length=255)
-    title: str = Field(..., min_length=1, max_length=500)
-    subtitle: Optional[str] = None
-    description: Optional[str] = None
-    markdown_body: str = Field(..., min_length=1)
-    excerpt: Optional[str] = None
-    category: Optional[str] = None
+class OutrankArticle(BaseModel):
+    id: str
+    title: str
+    content_markdown: str
+    content_html: str
+    meta_description: Optional[str] = None
+    created_at: Optional[datetime] = None
+    image_url: Optional[str] = None
+    slug: str
     tags: Optional[List[str]] = []
-    author_byline: Optional[str] = "StoryCV Team"
-    featured_image: Optional[str] = None
-    image_alt: Optional[str] = None
-    read_time_minutes: Optional[int] = 5
-    status: Optional[str] = "draft"
-    published_at: Optional[datetime] = None
+
+
+class OutrankWebhookData(BaseModel):
+    articles: List[OutrankArticle]
+
+
+class OutrankWebhookPayload(BaseModel):
+    event_type: str
+    timestamp: datetime
+    data: OutrankWebhookData
 
 
 class BlogPostResponse(BaseModel):

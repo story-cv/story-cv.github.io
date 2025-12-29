@@ -176,51 +176,60 @@ async def outrank_webhook(
         if not authorization or not secrets.compare_digest(authorization, expected_header):
             raise HTTPException(status_code=401, detail="Invalid access token")
     
-    html_body = markdown_to_html(payload.markdown_body)
-    excerpt = payload.excerpt or generate_excerpt(payload.markdown_body)
-    read_time = payload.read_time_minutes or calculate_read_time(payload.markdown_body)
+    logger.info(f"Received webhook: event_type={payload.event_type}, articles={len(payload.data.articles)}")
     
-    existing_post = db.query(BlogPost).filter(BlogPost.slug == payload.slug).first()
+    if payload.event_type != "publish_articles":
+        logger.info(f"Ignoring event_type: {payload.event_type}")
+        return {"event_type": payload.event_type, "processed": 0, "message": "Event type not handled"}
     
-    if existing_post:
-        existing_post.title = payload.title
-        existing_post.subtitle = payload.subtitle
-        existing_post.description = payload.description
-        existing_post.markdown_body = payload.markdown_body
-        existing_post.html_body = html_body
-        existing_post.excerpt = excerpt
-        existing_post.category = payload.category
-        existing_post.tags = payload.tags or []
-        existing_post.author_byline = payload.author_byline or "StoryCV Team"
-        existing_post.featured_image = payload.featured_image
-        existing_post.image_alt = payload.image_alt
-        existing_post.read_time_minutes = read_time
-        existing_post.status = PostStatus[payload.status] if payload.status else PostStatus.draft
-        existing_post.published_at = payload.published_at
-        existing_post.updated_at = datetime.utcnow()
-        db.commit()
-        return {"status": "updated", "slug": payload.slug}
-    else:
-        new_post = BlogPost(
-            slug=payload.slug,
-            title=payload.title,
-            subtitle=payload.subtitle,
-            description=payload.description,
-            markdown_body=payload.markdown_body,
-            html_body=html_body,
-            excerpt=excerpt,
-            category=payload.category,
-            tags=payload.tags or [],
-            author_byline=payload.author_byline or "StoryCV Team",
-            featured_image=payload.featured_image,
-            image_alt=payload.image_alt,
-            read_time_minutes=read_time,
-            status=PostStatus[payload.status] if payload.status else PostStatus.draft,
-            published_at=payload.published_at
-        )
-        db.add(new_post)
-        db.commit()
-        return {"status": "created", "slug": payload.slug}
+    results = []
+    for article in payload.data.articles:
+        html_body = markdown_to_html(article.content_markdown)
+        excerpt = generate_excerpt(article.content_markdown)
+        read_time = calculate_read_time(article.content_markdown)
+        
+        existing_post = db.query(BlogPost).filter(BlogPost.slug == article.slug).first()
+        
+        image_alt = f"{article.title} - StoryCV Blog"
+        
+        if existing_post:
+            existing_post.title = article.title
+            existing_post.description = article.meta_description or existing_post.description
+            existing_post.markdown_body = article.content_markdown
+            existing_post.html_body = html_body
+            existing_post.excerpt = excerpt
+            existing_post.tags = article.tags or existing_post.tags or []
+            existing_post.featured_image = article.image_url or existing_post.featured_image
+            existing_post.image_alt = image_alt
+            existing_post.read_time_minutes = read_time
+            existing_post.status = PostStatus.published
+            existing_post.published_at = existing_post.published_at or article.created_at or datetime.utcnow()
+            existing_post.updated_at = datetime.utcnow()
+            results.append({"status": "updated", "slug": article.slug})
+            logger.info(f"Updated article: {article.slug}")
+        else:
+            new_post = BlogPost(
+                slug=article.slug,
+                title=article.title,
+                description=article.meta_description,
+                markdown_body=article.content_markdown,
+                html_body=html_body,
+                excerpt=excerpt,
+                category="Resume Tips",
+                tags=article.tags or [],
+                author_byline="StoryCV Team",
+                featured_image=article.image_url,
+                image_alt=image_alt,
+                read_time_minutes=read_time,
+                status=PostStatus.published,
+                published_at=article.created_at or datetime.utcnow()
+            )
+            db.add(new_post)
+            results.append({"status": "created", "slug": article.slug})
+            logger.info(f"Created article: {article.slug}")
+    
+    db.commit()
+    return {"event_type": payload.event_type, "processed": len(results), "results": results}
 
 
 @app.get("/{path:path}")
