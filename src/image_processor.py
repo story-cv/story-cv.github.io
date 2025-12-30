@@ -72,11 +72,14 @@ def process_featured_image(image_url: str, slug: str) -> str:
 
 
 def process_content_images(content: str, slug: str) -> str:
-    matches = OUTRANK_IMAGE_PATTERN.findall(content)
-    urls = set(OUTRANK_IMAGE_PATTERN.finditer(content))
+    seen_urls = set()
     
-    for match in urls:
+    for match in OUTRANK_IMAGE_PATTERN.finditer(content):
         original_url = match.group(0)
+        if original_url in seen_urls:
+            continue
+        seen_urls.add(original_url)
+        
         new_url = process_image_url(original_url, slug)
         if new_url != original_url:
             content = content.replace(original_url, new_url)

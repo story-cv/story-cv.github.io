@@ -44,6 +44,12 @@ Preferred communication style: Simple, everyday language.
   - Each article: `{id, title, content_markdown, content_html, meta_description, created_at, image_url, slug, tags}`
   - Auto-generates excerpt and read time from content_markdown
   - Publishes articles immediately (status: published)
+- **Image Processing**: Automatic image optimization for Outrank-hosted images
+  - Downloads images from Outrank CDN (`cdn.outrank.so`)
+  - Converts JPG/PNG to WebP format using Pillow (quality: 80)
+  - Uploads to Replit App Storage (Google Cloud Storage)
+  - Updates image URLs in featured_image and markdown content
+  - Storage path: `blog-images/{slug}/{filename}.webp`
 - **Templates**: Jinja2 templates in `/templates/blog/` for dynamic blog pages
 - **Static Files**: All existing static pages served via FastAPI catch-all route
 

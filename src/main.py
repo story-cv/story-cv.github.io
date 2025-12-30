@@ -19,6 +19,7 @@ from src.database import engine, get_db, Base
 from src.models import BlogPost, PostStatus
 from src.schemas import OutrankWebhookPayload
 from src.utils import markdown_to_html, generate_excerpt, calculate_read_time
+from src.image_processor import process_article_images
 
 Base.metadata.create_all(bind=engine)
 
@@ -196,10 +197,20 @@ async def outrank_webhook(request: Request,
 
     results = []
     for article in payload.data.articles:
-        logger.info(f"Processing article: {article}")
-        html_body = markdown_to_html(article.content_markdown)
-        excerpt = generate_excerpt(article.content_markdown)
-        read_time = calculate_read_time(article.content_markdown)
+        logger.info(f"Processing article: {article.slug}")
+        
+        processed_featured_image, processed_markdown = process_article_images(
+            slug=article.slug,
+            featured_image=article.image_url,
+            markdown_content=article.content_markdown
+        )
+        
+        markdown_content = processed_markdown or article.content_markdown
+        featured_image = processed_featured_image or article.image_url
+        
+        html_body = markdown_to_html(markdown_content)
+        excerpt = generate_excerpt(markdown_content)
+        read_time = calculate_read_time(markdown_content)
 
         existing_post = db.query(BlogPost).filter(
             BlogPost.slug == article.slug).first()
@@ -209,11 +220,11 @@ async def outrank_webhook(request: Request,
         if existing_post:
             existing_post.title = article.title
             existing_post.description = article.meta_description or existing_post.description
-            existing_post.markdown_body = article.content_markdown
+            existing_post.markdown_body = markdown_content
             existing_post.html_body = html_body
             existing_post.excerpt = excerpt
             existing_post.tags = article.tags or existing_post.tags or []
-            existing_post.featured_image = article.image_url or existing_post.featured_image
+            existing_post.featured_image = featured_image or existing_post.featured_image
             existing_post.image_alt = image_alt
             existing_post.read_time_minutes = read_time
             existing_post.status = PostStatus.published
@@ -226,13 +237,13 @@ async def outrank_webhook(request: Request,
             new_post = BlogPost(slug=article.slug,
                                 title=article.title,
                                 description=article.meta_description,
-                                markdown_body=article.content_markdown,
+                                markdown_body=markdown_content,
                                 html_body=html_body,
                                 excerpt=excerpt,
                                 category="Resume Tips",
                                 tags=article.tags or [],
                                 author_byline="StoryCV Team",
-                                featured_image=article.image_url,
+                                featured_image=featured_image,
                                 image_alt=image_alt,
                                 read_time_minutes=read_time,
                                 status=PostStatus.published,
