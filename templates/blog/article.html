@@ -107,7 +107,7 @@
         <!-- Featured Image -->
         <section class="blog-post-image">
             <div class="container">
-                <img src="/blog/images/{{ post.featured_image }}" alt="{{ post.image_alt or post.title }}" class="post-featured-image">
+                <img src="{{ post.featured_image }}" alt="{{ post.image_alt or post.title }}" class="post-featured-image">
             </div>
         </section>
         {% endif %}
