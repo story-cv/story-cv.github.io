@@ -48,3 +48,6 @@ integrations = ["javascript_object_storage:2.0.0"]
 [deployment]
 deploymentTarget = "cloudrun"
 run = ["sh", "-c", "python -m uvicorn src.main:app --host 0.0.0.0 --port 5000"]
+
+[objectStorage]
+defaultBucketID = "replit-objstore-7fda580b-d42d-4f6a-bd6d-e2ba27a3ff0a"
