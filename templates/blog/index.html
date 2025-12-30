@@ -95,7 +95,7 @@
                     </div>
                     {% if featured_post.featured_image %}
                     <div class="featured-article-image">
-                        <img src="/blog/images/{{ featured_post.featured_image }}" alt="{{ featured_post.image_alt or featured_post.title }}" loading="lazy">
+                        <img src="{{ featured_post.featured_image }}" alt="{{ featured_post.image_alt or featured_post.title }}" loading="lazy">
                     </div>
                     {% endif %}
                 </article>
@@ -113,7 +113,7 @@
                     <article class="blog-card">
                         {% if post.featured_image %}
                         <div class="blog-card-image">
-                            <img src="/blog/images/{{ post.featured_image }}" alt="{{ post.image_alt or post.title }}" loading="lazy">
+                            <img src="{{ post.featured_image }}" alt="{{ post.image_alt or post.title }}" loading="lazy">
                         </div>
                         {% endif %}
                         <div class="blog-card-content">
