@@ -2,7 +2,7 @@ modules = ["nodejs-20", "python-3.11", "postgresql-16"]
 
 [nix]
 channel = "stable-24_05"
-packages = ["libxcrypt"]
+packages = ["freetype", "lcms2", "libimagequant", "libjpeg", "libtiff", "libwebp", "libxcrypt", "openjpeg", "tcl", "tk", "zlib"]
 
 [workflows]
 runButton = "Project"
@@ -43,6 +43,7 @@ externalPort = 80
 
 [agent]
 expertMode = true
+integrations = ["javascript_object_storage:2.0.0"]
 
 [deployment]
 deploymentTarget = "cloudrun"
