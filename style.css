@@ -3585,6 +3585,9 @@ header picture img:hover {
   -moz-user-select: text !important;
   -ms-user-select: text !important;
   cursor: auto;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 1;
 }
 
 .founders-note-title {
