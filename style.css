@@ -3573,6 +3573,10 @@ header picture img:hover {
   padding: var(--space-xl);
   max-width: 700px;
   margin: 0 auto;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 .founders-note-title {
@@ -3588,6 +3592,10 @@ header picture img:hover {
   line-height: 1.6;
   color: var(--color-text-primary);
   margin-bottom: var(--space-lg);
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 .founders-note-text:last-of-type {
