@@ -43,8 +43,7 @@ def get_filename_from_url(url: str) -> str:
 
 def upload_to_storage(image_data: bytes, object_name: str) -> str:
     storage_client.upload_from_bytes(object_name, image_data)
-    bucket_id = os.environ.get('DEFAULT_OBJECT_STORAGE_BUCKET_ID', '')
-    public_url = f"https://storage.googleapis.com/{bucket_id}/{object_name}"
+    public_url = f"/api/storage/{object_name}"
     return public_url
 
 

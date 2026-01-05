@@ -19,7 +19,7 @@ from src.database import engine, get_db, Base
 from src.models import BlogPost, PostStatus
 from src.schemas import OutrankWebhookPayload
 from src.utils import markdown_to_html, generate_excerpt, calculate_read_time
-from src.image_processor import process_article_images
+from src.image_processor import process_article_images, storage_client
 
 Base.metadata.create_all(bind=engine)
 
@@ -131,6 +131,31 @@ async def blog_article(request: Request,
         "post": post,
         "related_posts": related_posts
     })
+
+
+@app.get("/api/storage/{path:path}")
+async def serve_storage_image(path: str):
+    try:
+        file_data = storage_client.download_as_bytes(path)
+        
+        content_type = "application/octet-stream"
+        if path.endswith(".webp"):
+            content_type = "image/webp"
+        elif path.endswith(".png"):
+            content_type = "image/png"
+        elif path.endswith(".jpg") or path.endswith(".jpeg"):
+            content_type = "image/jpeg"
+        elif path.endswith(".gif"):
+            content_type = "image/gif"
+        
+        return Response(
+            content=file_data,
+            media_type=content_type,
+            headers={"Cache-Control": "public, max-age=31536000"}
+        )
+    except Exception as e:
+        logger.error(f"Failed to serve storage file {path}: {e}")
+        raise HTTPException(status_code=404, detail="Image not found")
 
 
 @app.get("/blog/feed.xml", response_class=Response)
