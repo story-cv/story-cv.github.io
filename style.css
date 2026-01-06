@@ -8535,6 +8535,7 @@ body.mobile-menu-open {
 .famewall-container {
   position: relative;
   width: 100%;
+  min-height: 400px;
 }
 
 .famewall-share-embed {
