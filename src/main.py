@@ -194,6 +194,56 @@ async def blog_feed(db: Session = Depends(get_db)):
     return Response(content=rss_content, media_type="application/xml")
 
 
+@app.get("/sitemap.xml", response_class=Response)
+async def sitemap(db: Session = Depends(get_db)):
+    base_url = "https://story.cv"
+    today = datetime.utcnow().strftime('%Y-%m-%d')
+    
+    static_pages = [
+        {'path': '', 'changefreq': 'weekly', 'priority': '1.0'},
+        {'path': 'about-us', 'changefreq': 'monthly', 'priority': '0.8'},
+        {'path': 'student-resume', 'changefreq': 'monthly', 'priority': '0.9'},
+        {'path': 'blog', 'changefreq': 'daily', 'priority': '0.8'},
+        {'path': 'privacy-policy', 'changefreq': 'yearly', 'priority': '0.5'},
+        {'path': 'terms-of-service', 'changefreq': 'yearly', 'priority': '0.5'},
+    ]
+    
+    urls = []
+    for page in static_pages:
+        loc = f"{base_url}/{page['path']}" if page['path'] else base_url
+        urls.append(f"""  <url>
+    <loc>{loc}</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>{page['changefreq']}</changefreq>
+    <priority>{page['priority']}</priority>
+  </url>""")
+    
+    posts = db.query(BlogPost).filter(
+        BlogPost.status == PostStatus.published
+    ).all()
+    
+    for post in posts:
+        lastmod = today
+        if post.updated_at:
+            lastmod = post.updated_at.strftime('%Y-%m-%d')
+        elif post.published_at:
+            lastmod = post.published_at.strftime('%Y-%m-%d')
+        
+        urls.append(f"""  <url>
+    <loc>{base_url}/blog/articles/{post.slug}</loc>
+    <lastmod>{lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>""")
+    
+    sitemap_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{chr(10).join(urls)}
+</urlset>"""
+    
+    return Response(content=sitemap_xml, media_type="application/xml")
+
+
 @app.post("/api/webhooks/outrank")
 async def outrank_webhook(request: Request,
                           payload: OutrankWebhookPayload,
