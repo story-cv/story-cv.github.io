@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }} | StoryCV Blog</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ post.description or post.excerpt or '' }}">
+    <meta name="keywords" content="{{ ', '.join(post.tags) if post.tags else post.category or 'resume, career' }}">
+    <meta name="author" content="{{ post.author_byline }}">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{ post.title }}">
+    <meta property="og:description" content="{{ post.description or post.excerpt or '' }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://story.cv/blog/articles/{{ post.slug }}">
+    <meta property="og:site_name" content="StoryCV">
+    {% if post.featured_image %}
+    <meta property="og:image" content="https://story.cv/blog/images/{{ post.featured_image }}">
+    {% endif %}
+    <meta property="article:published_time" content="{{ post.published_at.isoformat() if post.published_at else '' }}">
+    <meta property="article:author" content="{{ post.author_byline }}">
+    <meta property="article:section" content="{{ post.category or 'General' }}">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ post.title }}">
+    <meta name="twitter:description" content="{{ post.description or post.excerpt or '' }}">
+    {% if post.featured_image %}
+    <meta name="twitter:image" content="https://story.cv/blog/images/{{ post.featured_image }}">
+    {% endif %}
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://story.cv/blog/articles/{{ post.slug }}">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{ post.title }}",
+        "description": "{{ post.description or post.excerpt or '' }}",
+        {% if post.featured_image %}
+        "image": "https://story.cv/blog/images/{{ post.featured_image }}",
+        {% endif %}
+        "author": {
+            "@type": "Person",
+            "name": "{{ post.author_byline }}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "StoryCV",
+            "url": "https://story.cv"
+        },
+        "datePublished": "{{ post.published_at.strftime('%Y-%m-%d') if post.published_at else '' }}",
+        "dateModified": "{{ post.updated_at.strftime('%Y-%m-%d') if post.updated_at else '' }}",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://story.cv/blog/articles/{{ post.slug }}"
+        }
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPTTZV8ERX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VPTTZV8ERX');
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header-container"></header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Blog Post Header -->
+        <section class="blog-post-header">
+            <div class="container">
+                <div class="blog-post-meta">
+                    <a href="/blog" class="back-to-blog">← Back to Blog</a>
+                    <div class="post-categories">
+                        <span class="post-category">{{ post.category or 'General' }}</span>
+                    </div>
+                </div>
+                <h1 class="blog-post-title">{{ post.title }}</h1>
+                <div class="blog-post-info">
+                    <span class="post-date">{{ post.published_at.strftime('%B %d, %Y') if post.published_at else '' }}</span>
+                    <span class="post-read-time">{{ post.read_time_minutes }} min read</span>
+                    <span class="post-author">By {{ post.author_byline }}</span>
+                </div>
+            </div>
+        </section>
+
+        {% if post.featured_image %}
+        <!-- Featured Image -->
+        <section class="blog-post-image">
+            <div class="container">
+                <img src="{{ post.featured_image }}" alt="{{ post.image_alt or post.title }}" class="post-featured-image">
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-content">
+            <div class="container">
+                <div class="blog-post-body">
+                    {{ post.html_body | safe }}
+                </div>
+
+                {% if related_posts %}
+                <!-- Related Posts -->
+                <section class="related-posts-section">
+                    <h3>Related Articles</h3>
+                    <div class="related-posts-grid">
+                        {% for related in related_posts %}
+                        <a href="/blog/articles/{{ related.slug }}" class="related-post-card">
+                            {% if related.featured_image %}
+                            <div class="related-post-image">
+                                <img src="/blog/images/{{ related.featured_image }}" alt="{{ related.image_alt or related.title }}" loading="lazy">
+                            </div>
+                            {% endif %}
+                            <div class="related-post-content">
+                                <span class="related-post-category">{{ related.category or 'General' }}</span>
+                                <h4 class="related-post-title">{{ related.title }}</h4>
+                                <span class="related-post-read-time">{{ related.read_time_minutes }} min read</span>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer Section -->
+    <div id="footer-container"></div>
+
+    <script src="/header.js"></script>
+    <script src="/footer.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>

@@ -4,6 +4,8 @@
 StoryCV is an AI-powered professional resume writing application designed to help users create compelling resumes. It aims to make expert resume writing accessible to everyone, providing a solution that is both efficient and high-quality, differentiating itself from generic AI builders or traditional human writers. The project focuses on a modern, responsive web application with a clean user interface.
 
 ## Recent Changes
+- **January 5, 2026**: Added storage image serving API endpoint (`GET /api/storage/{path}`) to serve images from Replit Object Storage bucket. Updated image processor to return API-based URLs (`/api/storage/blog-images/{slug}/{filename}.webp`) instead of direct GCS URLs. Images are served with proper content-type headers and 1-year cache control.
+- **December 23, 2025**: Implemented database-backed blog system with FastAPI backend. Blog posts stored as Markdown in PostgreSQL, converted to HTML at save time. Features include: Outrank webhook endpoint for automated content publishing (POST /api/webhooks/outrank with HMAC signature verification), dynamic blog listing page (/blog), article detail pages (/blog/articles/{slug}), dynamic RSS feed generation. Migrated 3 existing static articles to database. All static pages (landing, about, etc.) now served via FastAPI with clean URLs.
 - **December 4, 2025**: Added wiggly hand-drawn underline animation to "your story" in hero headline. Uses inline SVG with stroke-dasharray/dashoffset animation technique for "writing" effect on page load (1.5s ease-out, 800ms delay). Fully responsive with reduced stroke-width on mobile. Respects prefers-reduced-motion preference.
 - **November 27, 2025**: Implemented floating card design system across all major sections (except hero). Each section now features visually distinct, self-contained cards with rounded corners (1.5rem), subtle borders, soft shadows, and generous padding. Section backgrounds reset to white with cards retaining original background colors (cream #FCEDDA, gray #f8fafc, or white) to create floating appearance inspired by typeless.com
 - **November 27, 2025**: Added scroll-triggered reveal animations using Intersection Observer API with fade-in effects (0.7s transitions, 32px translateY) across all major sections
@@ -31,12 +33,56 @@ Preferred communication style: Simple, everyday language.
 - **Floating Card Design**: All major sections (except hero) wrapped in floating card containers with 1.5rem border-radius, subtle gray border (#e5e7eb), soft shadow (shadow-xl equivalent), generous internal padding, and section backgrounds reset to white for contrast. Cards use `.floating-card`, `.floating-card-cream`, `.floating-card-gray`, `.floating-card-white` classes.
 
 ### Backend Architecture
-- **Current State**: No backend implemented.
-- **Planned**: Future integration with AI services for resume generation and potential use of Drizzle ORM for data persistence.
+- **Framework**: FastAPI (Python 3.11) with uvicorn server
+- **Database**: PostgreSQL (Replit-managed) with SQLAlchemy ORM
+- **Blog System**: Database-backed blog with Markdown storage
+  - `blog_posts` table: id, slug, title, description, markdown_body, html_body, category, tags, featured_image, status, published_at, etc.
+  - Markdown converted to HTML using python-markdown library on save
+  - Clean URLs: `/blog/articles/{slug}` (no .html or trailing slashes required)
+- **Webhook Integration**: POST `/api/webhooks/outrank` for automated content publishing
+  - Bearer token authentication using `OUTRANK_ACCESS_TOKEN` environment variable (Header: `Authorization: Bearer <token>`)
+  - Accepts Outrank webhook format: `{event_type, timestamp, data: {articles: [...]}}`
+  - Each article: `{id, title, content_markdown, content_html, meta_description, created_at, image_url, slug, tags}`
+  - Auto-generates excerpt and read time from content_markdown
+  - Publishes articles immediately (status: published)
+- **Image Processing**: Automatic image optimization for Outrank-hosted images
+  - Downloads images from Outrank CDN (`cdn.outrank.so`)
+  - Converts JPG/PNG to WebP format using Pillow (quality: 80)
+  - Uploads to Replit App Storage (Google Cloud Storage)
+  - Updates image URLs in featured_image and markdown content
+  - Storage path: `blog-images/{slug}/{filename}.webp`
+- **Templates**: Jinja2 templates in `/templates/blog/` for dynamic blog pages
+- **Static Files**: All existing static pages served via FastAPI catch-all route
 
 ### Technical Implementations
 - **SEO Optimization**: Comprehensive meta tags, structured data (Website, ProfessionalService, FAQPage schema markup), and social media meta tags.
 - **Accessibility**: Focus on clean typography, readable font sizes, mobile-friendly interactions, and full ARIA support for accordion elements (aria-expanded, aria-controls).
+
+## Blog Image Specifications
+
+Standard aspect ratios and dimensions for all blog imagery:
+
+| Type | Resolution (px) | Aspect Ratio | Use Case |
+|------|-----------------|--------------|----------|
+| Feature / Hero | 1200 × 675 | 16:9 | Top of post, wide header, OG image |
+| Blog Card Thumbnail | 800 × 600 | 4:3 | Article cards on /blog listing page |
+| Social / Quote Card | 1080 × 1080 | 1:1 | Instagram, LinkedIn, or square embeds |
+| Annotated Screenshot | 1200 × 800 | 3:2 | Step-by-step tutorials, UI examples |
+| Infographic / Data Visual | 1200 × auto | Flexible (maintain legibility) | Charts, diagrams, data visuals |
+| In-Body Content Image | 1200 × 800 | 3:2 | Standard images within article content |
+
+### File Guidelines
+- **Format**: WebP preferred, JPG fallback; PNG only for transparency
+- **Max file size**: 100-150 KB for standard images, 200 KB max for hero/feature
+- **Resolution**: 72 PPI (web standard)
+- **Naming**: Use descriptive filenames (e.g., `student-resume-example-2025.webp`)
+- **Compression**: Always compress before upload using TinyPNG, Squoosh, or similar
+
+### CSS Implementation
+- `.blog-post-body img`: Auto-constrained to max-width 100%, centered, with rounded corners and subtle shadow
+- `.related-post-image`: Enforces 4:3 aspect ratio with object-fit: cover for consistent related article cards
+- `.post-featured-image`: Enforces 16:9 aspect ratio (max-width 800px) with object-fit: cover for article hero images
+- `.featured-article-image`: Enforces 4:3 aspect ratio for blog listing featured article thumbnail
 
 ## External Dependencies
 

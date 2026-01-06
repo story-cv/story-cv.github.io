@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - StoryCV | Resume Writing Tips & Career Advice</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Expert resume writing tips, career advice, and job search strategies from StoryCV. Learn how to craft compelling resumes that get results.">
+    <meta name="keywords" content="resume tips, career advice, job search, resume writing, professional development, StoryCV blog">
+    <meta name="author" content="StoryCV">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Blog - StoryCV | Resume Writing Tips & Career Advice">
+    <meta property="og:description" content="Expert resume writing tips, career advice, and job search strategies from StoryCV.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://story.cv/blog">
+    <meta property="og:site_name" content="StoryCV">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog - StoryCV | Resume Writing Tips & Career Advice">
+    <meta name="twitter:description" content="Expert resume writing tips, career advice, and job search strategies from StoryCV.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "StoryCV Blog",
+        "description": "Expert resume writing tips, career advice, and job search strategies",
+        "url": "https://story.cv/blog",
+        "publisher": {
+            "@type": "Organization",
+            "name": "StoryCV",
+            "url": "https://story.cv"
+        }
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPTTZV8ERX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VPTTZV8ERX');
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header-container"></header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Blog Hero Section -->
+        <section class="blog-hero">
+            <div class="container">
+                <div class="blog-hero-content">
+                    <h1 class="blog-hero-title">Resume Writing Tips & Career Advice</h1>
+                    <p class="blog-hero-description">Expert insights to help you craft compelling resumes, navigate your career, and land your dream job.</p>
+                </div>
+            </div>
+        </section>
+
+        {% if featured_post %}
+        <!-- Featured Post Section -->
+        <section class="featured-post">
+            <div class="container">
+                <h2 class="section-title">Featured Article</h2>
+                <article class="featured-article">
+                    <div class="featured-article-content">
+                        <div class="article-meta">
+                            <span class="article-category">{{ featured_post.category or 'General' }}</span>
+                            <span class="article-date">{{ featured_post.published_at.strftime('%B %d, %Y') if featured_post.published_at else '' }}</span>
+                        </div>
+                        <h3 class="article-title">
+                            <a href="/blog/articles/{{ featured_post.slug }}">{{ featured_post.title }}</a>
+                        </h3>
+                        <p class="article-excerpt">
+                            {{ featured_post.excerpt or featured_post.description or '' }}
+                        </p>
+                        <div class="article-footer">
+                            <span class="read-time">{{ featured_post.read_time_minutes }} min read</span>
+                            <a href="/blog/articles/{{ featured_post.slug }}" class="read-more">Read full article →</a>
+                        </div>
+                    </div>
+                    {% if featured_post.featured_image %}
+                    <div class="featured-article-image">
+                        <img src="{{ featured_post.featured_image }}" alt="{{ featured_post.image_alt or featured_post.title }}" loading="lazy">
+                    </div>
+                    {% endif %}
+                </article>
+            </div>
+        </section>
+        {% endif %}
+
+        {% if all_posts %}
+        <!-- Recent Posts Section -->
+        <section class="recent-posts">
+            <div class="container">
+                <h2 class="section-title">Latest Articles</h2>
+                <div class="blog-grid">
+                    {% for post in all_posts %}
+                    <article class="blog-card">
+                        {% if post.featured_image %}
+                        <div class="blog-card-image">
+                            <img src="{{ post.featured_image }}" alt="{{ post.image_alt or post.title }}" loading="lazy">
+                        </div>
+                        {% endif %}
+                        <div class="blog-card-content">
+                            <div class="article-meta">
+                                <span class="article-category">{{ post.category or 'General' }}</span>
+                                <span class="article-date">{{ post.published_at.strftime('%B %d, %Y') if post.published_at else '' }}</span>
+                            </div>
+                            <h3 class="article-title">
+                                <a href="/blog/articles/{{ post.slug }}">{{ post.title }}</a>
+                            </h3>
+                            <p class="article-excerpt">
+                                {{ post.excerpt or post.description or '' }}
+                            </p>
+                            <div class="article-footer">
+                                <span class="read-time">{{ post.read_time_minutes }} min read</span>
+                                <a href="/blog/articles/{{ post.slug }}" class="read-more">Read more →</a>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% else %}
+        <section class="recent-posts">
+            <div class="container">
+                <p style="text-align: center; padding: 2rem;">No articles published yet. Check back soon!</p>
+            </div>
+        </section>
+        {% endif %}
+    </main>
+
+    <!-- Footer Section -->
+    <div id="footer-container"></div>
+
+    <script src="/header.js"></script>
+    <script src="/footer.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>
