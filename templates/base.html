@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}StoryCV{% endblock %}</title>
+
+    {% block meta_tags %}{% endblock %}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.ico">
+
+    {% block canonical %}{% endblock %}
+
+    {% block structured_data %}{% endblock %}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/style.css">
+
+    {% block extra_head %}{% endblock %}
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPTTZV8ERX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VPTTZV8ERX');
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header-container"></header>
+
+    <!-- Main Content -->
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <div id="footer-container"></div>
+
+    <script src="/header.js"></script>
+    <script src="/footer.js"></script>
+    <script src="/script.js"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
