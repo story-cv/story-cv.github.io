@@ -5,7 +5,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 from fastapi import FastAPI, Request, Depends, HTTPException, Header
-from fastapi.responses import HTMLResponse, Response, JSONResponse
+from fastapi.responses import HTMLResponse, Response, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.exceptions import RequestValidationError
@@ -131,6 +131,11 @@ async def blog_article(request: Request,
         "post": post,
         "related_posts": related_posts
     })
+
+
+@app.get("/blog/articles/{slug}/")
+async def blog_article_trailing_slash_redirect(slug: str):
+    return RedirectResponse(url=f"/blog/articles/{slug}", status_code=301)
 
 
 @app.get("/api/storage/{path:path}")
