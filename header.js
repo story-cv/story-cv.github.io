@@ -1,4 +1,102 @@
 
+function createProductHuntBanner() {
+    const BANNER_DISMISSED_KEY = 'ph_banner_dismissed';
+    
+    if (localStorage.getItem(BANNER_DISMISSED_KEY)) {
+        return '';
+    }
+    
+    return `
+        <div class="ph-launch-banner" id="ph-launch-banner">
+            <div class="ph-banner-content">
+                <span class="ph-banner-icon">🚀</span>
+                <span class="ph-banner-text">We're launching on Product Hunt! Your support would mean the world to us.</span>
+                <a href="https://www.producthunt.com/products/storycv?launch=storycv" target="_blank" rel="noopener noreferrer" class="ph-banner-button">Support Us!</a>
+                <button class="ph-banner-close" id="ph-banner-close" aria-label="Dismiss banner">&times;</button>
+            </div>
+        </div>
+        <style>
+            .ph-launch-banner {
+                background: #ee4e34;
+                color: white;
+                padding: 12px 20px;
+                text-align: center;
+                font-family: 'Onest', -apple-system, BlinkMacSystemFont, sans-serif;
+                position: relative;
+                z-index: 1001;
+            }
+            .ph-banner-content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                flex-wrap: wrap;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .ph-banner-icon {
+                font-size: 18px;
+            }
+            .ph-banner-text {
+                font-size: 14px;
+                font-weight: 500;
+            }
+            .ph-banner-button {
+                background: white;
+                color: #ee4e34;
+                padding: 8px 20px;
+                border-radius: 6px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 14px;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .ph-banner-button:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            }
+            .ph-banner-close {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 24px;
+                cursor: pointer;
+                padding: 0 8px;
+                opacity: 0.8;
+                transition: opacity 0.2s;
+                line-height: 1;
+            }
+            .ph-banner-close:hover {
+                opacity: 1;
+            }
+            @media (max-width: 600px) {
+                .ph-banner-content {
+                    gap: 8px;
+                }
+                .ph-banner-text {
+                    font-size: 13px;
+                }
+                .ph-banner-button {
+                    padding: 6px 14px;
+                    font-size: 13px;
+                }
+            }
+        </style>
+    `;
+}
+
+function initBannerClose() {
+    const closeBtn = document.getElementById('ph-banner-close');
+    const banner = document.getElementById('ph-launch-banner');
+    
+    if (closeBtn && banner) {
+        closeBtn.addEventListener('click', function() {
+            banner.style.display = 'none';
+            localStorage.setItem('ph_banner_dismissed', 'true');
+        });
+    }
+}
+
 function createHeader() {
     // Determine the correct base path based on current location
     const currentPath = window.location.pathname;
@@ -10,7 +108,10 @@ function createHeader() {
         basePath = '../';
     }
     
+    const bannerHTML = createProductHuntBanner();
+    
     const headerHTML = `
+        ${bannerHTML}
         <header class="header">
             <div class="container">
                 <div class="header-content">
@@ -109,6 +210,9 @@ function createHeader() {
                 }
             });
         }
+        
+        // Initialize banner close functionality
+        initBannerClose();
     }
 }
 
