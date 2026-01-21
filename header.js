@@ -17,7 +17,7 @@ function createProductHuntBanner() {
         </div>
         <style>
             .ph-launch-banner {
-                background: #ee4e34;
+                background: #2e2e2e;
                 color: white;
                 padding: 12px 20px;
                 text-align: center;
