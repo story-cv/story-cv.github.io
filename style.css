@@ -5049,7 +5049,7 @@ header picture img:hover {
   position: relative;
   overflow: hidden;
   aspect-ratio: 4/3;
-  height: 200px;
+  width: 100%;
 }
 
 .blog-card-image img {

@@ -69,9 +69,6 @@
     <div class="container">
         <div class="blog-post-meta">
             <a href="/blog" class="back-to-blog">← Back to Blog</a>
-            <div class="post-categories">
-                <span class="post-category">{{ post.category or 'General' }}</span>
-            </div>
         </div>
         <h1 class="blog-post-title">{{ post.title }}</h1>
         <div class="blog-post-info">
@@ -126,7 +123,6 @@
                     </div>
                     {% endif %}
                     <div class="related-post-content">
-                        <span class="related-post-category">{{ related.category or 'General' }}</span>
                         <h4 class="related-post-title">{{ related.title }}</h4>
                         <span class="related-post-read-time">{{ related.read_time_minutes }} min read</span>
                     </div>

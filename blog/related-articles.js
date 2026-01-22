@@ -67,7 +67,6 @@ class RelatedArticles {
                             <div class="related-article-content">
                                 <div class="related-article-top">
                                     <div class="related-article-meta">
-                                        <span class="related-article-category">${article.category}</span>
                                         <span class="related-article-read-time">${article.readTime}</span>
                                     </div>
                                     <h3 class="related-article-title">
