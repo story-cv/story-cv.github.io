@@ -133,4 +133,11 @@
         {% endif %}
     </div>
 </article>
+
+<script>
+document.querySelectorAll('.blog-post-body a').forEach(function(link) {
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+});
+</script>
 {% endblock %}

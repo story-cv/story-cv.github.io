@@ -22,7 +22,9 @@ def markdown_to_html(md_content: str) -> str:
             }
         }
     )
-    return md.convert(md_content)
+    html = md.convert(md_content)
+    html = re.sub(r'<a href=', '<a target="_blank" rel="noopener noreferrer" href=', html)
+    return html
 
 
 def generate_excerpt(markdown_body: str, max_length: int = 200) -> str:
