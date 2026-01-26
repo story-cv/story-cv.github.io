@@ -1188,6 +1188,155 @@ header picture img:hover {
   }
 }
 
+/* Bullet Points Resume Section - Mobile First */
+.bullet-points-section {
+  background-color: #fbf8f3;
+  padding: var(--space-3xl) 0;
+}
+
+.bullet-points-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.bullet-points-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.bullet-points-title {
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.bullet-points-subheading {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.bullet-points-transition {
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-top: var(--space-xl);
+}
+
+.bullet-points-challenges {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.challenge-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+}
+
+.challenge-lottie {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.challenge-lottie lottie-player {
+  width: 100%;
+  height: 100%;
+}
+
+.challenge-text {
+  text-align: center;
+}
+
+.challenge-text p {
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.bullet-points-closing {
+  text-align: center;
+  padding: var(--space-xl) 0;
+}
+
+.bullet-points-closing p {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .bullet-points-title {
+    font-size: 2.5rem;
+  }
+
+  .bullet-points-subheading {
+    font-size: 1.25rem;
+  }
+
+  .challenge-row {
+    flex-direction: row;
+    text-align: left;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+  }
+
+  .challenge-lottie {
+    width: 150px;
+    height: 150px;
+  }
+
+  .challenge-text {
+    text-align: left;
+    flex: 1;
+  }
+
+  .challenge-text p {
+    font-size: 1.25rem;
+  }
+
+  .bullet-points-closing p {
+    font-size: 1.25rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .bullet-points-section {
+    padding: var(--space-4xl) 0;
+  }
+
+  .bullet-points-title {
+    font-size: 3rem;
+  }
+
+  .challenge-lottie {
+    width: 180px;
+    height: 180px;
+  }
+
+  .challenge-text p {
+    font-size: 1.35rem;
+  }
+}
+
 /* Large Desktop Optimization */
 @media (min-width: 1200px) {
   .hero-title {
