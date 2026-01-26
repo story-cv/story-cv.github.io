@@ -879,6 +879,7 @@ header picture img:hover {
     flex-direction: column;
     text-align: center;
     flex-wrap: wrap;
+    gap: var(--space-md);
   }
   
   .hero-content {
@@ -890,15 +891,17 @@ header picture img:hover {
   .hero-title {
     order: 1;
     width: 100%;
+    margin-bottom: var(--space-sm);
   }
   
   .hero-illustration {
-    max-width: 350px;
+    max-width: 280px;
     order: 2;
   }
   
   .hero-subtitle {
     order: 3;
+    margin-bottom: var(--space-md);
   }
   
   .hero-cta {
@@ -907,8 +910,20 @@ header picture img:hover {
 }
 
 @media (max-width: 576px) {
+  .hero-layout {
+    gap: var(--space-sm);
+  }
+  
   .hero-illustration {
-    max-width: 280px;
+    max-width: 200px;
+  }
+  
+  .hero-title {
+    margin-bottom: var(--space-xs);
+  }
+  
+  .hero-subtitle {
+    margin-bottom: var(--space-sm);
   }
 }
 
