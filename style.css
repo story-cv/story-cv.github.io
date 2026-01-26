@@ -850,10 +850,51 @@ header picture img:hover {
   background-color: #fbf8f3;
 }
 
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3xl);
+}
+
 .hero-content {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
+  text-align: left;
+  max-width: 580px;
+  flex: 1;
+}
+
+.hero-illustration {
+  flex: 0 0 auto;
+  max-width: 450px;
+}
+
+.hero-illustration-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 992px) {
+  .hero-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+  }
+  
+  .hero-illustration {
+    max-width: 350px;
+    order: -1;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-illustration {
+    max-width: 280px;
+  }
 }
 
 .hero-title {
@@ -871,9 +912,7 @@ header picture img:hover {
   line-height: 1.6;
   color: #464646;
   margin-bottom: var(--space-2xl);
-  max-width: 650px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 550px;
 }
 
 /* Removed dark mode hero subtitle styles */
@@ -881,8 +920,20 @@ header picture img:hover {
 .hero-cta {
   display: flex;
   gap: var(--space-md);
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
+}
+
+@media (max-width: 992px) {
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 650px;
+  }
+  
+  .hero-cta {
+    justify-content: center;
+  }
 }
 
 /* Button Components */
