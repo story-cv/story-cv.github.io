@@ -1649,7 +1649,6 @@ header picture img:hover {
   opacity: 0;
   transform: translateY(-20px);
   transition: all var(--transition-normal);
-  margin-bottom: var(--space-2xl);
 }
 
 .timeline-sticky-header.visible {
