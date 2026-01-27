@@ -1668,9 +1668,10 @@ header picture img:hover {
 
 .timeline-container {
   position: relative;
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
-  padding-left: var(--space-2xl);
+  padding-left: var(--space-3xl);
+  padding-right: var(--space-lg);
 }
 
 .timeline-line {
