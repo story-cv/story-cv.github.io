@@ -1621,7 +1621,7 @@ header picture img:hover {
 
 .timeline-header {
   text-align: center;
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .timeline-title {
@@ -2162,21 +2162,6 @@ header picture img:hover {
   margin: 0;
 }
 
-.process-conclusion {
-  text-align: center;
-  margin-top: var(--space-4xl);
-  padding-top: var(--space-2xl);
-  border-top: 1px solid var(--color-border);
-}
-
-.process-conclusion .conclusion-text {
-  font-size: 1.25rem;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-  margin: 0;
-  font-style: italic;
-}
-
 /* Desktop layout for process cards */
 @media (min-width: 769px) {
   .process-cards {
@@ -2287,14 +2272,6 @@ header picture img:hover {
     font-size: 0.9rem;
   }
 
-  .process-conclusion {
-    margin-top: var(--space-2xl);
-    padding-top: var(--space-lg);
-  }
-
-  .conclusion-text {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 480px) {
