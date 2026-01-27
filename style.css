@@ -1668,15 +1668,15 @@ header picture img:hover {
 
 .timeline-container {
   position: relative;
-  max-width: 700px;
+  max-width: 650px;
   margin: 0 auto;
-  padding-left: var(--space-3xl);
-  padding-right: var(--space-lg);
+  padding-left: var(--space-2xl);
+  padding-right: var(--space-2xl);
 }
 
 .timeline-line {
   position: absolute;
-  left: var(--space-lg);
+  left: 8px;
   top: 0;
   bottom: 0;
   width: 4px;
@@ -1730,7 +1730,7 @@ header picture img:hover {
 
 .timeline-marker {
   position: absolute;
-  left: calc(-1 * var(--space-lg) - 10px);
+  left: -24px;
   top: var(--space-xs);
   width: 20px;
   height: 20px;
@@ -1843,7 +1843,7 @@ header picture img:hover {
   }
 
   .timeline-marker {
-    left: calc(-1 * var(--space-md) - 9px);
+    left: -20px;
     width: 18px;
     height: 18px;
   }
@@ -1898,16 +1898,17 @@ header picture img:hover {
   }
 
   .timeline-container {
-    padding-left: var(--space-lg);
+    padding-left: var(--space-xl);
+    padding-right: var(--space-md);
   }
 
   .timeline-line {
-    left: var(--space-sm);
+    left: 6px;
     width: 2px;
   }
 
   .timeline-marker {
-    left: calc(-1 * var(--space-sm) - 8px);
+    left: -18px;
     width: 16px;
     height: 16px;
   }
