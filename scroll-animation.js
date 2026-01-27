@@ -30,56 +30,67 @@
    * Triggers the "writing" effect for the hero headline underline with continuous loop
    */
   function initWigglyUnderline() {
-    const wigglyPath = document.querySelector('.wiggly-path');
+    const wigglyPaths = document.querySelectorAll('.wiggly-path');
     
-    if (!wigglyPath) {
+    if (!wigglyPaths.length) {
       return;
     }
 
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    if (prefersReducedMotion) {
-      // Show line immediately for users who prefer reduced motion
-      wigglyPath.style.strokeDashoffset = '0';
-      return;
-    }
 
-    // Calculate actual path length and set initial state
-    const pathLength = wigglyPath.getTotalLength();
-    wigglyPath.style.strokeDasharray = pathLength;
-    wigglyPath.style.strokeDashoffset = pathLength;
-    wigglyPath.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
-
-    // Animation loop function
-    function animateWigglyLine() {
-      // Draw the line
-      wigglyPath.style.strokeDashoffset = '0';
+    wigglyPaths.forEach((wigglyPath, index) => {
+      const pathLength = wigglyPath.getTotalLength();
+      wigglyPath.style.strokeDasharray = pathLength;
+      wigglyPath.style.strokeDashoffset = pathLength;
       
-      // After line is fully drawn, wait a moment then erase it
-      setTimeout(() => {
-        // Ensure full erasure by using negative offset
-        wigglyPath.style.strokeDashoffset = -pathLength;
-        
-        // After erasing, wait a moment then reset and start again
-        setTimeout(() => {
-          // Reset to starting position without animation
-          wigglyPath.style.transition = 'none';
-          wigglyPath.style.strokeDashoffset = pathLength;
-          
-          // Re-enable transition after a brief moment
-          setTimeout(() => {
-            wigglyPath.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
-            animateWigglyLine();
-          }, 50);
-        }, 1600); // Wait for erase animation to complete (1.5s) + small buffer
-      }, 2000); // Keep line visible for 2 seconds
-    }
+      if (prefersReducedMotion) {
+        wigglyPath.style.strokeDashoffset = '0';
+        return;
+      }
 
-    // Start the animation after initial delay
-    setTimeout(() => {
-      animateWigglyLine();
-    }, 800);
+      // First one (hero) - continuous loop animation
+      if (index === 0) {
+        wigglyPath.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+        
+        function animateWigglyLine() {
+          wigglyPath.style.strokeDashoffset = '0';
+          
+          setTimeout(() => {
+            wigglyPath.style.strokeDashoffset = -pathLength;
+            
+            setTimeout(() => {
+              wigglyPath.style.transition = 'none';
+              wigglyPath.style.strokeDashoffset = pathLength;
+              
+              setTimeout(() => {
+                wigglyPath.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+                animateWigglyLine();
+              }, 50);
+            }, 1600);
+          }, 2000);
+        }
+
+        setTimeout(() => {
+          animateWigglyLine();
+        }, 800);
+      } else {
+        // Other wiggly paths - animate once when scrolled into view
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              wigglyPath.style.transition = 'stroke-dashoffset 1.5s ease-out';
+              setTimeout(() => {
+                wigglyPath.style.strokeDashoffset = '0';
+              }, 300);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+        
+        observer.observe(wigglyPath.closest('.underline-container') || wigglyPath);
+      }
+    });
   }
 
   function initScrollReveal() {
