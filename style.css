@@ -1240,10 +1240,6 @@ header picture img:hover {
   align-items: center;
   gap: var(--space-md);
   padding: var(--space-lg);
-  background-color: #ffffff;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
 }
 
 .challenge-lottie {
