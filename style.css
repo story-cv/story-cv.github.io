@@ -9094,3 +9094,10 @@ body.mobile-menu-open {
     top: -30px;
   }
 }
+
+.quote-text.quote-bold {
+  margin-top: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  font-style: normal;
+}
