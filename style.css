@@ -1621,7 +1621,7 @@ header picture img:hover {
 
 .timeline-header {
   text-align: center;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 .timeline-title {
@@ -1668,10 +1668,10 @@ header picture img:hover {
 
 .timeline-container {
   position: relative;
-  max-width: 650px;
+  max-width: 350px;
   margin: 0 auto;
-  padding-left: var(--space-2xl);
-  padding-right: var(--space-2xl);
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
 }
 
 .timeline-line {
