@@ -9021,3 +9021,76 @@ body.mobile-menu-open {
     font-size: 1.5rem;
   }
 }
+/* Quote Section */
+.quote-section {
+  padding: 80px 0;
+  background: var(--bg-white, #ffffff);
+}
+
+.featured-quote {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  padding: 40px 20px;
+}
+
+.quote-mark {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8rem;
+  font-family: Georgia, serif;
+  color: #ee4e34;
+  opacity: 0.15;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.quote-text {
+  font-size: 1.75rem;
+  line-height: 1.5;
+  color: #1e293b;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.quote-text.quote-emphasis {
+  margin-top: 0.75rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Quote Section Responsive */
+@media (max-width: 768px) {
+  .quote-section {
+    padding: 60px 0;
+  }
+  
+  .featured-quote {
+    padding: 30px 16px;
+  }
+  
+  .quote-mark {
+    font-size: 5rem;
+    top: -10px;
+  }
+  
+  .quote-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .quote-text {
+    font-size: 2rem;
+  }
+  
+  .quote-mark {
+    font-size: 10rem;
+    top: -30px;
+  }
+}
