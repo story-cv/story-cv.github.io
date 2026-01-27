@@ -2311,7 +2311,7 @@ header picture img:hover {
 }
 
 .mini-hero-illustration {
-  margin: 0 auto var(--space-2xl);
+  margin: 0 auto var(--space-md);
   display: flex;
   align-items: center;
   justify-content: center;
