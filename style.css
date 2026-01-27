@@ -1951,7 +1951,7 @@ header picture img:hover {
 /* Process Flow Section */
 .process-flow {
   padding: var(--space-4xl) 0;
-  background-color: #ffffff;
+  background-color: #fbf8f3;
 }
 
 .process-header {
@@ -9135,4 +9135,11 @@ body.mobile-menu-open {
   .quote-text.quote-secondary {
     font-size: 1rem;
   }
+}
+
+.process-step-lottie {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 4/3;
 }
