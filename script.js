@@ -57,25 +57,17 @@ document.addEventListener('DOMContentLoaded', function() {
         advantageObserver.observe(card);
     });
     
-    // Timeline section with scroll-triggered animations and progressive filling
+    // Timeline section with scroll-triggered animations and smooth progressive filling
     const timelineSteps = document.querySelectorAll('.timeline-step');
     const timelineLine = document.querySelector('.timeline-line');
     const timelineHeader = document.querySelector('.timeline-sticky-header');
-    let visibleStepsCount = 0;
+    const timelineContainer = document.querySelector('.timeline-container');
     
+    // Observer to mark steps as visible
     const timelineObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
                 entry.target.classList.add('visible');
-                visibleStepsCount++;
-                
-                // Update timeline progress
-                if (timelineLine) {
-                    // Remove all progress classes
-                    timelineLine.className = timelineLine.className.replace(/progress-\d+/g, '');
-                    // Add new progress class
-                    timelineLine.classList.add(`progress-${visibleStepsCount}`);
-                }
             }
         });
     }, {
@@ -86,6 +78,46 @@ document.addEventListener('DOMContentLoaded', function() {
     timelineSteps.forEach(step => {
         timelineObserver.observe(step);
     });
+    
+    // Smooth scroll-based timeline progress
+    function updateTimelineProgress() {
+        if (!timelineContainer || !timelineLine || timelineSteps.length === 0) return;
+        
+        const containerRect = timelineContainer.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        
+        // Calculate how far we've scrolled through the timeline
+        const containerTop = containerRect.top;
+        const containerHeight = containerRect.height;
+        
+        // Progress starts when container enters viewport, ends when it leaves
+        const scrollStart = viewportHeight * 0.6; // Start filling when container is 60% into view
+        const scrollEnd = -containerHeight + viewportHeight * 0.4; // End when bottom reaches 40% from top
+        
+        let progress = 0;
+        if (containerTop <= scrollStart) {
+            const scrolled = scrollStart - containerTop;
+            const totalScroll = scrollStart - scrollEnd;
+            progress = Math.min(Math.max(scrolled / totalScroll, 0), 1) * 100;
+        }
+        
+        timelineLine.style.setProperty('--timeline-progress', `${progress}%`);
+    }
+    
+    // Throttle scroll updates for performance
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updateTimelineProgress();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // Initial call
+    updateTimelineProgress();
     
     // Sticky header visibility
     if (timelineHeader) {
