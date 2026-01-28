@@ -9233,3 +9233,157 @@ body.mobile-menu-open {
   height: auto;
   aspect-ratio: 4/3;
 }
+
+/* Pricing Page Styles */
+.pricing-hero {
+  padding: var(--space-4xl) 0 var(--space-2xl);
+  background-color: #fbf8f3;
+  text-align: center;
+}
+
+.pricing-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pricing-hero-title {
+  font-size: 2.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+.pricing-hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pricing-page-section {
+  padding-top: var(--space-xl);
+  background-color: #fbf8f3;
+}
+
+/* Testimonial Section for Pricing Page (scoped to avoid collisions) */
+.pricing-page .testimonial-section {
+  padding: var(--space-4xl) 0;
+  background-color: #ffffff;
+}
+
+.pricing-page .testimonial-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.pricing-page .testimonial-title {
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.pricing-page .testimonial-spotlight {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pricing-page .famewall-container {
+  min-height: 300px;
+}
+
+.pricing-page .testimonials-fallback {
+  display: flex;
+  justify-content: center;
+}
+
+.pricing-page .testimonial-card.single-testimonial {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  max-width: 500px;
+  text-align: center;
+}
+
+.pricing-page .testimonial-content p {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.pricing-page .testimonial-author {
+  display: flex;
+  justify-content: center;
+}
+
+.pricing-page .author-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.pricing-page .author-name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.pricing-page .author-title {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Pricing CTA Section */
+.pricing-cta-section {
+  padding: var(--space-4xl) 0;
+  background: linear-gradient(135deg, #fbf8f3 0%, #fff 100%);
+  text-align: center;
+}
+
+.pricing-cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pricing-cta-title {
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.pricing-cta-text {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* Responsive Pricing Page */
+@media (max-width: 768px) {
+  .pricing-hero-title {
+    font-size: 2rem;
+  }
+
+  .pricing-hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .testimonial-title {
+    font-size: 1.5rem;
+  }
+
+  .testimonial-content p {
+    font-size: 1.1rem;
+  }
+
+  .pricing-cta-title {
+    font-size: 1.5rem;
+  }
+}
