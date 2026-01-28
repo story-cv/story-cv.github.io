@@ -3218,6 +3218,87 @@ header picture img:hover {
   font-family: 'Onest', system-ui, -apple-system, sans-serif;
 }
 
+.pricing-card-featured .pricing-price {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: price-reveal 0.5s ease-out 1.2s forwards;
+}
+
+@keyframes price-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pricing-price-old {
+  font-size: 1.75rem;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
+  position: relative;
+  opacity: 0.7;
+  margin-right: var(--space-xs);
+}
+
+.pricing-price-old::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: strikethrough 0.6s ease-out 0.8s forwards;
+}
+
+@keyframes strikethrough {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.founding-user-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #ff6b4a 100%);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(238, 78, 52, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(238, 78, 52, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-price-old::after {
+    animation: none;
+    transform: scaleX(1);
+  }
+  
+  .founding-user-badge {
+    animation: none;
+  }
+  
+  .pricing-card-featured .pricing-price {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .pricing-period {
   font-size: 1.125rem;
   color: var(--color-text-secondary);
@@ -3688,6 +3769,15 @@ header picture img:hover {
 
   .pricing-price-original {
     font-size: 1.25rem;
+  }
+
+  .pricing-price-old {
+    font-size: 1.25rem;
+  }
+
+  .founding-user-badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.6rem;
   }
 
   .pricing-period {
