@@ -131,6 +131,7 @@ function createHeader() {
                             </button>
                             <div class="header-nav">
                                 <a href="/about-us" class="nav-link">About</a>
+                                <a href="/pricing" class="nav-link">Pricing</a>
                                 <a href="/blog" class="nav-link">Blog</a>
                                 <a href="/student-resume" class="nav-link">For Students</a>
                                 <a href="https://write.story.cv" target="_blank" rel="noopener noreferrer" class="nav-cta">Write my resume</a>
