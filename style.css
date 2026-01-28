@@ -1389,7 +1389,7 @@ header picture img:hover {
 }
 
 .value-prop-content p {
-  font-size: 1rem;
+  font-size: 1.125rem;
   color: var(--color-text-secondary);
   margin: 0;
   line-height: 1.6;
@@ -1457,7 +1457,7 @@ header picture img:hover {
   }
 
   .value-prop-content p {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
 }
 
