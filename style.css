@@ -9387,3 +9387,44 @@ body.mobile-menu-open {
     font-size: 1.5rem;
   }
 }
+
+/* Article Page Styles */
+.article-hero {
+  padding: var(--space-4xl) 0 var(--space-2xl);
+  background-color: #fbf8f3;
+  text-align: center;
+}
+
+.article-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.article-hero-title {
+  font-size: 2.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.article-body-section {
+  padding: var(--space-2xl) 0 var(--space-4xl);
+  background-color: #ffffff;
+}
+
+.article-body-section .blog-post-body {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.article-cta-section {
+  padding: var(--space-4xl) 0;
+  background: linear-gradient(135deg, #fbf8f3 0%, #fff 100%);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .article-hero-title {
+    font-size: 2rem;
+  }
+}
