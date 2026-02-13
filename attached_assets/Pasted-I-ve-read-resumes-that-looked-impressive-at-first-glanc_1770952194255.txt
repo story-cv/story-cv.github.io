@@ -1,0 +1,196 @@
+I’ve read resumes that looked impressive at first glance:
+
+* Increased operational efficiency by 25%  
+* Improved team productivity by 32%  
+* Boosted customer satisfaction by 18%
+
+After the third time, something interesting happens. They stop being impressive.
+
+Not because they’re false. But because they feel detached. Does everyone really increase something by some percent?
+
+Revenue. Efficiency. Engagement. Savings.
+
+These bullet points are detached from the context and story.
+
+“We’ve been told that strong resume bullet points must include metrics.  
+But maybe that’s only half the truth.”
+
+We’ve been taught that strong resume bullet points must include metrics.
+
+The better rule is this: **Strong bullet points must show consequence.**
+
+Numbers are one way to do that. But they are not the only way.
+
+---
+
+## **Why consequence matters more than numbers**
+
+The problem isn’t the numbers themselves.
+
+The problem is when the number becomes the entire story, when a percentage is expected to carry the full weight of your contribution without explaining what was broken, what you touched, or why any of it mattered in the first place.
+
+A metric tells me that something moved.
+
+It does not tell me what you actually did to move it.
+
+It does not tell me what the situation looked like before you arrived, or what decisions you made when things were unclear, or what trade-offs you navigated along the way. This is the missing context.
+
+And that absence is what makes so many resume bullet points feel detached, even when they are technically impressive.
+
+Because most resumes bullet points, when you look closely, are still describing activity rather than consequence.
+
+* Managed client relationships  
+* Oversaw onboarding process  
+* Led cross-functional collaboration
+
+All of these may be accurate.
+
+But accuracy alone does not create clarity.
+
+---
+
+## **How to Write Bullet Points for Resume**
+
+When thinking about **how to write bullet points for resume**, focus on consequence first. Then add metrics if they exist naturally.
+
+Structure each bullet around:
+
+1. **Action:** What did you do?
+
+2. **Context:** Where or why did you do it?
+
+3. **Consequence:** What changed as a result?
+
+4. **Metrics (optional):** Only if they genuinely clarify impact
+
+Example without a number:
+
+* Redesigned onboarding flow to remove redundant steps that had been confusing new hires, leading to a smoother first-week experience and fewer clarification requests
+
+Example with a number:
+
+* Streamlined weekly reporting process, reducing manual tracking time by 30% and enabling faster team decision-making
+
+The key is clarity. A well-written bullet point allows someone who knows nothing about your role to understand what changed because of your work.
+
+---
+
+## **How many bullet points should resume have**
+
+Your resume does not need to document everything you were busy with.
+
+We often worry about how many bullet points should resume have, or resume how many bullet points per position, because those questions feel measurable and answerable.
+
+Here’s a rule of thumb:
+
+* **Recent Role:** 3 to 5 points   
+* **Older Roles:** 2 to 4 points  
+* **Ancient History:** 1 to 2 points (or just omit it, if it’s irrelevant)
+
+But the real concern is not quantity.
+
+It is whether each bullet point earns its place by showing a clear shift from before to after.
+
+It needs to make visible the moments where your presence altered the trajectory of something, even if only in a small but meaningful way.
+
+And not all of those alterations will come neatly packaged with a percentage sign.
+
+Some impact is structural, or behavioural, or cultural, and while it may resist precise quantification, it can still be described with enough specificity that the reader understands the consequence.
+
+For example:
+
+* Redesigned onboarding flow to remove redundant steps that had been creating confusion for new hires, leading to a smoother first-week experience and fewer repetitive clarification requests
+
+There is no number in that sentence, but the before and after are clearly implied.
+
+Or:
+
+* Introduced structured weekly review meetings to replace reactive, last-minute coordination across teams, creating clearer accountability and reducing recurring miscommunication
+
+Again, no metric.
+
+But there is a visible change in how work unfolded.
+
+Specificity, in many cases, does more to establish credibility than a floating percentage without context.
+
+So when deciding what to include in resume bullet points, think less about whether you can attach a statistic, and more about whether a reader who knows nothing about your job can understand what shifted because of your involvement.
+
+If you have numbers, use them honestly.
+
+If you do not, describe the consequence carefully enough that it stands on its own.
+
+That is often what makes a bullet point persuasive.
+
+## 
+
+## ---
+
+## **How to organize bullet points on resume**
+
+Once you begin thinking in terms of consequence rather than activity, the next natural question becomes how to organize bullet points on resume in a way that actually supports that clarity.
+
+Most people default to chronology.
+
+We list things in the order they happened because that feels logical and faithful to our experience of the job.
+
+But a hiring manager does not experience your job in sequence. They experience your resume in seconds.
+
+Which means the order of your bullet points is not about historical accuracy.
+
+It is about emphasis.
+
+Ask yourself: if someone only reads the first two bullets under this role, what story do they get? Does it communicate ownership, impact, and change?
+
+Merge repetitive bullet points. Remove weak, purely descriptive lines.
+
+Organization, in this sense, is not about formatting. It is about guiding the reader’s attention.
+
+And attention, especially on a resume, is a limited resource.
+
+---
+
+## **Is it bad to use AI for resume bullet points?**
+
+It would be unrealistic to talk about resume bullet points today without addressing this question.
+
+The short answer is no.
+
+The longer answer depends on how you use it.
+
+AI is very good at polishing language.
+
+It can shorten sentences, suggest stronger verbs, and restructure a bullet point so that it reads more cleanly.
+
+What it cannot do is reconstruct your lived experience if you provide it with vague or shallow input.
+
+If you write, “I worked in operations,” you will likely receive something that sounds polished but generic.
+
+“Optimized operational workflows to enhance efficiency and drive cross-functional alignment.”
+
+It is fluent.
+
+It is also interchangeable with a thousand other resumes.
+
+But if you provide detail, such as, “I restructured dispatch scheduling after repeated delivery delays and introduced a weekly tracking system to prevent last-minute escalations,” AI can help refine that into something tighter and more precise.
+
+In that sense, **AI works best as an editor, not as an originator**.
+
+It can clarify consequence. But it cannot invent credible consequence.
+
+And interviews, sooner or later, reveal the difference between the two.
+
+So no, it is not inherently bad to use AI. But it is risky to outsource your thinking to it.
+
+---
+
+### **Free bullet points for resume — copy paste**
+
+If you want guidance that helps you articulate your own examples more clearly, instead of borrowing someone else’s phrasing, tools like StoryCV’s [free bullet points for resume](https://story.cv) copy paste feature are designed around structured prompts rather than pre-written clichés.
+
+The goal is not to hand you impressive-sounding sentences. It is to help you surface real, solid ones.
+
+Because ultimately, a strong resume bullet point is not about sounding accomplished.
+
+It is about making the reader understand, in one or two lines, that something was different because you showed up.
+
+And that difference, whether quantified or not, is what carries weight.
