@@ -9,6 +9,7 @@ from fastapi.responses import HTMLResponse, Response, JSONResponse, RedirectResp
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.exceptions import RequestValidationError
+from starlette.middleware.gzip import GZipMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 
@@ -24,6 +25,7 @@ from src.image_processor import process_article_images, storage_client
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="StoryCV")
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
