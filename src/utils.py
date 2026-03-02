@@ -24,6 +24,8 @@ def markdown_to_html(md_content: str) -> str:
     )
     html = md.convert(md_content)
     html = re.sub(r'<a href=', '<a target="_blank" rel="noopener noreferrer" href=', html)
+    html = re.sub(r'<table>', '<div class="table-wrapper"><table>', html)
+    html = re.sub(r'</table>', '</table></div>', html)
     return html
 
 
