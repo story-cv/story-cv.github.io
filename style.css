@@ -897,27 +897,28 @@ header picture img:hover {
   inset: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 2rem 1.75rem;
+  padding: 2rem 1.5rem;
 }
 
 .bc-before {
   background: #f3f4f6;
+  justify-content: flex-start;
 }
 
 .bc-after {
   background: #FCEDDA;
   clip-path: inset(0 0 0 50%);
   will-change: clip-path;
+  justify-content: flex-end;
 }
 
 .bc-panel-inner {
-  width: 100%;
+  width: 50%;
 }
 
 .bc-role {
   display: block;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -933,8 +934,8 @@ header picture img:hover {
 }
 
 .bc-text {
-  font-size: 0.9375rem;
-  line-height: 1.65;
+  font-size: 1.125rem;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -1022,7 +1023,7 @@ header picture img:hover {
   }
 
   .bc-text {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 }
 
@@ -1036,7 +1037,7 @@ header picture img:hover {
   }
 
   .bc-text {
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
     line-height: 1.55;
   }
 
