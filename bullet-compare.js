@@ -11,7 +11,7 @@
     pct = Math.min(0.95, Math.max(0.05, pct));
     var p = pct * 100;
     divider.style.left = p + '%';
-    afterPanel.style.clipPath = 'inset(0 0 0 ' + p + '%)';
+    afterPanel.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)';
     if (handle) {
       handle.setAttribute('aria-valuenow', Math.round(p));
     }

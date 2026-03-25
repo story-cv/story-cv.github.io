@@ -904,7 +904,7 @@ header picture img:hover {
 
 .bc-after {
   background: #FCEDDA;
-  clip-path: inset(0 0 0 50%);
+  clip-path: inset(0 50% 0 0);
   will-change: clip-path;
 }
 
@@ -960,13 +960,13 @@ header picture img:hover {
 }
 
 .bc-label-before {
-  left: 1rem;
+  right: 1rem;
   background: #e5e7eb;
   color: #6b7280;
 }
 
 .bc-label-after {
-  right: 1rem;
+  left: 1rem;
   background: #ee4e34;
   color: #ffffff;
 }
