@@ -868,6 +868,10 @@ header picture img:hover {
   max-width: 450px;
 }
 
+.hero-illustration.has-slider {
+  width: 450px;
+}
+
 .hero-illustration-img {
   width: 100%;
   height: auto;
@@ -932,7 +936,6 @@ header picture img:hover {
 .bc-text {
   font-size: 0.9375rem;
   line-height: 1.65;
-  font-style: italic;
   margin: 0;
 }
 
@@ -991,8 +994,8 @@ header picture img:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
   background: #ffffff;
   border: 2px solid #ee4e34;
   border-radius: 50%;
