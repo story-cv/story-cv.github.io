@@ -215,8 +215,43 @@
                             <a href="#process-section" class="btn btn-secondary">See how it works →</a>
                         </div>
                     </div>
-                    <div class="hero-illustration scroll-reveal" data-delay="150">
-                        <img src="/resume-writing-best.svg" alt="Resume standing out from the crowd" class="hero-illustration-img">
+                    <div class="hero-illustration has-slider scroll-reveal" data-delay="150">
+                        <div class="bullet-compare"
+                             id="bulletCompare"
+                             aria-label="Resume bullet point before and after comparison">
+                            <!-- Before panel: light gray -->
+                            <div class="bc-panel bc-before" aria-hidden="true">
+                                <div class="bc-panel-inner">
+                                    <span class="bc-role">Product Manager</span>
+                                    <p class="bc-text">&ldquo;Worked closely with engineering and design teams to define and ship product features.&rdquo;</p>
+                                </div>
+                            </div>
+                            <!-- After panel: cream, clipped to reveal from divider rightward -->
+                            <div class="bc-panel bc-after" aria-hidden="true">
+                                <div class="bc-panel-inner">
+                                    <span class="bc-role">Product Manager</span>
+                                    <p class="bc-text">&ldquo;Pushed through a checkout redesign that three previous PMs had deprioritised, shipped it in 6 weeks, and cut cart abandonment by 18%.&rdquo;</p>
+                                </div>
+                            </div>
+                            <!-- Fixed labels — always visible, not clipped -->
+                            <span class="bc-label bc-label-before" aria-hidden="true">Before</span>
+                            <span class="bc-label bc-label-after" aria-hidden="true">After StoryCV</span>
+                            <!-- Drag divider + handle -->
+                            <div class="bc-divider" id="bcDivider" aria-hidden="true">
+                                <div class="bc-handle"
+                                     role="slider"
+                                     tabindex="0"
+                                     aria-label="Drag to compare before and after"
+                                     aria-valuemin="5"
+                                     aria-valuemax="95"
+                                     aria-valuenow="50">
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M8 5L3 11L8 17" stroke="#ee4e34" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14 5L19 11L14 17" stroke="#ee4e34" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1149,5 +1184,6 @@
     <script src="cookie-banner.js"></script>
     <script src="script.js"></script>
     <script src="scroll-animation.js"></script>
+    <script src="bullet-compare.js" defer></script>
 </body>
 </html>

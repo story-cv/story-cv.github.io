@@ -874,6 +874,176 @@ header picture img:hover {
   display: block;
 }
 
+/* ── Before/After Bullet Comparison Slider ── */
+.bullet-compare {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+  -webkit-user-select: none;
+}
+
+.bc-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 1.75rem;
+}
+
+.bc-before {
+  background: #f3f4f6;
+}
+
+.bc-after {
+  background: #FCEDDA;
+  clip-path: inset(0 0 0 50%);
+  will-change: clip-path;
+}
+
+.bc-panel-inner {
+  width: 100%;
+}
+
+.bc-role {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.bc-before .bc-role {
+  color: #9ca3af;
+}
+
+.bc-after .bc-role {
+  color: #d97757;
+}
+
+.bc-text {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  font-style: italic;
+  margin: 0;
+}
+
+.bc-before .bc-text {
+  color: #6b7280;
+}
+
+.bc-after .bc-text {
+  color: #1f2937;
+  font-weight: 500;
+}
+
+/* Fixed labels pinned to corners — not clipped */
+.bc-label {
+  position: absolute;
+  top: 1rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  padding: 0.25rem 0.625rem;
+  border-radius: 4px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.bc-label-before {
+  left: 1rem;
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.bc-label-after {
+  right: 1rem;
+  background: #ee4e34;
+  color: #ffffff;
+}
+
+/* Divider line */
+.bc-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #ffffff;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06);
+}
+
+/* Drag handle */
+.bc-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  background: #ffffff;
+  border: 2px solid #ee4e34;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  cursor: col-resize;
+  box-shadow: 0 2px 12px rgba(238, 78, 52, 0.22), 0 1px 4px rgba(0,0,0,0.10);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.bc-handle:hover,
+.bc-handle:focus-visible {
+  box-shadow: 0 4px 20px rgba(238, 78, 52, 0.35), 0 1px 4px rgba(0,0,0,0.12);
+  transform: translate(-50%, -50%) scale(1.08);
+  outline: none;
+}
+
+/* Responsive — widen illustration to make slider readable */
+@media (max-width: 992px) {
+  .hero-illustration.has-slider {
+    max-width: min(440px, 100%);
+    width: 100%;
+  }
+
+  .bc-text {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-illustration.has-slider {
+    max-width: 100%;
+  }
+
+  .bc-panel {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .bc-text {
+    font-size: 0.8125rem;
+    line-height: 1.55;
+  }
+
+  .bc-handle {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
 @media (max-width: 992px) {
   .hero-layout {
     flex-direction: column;
