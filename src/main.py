@@ -135,6 +135,11 @@ async def blog_article(request: Request,
     })
 
 
+@app.get("/blog/")
+async def blog_trailing_slash_redirect():
+    return RedirectResponse(url="/blog", status_code=301)
+
+
 @app.get("/blog/articles/{slug}/")
 async def blog_article_trailing_slash_redirect(slug: str):
     return RedirectResponse(url=f"/blog/articles/{slug}", status_code=301)
