@@ -5941,9 +5941,9 @@ header picture img:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* CTA Buttons in Blog Posts */
+/* CTA Buttons in Blog Posts — only targets bold links (containing <strong>) */
 .blog-post-body .cta-button,
-.blog-post-body a[href*="write.story.cv"] {
+.blog-post-body a[href*="write.story.cv"]:has(strong) {
   display: inline-block;
   background-color: var(--color-primary);
   color: white !important;
@@ -5957,8 +5957,12 @@ header picture img:hover {
   box-shadow: 0 2px 8px rgba(238, 78, 52, 0.25);
 }
 
+.blog-post-body a[href*="write.story.cv"]:has(strong) strong {
+  color: white;
+}
+
 .blog-post-body .cta-button:hover,
-.blog-post-body a[href*="write.story.cv"]:hover {
+.blog-post-body a[href*="write.story.cv"]:has(strong):hover {
   background-color: var(--color-primary-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(238, 78, 52, 0.35);
