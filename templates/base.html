@@ -15,6 +15,42 @@
 
     {% block structured_data %}{% endblock %}
 
+    <!-- Global Schemas -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "StoryCV",
+        "url": "https://story.cv",
+        "description": "AI-powered professional resume writing through natural conversation",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://story.cv/blog?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "StoryCV",
+        "url": "https://story.cv",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://story.cv/logo-with-text-dark.svg"
+        },
+        "sameAs": [
+            "https://x.com/story_cv_"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "write@story.cv",
+            "contactType": "customer service"
+        }
+    }
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

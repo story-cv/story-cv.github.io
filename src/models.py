@@ -28,6 +28,7 @@ class BlogPost(Base):
     author_byline = Column(String(255), default="StoryCV Team")
     featured_image = Column(String(500), nullable=True)
     image_alt = Column(String(500), nullable=True)
+    faq_items = Column(JSONB, nullable=True)
     read_time_minutes = Column(Integer, default=5)
     status = Column(SQLEnum(PostStatus), default=PostStatus.draft, index=True)
     published_at = Column(DateTime, nullable=True, index=True)

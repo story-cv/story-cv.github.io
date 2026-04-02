@@ -14,19 +14,28 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://story.cv/blog/articles/{{ post.slug }}">
 <meta property="og:site_name" content="StoryCV">
+<meta property="og:locale" content="en_US">
 {% if post.featured_image %}
 <meta property="og:image" content="https://story.cv{{ post.featured_image }}">
+<meta property="og:image:alt" content="{{ post.image_alt or post.title }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
 {% endif %}
 <meta property="article:published_time" content="{{ post.published_at.isoformat() if post.published_at else '' }}">
 <meta property="article:author" content="{{ post.author_byline }}">
 <meta property="article:section" content="{{ post.category or 'General' }}">
+{% if post.tags %}{% for tag in post.tags %}<meta property="article:tag" content="{{ tag }}">
+{% endfor %}{% endif %}
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@story_cv_">
+<meta name="twitter:creator" content="@story_cv_">
 <meta name="twitter:title" content="{{ post.title }}">
 <meta name="twitter:description" content="{{ post.description or post.excerpt or '' }}">
 {% if post.featured_image %}
 <meta name="twitter:image" content="https://story.cv{{ post.featured_image }}">
+<meta name="twitter:image:alt" content="{{ post.image_alt or post.title }}">
 {% endif %}
 {% endblock %}
 
@@ -35,32 +44,98 @@
 {% endblock %}
 
 {% block structured_data %}
+<!-- Article Schema -->
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "{{ post.title }}",
-    "description": "{{ post.description or post.excerpt or '' }}",
+    "headline": {{ post.title | tojson }},
+    "description": {{ (post.description or post.excerpt or '') | tojson }},
     {% if post.featured_image %}
-    "image": "https://story.cv{{ post.featured_image }}",
+    "image": {
+        "@type": "ImageObject",
+        "url": {{ ("https://story.cv" + post.featured_image) | tojson }},
+        "width": 1200,
+        "height": 675
+    },
     {% endif %}
     "author": {
         "@type": "Person",
-        "name": "{{ post.author_byline }}"
+        "name": {{ post.author_byline | tojson }},
+        "url": "https://story.cv/about-us"
     },
     "publisher": {
         "@type": "Organization",
         "name": "StoryCV",
-        "url": "https://story.cv"
+        "url": "https://story.cv",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://story.cv/logo-with-text-dark.svg"
+        }
     },
-    "datePublished": "{{ post.published_at.strftime('%Y-%m-%d') if post.published_at else '' }}",
-    "dateModified": "{{ post.updated_at.strftime('%Y-%m-%d') if post.updated_at else '' }}",
+    "datePublished": "{{ post.published_at.strftime('%Y-%m-%dT%H:%M:%SZ') if post.published_at else '' }}",
+    "dateModified": "{{ post.updated_at.strftime('%Y-%m-%dT%H:%M:%SZ') if post.updated_at else '' }}",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://story.cv/blog/articles/{{ post.slug }}"
-    }
+    },
+    "wordCount": {{ post.markdown_body | wordcount }},
+    "keywords": {{ (', '.join(post.tags) if post.tags else (post.category or 'resume, career')) | tojson }},
+    "articleSection": {{ (post.category or 'Career Advice') | tojson }},
+    "inLanguage": "en-US"
 }
 </script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://story.cv"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://story.cv/blog"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ post.title | tojson }},
+            "item": "https://story.cv/blog/articles/{{ post.slug }}"
+        }
+    ]
+}
+</script>
+
+{% if post.faq_items %}
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {% for item in post.faq_items %}
+        {
+            "@type": "Question",
+            "name": {{ item.question | tojson }},
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": {{ item.answer | tojson }}
+            }
+        }{% if not loop.last %},{% endif %}
+
+        {% endfor %}
+    ]
+}
+</script>
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -83,7 +158,10 @@
 <!-- Featured Image -->
 <section class="blog-post-image">
     <div class="container">
-        <img src="{{ post.featured_image }}" alt="{{ post.image_alt or post.title }}" class="post-featured-image">
+        <img src="{{ post.featured_image }}"
+             alt="{{ post.image_alt or post.title }}"
+             title="{{ post.image_alt or post.title }}"
+             class="post-featured-image">
     </div>
 </section>
 {% endif %}

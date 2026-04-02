@@ -11,18 +11,23 @@ from fastapi.templating import Jinja2Templates
 from fastapi.exceptions import RequestValidationError
 from starlette.middleware.gzip import GZipMiddleware
 from sqlalchemy.orm import Session
-from sqlalchemy import desc
+from sqlalchemy import desc, text
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-from src.database import engine, get_db, Base
+from src.database import engine, get_db, Base, SessionLocal
 from src.models import BlogPost, PostStatus
 from src.schemas import OutrankWebhookPayload
-from src.utils import markdown_to_html, generate_excerpt, calculate_read_time
+from src.utils import markdown_to_html, generate_excerpt, calculate_read_time, extract_faq_items
 from src.image_processor import process_article_images, storage_client
 
 Base.metadata.create_all(bind=engine)
+
+# Safe column migration — idempotent, runs on every startup
+with engine.connect() as _conn:
+    _conn.execute(text("ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS faq_items JSONB"))
+    _conn.commit()
 
 app = FastAPI(title="StoryCV")
 app.add_middleware(GZipMiddleware, minimum_size=1000)
@@ -34,6 +39,28 @@ app.mount("/blog/images",
           StaticFiles(directory=str(BASE_DIR / "blog" / "images")),
           name="blog_images")
 app.mount("/static", StaticFiles(directory=str(BASE_DIR)), name="static")
+
+
+@app.on_event("startup")
+async def backfill_faq_items():
+    """Populate faq_items for any existing posts that have a FAQ section."""
+    db = SessionLocal()
+    try:
+        posts = db.query(BlogPost).filter(BlogPost.faq_items == None).all()
+        updated = 0
+        for post in posts:
+            faq = extract_faq_items(post.markdown_body)
+            if faq:
+                post.faq_items = faq
+                updated += 1
+        if updated > 0:
+            db.commit()
+            logger.info(f"FAQ backfill: populated faq_items for {updated} post(s)")
+    except Exception as e:
+        logger.error(f"FAQ backfill failed: {e}")
+        db.rollback()
+    finally:
+        db.close()
 
 
 @app.exception_handler(RequestValidationError)
@@ -298,6 +325,7 @@ async def outrank_webhook(request: Request,
         html_body = markdown_to_html(markdown_content)
         excerpt = generate_excerpt(markdown_content)
         read_time = calculate_read_time(markdown_content)
+        faq_items = extract_faq_items(markdown_content)
 
         existing_post = db.query(BlogPost).filter(
             BlogPost.slug == article.slug).first()
@@ -313,6 +341,7 @@ async def outrank_webhook(request: Request,
             existing_post.tags = article.tags or existing_post.tags or []
             existing_post.featured_image = featured_image or existing_post.featured_image
             existing_post.image_alt = image_alt
+            existing_post.faq_items = faq_items
             existing_post.read_time_minutes = read_time
             existing_post.status = PostStatus.published
             existing_post.published_at = existing_post.published_at or article.created_at or datetime.utcnow(
@@ -332,6 +361,7 @@ async def outrank_webhook(request: Request,
                                 author_byline="StoryCV Team",
                                 featured_image=featured_image,
                                 image_alt=image_alt,
+                                faq_items=faq_items,
                                 read_time_minutes=read_time,
                                 status=PostStatus.published,
                                 published_at=article.created_at
