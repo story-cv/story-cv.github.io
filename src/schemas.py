@@ -9,6 +9,7 @@ class OutrankArticle(BaseModel):
     title: str
     subtitle: Optional[str] = None
     author_byline: Optional[str] = None
+    image_alt: Optional[str] = None
     content_markdown: str
     content_html: str
     meta_description: Optional[str] = None

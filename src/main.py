@@ -42,6 +42,49 @@ app.mount("/static", StaticFiles(directory=str(BASE_DIR)), name="static")
 
 
 @app.on_event("startup")
+async def fix_manually_published_articles():
+    """Fix metadata for manually-published articles that were created before
+    the webhook schema supported subtitle/author_byline/image_alt fields."""
+    db = SessionLocal()
+    try:
+        fixes = [
+            {
+                "slug": "maternity-leave-on-resume",
+                "subtitle": "How to write maternity break (without underselling yourself)",
+                "author_byline": "Kavya Jahagirdar",
+                "image_alt": "How to write maternity leave on a resume",
+                "category": "Career advice",
+            },
+            {
+                "slug": "why-hard-to-describe-your-accomplishments",
+                "author_byline": "Kavya Jahagirdar",
+                "category": "Career advice",
+            },
+        ]
+        updated = 0
+        for fix in fixes:
+            slug = fix.pop("slug")
+            post = db.query(BlogPost).filter(BlogPost.slug == slug).first()
+            if not post:
+                continue
+            changed = False
+            for field, value in fix.items():
+                if getattr(post, field, None) != value:
+                    setattr(post, field, value)
+                    changed = True
+            if changed:
+                updated += 1
+        if updated:
+            db.commit()
+            logger.info(f"Manual article fix: updated {updated} post(s)")
+    except Exception as e:
+        logger.error(f"Manual article fix failed: {e}")
+        db.rollback()
+    finally:
+        db.close()
+
+
+@app.on_event("startup")
 async def backfill_faq_items():
     """Populate faq_items for any existing posts that have a FAQ section."""
     db = SessionLocal()
@@ -330,7 +373,7 @@ async def outrank_webhook(request: Request,
         existing_post = db.query(BlogPost).filter(
             BlogPost.slug == article.slug).first()
 
-        image_alt = f"{article.title} - StoryCV Blog"
+        image_alt = article.image_alt or f"{article.title} - StoryCV Blog"
 
         if existing_post:
             existing_post.title = article.title
