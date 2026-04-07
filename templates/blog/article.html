@@ -145,7 +145,7 @@
         <div class="blog-post-meta">
             <a href="/blog" class="back-to-blog">← Back to Blog</a>
         </div>
-        <h1 class="blog-post-title">{{ post.title }}</h1>
+        <h1 class="blog-post-title">{{ post.subtitle or post.title }}</h1>
         <div class="blog-post-info">
             <span class="post-date">{{ post.published_at.strftime('%B %d, %Y') if post.published_at else '' }}</span>
             <span class="post-read-time">{{ post.read_time_minutes }} min read</span>

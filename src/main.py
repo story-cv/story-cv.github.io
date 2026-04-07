@@ -334,6 +334,10 @@ async def outrank_webhook(request: Request,
 
         if existing_post:
             existing_post.title = article.title
+            if article.subtitle is not None:
+                existing_post.subtitle = article.subtitle
+            if article.author_byline is not None:
+                existing_post.author_byline = article.author_byline
             existing_post.description = article.meta_description or existing_post.description
             existing_post.markdown_body = markdown_content
             existing_post.html_body = html_body
@@ -352,13 +356,14 @@ async def outrank_webhook(request: Request,
         else:
             new_post = BlogPost(slug=article.slug,
                                 title=article.title,
+                                subtitle=article.subtitle,
                                 description=article.meta_description,
                                 markdown_body=markdown_content,
                                 html_body=html_body,
                                 excerpt=excerpt,
                                 category="Resume Tips",
                                 tags=article.tags or [],
-                                author_byline="StoryCV Team",
+                                author_byline=article.author_byline or "StoryCV Team",
                                 featured_image=featured_image,
                                 image_alt=image_alt,
                                 faq_items=faq_items,

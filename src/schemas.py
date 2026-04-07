@@ -7,6 +7,8 @@ from uuid import UUID
 class OutrankArticle(BaseModel):
     id: str
     title: str
+    subtitle: Optional[str] = None
+    author_byline: Optional[str] = None
     content_markdown: str
     content_html: str
     meta_description: Optional[str] = None
