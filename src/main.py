@@ -28,6 +28,7 @@ Base.metadata.create_all(bind=engine)
 # Safe column migration — idempotent, runs on every startup
 with engine.connect() as _conn:
     _conn.execute(text("ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS faq_items JSONB"))
+    _conn.execute(text("ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS image_conversion_failures JSONB"))
     _conn.commit()
 
 app = FastAPI(title="StoryCV")
@@ -114,7 +115,7 @@ async def schedule_image_backfill():
 
 
 async def _run_image_backfill():
-    from src.image_processor import needs_processing, process_image_url, process_content_images, EXTERNAL_IMAGE_PATTERN
+    from src.image_processor import needs_processing, process_image_url_tracked, process_content_images, EXTERNAL_IMAGE_PATTERN
     loop = asyncio.get_event_loop()
     db = SessionLocal()
     try:
@@ -122,24 +123,40 @@ async def _run_image_backfill():
         updated = 0
         for post in posts:
             needs_update = False
+            failures = dict(post.image_conversion_failures or {})
 
             fi = post.featured_image or ''
             if needs_processing(fi):
-                new_fi = await loop.run_in_executor(None, process_image_url, fi, post.slug)
-                if new_fi != fi:
+                new_fi, err = await loop.run_in_executor(None, process_image_url_tracked, fi, post.slug)
+                if err:
+                    failures[fi] = {"type": "featured_image", "error": err, "attempted_at": datetime.utcnow().isoformat()}
+                elif new_fi != fi:
                     post.featured_image = new_fi
+                    failures.pop(fi, None)
                     needs_update = True
 
             md = post.markdown_body or ''
             if EXTERNAL_IMAGE_PATTERN.search(md):
-                new_md = await loop.run_in_executor(None, process_content_images, md, post.slug)
+                new_md = md
+                for match in EXTERNAL_IMAGE_PATTERN.finditer(md):
+                    original_url = match.group(0)
+                    if original_url in failures and original_url in new_md:
+                        continue
+                    new_url, err = await loop.run_in_executor(None, process_image_url_tracked, original_url, post.slug)
+                    if err:
+                        failures[original_url] = {"type": "content_image", "error": err, "attempted_at": datetime.utcnow().isoformat()}
+                    elif new_url != original_url:
+                        new_md = new_md.replace(original_url, new_url)
+                        failures.pop(original_url, None)
                 if new_md != md:
                     post.markdown_body = new_md
                     post.html_body = markdown_to_html(new_md)
                     needs_update = True
 
+            post.image_conversion_failures = failures if failures else None
+            db.commit()
+
             if needs_update:
-                db.commit()
                 updated += 1
                 logger.info(f"Image backfill: converted '{post.slug}'")
 
@@ -494,10 +511,13 @@ async def image_status(
     external_featured_count = 0
     external_content_count = 0
     articles_with_external_images = []
+    articles_with_failures = []
+    total_failed_images = 0
 
     for post in posts:
         fi = post.featured_image or ""
         md = post.markdown_body or ""
+        failures = post.image_conversion_failures or {}
 
         fi_needs_conversion = needs_processing(fi)
         md_has_external = bool(EXTERNAL_IMAGE_PATTERN.search(md))
@@ -519,12 +539,31 @@ async def image_status(
                 "featured_image_url": fi if fi_needs_conversion else None,
             })
 
+        if failures:
+            total_failed_images += len(failures)
+            articles_with_failures.append({
+                "slug": post.slug,
+                "title": post.title,
+                "failed_image_count": len(failures),
+                "failures": [
+                    {
+                        "url": url,
+                        "type": info.get("type"),
+                        "error": info.get("error"),
+                        "attempted_at": info.get("attempted_at"),
+                    }
+                    for url, info in failures.items()
+                ],
+            })
+
     return JSONResponse({
         "total_articles": total,
         "webp_featured_images": webp_featured_count,
         "external_featured_images": external_featured_count,
         "articles_with_external_content_images": external_content_count,
         "articles_with_external_images": articles_with_external_images,
+        "total_failed_images": total_failed_images,
+        "articles_with_failures": articles_with_failures,
     })
 
 

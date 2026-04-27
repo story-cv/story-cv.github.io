@@ -29,6 +29,7 @@ class BlogPost(Base):
     featured_image = Column(String(500), nullable=True)
     image_alt = Column(String(500), nullable=True)
     faq_items = Column(JSONB, nullable=True)
+    image_conversion_failures = Column(JSONB, nullable=True)
     read_time_minutes = Column(Integer, default=5)
     status = Column(SQLEnum(PostStatus), default=PostStatus.draft, index=True)
     published_at = Column(DateTime, nullable=True, index=True)

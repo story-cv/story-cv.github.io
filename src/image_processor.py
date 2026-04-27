@@ -67,6 +67,27 @@ def process_image_url(url: str, slug: str) -> str:
         return url
 
 
+def process_image_url_tracked(url: str, slug: str) -> tuple:
+    """Like process_image_url but returns (new_url, error_message_or_None).
+
+    On success: (converted_url, None)
+    On failure: (original_url, error_string)
+    """
+    try:
+        logger.info(f"Processing image: {url}")
+        image_data = download_image(url)
+        webp_data = convert_to_webp(image_data)
+        filename = get_filename_from_url(url)
+        object_name = f"blog-images/{slug}/{filename}.webp"
+        public_url = upload_to_storage(webp_data, object_name)
+        logger.info(f"Uploaded to: {public_url}")
+        return public_url, None
+    except Exception as e:
+        error_msg = str(e)
+        logger.error(f"Failed to process image {url}: {error_msg}")
+        return url, error_msg
+
+
 def process_featured_image(image_url: str, slug: str) -> str:
     if not image_url:
         return image_url
