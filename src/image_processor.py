@@ -52,7 +52,7 @@ def upload_to_storage(image_data: bytes, object_name: str) -> str:
     return public_url
 
 
-def process_image_url(url: str, slug: str) -> str:
+def process_image_url(url: str, slug: str, on_failure=None) -> str:
     try:
         logger.info(f"Processing image: {url}")
         image_data = download_image(url)
@@ -64,6 +64,11 @@ def process_image_url(url: str, slug: str) -> str:
         return public_url
     except Exception as e:
         logger.error(f"Failed to process image {url}: {e}")
+        if on_failure is not None:
+            try:
+                on_failure(url, str(e))
+            except Exception as cb_err:
+                logger.error(f"on_failure callback raised an error for {url}: {cb_err}")
         return url
 
 
@@ -88,15 +93,15 @@ def process_image_url_tracked(url: str, slug: str) -> tuple:
         return url, error_msg
 
 
-def process_featured_image(image_url: str, slug: str) -> str:
+def process_featured_image(image_url: str, slug: str, on_failure=None) -> str:
     if not image_url:
         return image_url
     if needs_processing(image_url):
-        return process_image_url(image_url, slug)
+        return process_image_url(image_url, slug, on_failure=on_failure)
     return image_url
 
 
-def process_content_images(content: str, slug: str) -> str:
+def process_content_images(content: str, slug: str, on_failure=None) -> str:
     seen_urls = set()
 
     for match in EXTERNAL_IMAGE_PATTERN.finditer(content):
@@ -105,14 +110,14 @@ def process_content_images(content: str, slug: str) -> str:
             continue
         seen_urls.add(original_url)
 
-        new_url = process_image_url(original_url, slug)
+        new_url = process_image_url(original_url, slug, on_failure=on_failure)
         if new_url != original_url:
             content = content.replace(original_url, new_url)
 
     return content
 
 
-def process_article_images(slug: str, featured_image: str = None, markdown_content: str = None) -> tuple:
-    processed_featured = process_featured_image(featured_image, slug) if featured_image else None
-    processed_markdown = process_content_images(markdown_content, slug) if markdown_content else None
+def process_article_images(slug: str, featured_image: str = None, markdown_content: str = None, on_failure=None) -> tuple:
+    processed_featured = process_featured_image(featured_image, slug, on_failure=on_failure) if featured_image else None
+    processed_markdown = process_content_images(markdown_content, slug, on_failure=on_failure) if markdown_content else None
     return processed_featured, processed_markdown

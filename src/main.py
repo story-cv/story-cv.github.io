@@ -18,7 +18,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 from src.database import engine, get_db, Base, SessionLocal
-from src.models import BlogPost, PostStatus
+from src.models import BlogPost, PostStatus, ImageConversionFailure
 from src.schemas import OutrankWebhookPayload
 from src.utils import markdown_to_html, generate_excerpt, calculate_read_time, extract_faq_items
 from src.image_processor import process_article_images, storage_client
@@ -29,6 +29,20 @@ Base.metadata.create_all(bind=engine)
 with engine.connect() as _conn:
     _conn.execute(text("ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS faq_items JSONB"))
     _conn.execute(text("ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS image_conversion_failures JSONB"))
+    _conn.execute(text("""
+        CREATE TABLE IF NOT EXISTS image_conversion_failures (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            slug VARCHAR(255) NOT NULL,
+            original_url TEXT NOT NULL,
+            error_reason TEXT NOT NULL,
+            context VARCHAR(50),
+            failed_at TIMESTAMP DEFAULT NOW()
+        )
+    """))
+    _conn.execute(text(
+        "CREATE INDEX IF NOT EXISTS ix_image_conversion_failures_slug "
+        "ON image_conversion_failures (slug)"
+    ))
     _conn.commit()
 
 app = FastAPI(title="StoryCV")
@@ -114,8 +128,32 @@ async def schedule_image_backfill():
     asyncio.create_task(_run_image_backfill())
 
 
+def _record_image_failure(db, slug: str, url: str, error: str, context: str):
+    try:
+        existing = db.query(ImageConversionFailure).filter(
+            ImageConversionFailure.slug == slug,
+            ImageConversionFailure.original_url == url,
+        ).first()
+        if existing:
+            existing.error_reason = error
+            existing.context = context
+            existing.failed_at = datetime.utcnow()
+        else:
+            db.add(ImageConversionFailure(
+                slug=slug,
+                original_url=url,
+                error_reason=error,
+                context=context,
+            ))
+        db.commit()
+    except Exception as record_err:
+        logger.error(f"Could not record image failure for {url}: {record_err}")
+        db.rollback()
+
+
 async def _run_image_backfill():
-    from src.image_processor import needs_processing, process_image_url_tracked, process_content_images, EXTERNAL_IMAGE_PATTERN
+    from src.image_processor import needs_processing, process_image_url, process_content_images, EXTERNAL_IMAGE_PATTERN
+    import functools
     loop = asyncio.get_event_loop()
     db = SessionLocal()
     try:
@@ -123,40 +161,42 @@ async def _run_image_backfill():
         updated = 0
         for post in posts:
             needs_update = False
-            failures = dict(post.image_conversion_failures or {})
+            slug = post.slug
+
+            def make_failure_recorder(s):
+                def record(url, error):
+                    thread_db = SessionLocal()
+                    try:
+                        _record_image_failure(thread_db, s, url, error, "backfill")
+                    finally:
+                        thread_db.close()
+                return record
+
+            on_failure = make_failure_recorder(slug)
 
             fi = post.featured_image or ''
             if needs_processing(fi):
-                new_fi, err = await loop.run_in_executor(None, process_image_url_tracked, fi, post.slug)
-                if err:
-                    failures[fi] = {"type": "featured_image", "error": err, "attempted_at": datetime.utcnow().isoformat()}
-                elif new_fi != fi:
+                new_fi = await loop.run_in_executor(
+                    None,
+                    functools.partial(process_image_url, fi, slug, on_failure=on_failure)
+                )
+                if new_fi != fi:
                     post.featured_image = new_fi
-                    failures.pop(fi, None)
                     needs_update = True
 
             md = post.markdown_body or ''
             if EXTERNAL_IMAGE_PATTERN.search(md):
-                new_md = md
-                for match in EXTERNAL_IMAGE_PATTERN.finditer(md):
-                    original_url = match.group(0)
-                    if original_url in failures and original_url in new_md:
-                        continue
-                    new_url, err = await loop.run_in_executor(None, process_image_url_tracked, original_url, post.slug)
-                    if err:
-                        failures[original_url] = {"type": "content_image", "error": err, "attempted_at": datetime.utcnow().isoformat()}
-                    elif new_url != original_url:
-                        new_md = new_md.replace(original_url, new_url)
-                        failures.pop(original_url, None)
+                new_md = await loop.run_in_executor(
+                    None,
+                    functools.partial(process_content_images, md, slug, on_failure=on_failure)
+                )
                 if new_md != md:
                     post.markdown_body = new_md
                     post.html_body = markdown_to_html(new_md)
                     needs_update = True
 
-            post.image_conversion_failures = failures if failures else None
-            db.commit()
-
             if needs_update:
+                db.commit()
                 updated += 1
                 logger.info(f"Image backfill: converted '{post.slug}'")
 
@@ -419,11 +459,17 @@ async def outrank_webhook(request: Request,
     results = []
     for article in payload.data.articles:
         logger.info(f"Processing article: {article.slug}")
-        
+
+        def _make_webhook_failure_recorder(s, d):
+            def record(url, error):
+                _record_image_failure(d, s, url, error, "webhook")
+            return record
+
         processed_featured_image, processed_markdown = process_article_images(
             slug=article.slug,
             featured_image=article.image_url,
-            markdown_content=article.content_markdown
+            markdown_content=article.content_markdown,
+            on_failure=_make_webhook_failure_recorder(article.slug, db),
         )
         
         markdown_content = processed_markdown or article.content_markdown
@@ -511,13 +557,10 @@ async def image_status(
     external_featured_count = 0
     external_content_count = 0
     articles_with_external_images = []
-    articles_with_failures = []
-    total_failed_images = 0
 
     for post in posts:
         fi = post.featured_image or ""
         md = post.markdown_body or ""
-        failures = post.image_conversion_failures or {}
 
         fi_needs_conversion = needs_processing(fi)
         md_has_external = bool(EXTERNAL_IMAGE_PATTERN.search(md))
@@ -539,22 +582,19 @@ async def image_status(
                 "featured_image_url": fi if fi_needs_conversion else None,
             })
 
-        if failures:
-            total_failed_images += len(failures)
-            articles_with_failures.append({
-                "slug": post.slug,
-                "title": post.title,
-                "failed_image_count": len(failures),
-                "failures": [
-                    {
-                        "url": url,
-                        "type": info.get("type"),
-                        "error": info.get("error"),
-                        "attempted_at": info.get("attempted_at"),
-                    }
-                    for url, info in failures.items()
-                ],
-            })
+    db_failures = db.query(ImageConversionFailure).order_by(
+        ImageConversionFailure.failed_at.desc()
+    ).all()
+    failed_conversions = [
+        {
+            "slug": f.slug,
+            "original_url": f.original_url,
+            "error_reason": f.error_reason,
+            "context": f.context,
+            "failed_at": f.failed_at.isoformat() if f.failed_at else None,
+        }
+        for f in db_failures
+    ]
 
     return JSONResponse({
         "total_articles": total,
@@ -562,8 +602,8 @@ async def image_status(
         "external_featured_images": external_featured_count,
         "articles_with_external_content_images": external_content_count,
         "articles_with_external_images": articles_with_external_images,
-        "total_failed_images": total_failed_images,
-        "articles_with_failures": articles_with_failures,
+        "failed_conversions": failed_conversions,
+        "total_failed_images": len(failed_conversions),
     })
 
 

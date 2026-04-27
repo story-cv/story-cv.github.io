@@ -38,3 +38,17 @@ class BlogPost(Base):
 
     def __repr__(self):
         return f"<BlogPost {self.slug}>"
+
+
+class ImageConversionFailure(Base):
+    __tablename__ = "image_conversion_failures"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    slug = Column(String(255), nullable=False, index=True)
+    original_url = Column(Text, nullable=False)
+    error_reason = Column(Text, nullable=False)
+    context = Column(String(50), nullable=True)
+    failed_at = Column(DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<ImageConversionFailure {self.slug} {self.original_url[:60]}>"
