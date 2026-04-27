@@ -473,6 +473,61 @@ async def outrank_webhook(request: Request,
     }
 
 
+@app.get("/admin/image-status")
+async def image_status(
+    db: Session = Depends(get_db),
+    authorization: str = Header(None, alias="Authorization"),
+):
+    from src.image_processor import needs_processing, EXTERNAL_IMAGE_PATTERN
+
+    access_token = os.environ.get("OUTRANK_ACCESS_TOKEN")
+    if not access_token:
+        raise HTTPException(status_code=503, detail="Admin access not configured")
+    expected_header = f"Bearer {access_token}"
+    if not authorization or not secrets.compare_digest(authorization, expected_header):
+        raise HTTPException(status_code=401, detail="Invalid access token")
+
+    posts = db.query(BlogPost).filter(BlogPost.status == PostStatus.published).all()
+
+    total = len(posts)
+    webp_featured_count = 0
+    external_featured_count = 0
+    external_content_count = 0
+    articles_with_external_images = []
+
+    for post in posts:
+        fi = post.featured_image or ""
+        md = post.markdown_body or ""
+
+        fi_needs_conversion = needs_processing(fi)
+        md_has_external = bool(EXTERNAL_IMAGE_PATTERN.search(md))
+
+        if fi_needs_conversion:
+            external_featured_count += 1
+        elif fi:
+            webp_featured_count += 1
+
+        if md_has_external:
+            external_content_count += 1
+
+        if fi_needs_conversion or md_has_external:
+            articles_with_external_images.append({
+                "slug": post.slug,
+                "title": post.title,
+                "featured_image_needs_conversion": fi_needs_conversion,
+                "content_has_external_images": md_has_external,
+                "featured_image_url": fi if fi_needs_conversion else None,
+            })
+
+    return JSONResponse({
+        "total_articles": total,
+        "webp_featured_images": webp_featured_count,
+        "external_featured_images": external_featured_count,
+        "articles_with_external_content_images": external_content_count,
+        "articles_with_external_images": articles_with_external_images,
+    })
+
+
 @app.get("/{path:path}")
 async def serve_static(path: str):
     file_path = BASE_DIR / path
