@@ -1,4 +1,5 @@
 import os
+import asyncio
 import json
 import secrets
 import logging
@@ -101,6 +102,52 @@ async def backfill_faq_items():
             logger.info(f"FAQ backfill: populated faq_items for {updated} post(s)")
     except Exception as e:
         logger.error(f"FAQ backfill failed: {e}")
+        db.rollback()
+    finally:
+        db.close()
+
+
+@app.on_event("startup")
+async def schedule_image_backfill():
+    """Launch WebP conversion for articles that still have external JPG/PNG images."""
+    asyncio.create_task(_run_image_backfill())
+
+
+async def _run_image_backfill():
+    from src.image_processor import needs_processing, process_image_url, process_content_images, EXTERNAL_IMAGE_PATTERN
+    loop = asyncio.get_event_loop()
+    db = SessionLocal()
+    try:
+        posts = db.query(BlogPost).filter(BlogPost.status == PostStatus.published).all()
+        updated = 0
+        for post in posts:
+            needs_update = False
+
+            fi = post.featured_image or ''
+            if needs_processing(fi):
+                new_fi = await loop.run_in_executor(None, process_image_url, fi, post.slug)
+                if new_fi != fi:
+                    post.featured_image = new_fi
+                    needs_update = True
+
+            md = post.markdown_body or ''
+            if EXTERNAL_IMAGE_PATTERN.search(md):
+                new_md = await loop.run_in_executor(None, process_content_images, md, post.slug)
+                if new_md != md:
+                    post.markdown_body = new_md
+                    post.html_body = markdown_to_html(new_md)
+                    needs_update = True
+
+            if needs_update:
+                db.commit()
+                updated += 1
+                logger.info(f"Image backfill: converted '{post.slug}'")
+
+            await asyncio.sleep(0)
+
+        logger.info(f"Image backfill complete: {updated} article(s) updated")
+    except Exception as e:
+        logger.error(f"Image backfill error: {e}")
         db.rollback()
     finally:
         db.close()

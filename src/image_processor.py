@@ -11,10 +11,15 @@ logger = logging.getLogger(__name__)
 
 storage_client = Client()
 
-OUTRANK_IMAGE_PATTERN = re.compile(
-    r'https://cdn\.outrank\.so/[^\s"\'<>]+\.(jpg|jpeg|png|gif)',
+EXTERNAL_IMAGE_PATTERN = re.compile(
+    r'https?://[^\s"\'<>]+\.(jpg|jpeg|png|gif)',
     re.IGNORECASE
 )
+
+
+def needs_processing(url: str) -> bool:
+    """Returns True for any external image URL that isn't already WebP."""
+    return bool(url) and url.startswith('http') and not url.lower().endswith('.webp')
 
 
 def download_image(url: str) -> bytes:
@@ -65,24 +70,24 @@ def process_image_url(url: str, slug: str) -> str:
 def process_featured_image(image_url: str, slug: str) -> str:
     if not image_url:
         return image_url
-    if 'cdn.outrank.so' in image_url:
+    if needs_processing(image_url):
         return process_image_url(image_url, slug)
     return image_url
 
 
 def process_content_images(content: str, slug: str) -> str:
     seen_urls = set()
-    
-    for match in OUTRANK_IMAGE_PATTERN.finditer(content):
+
+    for match in EXTERNAL_IMAGE_PATTERN.finditer(content):
         original_url = match.group(0)
         if original_url in seen_urls:
             continue
         seen_urls.add(original_url)
-        
+
         new_url = process_image_url(original_url, slug)
         if new_url != original_url:
             content = content.replace(original_url, new_url)
-    
+
     return content
 
 
