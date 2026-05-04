@@ -101,6 +101,36 @@ async def fix_manually_published_articles():
 
 
 @app.on_event("startup")
+async def fix_broken_content_links():
+    """Remove broken hyperlinks from article markdown bodies."""
+    db = SessionLocal()
+    try:
+        fixes = [
+            {
+                "slug": "why-hard-to-describe-your-accomplishments",
+                "old": "[Psychologists describe this as a form of hedonic adaptation](https://geediting.com/kir-if-you-downplay-your-own-achievements-around-others-psychology-says-you-possess-these-7-traits/)",
+                "new": "Psychologists describe this as a form of hedonic adaptation",
+            },
+        ]
+        updated = 0
+        for fix in fixes:
+            post = db.query(BlogPost).filter(BlogPost.slug == fix["slug"]).first()
+            if not post or fix["old"] not in (post.markdown_body or ""):
+                continue
+            post.markdown_body = post.markdown_body.replace(fix["old"], fix["new"])
+            post.html_body = markdown_to_html(post.markdown_body)
+            updated += 1
+        if updated:
+            db.commit()
+            logger.info(f"Broken link fix: updated {updated} post(s)")
+    except Exception as e:
+        logger.error(f"Broken link fix failed: {e}")
+        db.rollback()
+    finally:
+        db.close()
+
+
+@app.on_event("startup")
 async def backfill_faq_items():
     """Populate faq_items for any existing posts that have a FAQ section."""
     db = SessionLocal()
