@@ -9664,6 +9664,73 @@ body.mobile-menu-open {
   color: var(--color-text-secondary);
 }
 
+/* Career Clarity Section */
+.career-clarity-section {
+  background-color: #fbf8f3;
+}
+
+.career-clarity-card {
+  padding: var(--space-2xl) var(--space-2xl);
+}
+
+.career-clarity-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.career-clarity-image-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.career-clarity-image {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: var(--radius-xl);
+  display: block;
+}
+
+.career-clarity-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.career-clarity-body {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-regular);
+}
+
+.career-clarity-body em {
+  font-style: italic;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+@media (max-width: 768px) {
+  .career-clarity-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .career-clarity-card {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .career-clarity-body {
+    font-size: 1.1rem;
+  }
+
+  .career-clarity-image {
+    max-width: 280px;
+  }
+}
+
 /* Pricing CTA Section */
 .pricing-cta-section {
   padding: var(--space-4xl) 0;
