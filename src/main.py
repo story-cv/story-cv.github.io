@@ -188,7 +188,9 @@ async def _run_image_backfill():
     db = SessionLocal()
     try:
         posts = db.query(BlogPost).filter(BlogPost.status == PostStatus.published).all()
+        total = len(posts)
         updated = 0
+        skipped = 0
         for post in posts:
             needs_update = False
             slug = post.slug
@@ -229,13 +231,17 @@ async def _run_image_backfill():
                 db.commit()
                 updated += 1
                 logger.info(f"Image backfill: converted '{post.slug}'")
+            else:
+                skipped += 1
 
             await asyncio.sleep(0)
 
         logger.info(f"Image backfill complete: {updated} article(s) updated")
+        return {"total": total, "updated": updated, "skipped": skipped}
     except Exception as e:
         logger.error(f"Image backfill error: {e}")
         db.rollback()
+        return {"total": 0, "updated": 0, "skipped": 0, "error": str(e)}
     finally:
         db.close()
 
@@ -634,6 +640,38 @@ async def image_status(
         "articles_with_external_images": articles_with_external_images,
         "failed_conversions": failed_conversions,
         "total_failed_images": len(failed_conversions),
+    })
+
+
+@app.post("/admin/image-backfill")
+async def trigger_image_backfill(
+    authorization: str = Header(None, alias="Authorization"),
+):
+    access_token = os.environ.get("OUTRANK_ACCESS_TOKEN")
+    if not access_token:
+        raise HTTPException(status_code=503, detail="Admin access not configured")
+    expected_header = f"Bearer {access_token}"
+    if not authorization or not secrets.compare_digest(authorization, expected_header):
+        raise HTTPException(status_code=401, detail="Invalid access token")
+
+    logger.info("Manual image backfill triggered via /admin/image-backfill")
+    result = await _run_image_backfill()
+    if "error" in result:
+        return JSONResponse(
+            status_code=500,
+            content={
+                "message": "Image backfill failed",
+                "total_articles": result.get("total", 0),
+                "articles_updated": result.get("updated", 0),
+                "articles_skipped": result.get("skipped", 0),
+                "error": result["error"],
+            },
+        )
+    return JSONResponse({
+        "message": "Image backfill complete",
+        "total_articles": result.get("total", 0),
+        "articles_updated": result.get("updated", 0),
+        "articles_skipped": result.get("skipped", 0),
     })
 
 
