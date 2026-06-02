@@ -550,7 +550,7 @@ async def outrank_webhook(request: Request,
         f"Received webhook: event_type={payload.event_type}, articles={len(payload.data.articles)}"
     )
 
-    if payload.event_type != "publish_articles":
+    if payload.event_type not in ("publish_articles", "update_article"):
         logger.info(f"Ignoring event_type: {payload.event_type}")
         return {
             "event_type": payload.event_type,
