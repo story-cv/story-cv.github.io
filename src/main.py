@@ -5,7 +5,7 @@ import secrets
 import logging
 from datetime import datetime
 from pathlib import Path
-from fastapi import FastAPI, Request, Depends, HTTPException, Header
+from fastapi import FastAPI, Request, Depends, HTTPException, Header, BackgroundTasks
 from fastapi.responses import HTMLResponse, Response, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -490,8 +490,50 @@ async def sitemap(db: Session = Depends(get_db)):
     return Response(content=sitemap_xml, media_type="application/xml")
 
 
+def _process_webhook_images_background(articles):
+    """Background task: convert images for newly published articles."""
+    db = SessionLocal()
+    try:
+        for article in articles:
+            logger.info(f"Background image processing for: {article.slug}")
+            try:
+                def _make_failure_recorder(s, d):
+                    def record(url, error):
+                        _record_image_failure(d, s, url, error, "webhook")
+                    return record
+
+                def _make_success_recorder(s, d):
+                    def clear(url):
+                        _clear_image_failure(d, s, url)
+                    return clear
+
+                processed_featured_image, processed_markdown = process_article_images(
+                    slug=article.slug,
+                    featured_image=article.image_url,
+                    markdown_content=article.content_markdown,
+                    on_failure=_make_failure_recorder(article.slug, db),
+                    on_success=_make_success_recorder(article.slug, db),
+                )
+
+                if processed_featured_image or processed_markdown:
+                    post = db.query(BlogPost).filter(BlogPost.slug == article.slug).first()
+                    if post:
+                        if processed_featured_image:
+                            post.featured_image = processed_featured_image
+                        if processed_markdown:
+                            post.markdown_body = processed_markdown
+                            post.html_body = markdown_to_html(processed_markdown)
+                        db.commit()
+                        logger.info(f"Background image processing complete for: {article.slug}")
+            except Exception as e:
+                logger.error(f"Background image processing failed for {article.slug}: {e}")
+    finally:
+        db.close()
+
+
 @app.post("/api/webhooks/outrank")
 async def outrank_webhook(request: Request,
+                          background_tasks: BackgroundTasks,
                           payload: OutrankWebhookPayload,
                           db: Session = Depends(get_db),
                           authorization: str = Header(None,
@@ -518,38 +560,17 @@ async def outrank_webhook(request: Request,
 
     results = []
     for article in payload.data.articles:
-        logger.info(f"Processing article: {article.slug}")
+        logger.info(f"Saving article: {article.slug}")
 
-        def _make_webhook_failure_recorder(s, d):
-            def record(url, error):
-                _record_image_failure(d, s, url, error, "webhook")
-            return record
-
-        def _make_webhook_success_recorder(s, d):
-            def clear(url):
-                _clear_image_failure(d, s, url)
-            return clear
-
-        processed_featured_image, processed_markdown = process_article_images(
-            slug=article.slug,
-            featured_image=article.image_url,
-            markdown_content=article.content_markdown,
-            on_failure=_make_webhook_failure_recorder(article.slug, db),
-            on_success=_make_webhook_success_recorder(article.slug, db),
-        )
-        
-        markdown_content = processed_markdown or article.content_markdown
-        featured_image = processed_featured_image or article.image_url
-        
+        markdown_content = article.content_markdown
         html_body = markdown_to_html(markdown_content)
         excerpt = generate_excerpt(markdown_content)
         read_time = calculate_read_time(markdown_content)
         faq_items = extract_faq_items(markdown_content)
+        image_alt = article.image_alt or f"{article.title} - StoryCV Blog"
 
         existing_post = db.query(BlogPost).filter(
             BlogPost.slug == article.slug).first()
-
-        image_alt = article.image_alt or f"{article.title} - StoryCV Blog"
 
         if existing_post:
             existing_post.title = article.title
@@ -562,13 +583,12 @@ async def outrank_webhook(request: Request,
             existing_post.html_body = html_body
             existing_post.excerpt = excerpt
             existing_post.tags = article.tags or existing_post.tags or []
-            existing_post.featured_image = featured_image or existing_post.featured_image
+            existing_post.featured_image = article.image_url or existing_post.featured_image
             existing_post.image_alt = image_alt
             existing_post.faq_items = faq_items
             existing_post.read_time_minutes = read_time
             existing_post.status = PostStatus.published
-            existing_post.published_at = existing_post.published_at or article.created_at or datetime.utcnow(
-            )
+            existing_post.published_at = existing_post.published_at or article.created_at or datetime.utcnow()
             existing_post.updated_at = datetime.utcnow()
             results.append({"status": "updated", "slug": article.slug})
             logger.info(f"Updated article: {article.slug}")
@@ -583,18 +603,20 @@ async def outrank_webhook(request: Request,
                                 category="Resume Tips",
                                 tags=article.tags or [],
                                 author_byline=article.author_byline or "StoryCV Team",
-                                featured_image=featured_image,
+                                featured_image=article.image_url,
                                 image_alt=image_alt,
                                 faq_items=faq_items,
                                 read_time_minutes=read_time,
                                 status=PostStatus.published,
-                                published_at=article.created_at
-                                or datetime.utcnow())
+                                published_at=article.created_at or datetime.utcnow())
             db.add(new_post)
             results.append({"status": "created", "slug": article.slug})
             logger.info(f"Created article: {article.slug}")
 
     db.commit()
+
+    background_tasks.add_task(_process_webhook_images_background, payload.data.articles)
+
     return {
         "event_type": payload.event_type,
         "processed": len(results),
