@@ -181,6 +181,20 @@ def _record_image_failure(db, slug: str, url: str, error: str, context: str):
         db.rollback()
 
 
+def _clear_image_failure(db, slug: str, url: str):
+    try:
+        deleted = db.query(ImageConversionFailure).filter(
+            ImageConversionFailure.slug == slug,
+            ImageConversionFailure.original_url == url,
+        ).delete(synchronize_session=False)
+        if deleted:
+            db.commit()
+            logger.info(f"Cleared resolved image failure for {slug}: {url}")
+    except Exception as clear_err:
+        logger.error(f"Could not clear image failure for {url}: {clear_err}")
+        db.rollback()
+
+
 async def _run_image_backfill():
     from src.image_processor import needs_processing, process_image_url, process_content_images, EXTERNAL_IMAGE_PATTERN
     import functools
@@ -204,13 +218,23 @@ async def _run_image_backfill():
                         thread_db.close()
                 return record
 
+            def make_success_recorder(s):
+                def clear(url):
+                    thread_db = SessionLocal()
+                    try:
+                        _clear_image_failure(thread_db, s, url)
+                    finally:
+                        thread_db.close()
+                return clear
+
             on_failure = make_failure_recorder(slug)
+            on_success = make_success_recorder(slug)
 
             fi = post.featured_image or ''
             if needs_processing(fi):
                 new_fi = await loop.run_in_executor(
                     None,
-                    functools.partial(process_image_url, fi, slug, on_failure=on_failure)
+                    functools.partial(process_image_url, fi, slug, on_failure=on_failure, on_success=on_success)
                 )
                 if new_fi != fi:
                     post.featured_image = new_fi
@@ -220,7 +244,7 @@ async def _run_image_backfill():
             if EXTERNAL_IMAGE_PATTERN.search(md):
                 new_md = await loop.run_in_executor(
                     None,
-                    functools.partial(process_content_images, md, slug, on_failure=on_failure)
+                    functools.partial(process_content_images, md, slug, on_failure=on_failure, on_success=on_success)
                 )
                 if new_md != md:
                     post.markdown_body = new_md
@@ -501,11 +525,17 @@ async def outrank_webhook(request: Request,
                 _record_image_failure(d, s, url, error, "webhook")
             return record
 
+        def _make_webhook_success_recorder(s, d):
+            def clear(url):
+                _clear_image_failure(d, s, url)
+            return clear
+
         processed_featured_image, processed_markdown = process_article_images(
             slug=article.slug,
             featured_image=article.image_url,
             markdown_content=article.content_markdown,
             on_failure=_make_webhook_failure_recorder(article.slug, db),
+            on_success=_make_webhook_success_recorder(article.slug, db),
         )
         
         markdown_content = processed_markdown or article.content_markdown
