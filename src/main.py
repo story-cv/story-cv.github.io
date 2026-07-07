@@ -3,6 +3,8 @@ import asyncio
 import json
 import secrets
 import logging
+import hashlib
+from collections import OrderedDict
 from datetime import datetime
 from pathlib import Path
 from fastapi import FastAPI, Request, Depends, HTTPException, Header, BackgroundTasks
@@ -24,6 +26,11 @@ from src.utils import markdown_to_html, generate_excerpt, calculate_read_time, e
 from src.image_processor import process_article_images, storage_client
 
 Base.metadata.create_all(bind=engine)
+
+# In-memory image cache: path -> (etag, content_type, bytes)
+# Capped at 300 entries using LRU eviction to avoid unbounded memory growth
+_IMAGE_CACHE_MAX = 300
+_image_cache: OrderedDict = OrderedDict()
 
 # Safe column migration — idempotent, runs on every startup
 with engine.connect() as _conn:
@@ -380,28 +387,54 @@ async def blog_article_trailing_slash_redirect(slug: str):
 
 
 @app.get("/api/storage/{path:path}")
-async def serve_storage_image(path: str):
-    try:
-        file_data = storage_client.download_as_bytes(path)
-        
-        content_type = "application/octet-stream"
-        if path.endswith(".webp"):
-            content_type = "image/webp"
-        elif path.endswith(".png"):
-            content_type = "image/png"
-        elif path.endswith(".jpg") or path.endswith(".jpeg"):
-            content_type = "image/jpeg"
-        elif path.endswith(".gif"):
-            content_type = "image/gif"
-        
-        return Response(
-            content=file_data,
-            media_type=content_type,
-            headers={"Cache-Control": "public, max-age=31536000"}
-        )
-    except Exception as e:
-        logger.error(f"Failed to serve storage file {path}: {e}")
-        raise HTTPException(status_code=404, detail="Image not found")
+async def serve_storage_image(path: str, request: Request):
+    global _image_cache
+
+    # Determine content type from extension
+    content_type = "application/octet-stream"
+    if path.endswith(".webp"):
+        content_type = "image/webp"
+    elif path.endswith(".png"):
+        content_type = "image/png"
+    elif path.endswith(".jpg") or path.endswith(".jpeg"):
+        content_type = "image/jpeg"
+    elif path.endswith(".gif"):
+        content_type = "image/gif"
+
+    # Check in-memory cache first
+    if path in _image_cache:
+        _image_cache.move_to_end(path)
+        etag, _, file_data = _image_cache[path]
+    else:
+        try:
+            loop = asyncio.get_event_loop()
+            file_data = await loop.run_in_executor(
+                None, storage_client.download_as_bytes, path
+            )
+        except Exception as e:
+            logger.error(f"Failed to serve storage file {path}: {e}")
+            raise HTTPException(status_code=404, detail="Image not found")
+
+        etag = hashlib.md5(file_data).hexdigest()
+
+        # Store in cache with LRU eviction
+        _image_cache[path] = (etag, content_type, file_data)
+        _image_cache.move_to_end(path)
+        if len(_image_cache) > _IMAGE_CACHE_MAX:
+            _image_cache.popitem(last=False)
+
+    # Conditional request: return 304 if client already has this version
+    if request.headers.get("if-none-match") == f'"{etag}"':
+        return Response(status_code=304)
+
+    return Response(
+        content=file_data,
+        media_type=content_type,
+        headers={
+            "Cache-Control": "public, max-age=31536000, immutable",
+            "ETag": f'"{etag}"',
+        }
+    )
 
 
 @app.get("/blog/feed.xml", response_class=Response)
