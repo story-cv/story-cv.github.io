@@ -1,0 +1,61 @@
+Before/after transformation animation
+
+The centerpiece visual. Place on /pricing between the philosophy note and How it works. Also place near the hero of the main landing page.
+
+Behavior
+
+A single card, two labeled zones:
+
+
+Label 1 (muted, uppercase, small): "What you said" — a raw, spoken-style answer types itself out (typewriter, ~26ms/char).
+Label 2 (brand orange, uppercase, small): "What you actually did" — after a beat, the finished resume bullet writes in (typewriter, ~20ms/char), visually dominant (larger, medium weight, ink color).
+Hold ~2.5s, then loop.
+Caption below card: "This happens live, from your own answers. Twice, free."
+
+
+Example content pair (final copy)
+
+Raw: "uh, I basically kept the vendor stuff on track when we switched systems... a lot of chasing people honestly"
+Bullet: "Led vendor coordination through an ERP migration, keeping 14 supplier integrations live with zero missed order cycles"
+
+Reference implementation
+
+html<div class="transform-card">
+  <div class="label muted">What you said</div>
+  <div id="raw" class="raw-text"></div>
+  <hr>
+  <div class="label orange">What you actually did</div>
+  <div id="bullet" class="bullet-text"></div>
+</div>
+<script>
+(function(){
+  var rawText = "uh, I basically kept the vendor stuff on track when we switched systems... a lot of chasing people honestly";
+  var bulletText = "Led vendor coordination through an ERP migration, keeping 14 supplier integrations live with zero missed order cycles";
+  var rawEl = document.getElementById('raw');
+  var bEl = document.getElementById('bullet');
+  function type(el, text, speed, done){
+    var i = 0; el.textContent = '';
+    var t = setInterval(function(){
+      el.textContent = text.slice(0, ++i);
+      if(i >= text.length){ clearInterval(t); if(done) setTimeout(done, 700); }
+    }, speed);
+  }
+  function cycle(){
+    bEl.textContent = '';
+    type(rawEl, rawText, 26, function(){
+      type(bEl, bulletText, 20, function(){
+        setTimeout(cycle, 2500);
+      });
+    });
+  }
+  cycle();
+})();
+</script>
+
+Production requirements beyond the reference
+
+
+Pause the loop when the card is off-screen (IntersectionObserver) — do not burn CPU invisibly.
+Respect prefers-reduced-motion: show the final static before/after with no typing.
+Reserve min-heights for both text zones so the card never reflows while typing.
+The card uses the same white/hairline-border style as the pricing cards.
