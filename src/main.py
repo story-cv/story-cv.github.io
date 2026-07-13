@@ -32,6 +32,11 @@ Base.metadata.create_all(bind=engine)
 _IMAGE_CACHE_MAX = 300
 _image_cache: OrderedDict = OrderedDict()
 
+# In-memory article HTML cache: slug -> rendered HTML string
+# Cleared automatically when an article is published via webhook,
+# and manually via POST /admin/clear-article-cache
+_article_cache: dict = {}
+
 # Safe column migration — idempotent, runs on every startup
 with engine.connect() as _conn:
     _conn.execute(text("ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS faq_items JSONB"))
@@ -349,6 +354,9 @@ async def blog_listing(request: Request, db: Session = Depends(get_db)):
 async def blog_article(request: Request,
                        slug: str,
                        db: Session = Depends(get_db)):
+    if slug in _article_cache:
+        return HTMLResponse(content=_article_cache[slug])
+
     post = db.query(BlogPost).filter(
         BlogPost.slug == slug,
         BlogPost.status == PostStatus.published).first()
@@ -369,11 +377,13 @@ async def blog_article(request: Request,
                                                    len(related_posts)).all()
         related_posts.extend(additional)
 
-    return templates.TemplateResponse("blog/article.html", {
+    html = templates.get_template("blog/article.html").render({
         "request": request,
         "post": post,
         "related_posts": related_posts
     })
+    _article_cache[slug] = html
+    return HTMLResponse(content=html)
 
 
 @app.get("/blog/")
@@ -648,6 +658,11 @@ async def outrank_webhook(request: Request,
 
     db.commit()
 
+    # Bust the article HTML cache for every slug that was just published/updated
+    for r in results:
+        _article_cache.pop(r["slug"], None)
+        logger.info(f"Article cache cleared for: {r['slug']}")
+
     background_tasks.add_task(_process_webhook_images_background, payload.data.articles)
 
     return {
@@ -758,6 +773,35 @@ async def trigger_image_backfill(
         "articles_updated": result.get("updated", 0),
         "articles_skipped": result.get("skipped", 0),
     })
+
+
+@app.post("/admin/clear-article-cache")
+async def clear_article_cache(
+    slug: str = None,
+    authorization: str = Header(None, alias="Authorization"),
+):
+    access_token = os.environ.get("OUTRANK_ACCESS_TOKEN")
+    if not access_token:
+        raise HTTPException(status_code=503, detail="Admin access not configured")
+    expected_header = f"Bearer {access_token}"
+    if not authorization or not secrets.compare_digest(authorization, expected_header):
+        raise HTTPException(status_code=401, detail="Invalid access token")
+
+    if slug:
+        was_cached = slug in _article_cache
+        _article_cache.pop(slug, None)
+        logger.info(f"Admin: article cache cleared for slug '{slug}'")
+        return JSONResponse({
+            "message": f"Cache cleared for '{slug}'" if was_cached else f"No cache entry found for '{slug}'",
+            "slug": slug,
+        })
+    else:
+        count = len(_article_cache)
+        _article_cache.clear()
+        logger.info(f"Admin: full article cache cleared ({count} entries)")
+        return JSONResponse({
+            "message": f"Full article cache cleared ({count} entries removed)",
+        })
 
 
 @app.get("/{path:path}")
