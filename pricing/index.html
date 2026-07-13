@@ -205,13 +205,6 @@
             </div>
         </section>
 
-        <!-- Pricing Cards (injected by pricing-cards.js) -->
-        <section class="pricing-section pricing-page-section section-wrapper">
-            <div class="container">
-                <div id="pricing-cards-container"></div>
-            </div>
-        </section>
-
         <!-- Before/After Transform Animation -->
         <section class="transform-animation-section">
             <div class="container">
@@ -223,52 +216,79 @@
             </div>
         </section>
 
+        <!-- Pricing Cards (injected by pricing-cards.js) -->
+        <section class="pricing-section pricing-page-section section-wrapper">
+            <div class="container">
+                <div id="pricing-cards-container"></div>
+            </div>
+        </section>
+
         <!-- How it Works Section -->
         <section class="how-it-works-section">
             <div class="container">
                 <h2 class="how-it-works-heading scroll-reveal">How it works</h2>
-                <div class="how-it-works-grid">
+                <div class="how-it-works-timeline">
 
-                    <div class="how-it-works-step scroll-reveal" data-delay="0">
-                        <div class="step-icon-wrap">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                            </svg>
+                    <div class="timeline-step">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-step-content">
+                            <div class="timeline-step-header">
+                                <div class="step-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="step-title">Answer, don't write</h3>
+                            </div>
+                            <p class="step-desc">We interview you about one role. No blank pages. You just talk through your work and we pull out what matters.</p>
                         </div>
-                        <h3 class="step-title">Answer, don't write</h3>
-                        <p class="step-desc">We interview you about one role. No blank pages. You just talk through your work and we pull out what matters.</p>
                     </div>
 
-                    <div class="how-it-works-step scroll-reveal" data-delay="100">
-                        <div class="step-icon-wrap">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                <circle cx="12" cy="12" r="3"/>
-                            </svg>
+                    <div class="timeline-step">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-step-content">
+                            <div class="timeline-step-header">
+                                <div class="step-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </div>
+                                <h3 class="step-title">See the transformation</h3>
+                            </div>
+                            <p class="step-desc">Two finished bullets appear — written from what you actually said, not from a template. If they feel right, you're on to something.</p>
                         </div>
-                        <h3 class="step-title">See the transformation</h3>
-                        <p class="step-desc">Two finished bullets appear — written from what you actually said, not from a template. If they feel right, you're on to something.</p>
                     </div>
 
-                    <div class="how-it-works-step scroll-reveal" data-delay="200">
-                        <div class="step-icon-wrap">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-                                <line x1="1" y1="10" x2="23" y2="10"/>
-                            </svg>
+                    <div class="timeline-step">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-step-content">
+                            <div class="timeline-step-header">
+                                <div class="step-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                        <line x1="1" y1="10" x2="23" y2="10"/>
+                                    </svg>
+                                </div>
+                                <h3 class="step-title">Get a pass for $10</h3>
+                            </div>
+                            <p class="step-desc">One payment, one week. Enough time to finish every role on your resume. No subscription, no renewal.</p>
                         </div>
-                        <h3 class="step-title">Get a pass for $10</h3>
-                        <p class="step-desc">One payment, one week. Enough time to finish every role on your resume. No subscription, no renewal.</p>
                     </div>
 
-                    <div class="how-it-works-step scroll-reveal" data-delay="300">
-                        <div class="step-icon-wrap">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
+                    <div class="timeline-step">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-step-content">
+                            <div class="timeline-step-header">
+                                <div class="step-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="step-title">Keep it forever</h3>
+                            </div>
+                            <p class="step-desc">After the week, everything you wrote stays yours. Come back next year if you need to. Same price.</p>
                         </div>
-                        <h3 class="step-title">Keep it forever</h3>
-                        <p class="step-desc">After the week, everything you wrote stays yours. Come back next year if you need to. Same price.</p>
                     </div>
 
                 </div>
@@ -423,6 +443,7 @@
     <script src="/cookie-banner.js"></script>
     <script src="/pricing-cards.js"></script>
     <script src="/transform-animation.js"></script>
+    <script src="/how-it-works-timeline.js"></script>
     <script src="/script.js"></script>
     <script src="/scroll-animation.js"></script>
 </body>
