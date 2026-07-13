@@ -3392,8 +3392,7 @@ header picture img:hover {
 .pricing-card {
   background-color: white;
   border-radius: var(--radius-lg);
-  
-  
+  border: 1px solid #e5e7eb;
   padding: var(--space-2xl);
   display: flex;
   flex-direction: column;
@@ -3404,16 +3403,6 @@ header picture img:hover {
 .pricing-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-}
-
-/* Featured Card (Premium Tier) */
-.pricing-card-featured {
-  border: 0.5px solid var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
-}
-
-.pricing-card-featured:hover {
-  box-shadow: 0 8px 24px rgba(238, 78, 52, 0.2);
 }
 
 /* Founding User Badge */
@@ -3466,85 +3455,11 @@ header picture img:hover {
   font-family: 'Onest', system-ui, -apple-system, sans-serif;
 }
 
-.pricing-card-featured .pricing-price {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: price-reveal 0.5s ease-out 1.2s forwards;
-}
-
-@keyframes price-reveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.pricing-price-old {
-  font-size: 1.75rem;
+.pricing-pass-label {
+  font-size: 1rem;
   color: var(--color-text-muted);
-  font-weight: var(--font-weight-medium);
-  position: relative;
-  opacity: 0.7;
-  margin-right: var(--space-xs);
-}
-
-.pricing-price-old::after {
-  content: '';
-  position: absolute;
-  left: -2px;
-  right: -2px;
-  top: 50%;
-  height: 2px;
-  background-color: var(--color-primary);
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: strikethrough 0.6s ease-out 0.8s forwards;
-}
-
-@keyframes strikethrough {
-  to {
-    transform: scaleX(1);
-  }
-}
-
-.founding-user-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--color-primary) 0%, #ff6b4a 100%);
-  color: white;
-  font-size: 0.75rem;
-  font-weight: var(--font-weight-semibold);
-  padding: 0.35rem 0.75rem;
-  border-radius: 20px;
-  margin-bottom: var(--space-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  animation: badge-pulse 2s ease-in-out infinite;
-}
-
-@keyframes badge-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(238, 78, 52, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(238, 78, 52, 0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pricing-price-old::after {
-    animation: none;
-    transform: scaleX(1);
-  }
-  
-  .founding-user-badge {
-    animation: none;
-  }
-  
-  .pricing-card-featured .pricing-price {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
+  font-weight: var(--font-weight-normal);
+  margin-left: 0.25rem;
 }
 
 .pricing-period {
@@ -3609,6 +3524,41 @@ header picture img:hover {
   line-height: 1.6;
   margin-top: var(--space-md);
   font-style: italic;
+}
+
+/* Transparency line above CTA on free card */
+.pricing-transparency-line {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  padding-top: var(--space-md);
+  border-top: 1px solid #e5e7eb;
+  margin-bottom: var(--space-md);
+}
+
+/* Philosophy note below cards */
+.pricing-philosophy {
+  max-width: 480px;
+  margin: var(--space-4xl) auto 0;
+}
+
+.pricing-philosophy-heading {
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+  font-family: 'Onest', system-ui, -apple-system, sans-serif;
+}
+
+.pricing-philosophy-body {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+}
+
+.pricing-philosophy-body:last-child {
+  margin-bottom: 0;
 }
 
 /* Card Footer */
@@ -4002,11 +3952,6 @@ header picture img:hover {
     padding: var(--space-lg);
   }
 
-  .pricing-featured-badge {
-    font-size: 0.75rem;
-    padding: 0.375rem 1rem;
-  }
-
   .pricing-tier-name {
     font-size: 1.25rem;
   }
@@ -4015,17 +3960,8 @@ header picture img:hover {
     font-size: 2.25rem;
   }
 
-  .pricing-price-original {
-    font-size: 1.25rem;
-  }
-
-  .pricing-price-old {
-    font-size: 1.25rem;
-  }
-
-  .founding-user-badge {
-    font-size: 0.65rem;
-    padding: 0.25rem 0.6rem;
+  .pricing-pass-label {
+    font-size: 0.875rem;
   }
 
   .pricing-period {
