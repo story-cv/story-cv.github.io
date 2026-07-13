@@ -3538,8 +3538,11 @@ header picture img:hover {
 
 /* Philosophy note below cards */
 .pricing-philosophy {
-  max-width: 480px;
+  max-width: 1100px;
   margin: var(--space-4xl) auto 0;
+  background-color: #f3ede4;
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
 }
 
 .pricing-philosophy-heading {
