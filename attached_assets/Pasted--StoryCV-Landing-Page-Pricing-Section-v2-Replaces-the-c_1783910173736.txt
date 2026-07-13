@@ -1,0 +1,89 @@
+# StoryCV Landing Page — Pricing Section (v2)
+
+Replaces the current pricing section ("Do one role today..." / The First Chapter $0 / The Full Story $39/month).
+
+---
+
+## Section headline
+
+> Your resume needs a week, not a subscription.
+
+- Two lines, centered, breaking after "week,"
+- No subheading below it
+- Same heading font and size as the current section headline
+
+---
+
+## Layout
+
+Two cards, side by side, equal width, centered. **Both cards have the same neutral hairline border** — no accent border, no badge, no "most popular" treatment on either card. The only visual emphasis on the paid card is its filled (brand orange) CTA button; the free card's CTA is an outline/ghost button.
+
+On mobile, cards stack vertically: The First Chapter first, The Full Story second.
+
+Below the cards: a short prose note (see "Philosophy note"), left-aligned, max-width ~480px, centered as a block.
+
+---
+
+## Card 1 — The First Chapter
+
+**Name:** The First Chapter
+
+**Price:** $0
+
+**Descriptor (below price):** See what two of your bullets become.
+
+**Checklist (2 items, check icons in brand orange):**
+- Two finished bullets, fully written from your own answers
+- Yours to keep, whatever you decide
+
+**Transparency line** (small, muted text, separated by a thin top rule, sits above the CTA):
+> When you want the rest: $10, one week.
+
+**CTA (outline button):** Start free
+
+---
+
+## Card 2 — The Full Story
+
+**Name:** The Full Story
+
+**Price line:** $10 · one-week pass
+(Large "$10", with "· one-week pass" in smaller muted text on the same baseline)
+
+**Descriptor (below price):** Enough time to rewrite your entire resume. Every role, every bullet, unlimited edits.
+
+**Checklist (3 items, check icons in brand orange):**
+- Every bullet fully written, including the ones waiting from your free interview
+- Work as much as you want for 7 days
+- After the week, your bullets stay yours
+
+**CTA (filled brand-orange button):** Get my pass
+
+---
+
+## Philosophy note (below the cards)
+
+**Heading (small, bold):** Why a pass and not a subscription?
+
+**Body (two paragraphs, left-aligned):**
+
+> Rewriting your resume is a project. It has an end. Subscriptions make money by assuming you'll forget to cancel (we'd rather not build a business on that).
+>
+> So you pay for the week you're actually working. When it ends, your bullets are yours forever. Need it again next year? Come back. Same price.
+
+---
+
+## Design notes
+
+- Keep the existing StoryCV palette: cream section background, dark ink text, brand orange accent, white cards with rounded corners (~12px).
+- Keep existing StoryCV fonts exactly as they are on the current site.
+- Remove from the current design: the strikethrough $59, the "Founding User Price" badge, the italic taglines under each card, and the subheading "Your career has a story. Tell it well."
+- Checklist icons: simple check marks in brand orange, not filled circles.
+- No feature-comparison table, no toggle, no third tier.
+
+## Copy rules (do not change these in implementation)
+
+- CTA wording is exact: "Start free" and "Get my pass" — do not substitute "Sign up", "Upgrade", "Unlock", or similar.
+- "one-week pass" is always lowercase, always hyphenated.
+- Do not add exclamation marks anywhere in this section.
+- Do not add a money-back guarantee line to the cards (it lives in the FAQ only).
