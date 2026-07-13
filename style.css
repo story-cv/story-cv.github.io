@@ -3682,18 +3682,18 @@ header picture img:hover {
 .how-it-works-timeline::before {
   content: '';
   position: absolute;
-  left: 19px;
-  top: 20px;
-  bottom: 20px;
-  width: 2px;
+  left: 3px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
   background-color: #e5e7eb;
 }
 
 .timeline-step {
   display: flex;
   align-items: flex-start;
-  gap: 1.75rem;
-  padding-bottom: 3rem;
+  gap: 1.25rem;
+  padding-bottom: 2.5rem;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.4s ease-out, transform 0.4s ease-out;
@@ -3710,40 +3710,27 @@ header picture img:hover {
 
 .timeline-node {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  border: 2px solid #e5e7eb;
-  background-color: white;
+  background-color: #d1d5db;
   position: relative;
   z-index: 1;
-  transition: border-color 0.35s ease, background-color 0.35s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.timeline-node::after {
-  content: '';
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #e5e7eb;
+  margin-top: 7px;
   transition: background-color 0.35s ease;
 }
 
-.timeline-step.is-active .timeline-node {
-  border-color: #ee4e34;
-  background-color: #ee4e34;
+.timeline-node::after {
+  display: none;
 }
 
-.timeline-step.is-active .timeline-node::after {
-  background-color: white;
+.timeline-step.is-active .timeline-node {
+  background-color: #ee4e34;
 }
 
 .timeline-step-content {
   flex: 1;
-  padding-top: 7px;
+  padding-top: 0;
   min-width: 0;
 }
 
