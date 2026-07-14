@@ -1203,6 +1203,10 @@ header picture img:hover {
     align-items: center;
   }
 
+  .hero-secondary-cta {
+    display: none;
+  }
+
   .btn {
     width: 100%;
     max-width: 280px;

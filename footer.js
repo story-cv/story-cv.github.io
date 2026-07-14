@@ -41,7 +41,7 @@ function createFooter() {
                         </a>
                     </div>
                     <a href="https://write.story.cv" target="_blank" rel="noopener noreferrer" class="footer-cta-button">
-                        Write my resume
+                        Start the conversation
                     </a>
                 </div>
             </div>
