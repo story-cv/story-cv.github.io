@@ -1521,6 +1521,108 @@ header picture img:hover {
   font-style: italic;
 }
 
+/* ── Nathan Douglas testimonial section ── */
+.nathan-testimonial-section {
+  background: #fbf8f3;
+  padding: var(--space-3xl) var(--space-md);
+}
+
+.nathan-testimonial {
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e8e3db;
+  margin: 0 auto;
+  max-width: 640px;
+  box-sizing: border-box;
+}
+
+.nathan-content {
+  padding: 40px 48px 40px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.nathan-preamble {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0 0 var(--space-xs, 0.5rem);
+  font-style: normal;
+}
+
+.nathan-testimonial blockquote {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: -0.016em;
+  color: var(--color-text-primary);
+  padding: 0;
+}
+
+.nathan-mark {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.nathan-testimonial figcaption {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nathan-hair {
+  display: block;
+  width: 38px;
+  height: 3px;
+  background: var(--color-primary);
+  margin: 0 0 18px;
+}
+
+.nathan-name {
+  display: block;
+  font-size: 15.5px;
+  font-weight: 800;
+  letter-spacing: -0.008em;
+  color: var(--color-text-primary);
+}
+
+.nathan-title {
+  display: block;
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.nathan-aside {
+  display: block;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+@media (max-width: 880px) {
+  .nathan-content {
+    padding: 34px 28px;
+  }
+
+  .nathan-testimonial blockquote {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nathan-content {
+    padding: 28px 20px;
+  }
+
+  .nathan-testimonial blockquote {
+    font-size: 19px;
+  }
+}
+
 /* Tablet */
 @media (min-width: 768px) {
   .bullet-points-content {
