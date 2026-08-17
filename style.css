@@ -6236,6 +6236,9 @@ header picture img:hover {
 
 .blog-post-body .table-wrapper table {
   margin: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .blog-post-body thead {
