@@ -860,12 +860,25 @@ header picture img:hover {
 .hero-content {
   text-align: left;
   max-width: 580px;
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .hero-illustration {
-  flex: 0 0 auto;
+  flex: 0 0 min(46%, 540px);
+  width: min(46%, 540px);
   max-width: 540px;
+  min-width: 0;
+}
+
+.hero-illustration #transform-animation-container {
+  width: 100%;
+  min-width: 0;
+}
+
+.hero-illustration .transform-card {
+  width: 100%;
+  min-width: 0;
 }
 
 .hero-illustration.has-slider {
@@ -1067,6 +1080,8 @@ header picture img:hover {
   }
   
   .hero-illustration {
+    flex: 0 0 auto;
+    width: 100%;
     max-width: 280px;
     order: 2;
   }

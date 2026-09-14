@@ -13,7 +13,7 @@
       '<div class="transform-label transform-label-orange">What you actually did</div>' +
       '<div class="transform-bullet-text" id="transform-bullet-' + container.dataset.instance + '"></div>' +
     '</div>' +
-    '<p class="transform-caption">This happens live, from your own answers. Twice, free.</p>';
+    '<p class="transform-caption">This happens live, from your own answers.</p>';
 
   var instanceId = container.dataset.instance || Math.random().toString(36).slice(2);
   container.dataset.instance = instanceId;
