@@ -1102,10 +1102,15 @@ header picture img:hover {
 .hero-title {
   font-size: 3.5rem;
   font-weight: var(--font-weight-bold);
-  line-height: 1.1;
+  line-height: 1.16;
   margin-bottom: var(--space-lg);
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
+}
+
+.transform-bullet-compare {
+  width: min(100%, 540px);
+  margin: 0 auto;
 }
 
 .hero-subtitle {

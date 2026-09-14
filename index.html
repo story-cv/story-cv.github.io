@@ -227,50 +227,15 @@
             <div class="container">
                 <div class="hero-layout">
                     <div class="hero-content">
-                        <h1 class="hero-title scroll-reveal">Finally know   <span class="text-orange underline-container">what to say <svg class="wiggly-underline" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path class="wiggly-path" d="M0,6 Q10,2 20,6 T40,6 T60,6 T80,6 T100,6 T120,6" fill="none" stroke="#EE4E34" stroke-width="3" stroke-linecap="round"/></svg></span> on your resume.</h1>
+                        <h1 class="hero-title scroll-reveal">Stop writing your resume. <span class="text-orange underline-container">Talk<svg class="wiggly-underline" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path class="wiggly-path" d="M0,6 Q10,2 20,6 T40,6 T60,6 T80,6 T100,6 T120,6" fill="none" stroke="#EE4E34" stroke-width="3" stroke-linecap="round"/></svg></span> about your work instead.</h1>
                         <p class="hero-subtitle scroll-reveal" data-delay="100">Great resume bullet points start with reflection, not writing. Talk through your work with StoryCV and the bullets write themselves. </p>
                         <div class="hero-cta scroll-reveal" data-delay="200">
                             <a href="https://write.story.cv" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Start the conversation</a>
                             <a href="#process-section" class="btn btn-secondary hero-secondary-cta">See how it works →</a>
                         </div>
                     </div>
-                    <div class="hero-illustration has-slider scroll-reveal" data-delay="150">
-                        <div class="bullet-compare"
-                             id="bulletCompare"
-                             aria-label="Resume bullet point before and after comparison">
-                            <!-- Before panel: light gray -->
-                            <div class="bc-panel bc-before" aria-hidden="true">
-                                <div class="bc-panel-inner">
-                                    <span class="bc-role">Product Manager</span>
-                                    <p class="bc-text">Worked closely with engineering and design teams to define and ship product features.</p>
-                                </div>
-                            </div>
-                            <!-- After panel: cream, clipped to reveal from divider rightward -->
-                            <div class="bc-panel bc-after" aria-hidden="true">
-                                <div class="bc-panel-inner">
-                                    <span class="bc-role">Product Manager</span>
-                                    <p class="bc-text">Pushed through a checkout redesign that three previous PMs had deprioritised, shipped it in 6 weeks, and cut cart abandonment by 18%.</p>
-                                </div>
-                            </div>
-                            <!-- Fixed labels — always visible, not clipped -->
-                            <span class="bc-label bc-label-before" aria-hidden="true">Before</span>
-                            <span class="bc-label bc-label-after" aria-hidden="true">After StoryCV</span>
-                            <!-- Drag divider + handle -->
-                            <div class="bc-divider" id="bcDivider">
-                                <div class="bc-handle"
-                                     role="slider"
-                                     tabindex="0"
-                                     aria-label="Drag to compare before and after"
-                                     aria-valuemin="5"
-                                     aria-valuemax="95"
-                                     aria-valuenow="50">
-                                    <svg width="16" height="16" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false">
-                                        <path d="M8 5L3 11L8 17" stroke="#ee4e34" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M14 5L19 11L14 17" stroke="#ee4e34" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="hero-illustration scroll-reveal" data-delay="150">
+                        <div id="transform-animation-container" data-instance="home"></div>
                     </div>
                 </div>
             </div>
@@ -318,10 +283,43 @@
         <section class="transform-animation-section">
             <div class="container">
                 <div class="transform-animation-header scroll-reveal">
-                    <h2 class="transform-animation-heading">Your words. Rewritten to mean something.</h2>
+                    <h2 class="transform-animation-heading">Finally know what to say on your resume.</h2>
                     <p class="transform-animation-subheading">Watch what happens when you just answer honestly.</p>
                 </div>
-                <div id="transform-animation-container" data-instance="home"></div>
+                <div class="transform-bullet-compare">
+                    <div class="bullet-compare"
+                         id="bulletCompare"
+                         aria-label="Resume bullet point before and after comparison">
+                        <div class="bc-panel bc-before" aria-hidden="true">
+                            <div class="bc-panel-inner">
+                                <span class="bc-role">Product Manager</span>
+                                <p class="bc-text">Worked closely with engineering and design teams to define and ship product features.</p>
+                            </div>
+                        </div>
+                        <div class="bc-panel bc-after" aria-hidden="true">
+                            <div class="bc-panel-inner">
+                                <span class="bc-role">Product Manager</span>
+                                <p class="bc-text">Pushed through a checkout redesign that three previous PMs had deprioritised, shipped it in 6 weeks, and cut cart abandonment by 18%.</p>
+                            </div>
+                        </div>
+                        <span class="bc-label bc-label-before" aria-hidden="true">Before</span>
+                        <span class="bc-label bc-label-after" aria-hidden="true">After StoryCV</span>
+                        <div class="bc-divider" id="bcDivider">
+                            <div class="bc-handle"
+                                 role="slider"
+                                 tabindex="0"
+                                 aria-label="Drag to compare before and after"
+                                 aria-valuemin="5"
+                                 aria-valuemax="95"
+                                 aria-valuenow="50">
+                                <svg width="16" height="16" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false">
+                                    <path d="M8 5L3 11L8 17" stroke="#ee4e34" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 5L19 11L14 17" stroke="#ee4e34" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
