@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StoryCV blog article template</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-primary:'Onest',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --color-primary:#EE4E34; --color-primary-hover:#d63824; --color-cream:#FCEDDA;
+  --color-bg-primary:#ffffff; --color-bg-secondary:#f8fafc; --color-bg-tertiary:#f1f5f9;
+  --color-text-primary:#2E2E2E; --color-text-secondary:#475569; --color-text-muted:#64748b;
+  --color-border:#e2e8f0; --color-border-light:#f1f5f9;
+  --radius-lg:.5rem; --radius-xl:.75rem; --radius-2xl:1rem; --radius-full:9999px;
+  --shadow-md:0 4px 6px -1px rgb(0 0 0/.1),0 2px 4px -2px rgb(0 0 0/.1);
+  --shadow-lg:0 10px 15px -3px rgb(0 0 0/.1),0 4px 6px -4px rgb(0 0 0/.1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:90px}
+body{margin:0;font-family:var(--font-primary);color:var(--color-text-primary);background:var(--color-bg-primary);-webkit-font-smoothing:antialiased}
+a{color:var(--color-primary);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* ---- reading progress ---- */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--color-primary);z-index:1030}
+
+/* ---- top bar ---- */
+.topbar{position:sticky;top:0;z-index:1020;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-border-light)}
+.topbar-in{max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:700;font-size:19px;color:var(--color-text-primary);letter-spacing:-.02em}
+.logo span{color:var(--color-primary)}
+.topbar .btn{padding:9px 18px;font-size:14px}
+.crumbs{font-size:13px;color:var(--color-text-muted);max-width:1240px;margin:0 auto;padding:14px 24px 0}
+.crumbs a{color:var(--color-text-muted)}
+
+/* ---- shell ---- */
+.shell{max-width:1240px;margin:0 auto;padding:8px 24px 80px;display:grid;grid-template-columns:262px minmax(0,1fr);gap:56px;align-items:start}
+.rail{position:sticky;top:88px;max-height:calc(100vh - 110px);overflow-y:auto;overscroll-behavior:contain;padding-right:6px}
+.rail::-webkit-scrollbar{width:5px}
+.rail::-webkit-scrollbar-thumb{background:var(--color-border);border-radius:9999px}
+article{max-width:none}
+
+/* ---- TOC ---- */
+.toc-head{font-size:12px;font-weight:700;color:var(--color-text-muted);letter-spacing:.04em;margin:0 0 12px;text-transform:none}
+.toc{list-style:none;margin:0;padding:0;border-left:2px solid var(--color-border-light)}
+.toc li a{display:block;padding:7px 0 7px 16px;margin-left:-2px;border-left:2px solid transparent;font-size:14px;line-height:1.35;color:var(--color-text-secondary);transition:color .15s,border-color .15s}
+.toc li a:hover{color:var(--color-text-primary);text-decoration:none}
+.toc .sub a{padding-left:28px;font-size:13.5px;color:var(--color-text-muted)}
+.toc a.active{color:var(--color-primary);border-left-color:var(--color-primary);font-weight:600}
+
+/* ---- rail video card ---- */
+.railvid{margin-top:28px;border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;background:var(--color-bg-primary);box-shadow:var(--shadow-md)}
+.railvid .thumb{position:relative;aspect-ratio:9/12;background:linear-gradient(155deg,#FCEDDA 0%,#f7d9be 55%,#efc9a8 100%);display:flex;align-items:flex-end;cursor:pointer}
+.railvid .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 55%)}
+.play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:9999px;background:var(--color-primary);display:grid;place-items:center;box-shadow:0 4px 18px rgb(238 78 52/.45);z-index:2}
+.play svg{margin-left:3px}
+.railvid .cap{position:relative;z-index:2;padding:14px;color:#fff;font-size:13.5px;line-height:1.4;font-weight:500}
+.railvid .meta{padding:14px}
+.railvid .meta p{margin:0 0 12px;font-size:13.5px;line-height:1.5;color:var(--color-text-secondary)}
+.railvid .btn{width:100%;justify-content:center;font-size:14px;padding:10px 14px}
+.face{position:absolute;bottom:0;right:0;width:78%;height:auto;z-index:1;opacity:.9;font-size:11px;color:#8a6a52;display:grid;place-items:end center;padding:8px}
+
+/* ---- buttons ---- */
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--color-primary);color:#fff;font-family:inherit;font-weight:600;font-size:15px;padding:12px 22px;border:none;border-radius:var(--radius-full);cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--color-primary-hover);text-decoration:none;color:#fff}
+.btn-ghost{background:transparent;color:var(--color-text-primary);border:1.5px solid var(--color-border)}
+.btn-ghost:hover{background:var(--color-bg-tertiary);color:var(--color-text-primary)}
+
+/* ---- article head ---- */
+h1{font-size:clamp(30px,4.1vw,45px);line-height:1.14;letter-spacing:-.025em;font-weight:700;margin:20px 0 20px}
+.dateline{font-size:13.5px;color:var(--color-text-muted);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.dateline .dot{width:3px;height:3px;border-radius:9999px;background:var(--color-border)}
+.byline{display:flex;align-items:center;gap:13px;padding:16px 0 20px;border-top:1px solid var(--color-border-light);border-bottom:1px solid var(--color-border-light)}
+.avatar{width:46px;height:46px;border-radius:9999px;background:var(--color-cream);flex:none;display:grid;place-items:center;font-size:10px;color:#b08462;text-align:center;line-height:1.1;border:1px solid #f0dcc4}
+.byline .who{font-size:15px;font-weight:600;line-height:1.3}
+.byline .who a{color:var(--color-text-primary)}
+.byline .role{font-size:13px;color:var(--color-text-muted);margin-top:2px;line-height:1.4}
+.hero{width:100%;aspect-ratio:16/9;border-radius:var(--radius-xl);background:var(--color-bg-tertiary);margin:26px 0 8px;display:grid;place-items:center;color:var(--color-text-muted);font-size:13px}
+
+/* ---- body type ---- */
+article p,article li{font-size:17.5px;line-height:1.72;color:var(--color-text-primary)}
+article p{margin:0 0 20px;max-width:68ch}
+article ul{max-width:68ch;padding-left:22px}
+h2{font-size:27px;line-height:1.25;letter-spacing:-.015em;margin:48px 0 16px;font-weight:700}
+h3{font-size:20px;line-height:1.3;margin:34px 0 12px;font-weight:600}
+blockquote{margin:26px 0;padding:16px 20px;background:var(--color-cream);border-radius:var(--radius-lg);font-size:16.5px;max-width:68ch}
+blockquote p{margin:0;font-size:16.5px}
+
+/* ---- inline CTA ---- */
+.inline-cta{max-width:68ch;margin:34px 0;padding:22px 24px;border:1px solid var(--color-border);border-left:3px solid var(--color-primary);border-radius:var(--radius-lg);background:var(--color-bg-secondary)}
+.inline-cta p{margin:0 0 14px;font-size:16px;line-height:1.6;color:var(--color-text-secondary)}
+.inline-cta strong{color:var(--color-text-primary)}
+
+/* ---- mid-article video ---- */
+.vidblock{margin:44px 0;border-radius:var(--radius-2xl);overflow:hidden;border:1px solid var(--color-border);background:var(--color-bg-primary);box-shadow:var(--shadow-lg);display:grid;grid-template-columns:1.15fr 1fr}
+.vidblock .stage{position:relative;aspect-ratio:16/10;background:linear-gradient(150deg,#FCEDDA,#f2cdaa);cursor:pointer}
+.vidblock .side{padding:28px 28px;display:flex;flex-direction:column;justify-content:center}
+.vidblock h4{margin:0 0 10px;font-size:21px;line-height:1.28;font-weight:700;letter-spacing:-.015em}
+.vidblock p{margin:0 0 18px;font-size:15.5px;line-height:1.6;color:var(--color-text-secondary);max-width:none}
+.vidblock .len{font-size:13px;color:var(--color-text-muted);margin-top:12px}
+
+/* ---- end CTA ---- */
+.endcta{margin:56px 0 0;padding:38px 36px;border-radius:var(--radius-2xl);background:var(--color-cream)}
+.endcta h3{margin:0 0 12px;font-size:25px;letter-spacing:-.015em}
+.endcta p{margin:0 0 20px;font-size:16.5px;color:#6b4d38;max-width:56ch}
+.endcta .row{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---- key takeaways ---- */
+.takeaways{max-width:68ch;margin:26px 0 34px;padding:22px 24px;border:1px dashed var(--color-border);border-radius:var(--radius-lg)}
+.takeaways h4{margin:0 0 12px;font-size:15px;font-weight:700}
+.takeaways ul{margin:0;padding-left:20px}
+.takeaways li{font-size:16px;line-height:1.6;margin-bottom:8px;color:var(--color-text-secondary)}
+
+/* ---- faq ---- */
+.faq{max-width:68ch;margin-top:20px;border-top:1px solid var(--color-border-light)}
+.faq details{border-bottom:1px solid var(--color-border-light);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:16.5px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--color-primary);font-weight:700}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:12px 0 0;font-size:16px;color:var(--color-text-secondary)}
+
+/* ---- mobile TOC + sticky bar ---- */
+.toc-mobile{display:none;margin:20px 0 4px;border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:14px 16px}
+.toc-mobile summary{font-weight:600;font-size:15px;cursor:pointer}
+.stickybar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:1030;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--color-border);padding:10px 16px;align-items:center;gap:12px;box-shadow:0 -4px 14px rgb(0 0 0/.06)}
+.stickybar .mini{width:40px;height:40px;border-radius:9999px;background:var(--color-cream);flex:none;display:grid;place-items:center;position:relative}
+.stickybar .txt{flex:1;font-size:13.5px;line-height:1.35;color:var(--color-text-secondary)}
+.stickybar .btn{padding:10px 16px;font-size:14px;flex:none}
+
+/* ---- annotations ---- */
+.pin{display:none;position:absolute;z-index:900;width:24px;height:24px;border-radius:9999px;background:#1d4ed8;color:#fff;font-size:12px;font-weight:700;place-items:center;box-shadow:0 2px 8px rgb(0 0 0/.25);cursor:help}
+.anno-on .pin{display:grid}
+.pin .tip{display:none;position:absolute;left:30px;top:-6px;width:250px;background:#1d4ed8;color:#fff;font-size:12.5px;line-height:1.45;font-weight:400;padding:10px 12px;border-radius:8px}
+.pin:hover .tip{display:block}
+.anno-toggle{position:fixed;right:18px;bottom:18px;z-index:1035;background:#1d4ed8;color:#fff;border:none;font-family:inherit;font-size:13px;font-weight:600;padding:11px 16px;border-radius:9999px;cursor:pointer;box-shadow:var(--shadow-lg)}
+.rel{position:relative}
+
+@media(max-width:1000px){
+  .shell{grid-template-columns:1fr;gap:0;padding-bottom:96px}
+  .rail{display:none}
+  .toc-mobile{display:block}
+  .stickybar{display:flex}
+  .vidblock{grid-template-columns:1fr}
+  .endcta{padding:28px 22px}
+  article p,article li{font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="logo">Story<span>CV</span></div>
+    <a href="#" class="btn">Write my resume</a>
+  </div>
+</header>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="#">Home</a> / <a href="#">Blog</a> / <a href="#">Resume Tips</a> / Resume for management positions
+</nav>
+
+<div class="shell">
+
+  <!-- ============ LEFT RAIL ============ -->
+  <aside class="rail rel">
+    <div class="pin" style="top:-4px;left:-30px">1<span class="tip">Sticky TOC. Anchors already exist in your HTML (id="why-most-management-resumes-fail..."), so this is a render-time walk of h2/h3, not a content change.</span></div>
+    <p class="toc-head">On this page</p>
+    <ul class="toc" id="toc">
+      <li><a href="#s1" class="active">Why most management resumes fail</a></li>
+      <li class="sub"><a href="#s1a">The two gates you need to pass</a></li>
+      <li class="sub"><a href="#s1b">Treat every bullet as a decision</a></li>
+      <li><a href="#s2">Define your target role and structure</a></li>
+      <li class="sub"><a href="#s2a">Choose a structure that matches</a></li>
+      <li class="sub"><a href="#s2b">Handle a non-linear career</a></li>
+      <li><a href="#s3">Write a summary that proves impact</a></li>
+      <li><a href="#s4">Before and after entries</a></li>
+      <li><a href="#s5">Tailor for industry and beat the ATS</a></li>
+      <li><a href="#s6">Final checklist</a></li>
+      <li><a href="#faq">Questions people ask</a></li>
+    </ul>
+
+    <div class="railvid rel">
+      <div class="pin" style="top:-10px;left:-30px">2<span class="tip">Founder video, persistent but never blocking the read. Poster frame only until clicked, so it costs nothing on load. Same video across all posts.</span></div>
+      <div class="thumb">
+        <div class="play"><svg width="17" height="19" viewBox="0 0 17 19" fill="#fff"><path d="M17 9.5 0 19V0z"/></svg></div>
+        <div class="face">[vertical still: Kavya to camera]</div>
+        <div class="cap">Why I built StoryCV instead of another template</div>
+      </div>
+      <div class="meta">
+        <p>I made this for anyone who's rewritten the same bullet nine times and still hates it.</p>
+        <a href="#" class="btn">Watch (2 min)</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ ARTICLE ============ -->
+  <article>
+    <h1>Resume for Management Positions That Gets Interviews</h1>
+
+    <div class="dateline rel">
+      <div class="pin" style="top:-6px;left:-30px">3<span class="tip">Published date sits above the byline, spelled out, with Updated beside it. Both wired to datePublished / dateModified in your Article schema so they can't drift apart.</span></div>
+      <span>Published 14 September 2026</span><span class="dot"></span>
+      <span>Updated 14 September 2026</span><span class="dot"></span>
+      <span>13 min read</span>
+    </div>
+
+    <div class="byline rel">
+      <div class="pin" style="top:8px;left:-30px">4<span class="tip">Real person, not "StoryCV Team". Name links to an author page with a bio and credentials. Update the Article schema author to this Person and add sameAs for LinkedIn. This is the E-E-A-T piece Google is actually looking for.</span></div>
+      <div class="avatar">photo</div>
+      <div>
+        <div class="who">By <a href="#">Kavya</a></div>
+        <div class="role">Founder of StoryCV. Writing resumes and building resume tools since 2019.</div>
+      </div>
+    </div>
+
+    <details class="toc-mobile">
+      <summary>On this page</summary>
+      <ul class="toc" style="margin-top:12px">
+        <li><a href="#s1">Why most management resumes fail</a></li>
+        <li><a href="#s2">Define your target role and structure</a></li>
+        <li><a href="#s3">Write a summary that proves impact</a></li>
+        <li><a href="#s4">Before and after entries</a></li>
+        <li><a href="#s5">Tailor for industry and beat the ATS</a></li>
+        <li><a href="#s6">Final checklist</a></li>
+      </ul>
+    </details>
+
+    <div class="hero">[hero image 1200x675]</div>
+
+    <div class="takeaways rel">
+      <div class="pin" style="top:-10px;left:-30px">5<span class="tip">Four-line summary at the top. Wins AI Overview and featured-snippet pickups, and gives skimmers a reason to keep scrolling instead of bouncing.</span></div>
+      <h4>The short version</h4>
+      <ul>
+        <li>Management bullets need scope, decision, and outcome. Activity descriptions get skipped.</li>
+        <li>Two pages beat one for managerial roles, by a wide margin.</li>
+        <li>Keep the summary to 40 to 80 words.</li>
+        <li>Never invent a number you can't defend in the interview.</li>
+      </ul>
+    </div>
+
+    <p>A management resume isn't a longer job description. It's a record of decisions, scope, and outcomes. The popular advice says to squeeze everything onto one page. That's wrong for most experienced managers.</p>
+
+    <h2 id="s1">Why Most Management Resumes Fail Before a Human Reads Them</h2>
+    <p>A weak management resume describes activity. A strong one documents leadership proof.</p>
+    <p>"Managed a sales team." "Oversaw operations." "Responsible for project delivery." These lines may be accurate, but they leave the important questions unanswered. How large was the team? What decisions did you own? What improved because you were there?</p>
+
+    <h3 id="s1a">The two gates you need to pass</h3>
+    <p>Most management candidates now face two readers. The first is software. The second is a person who wants evidence of judgment, not a pile of keywords.</p>
+    <blockquote><p><strong>Practical rule:</strong> A keyword should support a proof point. Never let it replace one.</p></blockquote>
+
+    <div class="inline-cta rel">
+      <div class="pin" style="top:-10px;left:-30px">6<span class="tip">First ask, roughly 20% down. Right now the page waits 2,700 words before mentioning the product once. This one is soft and text-only so it doesn't feel like an ad break.</span></div>
+      <p><strong>Answering those questions out loud is easier than writing them.</strong> That's the whole idea behind StoryCV. It interviews you about one role, you talk, it writes the bullets.</p>
+      <a href="#" class="btn">Try one role, free</a>
+    </div>
+
+    <h3 id="s1b">Treat every bullet as a management decision</h3>
+    <p>A management bullet should usually contain three elements: scope, decision, and outcome. State the team, function, geography, or budget involved. Explain the action you chose. Show the result, using only figures you can defend.</p>
+
+    <h2 id="s2">Define Your Target Role and Pick the Right Structure</h2>
+    <p>Don't start by editing your old resume. Start by naming the job you want. Write the target level, function, and industry in one line.</p>
+
+    <h3 id="s2a">Choose a structure that matches the story</h3>
+    <p>Use a chronological structure when your progression is clear. For most management candidates, a hybrid structure works best: lead with a focused summary and core capabilities, then prove the claims chronologically.</p>
+
+    <h3 id="s2b">Handle a non-linear career without apologizing</h3>
+    <p>Career breaks, layoffs, and lateral moves don't need dramatic explanations. They need a clean narrative. Keep company names and dates consistent, then connect the experience to the target role.</p>
+
+    <h2 id="s3">Write a Leadership Summary and Bullets That Prove Impact</h2>
+    <p>Your summary isn't a biography. It's a compact argument for your candidacy. Keep it to two to four lines, or roughly 40 to 80 words.</p>
+
+    <!-- ===== MID-ARTICLE VIDEO ===== -->
+    <div class="vidblock rel">
+      <div class="pin" style="top:-10px;left:-30px">7<span class="tip">Replaces the third-party YouTube embed currently sitting at this depth. That embed sends your most engaged readers to someone else's channel. This one keeps them, and the face does the trust work a text CTA can't.</span></div>
+      <div class="stage">
+        <div class="play"><svg width="19" height="21" viewBox="0 0 17 19" fill="#fff"><path d="M17 9.5 0 19V0z"/></svg></div>
+      </div>
+      <div class="side">
+        <h4>Here's what the interview actually feels like</h4>
+        <p>I recorded this because describing it doesn't land. You answer questions about one role, the way you'd answer a friend who asked what you actually did there. The bullets come out the other end.</p>
+        <a href="#" class="btn">Watch (2 min)</a>
+        <div class="len">No signup needed to watch.</div>
+      </div>
+    </div>
+
+    <h2 id="s4">Before and After Management Role Entries That Actually Work</h2>
+    <p>The fastest way to improve a management resume is to compare description with proof. Name the situation, show your intervention, and end with the consequence.</p>
+
+    <h2 id="s5">Tailor for Industry and Beat the ATS Without Sounding Robotic</h2>
+    <p>ATS optimization is not keyword stuffing. It's translation. The system needs recognizable language. The hiring manager needs credible evidence.</p>
+
+    <h2 id="s6">Final Checklist and Common Mistakes to Avoid</h2>
+    <p>Give the finished resume one fast, unsentimental review. You're checking whether a stranger can identify your management level and evidence within a quick scan.</p>
+
+    <!-- ===== END CTA ===== -->
+    <div class="endcta rel">
+      <div class="pin" style="top:-10px;left:-30px">8<span class="tip">Third and final ask. Names the effort honestly instead of claiming magic, and offers the free first role so there's no price objection at the click.</span></div>
+      <h3>You've just read 2,700 words about management resumes</h3>
+      <p>Writing the thing is still the hard part. StoryCV asks you about one role, you answer in plain speech, and it turns that into bullets a hiring manager will actually read. The first role is free.</p>
+      <div class="row">
+        <a href="#" class="btn">Start with one role</a>
+        <a href="#" class="btn btn-ghost">Watch the 2 min walkthrough</a>
+      </div>
+    </div>
+
+    <!-- ===== FAQ ===== -->
+    <h2 id="faq">Questions people ask</h2>
+    <div class="faq rel">
+      <div class="pin" style="top:-4px;left:-30px">9<span class="tip">Three to five real questions per article, marked up as FAQPage schema. Cheap way to pick up long-tail queries and AI Overview citations from content you've already written.</span></div>
+      <details open>
+        <summary>Should a management resume be one page or two?</summary>
+        <p>Two, in most cases. Analysis of 133,000 resumes found recruiters were 2.9 times more likely to select a two-page resume for managerial roles.</p>
+      </details>
+      <details>
+        <summary>What if I don't remember the exact team size?</summary>
+        <p>Write "a multi-disciplinary team" rather than guessing. Every number on your resume has to survive the interview.</p>
+      </details>
+      <details>
+        <summary>Does an ATS still matter at senior levels?</summary>
+        <p>Yes. Around 85% of executive hires pass through an ATS at some stage, so seniority doesn't make parsing irrelevant.</p>
+      </details>
+    </div>
+  </article>
+</div>
+
+<!-- ===== MOBILE STICKY BAR ===== -->
+<div class="stickybar rel">
+  <div class="pin" style="top:-32px;left:8px">10<span class="tip">Mobile only, appears after 25% scroll. The rail video and its CTA vanish on small screens, so this carries the ask instead.</span></div>
+  <div class="mini"><div class="play" style="width:30px;height:30px;box-shadow:none"><svg width="10" height="12" viewBox="0 0 17 19" fill="#fff"><path d="M17 9.5 0 19V0z"/></svg></div></div>
+  <div class="txt">2 min from the founder on how this works</div>
+  <a href="#" class="btn">Try free</a>
+</div>
+
+<button class="anno-toggle" id="annoBtn">Show build notes</button>
+
+<script>
+const bar=document.getElementById('progress');
+const links=[...document.querySelectorAll('#toc a')];
+const heads=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function onScroll(){
+  const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  let cur=heads[0];
+  for(const el of heads){ if(el.getBoundingClientRect().top<160) cur=el; }
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur.id));
+}
+document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+document.getElementById('annoBtn').addEventListener('click',e=>{
+  const on=document.body.classList.toggle('anno-on');
+  e.target.textContent=on?'Hide build notes':'Show build notes';
+});
+</script>
+</body>
+</html>
