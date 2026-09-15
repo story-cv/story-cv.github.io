@@ -9,6 +9,9 @@
   });
 
   var headings = Array.from(body.querySelectorAll('h2, h3'));
+  var tocHeadings = headings.filter(function (heading) {
+    return heading.tagName === 'H2';
+  });
   var usedIds = new Set(
     Array.from(document.querySelectorAll('[id]'))
       .map(function (element) { return element.id; })
@@ -35,10 +38,9 @@
   });
 
   document.querySelectorAll('[data-article-toc]').forEach(function (list) {
-    headings.forEach(function (heading) {
+    tocHeadings.forEach(function (heading) {
       var item = document.createElement('li');
       var link = document.createElement('a');
-      item.className = heading.tagName === 'H3' ? 'article-toc-subitem' : '';
       link.href = '#' + heading.id;
       link.textContent = heading.textContent;
       link.dataset.tocTarget = heading.id;
@@ -47,7 +49,7 @@
     });
   });
 
-  if (!headings.length) {
+  if (!tocHeadings.length) {
     document.querySelectorAll('.article-toc-desktop, .article-toc-mobile').forEach(function (toc) {
       toc.hidden = true;
     });
