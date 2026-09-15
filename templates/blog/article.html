@@ -6,7 +6,7 @@
 <!-- SEO Meta Tags -->
 <meta name="description" content="{{ post.description or post.excerpt or '' }}">
 <meta name="keywords" content="{{ ', '.join(post.tags) if post.tags else post.category or 'resume, career' }}">
-<meta name="author" content="{{ post.author_byline }}">
+<meta name="author" content="Kavya">
 
 <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="{{ post.title }}">
@@ -16,13 +16,14 @@
 <meta property="og:site_name" content="StoryCV">
 <meta property="og:locale" content="en_US">
 {% if post.featured_image %}
-<meta property="og:image" content="https://story.cv{{ post.featured_image }}">
+<meta property="og:image" content="{{ post.featured_image if post.featured_image.startswith('http') else 'https://story.cv' + post.featured_image }}">
 <meta property="og:image:alt" content="{{ post.image_alt or post.title }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="675">
 {% endif %}
 <meta property="article:published_time" content="{{ post.published_at.isoformat() if post.published_at else '' }}">
-<meta property="article:author" content="{{ post.author_byline }}">
+<meta property="article:author" content="Kavya">
+<meta property="article:modified_time" content="{{ post.updated_at.isoformat() if post.updated_at else '' }}">
 <meta property="article:section" content="{{ post.category or 'General' }}">
 {% if post.tags %}{% for tag in post.tags %}<meta property="article:tag" content="{{ tag }}">
 {% endfor %}{% endif %}
@@ -34,7 +35,7 @@
 <meta name="twitter:title" content="{{ post.title }}">
 <meta name="twitter:description" content="{{ post.description or post.excerpt or '' }}">
 {% if post.featured_image %}
-<meta name="twitter:image" content="https://story.cv{{ post.featured_image }}">
+<meta name="twitter:image" content="{{ post.featured_image if post.featured_image.startswith('http') else 'https://story.cv' + post.featured_image }}">
 <meta name="twitter:image:alt" content="{{ post.image_alt or post.title }}">
 {% endif %}
 {% endblock %}
@@ -54,14 +55,14 @@
     {% if post.featured_image %}
     "image": {
         "@type": "ImageObject",
-        "url": {{ ("https://story.cv" + post.featured_image) | tojson }},
+        "url": {{ (post.featured_image if post.featured_image.startswith('http') else "https://story.cv" + post.featured_image) | tojson }},
         "width": 1200,
         "height": 675
     },
     {% endif %}
     "author": {
         "@type": "Person",
-        "name": {{ post.author_byline | tojson }},
+        "name": "Kavya",
         "url": "https://story.cv/about-us"
     },
     "publisher": {
@@ -139,43 +140,81 @@
 {% endblock %}
 
 {% block content %}
-<!-- Blog Post Header -->
-<section class="blog-post-header">
-    <div class="container">
-        <div class="blog-post-meta">
+<div class="article-page-shell">
+    <aside class="article-rail" aria-label="Article navigation">
+        <nav class="article-toc-desktop" aria-labelledby="article-toc-title">
+            <p class="article-toc-title" id="article-toc-title">On this page</p>
+            <ol class="article-toc-list" data-article-toc></ol>
+        </nav>
+
+        <section class="article-video-card" data-video-card>
+            <button class="article-video-poster" type="button" data-video-trigger aria-label="Play Kavya's two-minute StoryCV video">
+                <img src="https://i.ytimg.com/vi/RiYBO2_xQ_M/maxresdefault.jpg" alt="" loading="lazy">
+                <span class="article-video-shade"></span>
+                <span class="article-video-play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+                <span class="article-video-title">Why I built StoryCV instead of another template</span>
+            </button>
+            <div class="article-video-copy">
+                <p>I made this for anyone who's rewritten the same bullet nine times and still hates it.</p>
+                <button class="article-video-button" type="button" data-video-trigger>Watch (2 min)</button>
+            </div>
+        </section>
+    </aside>
+
+    <article class="article-main">
+        <header class="blog-post-header">
             <a href="/blog" class="back-to-blog">← Back to Blog</a>
-        </div>
-        <h1 class="blog-post-title">{{ post.subtitle or post.title }}</h1>
-        <div class="blog-post-info">
-            <span class="post-date">{{ post.published_at.strftime('%B %d, %Y') if post.published_at else '' }}</span>
-            <span class="post-read-time">{{ post.read_time_minutes }} min read</span>
-            <span class="post-author">By {{ post.author_byline }}</span>
-        </div>
-    </div>
-</section>
+            <h1 class="blog-post-title">{{ post.subtitle or post.title }}</h1>
+            <div class="blog-post-info" aria-label="Article details">
+                {% if post.published_at %}<span>Published {{ post.published_at.strftime('%d %B %Y') }}</span>{% endif %}
+                {% if post.updated_at %}<span>Updated {{ post.updated_at.strftime('%d %B %Y') }}</span>{% endif %}
+                <span>{{ post.read_time_minutes }} min read</span>
+            </div>
+            <div class="article-byline">
+                <img src="/kavya-photo.webp" alt="Kavya, founder of StoryCV" class="article-author-photo">
+                <div>
+                    <p class="article-author-name">By Kavya</p>
+                    <p class="article-author-role">Founder of StoryCV. Writing resumes and building resume tools since 2019.</p>
+                </div>
+            </div>
+        </header>
 
-{% if post.featured_image %}
-<!-- Featured Image -->
-<section class="blog-post-image">
-    <div class="container">
-        <img src="{{ post.featured_image }}"
-             alt="{{ post.image_alt or post.title }}"
-             title="{{ post.image_alt or post.title }}"
-             class="post-featured-image">
-    </div>
-</section>
-{% endif %}
+        <details class="article-toc-mobile">
+            <summary>On this page</summary>
+            <ol class="article-toc-list" data-article-toc></ol>
+        </details>
 
-<!-- Blog Post Content -->
-<article class="blog-post-content">
-    <div class="container">
+        {% if post.featured_image %}
+        <figure class="blog-post-image">
+            <img src="{{ post.featured_image }}"
+                 alt="{{ post.image_alt or post.title }}"
+                 title="{{ post.image_alt or post.title }}"
+                 class="post-featured-image">
+        </figure>
+        {% endif %}
+
+        <section class="article-video-card article-video-mobile" data-video-card>
+            <button class="article-video-poster" type="button" data-video-trigger aria-label="Play Kavya's two-minute StoryCV video">
+                <img src="https://i.ytimg.com/vi/RiYBO2_xQ_M/maxresdefault.jpg" alt="" loading="lazy">
+                <span class="article-video-shade"></span>
+                <span class="article-video-play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+                <span class="article-video-title">Why I built StoryCV instead of another template</span>
+            </button>
+            <div class="article-video-copy">
+                <p>A two-minute note from Kavya on why StoryCV works differently.</p>
+                <button class="article-video-button" type="button" data-video-trigger>Watch (2 min)</button>
+            </div>
+        </section>
+
         <div class="blog-post-body">
             {{ post.html_body | safe }}
         </div>
 
-
         {% if related_posts %}
-        <!-- Related Posts -->
         <section class="related-posts-section">
             <h3>Related Articles</h3>
             <div class="related-posts-grid">
@@ -195,13 +234,8 @@
             </div>
         </section>
         {% endif %}
-    </div>
-</article>
+    </article>
+</div>
 
-<script>
-document.querySelectorAll('.blog-post-body a').forEach(function(link) {
-    link.setAttribute('target', '_blank');
-    link.setAttribute('rel', 'noopener noreferrer');
-});
-</script>
+<script src="/blog-article.js" defer></script>
 {% endblock %}

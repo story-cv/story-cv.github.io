@@ -25,7 +25,7 @@ class BlogPost(Base):
     excerpt = Column(Text, nullable=True)
     category = Column(String(100), nullable=True)
     tags = Column(JSONB, default=list)
-    author_byline = Column(String(255), default="StoryCV Team")
+    author_byline = Column(String(255), default="Kavya")
     featured_image = Column(String(500), nullable=True)
     image_alt = Column(String(500), nullable=True)
     faq_items = Column(JSONB, nullable=True)

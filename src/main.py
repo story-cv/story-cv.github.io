@@ -619,8 +619,7 @@ async def outrank_webhook(request: Request,
             existing_post.title = article.title
             if article.subtitle is not None:
                 existing_post.subtitle = article.subtitle
-            if article.author_byline is not None:
-                existing_post.author_byline = article.author_byline
+            existing_post.author_byline = "Kavya"
             existing_post.description = article.meta_description or existing_post.description
             existing_post.markdown_body = markdown_content
             existing_post.html_body = html_body
@@ -645,7 +644,7 @@ async def outrank_webhook(request: Request,
                                 excerpt=excerpt,
                                 category="Resume Tips",
                                 tags=article.tags or [],
-                                author_byline=article.author_byline or "StoryCV Team",
+                                author_byline="Kavya",
                                 featured_image=article.image_url,
                                 image_alt=image_alt,
                                 faq_items=faq_items,
