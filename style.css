@@ -3842,9 +3842,58 @@ header picture img:hover {
   font-family: 'Onest', system-ui, -apple-system, sans-serif;
 }
 
+/* ── Founder Video ──────────────────────────────────────────── */
+.founder-video-section {
+  padding: var(--space-4xl) var(--space-md);
+  background-color: #ffffff;
+}
+
+.founder-video-content {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.founder-video-heading {
+  max-width: 680px;
+  margin: 0 auto var(--space-2xl);
+  color: var(--color-text-primary);
+  font-family: 'Onest', system-ui, -apple-system, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.founder-video-frame {
+  width: min(100%, 640px);
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-lg);
+}
+
+.founder-video-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 @media (max-width: 768px) {
   .transform-animation-heading {
     font-size: 1.5rem;
+  }
+
+  .founder-video-section {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .founder-video-heading {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-xl);
   }
 }
 
