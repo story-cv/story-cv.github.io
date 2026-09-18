@@ -3871,6 +3871,7 @@ header picture img:hover {
   margin: 0 auto;
   overflow: hidden;
   background-color: transparent;
+  border-radius: 10px;
 }
 
 .founder-video-frame iframe {
