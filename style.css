@@ -3866,13 +3866,11 @@ header picture img:hover {
 }
 
 .founder-video-frame {
-  width: min(100%, 640px);
-  aspect-ratio: 16 / 9;
+  width: min(100%, 360px);
+  aspect-ratio: 9 / 16;
   margin: 0 auto;
   overflow: hidden;
-  background-color: #f1f5f9;
-  border: 1px solid #e5e7eb;
-  border-radius: var(--radius-lg);
+  background-color: transparent;
 }
 
 .founder-video-frame iframe {
