@@ -1,0 +1,1 @@
+- [Cloudinary founder video](cloudinary-founder-video.md) — use direct video delivery; the hosted player fails when nested in the app preview.

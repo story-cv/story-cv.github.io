@@ -3896,7 +3896,8 @@ header picture img:hover {
   border-radius: 10px;
 }
 
-.founder-video-frame iframe {
+.founder-video-frame iframe,
+.founder-video-frame video {
   display: block;
   width: 100%;
   height: 100%;

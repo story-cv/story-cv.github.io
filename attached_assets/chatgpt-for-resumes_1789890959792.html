@@ -238,22 +238,16 @@
                         Here's why it
                         <span class="text-orange underline-container">didn't work<svg class="wiggly-underline" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path class="wiggly-path" d="M0,6 Q10,2 20,6 T40,6 T60,6 T80,6 T100,6 T120,6" fill="none" stroke="#EE4E34" stroke-width="3" stroke-linecap="round"/></svg></span>
                     </h2>
-                    <div class="founder-video-frame cgpt-video-frame" data-cloudinary-public-id="Why_ChatGPT_didn_t_work_2">
-                        <!-- The Cloudinary embed activates automatically when this public ID is present. -->
-                        <iframe
-                            data-src-template="https://player.cloudinary.com/embed/?cloud_name=uvynkvqx&amp;public_id={public_id}"
-                            title="Why ChatGPT didn't work for my resume"
-                            width="1080"
-                            height="1920"
-                            loading="lazy"
-                            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                            allowfullscreen
-                            frameborder="0"
-                            hidden></iframe>
-                        <div class="cgpt-video-placeholder" role="img" aria-label="Founder video coming soon">
-                            <span class="cgpt-video-placeholder-icon" aria-hidden="true">▶</span>
-                            <span>Founder video coming soon</span>
-                        </div>
+                    <div class="founder-video-frame cgpt-video-frame">
+                        <video
+                            controls
+                            playsinline
+                            preload="metadata"
+                            poster="https://res.cloudinary.com/uvynkvqx/video/upload/so_0/Why_ChatGPT_didn_t_work_2.jpg"
+                            aria-label="Why ChatGPT didn't work for my resume">
+                            <source src="https://res.cloudinary.com/uvynkvqx/video/upload/Why_ChatGPT_didn_t_work_2.mp4" type="video/mp4">
+                            Your browser does not support embedded video.
+                        </video>
                     </div>
                     <p class="cgpt-video-caption">"It's just a tool that only sees your resume, so it can only rearrange what's already on your resume."</p>
                 </div>
@@ -743,17 +737,5 @@
     <script src="/script.js" defer></script>
     <script src="/scroll-animation.js" defer></script>
     <script src="/bullet-compare.js" defer></script>
-    <script>
-      document.querySelectorAll('.cgpt-video-frame').forEach(function (frame) {
-        var publicId = frame.dataset.cloudinaryPublicId;
-        if (!publicId || publicId === 'REPLACE_WITH_PUBLIC_ID') return;
-        var iframe = frame.querySelector('iframe[data-src-template]');
-        if (!iframe) return;
-        iframe.src = iframe.dataset.srcTemplate.replace('{public_id}', encodeURIComponent(publicId));
-        iframe.hidden = false;
-        var placeholder = frame.querySelector('.cgpt-video-placeholder');
-        if (placeholder) placeholder.remove();
-      });
-    </script>
 </body>
 </html>
