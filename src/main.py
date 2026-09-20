@@ -318,6 +318,15 @@ async def student_resume(request: Request):
                         status_code=200)
 
 
+@app.get("/chatgpt-for-resumes", response_class=HTMLResponse)
+async def chatgpt_for_resumes(request: Request):
+    return HTMLResponse(
+        content=(BASE_DIR / "attached_assets" /
+                 "chatgpt-for-resumes_1789890959792.html").read_text(),
+        status_code=200,
+    )
+
+
 @app.get("/privacy-policy", response_class=HTMLResponse)
 async def privacy_policy(request: Request):
     return HTMLResponse(content=(BASE_DIR / "privacy-policy" /
@@ -492,6 +501,7 @@ async def sitemap(db: Session = Depends(get_db)):
         {'path': '', 'changefreq': 'weekly', 'priority': '1.0'},
         {'path': 'about-us', 'changefreq': 'monthly', 'priority': '0.8'},
         {'path': 'student-resume', 'changefreq': 'monthly', 'priority': '0.9'},
+        {'path': 'chatgpt-for-resumes', 'changefreq': 'monthly', 'priority': '0.9'},
         {'path': 'blog', 'changefreq': 'daily', 'priority': '0.8'},
         {'path': 'privacy-policy', 'changefreq': 'yearly', 'priority': '0.5'},
         {'path': 'terms-of-service', 'changefreq': 'yearly', 'priority': '0.5'},

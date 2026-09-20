@@ -47,6 +47,9 @@ Thumbs.db
 *.log
 logs/
 
+# Local visual verification captures
+screenshots/chatgpt-resumes-*
+
 # Database
 *.db
 *.sqlite3

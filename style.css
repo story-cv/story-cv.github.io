@@ -2037,14 +2037,17 @@ header picture img:hover {
   margin: 0 auto;
   padding-left: var(--space-xl);
   padding-right: var(--space-xl);
+  --timeline-rail: 18px;
+  --timeline-dot: 20px;
+  --timeline-line-width: 4px;
 }
 
 .timeline-line {
   position: absolute;
-  left: 8px;
+  left: calc(var(--timeline-rail) - var(--timeline-line-width) / 2);
   top: 0;
   bottom: 0;
-  width: 4px;
+  width: var(--timeline-line-width);
   background-color: var(--color-border);
   border-radius: 2px;
   overflow: hidden;
@@ -2082,10 +2085,10 @@ header picture img:hover {
 
 .timeline-marker {
   position: absolute;
-  left: -24px;
+  left: calc(var(--timeline-rail) - var(--space-xl) - var(--timeline-dot) / 2);
   top: var(--space-xs);
-  width: 20px;
-  height: 20px;
+  width: var(--timeline-dot);
+  height: var(--timeline-dot);
   background-color: var(--color-bg-primary);
   border: 3px solid var(--color-border);
   border-radius: 50%;
@@ -2159,6 +2162,21 @@ header picture img:hover {
   font-style: italic;
 }
 
+.timeline-learn-more {
+  display: inline-block;
+  margin-top: var(--space-md);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.timeline-learn-more:hover,
+.timeline-learn-more:focus-visible {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 /* Mobile Responsive for Timeline */
 @media (max-width: 768px) {
   .chatgpt-timeline {
@@ -2187,17 +2205,19 @@ header picture img:hover {
 
   .timeline-container {
     padding-left: var(--space-xl);
+    --timeline-dot: 18px;
+    --timeline-line-width: 3px;
   }
 
   .timeline-line {
-    left: var(--space-md);
-    width: 3px;
+    left: calc(var(--timeline-rail) - var(--timeline-line-width) / 2);
+    width: var(--timeline-line-width);
   }
 
   .timeline-marker {
-    left: -20px;
-    width: 18px;
-    height: 18px;
+    left: calc(var(--timeline-rail) - var(--space-xl) - var(--timeline-dot) / 2);
+    width: var(--timeline-dot);
+    height: var(--timeline-dot);
   }
 
   .timeline-step.visible .timeline-marker::after {
@@ -2252,17 +2272,19 @@ header picture img:hover {
   .timeline-container {
     padding-left: var(--space-xl);
     padding-right: var(--space-md);
+    --timeline-dot: 16px;
+    --timeline-line-width: 2px;
   }
 
   .timeline-line {
-    left: 6px;
-    width: 2px;
+    left: calc(var(--timeline-rail) - var(--timeline-line-width) / 2);
+    width: var(--timeline-line-width);
   }
 
   .timeline-marker {
-    left: -18px;
-    width: 16px;
-    height: 16px;
+    left: calc(var(--timeline-rail) - var(--space-xl) - var(--timeline-dot) / 2);
+    width: var(--timeline-dot);
+    height: var(--timeline-dot);
   }
 
   .timeline-step.visible .timeline-marker::after {

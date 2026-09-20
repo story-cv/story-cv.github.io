@@ -1,0 +1,1229 @@
+/* ============================================================
+   chatgpt-for-resumes.css
+   Page-scoped styles for /chatgpt-for-resumes ONLY.
+
+   Every new class is namespaced `cgpt-` so nothing here can
+   collide with the 690 classes already in style.css.
+
+   Load order matters: style.css FIRST, this file SECOND.
+   All colour/spacing/radius values come from the existing
+   :root tokens in style.css. No new design tokens introduced.
+   ============================================================ */
+
+
+/* ── Shared small pieces ──────────────────────────────────── */
+
+.cgpt-eyebrow {
+  margin: 0 0 var(--space-md);
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   SECTION 1 — HERO
+   ============================================================ */
+
+.cgpt-hero {
+  padding: var(--space-4xl) 0 var(--space-3xl);
+  background-color: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+.cgpt-hero-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.cgpt-hero-title {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: clamp(2.125rem, 4.4vw, 3.5rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.cgpt-hero-subtitle {
+  max-width: 34rem;
+  margin: 0 0 var(--space-xl);
+  color: var(--color-text-secondary);
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.cgpt-hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.cgpt-hero-secondary {
+  transition: transform var(--transition-fast);
+}
+
+.cgpt-hero-secondary:hover {
+  transform: translateX(3px);
+}
+
+
+/* ── Hero visual: the animated prompt box (the villain) ───── */
+
+.cgpt-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.cgpt-promptbox {
+  position: relative;
+  width: min(100%, 26rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-bg-primary);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  animation: cgpt-float 7s ease-in-out infinite;
+}
+
+@keyframes cgpt-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+
+.cgpt-promptbox-bar {
+  display: flex;
+  gap: 6px;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  background-color: var(--color-bg-secondary);
+}
+
+.cgpt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: #d7dde5;
+}
+
+.cgpt-dot:first-child { background-color: #e8b4ab; }
+
+.cgpt-promptbox-body {
+  padding: var(--space-lg);
+}
+
+.cgpt-promptbox-label {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cgpt-promptbox-label-ai {
+  margin-top: var(--space-lg);
+  color: var(--color-primary);
+}
+
+/* What the person pasted in */
+.cgpt-promptbox-typed {
+  display: block;
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* Typewriter.
+   Revealed with clip-path rather than an animated width. A width animation
+   makes the span fill its container, which parks the caret at the far right
+   edge of the box instead of against the final full stop. Clipping leaves the
+   text at its natural width the whole time, so the caret sits immediately
+   after "team." from the first frame. */
+.cgpt-typewriter {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: bottom;
+  white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+  animation: cgpt-type 1.6s steps(25, end) 0.4s forwards;
+}
+
+@keyframes cgpt-type {
+  to { clip-path: inset(0 0 0 0); }
+}
+
+.cgpt-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: bottom;
+  background-color: var(--color-primary);
+  animation: cgpt-blink 1s steps(2, start) infinite;
+}
+
+@keyframes cgpt-blink {
+  to { visibility: hidden; }
+}
+
+/* What came back: fluent, longer, and no more informative */
+.cgpt-promptbox-reply {
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  border-left: 2px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  opacity: 0;
+  animation: cgpt-reply-in 0.5s ease-out 2.4s both;
+}
+
+@keyframes cgpt-reply-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 0.9; transform: translateY(0); }
+}
+
+/* The three things it never found. This is what makes "average" visible
+   rather than asserted: each chip pops in after the reply has landed. */
+.cgpt-missing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  padding-left: var(--space-md);
+}
+
+.cgpt-missing-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px var(--space-sm);
+  border: 1px dashed #c8d0da;
+  border-radius: var(--radius-full);
+  color: #8996a6;
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0;
+  animation: cgpt-chip-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Small strike mark before each chip */
+.cgpt-missing-chip::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid #c8d0da;
+  background:
+    linear-gradient(to bottom right, transparent 44%, #c8d0da 44%, #c8d0da 56%, transparent 56%);
+}
+
+.cgpt-chip-1 { animation-delay: 3.1s; }
+.cgpt-chip-2 { animation-delay: 3.4s; }
+.cgpt-chip-3 { animation-delay: 3.7s; }
+
+@keyframes cgpt-chip-in {
+  from { opacity: 0; transform: scale(0.82); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.cgpt-promptbox-verdict {
+  padding: 0 var(--space-lg) var(--space-lg);
+}
+
+.cgpt-verdict-pill {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-cream);
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.45;
+  opacity: 0;
+  animation: cgpt-reply-in 0.5s ease-out 4.4s both;
+}
+
+
+/* ============================================================
+   SECTION 2 — STAKES
+   ============================================================ */
+
+.cgpt-stakes-content {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+/* Guarantee selectable text in this section.
+   Mirrors the same fix style.css already applies to .founders-note-section. */
+.cgpt-stakes,
+.cgpt-stakes * {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}
+
+.cgpt-stakes-title {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-text-primary);
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Page-scoped word-lift reveal.
+   style.css scopes its version to `.mini-hero .word` via
+   `animation-timeline: view()`. We deliberately DON'T use that here:
+   a scroll-driven timeline that never resolves leaves the headline
+   stuck at opacity 0. This version keys off the `.visible` class that
+   scroll-animation.js already adds, so the text always ends up on screen. */
+.cgpt-stakes-title .word {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--wi) * 70ms);
+}
+
+.cgpt-stakes-title.visible .word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Belt and braces: if JS never runs, the headline is still readable. */
+.no-js .cgpt-stakes-title .word {
+  opacity: 1;
+  transform: none;
+}
+
+.cgpt-stakes-lede {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  line-height: 1.6;
+}
+
+/* Two symptoms, not a sequence: no numerals, side by side. */
+.cgpt-stakes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin: var(--space-2xl) 0 var(--space-2xl);
+}
+
+.cgpt-stake-card {
+  position: relative;
+  padding: var(--space-xl) var(--space-lg);
+  border: 1px solid rgba(46, 46, 46, 0.08);
+  border-radius: var(--radius-xl);
+  background-color: rgba(255, 255, 255, 0.72);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.cgpt-stake-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.cgpt-stake-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-bottom: var(--space-lg);
+}
+
+.cgpt-stake-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition-slow);
+}
+
+.cgpt-stake-card:hover .cgpt-stake-icon svg {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.cgpt-stake-card h3 {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-text-primary);
+  font-size: 1.1875rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+}
+
+.cgpt-stake-card p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Sits on one line on desktop: no max-width cap, and the type scales with the
+   viewport so it stays inside the card instead of wrapping. Wraps on phones,
+   where one line is not physically possible. */
+.cgpt-stakes-quote {
+  margin: 0;
+  padding-left: var(--space-lg);
+  border-left: 3px solid var(--color-primary);
+  color: var(--color-text-primary);
+  font-size: clamp(0.9375rem, 1.62vw, 1.25rem);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   SECTION 3 — VIDEO
+   (.founder-video-* comes from style.css; these are additions)
+   ============================================================ */
+
+.cgpt-video-section {
+  background-color: var(--color-bg-secondary);
+}
+
+.cgpt-video-eyebrow {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cgpt-video-caption {
+  max-width: 34rem;
+  margin: var(--space-xl) auto 0;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.cgpt-video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  width: 100%;
+  height: 100%;
+  padding: var(--space-xl);
+  background: linear-gradient(145deg, #f8fafc, #fcedda);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.cgpt-video-frame iframe[hidden] {
+  display: none;
+}
+
+.cgpt-video-placeholder-icon {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding-left: 0.2rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-md);
+}
+
+
+/* ============================================================
+   SECTION 5 — COMPARE
+   (.bullet-compare / .bc-* come from style.css)
+   ============================================================ */
+
+.cgpt-compare-section {
+  padding: var(--space-4xl) 0;
+  background-color: var(--color-bg-primary);
+}
+
+.cgpt-compare-header {
+  max-width: 44rem;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.cgpt-compare-heading {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.cgpt-compare-subheading {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.cgpt-compare-note {
+  max-width: 40rem;
+  margin: var(--space-xl) auto 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  text-align: center;
+}
+
+
+/* ============================================================
+   SECTION 7 — THE PLAN
+   ============================================================ */
+
+.cgpt-plan {
+  background-color: var(--color-bg-primary);
+}
+
+.cgpt-plan-header {
+  max-width: 40rem;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.cgpt-plan-header .cgpt-eyebrow {
+  margin-bottom: var(--space-sm);
+}
+
+.cgpt-plan-title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* One step per row, on every screen size. Each row is text beside its
+   illustration on desktop, and stacks on narrow screens. */
+.cgpt-plan-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.cgpt-plan-step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+  padding: var(--space-2xl) var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-bg-primary);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.cgpt-plan-step:hover {
+  border-color: rgba(238, 78, 52, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+
+.cgpt-plan-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-full);
+  background-color: var(--color-cream);
+  color: var(--color-primary);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
+  transition: transform var(--transition-normal), background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.cgpt-plan-step:hover .cgpt-plan-num {
+  transform: scale(1.08) rotate(-6deg);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.cgpt-plan-step h3 {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: 1.375rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+}
+
+.cgpt-plan-step p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.cgpt-plan-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 13.5rem;
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  background-color: #FDF8F3;
+}
+
+.cgpt-plan-cta {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+
+/* ── Step 1 illustration: mic idle → listening, looping ───── */
+
+.cgpt-mic {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92px;
+  height: 92px;
+}
+
+.cgpt-mic-halo {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  background-color: #FBD9CF;
+  animation: cgpt-halo 6s ease-in-out infinite;
+}
+
+@keyframes cgpt-halo {
+  0%, 38%    { transform: scale(0.86); opacity: 0.75; }
+  46%, 88%   { transform: scale(1);    opacity: 1; }
+  96%, 100%  { transform: scale(0.86); opacity: 0.75; }
+}
+
+.cgpt-mic-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+}
+
+.cgpt-mic-button svg {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+}
+
+.cgpt-mic-idle { animation: cgpt-icon-out 6s ease-in-out infinite; }
+.cgpt-mic-rec  { animation: cgpt-icon-in  6s ease-in-out infinite; }
+
+@keyframes cgpt-icon-out {
+  0%, 38%   { opacity: 1; transform: scale(1); }
+  46%, 88%  { opacity: 0; transform: scale(0.6); }
+  96%, 100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes cgpt-icon-in {
+  0%, 38%   { opacity: 0; transform: scale(0.6); }
+  46%, 88%  { opacity: 1; transform: scale(1); }
+  96%, 100% { opacity: 0; transform: scale(0.6); }
+}
+
+/* Both labels are full-width and text-centred rather than centred with
+   translateX(-50%). The crossfade keyframes animate `transform`, which would
+   overwrite a translate on the same element and shunt the label off to the
+   right of the mic. Centring via text-align keeps transform free. */
+.cgpt-mic-label {
+  position: relative;
+  width: 100%;
+  margin: var(--space-md) 0 0;
+  height: 1.3em;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+}
+
+.cgpt-mic-label span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  white-space: nowrap;
+}
+
+.cgpt-mic-label-idle { animation: cgpt-icon-out 6s ease-in-out infinite; }
+.cgpt-mic-label-rec  { animation: cgpt-icon-in  6s ease-in-out infinite; }
+
+/* Waveform: only alive while the mic is in listening mode */
+.cgpt-wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 28px;
+  margin-top: var(--space-md);
+}
+
+.cgpt-wave span {
+  width: 3px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  opacity: 0.55;
+  animation: cgpt-wave 6s ease-in-out infinite;
+}
+
+/* Bars peak toward the middle, like a real level meter */
+.cgpt-wave span:nth-child(1),  .cgpt-wave span:nth-child(20) { --amp: 0.25; animation-delay: 0.00s; }
+.cgpt-wave span:nth-child(2),  .cgpt-wave span:nth-child(19) { --amp: 0.35; animation-delay: 0.06s; }
+.cgpt-wave span:nth-child(3),  .cgpt-wave span:nth-child(18) { --amp: 0.30; animation-delay: 0.12s; }
+.cgpt-wave span:nth-child(4),  .cgpt-wave span:nth-child(17) { --amp: 0.55; animation-delay: 0.18s; }
+.cgpt-wave span:nth-child(5),  .cgpt-wave span:nth-child(16) { --amp: 0.45; animation-delay: 0.24s; }
+.cgpt-wave span:nth-child(6),  .cgpt-wave span:nth-child(15) { --amp: 0.75; animation-delay: 0.30s; }
+.cgpt-wave span:nth-child(7),  .cgpt-wave span:nth-child(14) { --amp: 0.60; animation-delay: 0.36s; }
+.cgpt-wave span:nth-child(8),  .cgpt-wave span:nth-child(13) { --amp: 1.00; animation-delay: 0.42s; }
+.cgpt-wave span:nth-child(9),  .cgpt-wave span:nth-child(12) { --amp: 0.80; animation-delay: 0.48s; }
+.cgpt-wave span:nth-child(10), .cgpt-wave span:nth-child(11) { --amp: 0.90; animation-delay: 0.54s; }
+
+@keyframes cgpt-wave {
+  0%, 40%   { height: 4px; opacity: 0.25; }
+  50%       { height: calc(4px + 22px * var(--amp, 0.5)); opacity: 1; }
+  60%       { height: calc(4px + 10px * var(--amp, 0.5)); opacity: 0.9; }
+  70%       { height: calc(4px + 20px * var(--amp, 0.5)); opacity: 1; }
+  80%       { height: calc(4px + 8px  * var(--amp, 0.5)); opacity: 0.85; }
+  88%, 100% { height: 4px; opacity: 0.25; }
+}
+
+
+/* ── Step 2 illustration: the questions roll past ─────────── */
+
+.cgpt-qroll {
+  position: relative;
+  width: 100%;
+  max-width: 21rem;
+  height: 11rem;
+  overflow: hidden;
+  /* Wide fades top and bottom so a half-visible card reads as "more above,
+     more below" rather than as a clipped fragment */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 34%, #000 66%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 34%, #000 66%, transparent 100%);
+}
+
+.cgpt-qroll-track {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  animation: cgpt-qroll 18s linear infinite;
+}
+
+/* Translates exactly one full set, so the loop has no seam */
+@keyframes cgpt-qroll {
+  to { transform: translateY(-50%); }
+}
+
+.cgpt-q {
+  margin: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.45;
+}
+
+.cgpt-q em {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+
+/* ── Step 3 illustration: the impact gets underlined ──────── */
+
+.cgpt-bullet-card {
+  width: 100%;
+  max-width: 22rem;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-primary);
+}
+
+.cgpt-bullet-role {
+  display: block;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cgpt-bullet-text {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+}
+
+/* Underline sweeps in beneath each piece of real impact, one after another */
+.cgpt-mark {
+  position: relative;
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.cgpt-mark::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: cgpt-underline 9s ease-in-out infinite;
+}
+
+.cgpt-mark-1::after { animation-delay: 0.4s; }
+.cgpt-mark-2::after { animation-delay: 1.3s; }
+.cgpt-mark-3::after { animation-delay: 2.2s; }
+
+@keyframes cgpt-underline {
+  0%        { transform: scaleX(0); }
+  8%, 82%   { transform: scaleX(1); }
+  92%, 100% { transform: scaleX(0); }
+}
+
+
+/* ── Timeline rail alignment ──────────────────────────────────
+   style.css puts .timeline-line at left:8px (centre 10px) while
+   .timeline-marker sits at left:-24px inside a step whose left edge is
+   the container's 32px padding, putting the dot centre at 18px. An 8px
+   mismatch, which reads as the line being left of the dots.
+
+   Rather than patch style.css, both are re-derived here from one shared
+   centre line, scoped to this page's section id so nothing else moves.
+   ------------------------------------------------------------ */
+
+#cgpt-section .timeline-container {
+  --cgpt-rail: 18px;      /* shared centre, from the container's padding edge */
+  --cgpt-dot: 20px;
+  --cgpt-line: 4px;
+}
+
+#cgpt-section .timeline-line {
+  left: calc(var(--cgpt-rail) - var(--cgpt-line) / 2);
+  width: var(--cgpt-line);
+}
+
+#cgpt-section .timeline-marker {
+  left: calc(var(--cgpt-rail) - var(--space-xl) - var(--cgpt-dot) / 2);
+  width: var(--cgpt-dot);
+  height: var(--cgpt-dot);
+}
+
+
+/* ============================================================
+   SECTION 8 — OBJECTIONS
+   ============================================================ */
+
+.cgpt-objections-inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.cgpt-objections-intro {
+  position: sticky;
+  top: var(--space-4xl);
+}
+
+.cgpt-objections-title {
+  margin: 0 0 var(--space-md);
+  color: var(--color-text-primary);
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.cgpt-objections-lede {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.cgpt-objection {
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.cgpt-objection:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cgpt-objection h3 {
+  position: relative;
+  margin: 0 0 var(--space-sm);
+  padding-left: var(--space-lg);
+  color: var(--color-text-primary);
+  font-size: 1.0625rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.4;
+}
+
+/* Small orange tick that grows in as each objection reveals */
+.cgpt-objection h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.cgpt-objection.visible h3::before {
+  transform: scale(1);
+}
+
+.cgpt-objection p {
+  margin: 0;
+  padding-left: var(--space-lg);
+  color: var(--color-text-secondary);
+  font-size: 0.9688rem;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   SECTION 12 — READING / JUNK DRAWER
+   ============================================================ */
+
+.cgpt-reading {
+  background-color: var(--color-bg-secondary);
+}
+
+.cgpt-reading-header {
+  max-width: 40rem;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.cgpt-reading-title {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.cgpt-reading-subtitle {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.cgpt-reading-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.cgpt-reading-card {
+  display: block;
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-bg-primary);
+  text-decoration: none;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.cgpt-reading-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(238, 78, 52, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+
+.cgpt-reading-tag {
+  display: inline-block;
+  margin-bottom: var(--space-md);
+  padding: 3px var(--space-sm);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-cream);
+  color: var(--color-primary);
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cgpt-reading-card h3 {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: 1.0625rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.35;
+}
+
+.cgpt-reading-card p {
+  margin: 0 0 var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.cgpt-reading-link {
+  color: var(--color-primary);
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-bold);
+  transition: letter-spacing var(--transition-fast);
+}
+
+.cgpt-reading-card:hover .cgpt-reading-link {
+  letter-spacing: 0.015em;
+}
+
+.cgpt-reading-community {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.cgpt-reading-community p {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.cgpt-community-link {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.cgpt-community-link:hover {
+  opacity: 0.75;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .cgpt-hero-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    text-align: center;
+  }
+
+  .cgpt-hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cgpt-hero-cta {
+    justify-content: center;
+  }
+
+  .cgpt-objections-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .cgpt-objections-intro {
+    position: static;
+  }
+
+  /* Illustration moves below its text rather than beside it */
+  .cgpt-plan-step {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .cgpt-hero {
+    padding: var(--space-2xl) 0;
+  }
+
+  .cgpt-stakes-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+  }
+
+  .cgpt-missing-chip {
+    font-size: 0.625rem;
+  }
+
+  /* One line is not physically possible at phone width */
+  .cgpt-stakes-quote {
+    white-space: normal;
+    padding-left: var(--space-md);
+  }
+
+  .cgpt-plan-step {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .cgpt-plan-visual {
+    min-height: 0;
+    padding: var(--space-md);
+  }
+
+  .cgpt-qroll {
+    height: 9.5rem;
+  }
+
+  /* Underlined phrases may wrap on a narrow card */
+  .cgpt-mark {
+    white-space: normal;
+  }
+
+  /* Smaller dots on phones, rail stays centred */
+  #cgpt-section .timeline-container {
+    --cgpt-dot: 16px;
+    --cgpt-line: 3px;
+  }
+
+  .cgpt-reading-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cgpt-compare-section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .cgpt-stakes-kicker {
+    font-size: 1.0625rem;
+  }
+
+  /* Typewriter is sized for desktop; show the prompt plainly on small screens */
+  .cgpt-typewriter {
+    animation: none;
+    width: auto;
+    clip-path: none;
+  }
+
+  .cgpt-promptbox-typed {
+    white-space: normal;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   Mirrors how style.css disables .scroll-reveal and .mini-hero
+   word animations. Everything ends in its final visible state.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .cgpt-promptbox,
+  .cgpt-typewriter,
+  .cgpt-caret,
+  .cgpt-promptbox-reply,
+  .cgpt-missing-chip,
+  .cgpt-verdict-pill,
+  .cgpt-stakes-title .word {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    width: auto !important;
+    visibility: visible !important;
+  }
+
+  .cgpt-typewriter {
+    clip-path: none !important;
+  }
+
+  .cgpt-promptbox-typed {
+    white-space: normal;
+  }
+
+  .cgpt-promptbox-reply {
+    opacity: 0.85 !important;
+  }
+
+  .cgpt-objection h3::before {
+    transform: scale(1) !important;
+    transition: none !important;
+  }
+
+  /* Step illustrations resolve to their finished, listening/underlined state */
+  .cgpt-mic-halo,
+  .cgpt-mic-rec,
+  .cgpt-mic-label-rec,
+  .cgpt-qroll-track,
+  .cgpt-wave span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .cgpt-mic-idle,
+  .cgpt-mic-label-idle {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .cgpt-wave span {
+    height: calc(4px + 16px * var(--amp, 0.5)) !important;
+  }
+
+  .cgpt-mark::after {
+    animation: none !important;
+    transform: scaleX(1) !important;
+  }
+
+  .cgpt-hero-secondary:hover,
+  .cgpt-stake-card:hover,
+  .cgpt-stake-card:hover .cgpt-stake-icon svg,
+  .cgpt-plan-step:hover,
+  .cgpt-plan-step:hover .cgpt-plan-num,
+  .cgpt-reading-card:hover {
+    transform: none !important;
+  }
+}
