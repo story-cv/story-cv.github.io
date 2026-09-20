@@ -106,6 +106,8 @@ function createFooter() {
                 <div class="legal-links">
                     <a href="/about-us" class="legal-link">About Us</a>
                     <span class="legal-separator">•</span>
+                    <a href="/chatgpt-for-resumes" class="legal-link">ChatGPT for Resumes</a>
+                    <span class="legal-separator">•</span>
                     <a href="/privacy-policy" class="legal-link">Privacy Policy</a>
                     <span class="legal-separator">•</span>
                     <a href="/terms-of-service" class="legal-link">Terms of Service</a>
