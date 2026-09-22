@@ -1,0 +1,1729 @@
+/* ============================================================
+   guided-interview-resume-tool.css
+   Page-scoped styles for /guided-interview-resume-tool ONLY.
+
+   Every class is namespaced `gir-` so nothing collides with style.css.
+   Load order: style.css FIRST, this file SECOND.
+   Colours, spacing, radii and transitions all come from the existing
+   :root tokens in style.css. No new design tokens.
+
+   Carries over the fixes proven on /chatgpt-for-resumes:
+   - word reveal keys off `.visible`, never `animation-timeline: view()`
+   - mic labels centred with text-align, so animating `transform` can't
+     shove them sideways
+   - stakes section forces selectable text
+   ============================================================ */
+
+
+/* ── Shared small pieces ──────────────────────────────────── */
+
+.gir-eyebrow {
+  margin: 0 0 var(--space-md);
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+
+/* ============================================================
+   SECTION 1: HERO
+   ============================================================ */
+
+.gir-hero {
+  padding: var(--space-4xl) 0 var(--space-3xl);
+  background-color: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+.gir-hero-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.gir-hero-title {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 3.7vw, 3.125rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.gir-hero-subtitle {
+  max-width: 34rem;
+  margin: 0 0 var(--space-xl);
+  color: var(--color-text-secondary);
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.gir-hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.gir-hero-secondary {
+  transition: transform var(--transition-fast);
+}
+
+.gir-hero-secondary:hover {
+  transform: translateX(3px);
+}
+
+
+
+/* ============================================================
+   SECTION 2: STAKES
+   ============================================================ */
+
+.gir-stakes-content {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+/* Guarantee selectable text in this section.
+   Mirrors the same fix style.css already applies to .founders-note-section. */
+.gir-stakes,
+.gir-stakes * {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}
+
+.gir-stakes-title {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-text-primary);
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* Page-scoped word-lift reveal.
+   style.css scopes its version to `.mini-hero .word` via
+   `animation-timeline: view()`. We deliberately DON'T use that here:
+   a scroll-driven timeline that never resolves leaves the headline
+   stuck at opacity 0. This version keys off the `.visible` class that
+   scroll-animation.js already adds, so the text always ends up on screen. */
+.gir-stakes-title .word {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--wi) * 70ms);
+}
+
+.gir-stakes-title.visible .word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Belt and braces: if JS never runs, the headline is still readable. */
+.no-js .gir-stakes-title .word {
+  opacity: 1;
+  transform: none;
+}
+
+.gir-stakes-lede {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  line-height: 1.6;
+}
+
+
+/* Sits on one line on desktop: no max-width cap, and the type scales with the
+   viewport so it stays inside the card instead of wrapping. Wraps on phones,
+   where one line is not physically possible. */
+.gir-stakes-quote {
+  margin: 0;
+  padding-left: var(--space-lg);
+  border-left: 3px solid var(--color-primary);
+  color: var(--color-text-primary);
+  font-size: clamp(0.9375rem, 1.62vw, 1.25rem);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+
+
+/* ============================================================
+   VIDEO (additions to style.css .founder-video-*)
+   ============================================================ */
+
+
+.gir-video-section {
+  background-color: var(--color-bg-secondary);
+}
+
+.gir-video-eyebrow {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   SECTION 7: THE PLAN
+   ============================================================ */
+
+.gir-plan {
+  background-color: var(--color-bg-primary);
+}
+
+.gir-plan-header {
+  max-width: 40rem;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.gir-plan-header .gir-eyebrow {
+  margin-bottom: var(--space-sm);
+}
+
+.gir-plan-title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* One step per row, on every screen size. Each row is text beside its
+   illustration on desktop, and stacks on narrow screens. */
+.gir-plan-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.gir-plan-step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+  padding: var(--space-2xl) var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-bg-primary);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.gir-plan-step:hover {
+  border-color: rgba(238, 78, 52, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+
+.gir-plan-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-full);
+  background-color: var(--color-cream);
+  color: var(--color-primary);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
+  transition: transform var(--transition-normal), background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.gir-plan-step:hover .gir-plan-num {
+  transform: scale(1.08) rotate(-6deg);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.gir-plan-step h3 {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: 1.375rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+}
+
+.gir-plan-step p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.gir-plan-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 13.5rem;
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  background-color: #FDF8F3;
+}
+
+.gir-plan-cta {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+
+/* ── Step 1 illustration: mic idle → listening, looping ───── */
+
+.gir-mic {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92px;
+  height: 92px;
+}
+
+.gir-mic-halo {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  background-color: #FBD9CF;
+  animation: gir-halo 6s ease-in-out infinite;
+}
+
+@keyframes gir-halo {
+  0%, 38%    { transform: scale(0.86); opacity: 0.75; }
+  46%, 88%   { transform: scale(1);    opacity: 1; }
+  96%, 100%  { transform: scale(0.86); opacity: 0.75; }
+}
+
+.gir-mic-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+}
+
+.gir-mic-button svg {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+}
+
+.gir-mic-idle { animation: gir-icon-out 6s ease-in-out infinite; }
+.gir-mic-rec  { animation: gir-icon-in  6s ease-in-out infinite; }
+
+@keyframes gir-icon-out {
+  0%, 38%   { opacity: 1; transform: scale(1); }
+  46%, 88%  { opacity: 0; transform: scale(0.6); }
+  96%, 100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes gir-icon-in {
+  0%, 38%   { opacity: 0; transform: scale(0.6); }
+  46%, 88%  { opacity: 1; transform: scale(1); }
+  96%, 100% { opacity: 0; transform: scale(0.6); }
+}
+
+/* Both labels are full-width and text-centred rather than centred with
+   translateX(-50%). The crossfade keyframes animate `transform`, which would
+   overwrite a translate on the same element and shunt the label off to the
+   right of the mic. Centring via text-align keeps transform free. */
+.gir-mic-label {
+  position: relative;
+  width: 100%;
+  margin: var(--space-md) 0 0;
+  height: 1.3em;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+}
+
+.gir-mic-label span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  white-space: nowrap;
+}
+
+.gir-mic-label-idle { animation: gir-icon-out 6s ease-in-out infinite; }
+.gir-mic-label-rec  { animation: gir-icon-in  6s ease-in-out infinite; }
+
+/* Waveform: only alive while the mic is in listening mode */
+.gir-wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 28px;
+  margin-top: var(--space-md);
+}
+
+.gir-wave span {
+  width: 3px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  opacity: 0.55;
+  animation: gir-wave 6s ease-in-out infinite;
+}
+
+/* Bars peak toward the middle, like a real level meter */
+.gir-wave span:nth-child(1),  .gir-wave span:nth-child(20) { --amp: 0.25; animation-delay: 0.00s; }
+.gir-wave span:nth-child(2),  .gir-wave span:nth-child(19) { --amp: 0.35; animation-delay: 0.06s; }
+.gir-wave span:nth-child(3),  .gir-wave span:nth-child(18) { --amp: 0.30; animation-delay: 0.12s; }
+.gir-wave span:nth-child(4),  .gir-wave span:nth-child(17) { --amp: 0.55; animation-delay: 0.18s; }
+.gir-wave span:nth-child(5),  .gir-wave span:nth-child(16) { --amp: 0.45; animation-delay: 0.24s; }
+.gir-wave span:nth-child(6),  .gir-wave span:nth-child(15) { --amp: 0.75; animation-delay: 0.30s; }
+.gir-wave span:nth-child(7),  .gir-wave span:nth-child(14) { --amp: 0.60; animation-delay: 0.36s; }
+.gir-wave span:nth-child(8),  .gir-wave span:nth-child(13) { --amp: 1.00; animation-delay: 0.42s; }
+.gir-wave span:nth-child(9),  .gir-wave span:nth-child(12) { --amp: 0.80; animation-delay: 0.48s; }
+.gir-wave span:nth-child(10), .gir-wave span:nth-child(11) { --amp: 0.90; animation-delay: 0.54s; }
+
+@keyframes gir-wave {
+  0%, 40%   { height: 4px; opacity: 0.25; }
+  50%       { height: calc(4px + 22px * var(--amp, 0.5)); opacity: 1; }
+  60%       { height: calc(4px + 10px * var(--amp, 0.5)); opacity: 0.9; }
+  70%       { height: calc(4px + 20px * var(--amp, 0.5)); opacity: 1; }
+  80%       { height: calc(4px + 8px  * var(--amp, 0.5)); opacity: 0.85; }
+  88%, 100% { height: 4px; opacity: 0.25; }
+}
+
+
+/* ── Step 2 illustration: the questions roll past ─────────── */
+
+.gir-qroll {
+  position: relative;
+  width: 100%;
+  max-width: 21rem;
+  height: 11rem;
+  overflow: hidden;
+  /* Wide fades top and bottom so a half-visible card reads as "more above,
+     more below" rather than as a clipped fragment */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 34%, #000 66%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 34%, #000 66%, transparent 100%);
+}
+
+.gir-qroll-track {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  animation: gir-qroll 18s linear infinite;
+}
+
+/* Translates exactly one full set, so the loop has no seam */
+@keyframes gir-qroll {
+  to { transform: translateY(-50%); }
+}
+
+.gir-q {
+  margin: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.45;
+}
+
+.gir-q em {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+
+/* ── Step 3 illustration: the impact gets underlined ──────── */
+
+.gir-bullet-card {
+  width: 100%;
+  max-width: 22rem;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-primary);
+}
+
+.gir-bullet-role {
+  display: block;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gir-bullet-text {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+}
+
+/* Underline sweeps in beneath each piece of real impact, one after another */
+.gir-mark {
+  position: relative;
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.gir-mark::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: gir-underline 9s ease-in-out infinite;
+}
+
+.gir-mark-1::after { animation-delay: 0.4s; }
+.gir-mark-2::after { animation-delay: 1.3s; }
+.gir-mark-3::after { animation-delay: 2.2s; }
+
+@keyframes gir-underline {
+  0%        { transform: scaleX(0); }
+  8%, 82%   { transform: scaleX(1); }
+  92%, 100% { transform: scaleX(0); }
+}
+
+
+
+/* ============================================================
+   SECTION 8: OBJECTIONS
+   ============================================================ */
+
+.gir-objections-inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.gir-objections-intro {
+  position: sticky;
+  top: var(--space-4xl);
+}
+
+.gir-objections-title {
+  margin: 0 0 var(--space-md);
+  color: var(--color-text-primary);
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.gir-objections-lede {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.gir-objection {
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.gir-objection:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.gir-objection h3 {
+  position: relative;
+  margin: 0 0 var(--space-sm);
+  padding-left: var(--space-lg);
+  color: var(--color-text-primary);
+  font-size: 1.0625rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.4;
+}
+
+/* Small orange tick that grows in as each objection reveals */
+.gir-objection h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.gir-objection.visible h3::before {
+  transform: scale(1);
+}
+
+.gir-objection p {
+  margin: 0;
+  padding-left: var(--space-lg);
+  color: var(--color-text-secondary);
+  font-size: 0.9688rem;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   SECTION 12: READING / JUNK DRAWER
+   ============================================================ */
+
+.gir-reading {
+  background-color: var(--color-bg-secondary);
+}
+
+.gir-reading-header {
+  max-width: 40rem;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.gir-reading-title {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.gir-reading-subtitle {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.gir-reading-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.gir-reading-card {
+  display: block;
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-bg-primary);
+  text-decoration: none;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.gir-reading-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(238, 78, 52, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+
+.gir-reading-tag {
+  display: inline-block;
+  margin-bottom: var(--space-md);
+  padding: 3px var(--space-sm);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-cream);
+  color: var(--color-primary);
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gir-reading-card h3 {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: 1.0625rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.35;
+}
+
+.gir-reading-card p {
+  margin: 0 0 var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.gir-reading-link {
+  color: var(--color-primary);
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-bold);
+  transition: letter-spacing var(--transition-fast);
+}
+
+.gir-reading-card:hover .gir-reading-link {
+  letter-spacing: 0.015em;
+}
+
+.gir-reading-community {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.gir-reading-community p {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.gir-community-link {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.gir-community-link:hover {
+  opacity: 0.75;
+}
+
+
+
+.gir-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+/* ============================================================
+   HERO VISUAL: the interview, playing once on load
+   A question, a flat answer, the follow-up, the real answer,
+   and what it found. Each message fades up in turn.
+   ============================================================ */
+
+.gir-chat {
+  position: relative;
+  width: min(100%, 27rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-bg-primary);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  animation: gir-float 7s ease-in-out infinite;
+}
+
+@keyframes gir-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+
+.gir-chat-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  background-color: var(--color-bg-secondary);
+}
+
+.gir-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: #d7dde5;
+}
+
+.gir-dot:first-child { background-color: #e8b4ab; }
+
+.gir-chat-role {
+  margin-left: auto;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.gir-chat-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+}
+
+.gir-msg {
+  max-width: 88%;
+  opacity: 0;
+  animation: gir-msg-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.gir-msg p {
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-xl);
+  font-size: 0.9063rem;
+  line-height: 1.5;
+}
+
+.gir-msg-who {
+  display: block;
+  margin: 0 0 4px;
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gir-msg-who em {
+  margin-left: 4px;
+  color: var(--color-primary);
+  font-style: normal;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+/* StoryCV asks from the left, you answer from the right */
+.gir-msg-ask p {
+  border-bottom-left-radius: var(--radius-sm);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.gir-msg-you {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.gir-msg-you p {
+  border-bottom-right-radius: var(--radius-sm);
+  background-color: var(--color-cream);
+  color: var(--color-text-primary);
+  text-align: left;
+}
+
+/* The follow-up is the point of the whole card, so it gets the accent */
+.gir-msg-follow p {
+  background-color: var(--color-bg-primary);
+  box-shadow: inset 0 0 0 1.5px var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.gir-m1 { animation-delay: 0.3s; }
+.gir-m2 { animation-delay: 1.1s; }
+.gir-m3 { animation-delay: 2.0s; }
+.gir-m4 { animation-delay: 3.6s; }
+
+@keyframes gir-msg-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Typing dots show for a beat, then give way to the follow-up question.
+   Both share one slot so the card height never jumps. */
+.gir-m3 {
+  display: grid;
+}
+
+.gir-m3 .gir-msg-who { grid-row: 1; }
+
+.gir-typing,
+.gir-m3-text {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.gir-typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  justify-self: start;
+  padding: 12px var(--space-md);
+  border-radius: var(--radius-xl);
+  border-bottom-left-radius: var(--radius-sm);
+  background-color: var(--color-bg-tertiary);
+  animation: gir-typing-out 0.2s ease-out 3.0s forwards;
+}
+
+.gir-typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-muted);
+  animation: gir-bounce 0.9s ease-in-out infinite;
+}
+
+.gir-typing span:nth-child(2) { animation-delay: 0.15s; }
+.gir-typing span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes gir-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+  30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+@keyframes gir-typing-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+.gir-m3-text {
+  opacity: 0;
+  animation: gir-msg-in 0.4s ease-out 3.0s forwards;
+}
+
+.gir-chat-found {
+  padding: 0 var(--space-lg) var(--space-lg);
+}
+
+.gir-found-pill {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.45;
+  opacity: 0;
+  animation: gir-msg-in 0.5s ease-out 4.6s both;
+}
+
+
+/* ============================================================
+   STAKES: what most tools ask vs what an interview asks
+   ============================================================ */
+
+.gir-stakes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin: var(--space-2xl) 0;
+}
+
+.gir-ask-card {
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: var(--radius-xl);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.gir-ask-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.gir-ask-form {
+  border: 1px dashed #c8d0da;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.gir-ask-real {
+  border: 1px solid rgba(238, 78, 52, 0.3);
+  background-color: var(--color-bg-primary);
+}
+
+.gir-ask-label {
+  display: block;
+  margin-bottom: var(--space-md);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gir-ask-form .gir-ask-label { color: #8996a6; }
+.gir-ask-real .gir-ask-label { color: var(--color-primary); }
+
+.gir-ask-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gir-ask-list li {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+/* Form questions look like empty form fields: grey, with a blank line */
+.gir-ask-form .gir-ask-list li {
+  position: relative;
+  padding-bottom: calc(var(--space-sm) + 10px);
+  background-color: var(--color-bg-secondary);
+  color: #8996a6;
+}
+
+.gir-ask-form .gir-ask-list li::after {
+  content: "";
+  position: absolute;
+  left: var(--space-md);
+  right: 40%;
+  bottom: 9px;
+  height: 1px;
+  background-color: #d7dde5;
+}
+
+.gir-ask-real .gir-ask-list li {
+  background-color: #FDF3EA;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+
+/* ============================================================
+   THE DIG: one answer, three follow-ups, one bullet
+   Each layer sits a little deeper and a little warmer.
+   ============================================================ */
+
+.gir-dig-section {
+  background-color: var(--color-bg-primary);
+}
+
+.gir-dig-header {
+  max-width: 44rem;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.gir-dig-header .gir-eyebrow {
+  margin-bottom: var(--space-sm);
+}
+
+.gir-dig-title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.gir-dig {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.gir-dig-layer {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+}
+
+/* Depth: indent and warmth increase with every follow-up */
+.gir-depth-1 { margin-left: 0;    background-color: #FBF8F4; }
+.gir-depth-2 { margin-left: 1rem; background-color: #FCF1E4; }
+.gir-depth-3 { margin-left: 2rem; background-color: #FCEDDA; }
+.gir-depth-4 { margin-left: 3rem; background-color: #FBE1CB; }
+
+.gir-dig-depth {
+  display: inline-block;
+  justify-self: start;
+  padding: 4px var(--space-sm);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-primary);
+  color: var(--color-primary);
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gir-dig-q {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.gir-dig-a {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.gir-dig-result {
+  max-width: 44rem;
+  margin: var(--space-xl) auto 0;
+  padding: var(--space-xl);
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-bg-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.gir-dig-result-label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gir-dig-result-text {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.8;
+}
+
+.gir-dig-kicker {
+  max-width: 40rem;
+  margin: var(--space-xl) auto 0;
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+
+/* ============================================================
+   THE SEVEN SIGNALS: the method, made visible
+   Each card's tick draws in on reveal, one after another.
+   ============================================================ */
+
+.gir-signals {
+  background-color: var(--color-bg-secondary);
+}
+
+.gir-signals-header {
+  max-width: 40rem;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.gir-signals-header .gir-eyebrow {
+  margin-bottom: var(--space-sm);
+}
+
+.gir-signals-title {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.gir-signals-sub {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+/* 4 + 3, the last row centred, so nothing sits alone */
+.gir-signals-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.gir-signal {
+  position: relative;
+  flex: 0 1 calc(25% - var(--space-md) * 3 / 4);
+  min-width: 12rem;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-bg-primary);
+  transition: border-color var(--transition-normal), transform var(--transition-normal);
+}
+
+.gir-signal:hover {
+  transform: translateY(-3px);
+  border-color: rgba(238, 78, 52, 0.4);
+}
+
+.gir-signal h3 {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-text-primary);
+  font-size: 1.0625rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.gir-signal p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.gir-signal-tick {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-cream);
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: calc(0.35s + var(--si) * 90ms);
+}
+
+.gir-signal-tick::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 4px;
+  width: 5px;
+  height: 9px;
+  border: solid var(--color-primary);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.gir-signal.visible .gir-signal-tick {
+  transform: scale(1);
+}
+
+
+
+/* ============================================================
+   GAP ANALYSIS: the resume writer's workflow, in one card
+   Rows = what the target role needs. Columns = the workflow:
+   role -> what it already knows -> what it asks.
+   Rows settle in turn; the gaps light up last and get a question.
+   ============================================================ */
+
+.gir-gap {
+  max-width: 60rem;
+  margin: 0 auto var(--space-3xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-bg-primary);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.gir-gap-head,
+.gir-gap-row {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1.45fr;
+  gap: var(--space-lg);
+  align-items: center;
+  padding: var(--space-md) var(--space-xl);
+}
+
+.gir-gap-head {
+  background-color: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text-primary);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.gir-gap-head span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.gir-gap-head b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-cream);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+}
+
+.gir-gap-role {
+  padding: var(--space-md) var(--space-xl) var(--space-sm);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.gir-gap-role strong {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 2px var(--space-sm);
+  border-radius: var(--radius-md);
+  background-color: var(--color-cream);
+  color: var(--color-primary);
+}
+
+.gir-gap-row {
+  border-top: 1px solid var(--color-border-light);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+  transition-delay: calc(0.2s + var(--ri) * 0.18s);
+}
+
+.gir-gap.visible .gir-gap-row {
+  opacity: 1;
+  transform: none;
+}
+
+.gir-gap-need {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.gir-gap-known {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  color: var(--color-text-secondary);
+}
+
+.gir-gap-known i {
+  flex: 0 0 auto;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  border-radius: var(--radius-full);
+}
+
+/* Covered: a filled tick in the site's success green */
+.gir-gap-ok .gir-gap-known i {
+  background-color: var(--color-success);
+}
+
+.gir-gap-ok .gir-gap-known i::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.gir-gap-none {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+/* Missing: an empty dashed ring, and the question gets the accent */
+.gir-gap-missing .gir-gap-known {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.gir-gap-missing .gir-gap-known i {
+  border: 2px dashed var(--color-primary);
+}
+
+.gir-gap-missing .gir-gap-ask {
+  padding: var(--space-sm) var(--space-md);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background-color: #FDF3EA;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+  transition-delay: calc(0.9s + var(--ri) * 0.18s);
+}
+
+.gir-gap.visible .gir-gap-missing .gir-gap-ask {
+  opacity: 1;
+  transform: none;
+}
+
+.gir-signals-sub-header {
+  max-width: 40rem;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.gir-signals-subtitle {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-text-primary);
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+/* Authority line under the testimonial */
+.gir-authority {
+  max-width: 40rem;
+  margin: var(--space-lg) auto 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+/* ============================================================
+   COMPARISON TABLE: who does the remembering
+   ============================================================ */
+
+.gir-compare {
+  background-color: var(--color-bg-primary);
+}
+
+.gir-compare-header {
+  max-width: 40rem;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.gir-compare-header .gir-eyebrow {
+  margin-bottom: var(--space-sm);
+}
+
+.gir-compare-title {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.gir-compare-sub {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+}
+
+/* Scrolls sideways inside its own box on phones; the page never does */
+.gir-table-wrap {
+  max-width: 62rem;
+  margin: 0 auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.gir-table {
+  width: 100%;
+  min-width: 44rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.gir-table th,
+.gir-table td {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.gir-table tbody tr:last-child th,
+.gir-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.gir-table thead th {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.gir-table tbody th {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.gir-table td {
+  color: var(--color-text-secondary);
+}
+
+.gir-table .gir-col-us {
+  background-color: #FDF3EA;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.gir-table thead .gir-col-us {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.gir-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.gir-compare-note {
+  margin: var(--space-lg) 0 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+.gir-compare-note a {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.gir-compare-note a:hover {
+  text-decoration: underline;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .gir-hero-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    text-align: center;
+  }
+
+  .gir-hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gir-hero-cta {
+    justify-content: center;
+  }
+
+  .gir-chat {
+    text-align: left;
+  }
+
+  .gir-objections-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .gir-objections-intro {
+    position: static;
+  }
+
+  .gir-plan-step {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .gir-signal {
+    flex-basis: calc(50% - var(--space-md) / 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .gir-hero {
+    padding: var(--space-2xl) 0;
+  }
+
+  .gir-stakes-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+  }
+
+  /* One line isn't physically possible at phone width */
+  .gir-stakes-quote {
+    white-space: normal;
+    padding-left: var(--space-md);
+  }
+
+  .gir-dig-layer {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+  }
+
+  /* Keep the "going deeper" feel without eating the phone's width */
+  .gir-depth-2 { margin-left: 0.5rem; }
+  .gir-depth-3 { margin-left: 1rem; }
+  .gir-depth-4 { margin-left: 1.5rem; }
+
+  .gir-dig-result {
+    padding: var(--space-lg);
+  }
+
+  .gir-gap-head {
+    display: none;
+  }
+
+  .gir-gap-role,
+  .gir-gap-row {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+
+  .gir-gap-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-md);
+  }
+
+  .gir-gap-known::before,
+  .gir-gap-ask::before {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.6875rem;
+    font-style: normal;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .gir-gap-ask::before {
+    content: "It asks";
+    margin-bottom: 2px;
+  }
+
+  .gir-gap-none {
+    display: none;
+  }
+
+  .gir-gap-missing .gir-gap-ask {
+    margin-top: var(--space-xs);
+  }
+
+  .gir-signal {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  .gir-plan-step {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .gir-plan-visual {
+    min-height: 0;
+    padding: var(--space-md);
+  }
+
+  .gir-qroll {
+    height: 9.5rem;
+  }
+
+  .gir-mark {
+    white-space: normal;
+  }
+
+  .gir-reading-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   Everything resolves to its finished, readable state.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .gir-chat,
+  .gir-msg,
+  .gir-m3-text,
+  .gir-found-pill,
+  .gir-stakes-title .word {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .gir-typing {
+    display: none !important;
+  }
+
+  .gir-gap-row,
+  .gir-gap-missing .gir-gap-ask {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .gir-signal-tick {
+    transform: scale(1) !important;
+    transition: none !important;
+  }
+
+  .gir-mic-halo,
+  .gir-mic-rec,
+  .gir-mic-label-rec,
+  .gir-qroll-track,
+  .gir-wave span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .gir-mic-idle,
+  .gir-mic-label-idle {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .gir-wave span {
+    height: calc(4px + 16px * var(--amp, 0.5)) !important;
+  }
+
+  .gir-mark::after {
+    animation: none !important;
+    transform: scaleX(1) !important;
+  }
+
+  .gir-hero-secondary:hover,
+  .gir-ask-card:hover,
+  .gir-signal:hover,
+  .gir-plan-step:hover .gir-plan-num,
+  .gir-reading-card:hover {
+    transform: none !important;
+  }
+}
