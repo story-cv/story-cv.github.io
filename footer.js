@@ -108,6 +108,8 @@ function createFooter() {
                     <span class="legal-separator">•</span>
                     <a href="/chatgpt-for-resumes" class="legal-link">ChatGPT for Resumes</a>
                     <span class="legal-separator">•</span>
+                    <a href="/guided-interview-resume-tool" class="legal-link">Guided Interview Resume Tool</a>
+                    <span class="legal-separator">•</span>
                     <a href="/privacy-policy" class="legal-link">Privacy Policy</a>
                     <span class="legal-separator">•</span>
                     <a href="/terms-of-service" class="legal-link">Terms of Service</a>
