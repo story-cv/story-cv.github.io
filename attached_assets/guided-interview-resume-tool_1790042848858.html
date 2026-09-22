@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N4H9TWGN');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guided Interview Resume Tool: It Asks, Then Writes | StoryCV</title>
+    <meta name="description" content="StoryCV is a guided interview resume tool and conversational resume writer. It finds what your target role needs, asks about the gaps, then writes your bullets.">
+    <meta name="keywords" content="guided interview resume tool, conversational resume writer, digital resume writer">
+    <meta name="author" content="StoryCV">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.ico">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="The resume tool that finds what you forgot you did.">
+    <meta property="og:description" content="Tell it the job you want. It spots what your resume is missing, asks about it, then writes the bullets.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://story.cv/guided-interview-resume-tool">
+    <meta property="og:image" content="https://story.cv/resume-writer-interview.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="StoryCV, a guided interview resume tool that asks follow-up questions and writes your resume bullets">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The resume tool that finds what you forgot you did.">
+    <meta name="twitter:description" content="Tell it the job you want. It spots what your resume is missing, asks about it, then writes the bullets.">
+    <meta name="twitter:image" content="https://story.cv/resume-writer-interview.webp">
+    <meta name="twitter:image:alt" content="StoryCV, a guided interview resume tool that asks follow-up questions and writes your resume bullets">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://story.cv/guided-interview-resume-tool">
+
+    <!-- Google Fonts - Onest font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="guided-interview-resume-tool.css">
+
+    <!-- Structured Data - FAQ (text must match the visible accordion word for word) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a guided interview resume tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A guided interview resume tool asks you questions about your work and writes resume bullets from your answers, so you never start from a blank page. The good ones start from the role you want, work out what your resume is missing, and keep asking until they find the decision you made, the scale of the work and what changed because of it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a conversational resume writer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A conversational resume writer follows the same workflow as a good human resume writer, in digital form. It starts with the role you want, compares it with what it already knows about you, then interviews you about the gaps. You answer in plain language, out loud or typed, and it turns the conversation into specific bullet points."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a digital resume writer the same as a resume builder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not quite. A resume builder gives you templates and empty fields, and you supply the words. A digital resume writer supplies the words the way a human writer would: it works out what's missing for your target role, interviews you about it, then writes. StoryCV is the second kind."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this practice for job interviews?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The interview is about work you've already done, and it exists to write your resume. There's a useful side effect, though: once you've said something clearly out loud, it's much easier to say it again when a hiring manager asks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I type instead of talking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can record and transcribe, or type. Talking tends to be faster, because people ramble more when they speak, and the rambling is usually where the useful details are."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from asking ChatGPT to interview me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can ask ChatGPT to interview you, but you have to write the prompt, keep it on track and decide when an answer is good enough. StoryCV's interview is built for this one job: it checks every answer for seven things and asks again when one is missing. Everything you say is also kept as your Career Story, instead of disappearing into a chat log."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - Breadcrumb -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "StoryCV", "item": "https://story.cv" },
+        { "@type": "ListItem", "position": 2, "name": "Guided Interview Resume Tool", "item": "https://story.cv/guided-interview-resume-tool" }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4H9TWGN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header Section -->
+    <div id="header-container"></div>
+
+    <main>
+
+        <!-- ============================================================
+             SECTION 1: HEADER (StoryBrand: Grunt Test)
+             ============================================================ -->
+        <section class="gir-hero">
+            <div class="container">
+                <div class="gir-hero-layout">
+                    <div class="gir-hero-content">
+                        <p class="gir-eyebrow scroll-reveal">An interview about the work you've already done</p>
+                        <h1 class="gir-hero-title scroll-reveal" data-delay="60">
+                            The guided interview resume tool that finds
+                            <span class="text-orange underline-container">what you forgot you did<svg class="wiggly-underline" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path class="wiggly-path" d="M0,6 Q10,2 20,6 T40,6 T60,6 T80,6 T100,6 T120,6" fill="none" stroke="#EE4E34" stroke-width="3" stroke-linecap="round"/></svg></span>.
+                        </h1>
+                        <p class="gir-hero-subtitle scroll-reveal" data-delay="120">
+                            Tell it the job you want. It spots what your resume is missing, asks about it, then writes the bullets.
+                        </p>
+                        <div class="gir-hero-cta scroll-reveal" data-delay="180">
+                            <a href="https://write.story.cv" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Start the conversation</a>
+                            <a href="#gir-dig" class="btn btn-secondary gir-hero-secondary">Watch one answer unfold →</a>
+                        </div>
+                    </div>
+
+                    <div class="gir-hero-visual scroll-reveal" data-delay="150">
+                        <!-- Animated interview: a question, a flat answer, the follow-up
+                             that matters, and the detail it finds. Plays once on load. -->
+                        <div class="gir-chat" aria-hidden="true">
+                            <div class="gir-chat-bar">
+                                <span class="gir-dot"></span><span class="gir-dot"></span><span class="gir-dot"></span>
+                                <span class="gir-chat-role">Target role &middot; Operations Manager</span>
+                            </div>
+                            <div class="gir-chat-body">
+                                <div class="gir-msg gir-msg-ask gir-m1">
+                                    <span class="gir-msg-who">StoryCV</span>
+                                    <p>Ops Manager roles want change management. Your resume doesn't show any yet. Ever got a team to switch to something new?</p>
+                                </div>
+                                <div class="gir-msg gir-msg-you gir-m2">
+                                    <span class="gir-msg-who">You</span>
+                                    <p>We rolled out a new shift-scheduling system.</p>
+                                </div>
+                                <div class="gir-msg gir-msg-ask gir-msg-follow gir-m3">
+                                    <span class="gir-msg-who">StoryCV <em>follow-up</em></span>
+                                    <span class="gir-typing"><span></span><span></span><span></span></span>
+                                    <p class="gir-m3-text">What made it hard?</p>
+                                </div>
+                                <div class="gir-msg gir-msg-you gir-m4">
+                                    <span class="gir-msg-who">You</span>
+                                    <p>Night shift refused to use it. So I ran 2am huddles for two weeks until they did.</p>
+                                </div>
+                            </div>
+                            <div class="gir-chat-found">
+                                <span class="gir-found-pill">Gap filled: change management, with proof.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 2: THE STAKES (villain: the form with a chat skin)
+             ============================================================ -->
+        <section class="gir-stakes section-wrapper">
+            <div class="container">
+                <div class="floating-card floating-card-cream no-shadow scroll-reveal">
+                    <div class="gir-stakes-content">
+                        <h2 class="gir-stakes-title scroll-reveal" data-delay="80">
+                            <span class="word-reveal-wrap"><span class="word" style="--wi:0">Most</span> <span class="word" style="--wi:1">"guided"</span> <span class="word" style="--wi:2">tools</span> <span class="word" style="--wi:3">are</span> <span class="word" style="--wi:4">forms</span> <span class="word" style="--wi:5">with</span> <span class="word" style="--wi:6">a</span> <span class="word" style="--wi:7">friendly</span> <span class="word word-accent" style="--wi:8">face.</span></span>
+                        </h2>
+                        <p class="gir-stakes-lede scroll-reveal" data-delay="140">They ask for your title, dates and duties, which your resume already has. So what you send says what your job was, not what you did in it.</p>
+
+                        <div class="gir-stakes-grid scroll-reveal" data-delay="200">
+                            <div class="gir-ask-card gir-ask-form">
+                                <span class="gir-ask-label">What most tools ask</span>
+                                <ul class="gir-ask-list">
+                                    <li>Job title?</li>
+                                    <li>Key responsibilities?</li>
+                                    <li>Any achievements?</li>
+                                </ul>
+                            </div>
+                            <div class="gir-ask-card gir-ask-real">
+                                <span class="gir-ask-label">What an interview asks</span>
+                                <ul class="gir-ask-list">
+                                    <li>What was on fire when you joined?</li>
+                                    <li>What would have broken without you?</li>
+                                    <li>Who noticed?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <blockquote class="gir-stakes-quote scroll-reveal" data-delay="260">"Any achievements?" is the question that makes people close the tab.</blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 3: SHOW IT (the secret, made visible)
+             ============================================================ -->
+        <section class="gir-dig-section section-wrapper" id="gir-dig">
+            <div class="container">
+                <div class="gir-dig-header scroll-reveal">
+                    <p class="gir-eyebrow">One answer, three follow-ups</p>
+                    <h2 class="gir-dig-title">The bullet you need is usually three questions down.</h2>
+                </div>
+
+                <ol class="gir-dig">
+                    <li class="gir-dig-layer gir-depth-1 scroll-reveal">
+                        <span class="gir-dig-depth">Surface</span>
+                        <div class="gir-dig-body">
+                            <p class="gir-dig-q">You start with</p>
+                            <p class="gir-dig-a">"I managed the warehouse team."</p>
+                        </div>
+                    </li>
+                    <li class="gir-dig-layer gir-depth-2 scroll-reveal" data-delay="80">
+                        <span class="gir-dig-depth">Context</span>
+                        <div class="gir-dig-body">
+                            <p class="gir-dig-q">What changed while you were there?</p>
+                            <p class="gir-dig-a">"We hired a lot for peak season."</p>
+                        </div>
+                    </li>
+                    <li class="gir-dig-layer gir-depth-3 scroll-reveal" data-delay="160">
+                        <span class="gir-dig-depth">Ownership</span>
+                        <div class="gir-dig-body">
+                            <p class="gir-dig-q">Who trained the new people?</p>
+                            <p class="gir-dig-a">"Me, I guess. Twelve of them. I made a checklist so I'd stop repeating myself."</p>
+                        </div>
+                    </li>
+                    <li class="gir-dig-layer gir-depth-4 scroll-reveal" data-delay="240">
+                        <span class="gir-dig-depth">Impact</span>
+                        <div class="gir-dig-body">
+                            <p class="gir-dig-q">Is that checklist still used?</p>
+                            <p class="gir-dig-a">"Yeah. It's the standard onboarding now."</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="gir-dig-result scroll-reveal" data-delay="120">
+                    <span class="gir-dig-result-label">The bullet</span>
+                    <p class="gir-dig-result-text">
+                        Trained <span class="gir-mark gir-mark-1">12 peak-season hires</span> and wrote the onboarding checklist that <span class="gir-mark gir-mark-2">became the site's standard process</span>.
+                    </p>
+                </div>
+
+                <p class="gir-dig-kicker scroll-reveal" data-delay="180">She didn't mention the twelve hires because she didn't think they counted. They counted.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 4: VIDEO (StoryBrand: guide / empathy)
+             Reuses the homepage founder video, already on Cloudinary.
+             ============================================================ -->
+        <section class="founder-video-section gir-video-section" aria-labelledby="gir-video-heading">
+            <div class="container">
+                <div class="founder-video-content scroll-reveal">
+                    <p class="gir-video-eyebrow">From the founder</p>
+                    <h2 class="founder-video-heading" id="gir-video-heading">
+                        Why your resume
+                        <span class="text-orange underline-container">undersells you<svg class="wiggly-underline" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path class="wiggly-path" d="M0,6 Q10,2 20,6 T40,6 T60,6 T80,6 T100,6 T120,6" fill="none" stroke="#EE4E34" stroke-width="3" stroke-linecap="round"/></svg></span>.
+                    </h2>
+                    <div class="founder-video-frame">
+                        <iframe
+                            src="https://player.cloudinary.com/embed/?cloud_name=uvynkvqx&public_id=Landing_Page_Founder_Video"
+                            title="Founder video: You are not underqualified, you are underdescribed"
+                            width="1080"
+                            height="1920"
+                            loading="lazy"
+                            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                            allowfullscreen
+                            frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 5: THE METHOD (StoryBrand: guide / authority)
+             ============================================================ -->
+        <section class="gir-signals section-wrapper">
+            <div class="container">
+                <div class="gir-signals-header scroll-reveal">
+                    <p class="gir-eyebrow">The resume writer's workflow, in digital form</p>
+                    <h2 class="gir-signals-title">A good resume writer starts with the job you want. So does StoryCV.</h2>
+                    <p class="gir-signals-sub">It compares that role with what it already knows about you, finds what's missing, and asks about exactly that. Nothing gets asked twice.</p>
+                </div>
+
+                <!-- Gap analysis: rows are what the role needs, columns are the workflow.
+                     Covered rows settle; gaps light up and get a question. -->
+                <div class="gir-gap scroll-reveal" data-delay="80">
+                    <div class="gir-gap-head">
+                        <span><b>1</b> The role you want</span>
+                        <span><b>2</b> What it already knows</span>
+                        <span><b>3</b> What it asks you</span>
+                    </div>
+                    <div class="gir-gap-role">Target: <strong>Operations Manager</strong></div>
+
+                    <div class="gir-gap-row gir-gap-ok" style="--ri:0">
+                        <span class="gir-gap-need">Team leadership</span>
+                        <span class="gir-gap-known"><i aria-hidden="true"></i>"Managed a team of 14"</span>
+                        <span class="gir-gap-ask gir-gap-none">Already covered</span>
+                    </div>
+                    <div class="gir-gap-row gir-gap-ok" style="--ri:1">
+                        <span class="gir-gap-need">Process improvement</span>
+                        <span class="gir-gap-known"><i aria-hidden="true"></i>"Streamlined the picking workflow"</span>
+                        <span class="gir-gap-ask gir-gap-none">Already covered</span>
+                    </div>
+                    <div class="gir-gap-row gir-gap-missing" style="--ri:2">
+                        <span class="gir-gap-need">Change management</span>
+                        <span class="gir-gap-known"><i aria-hidden="true"></i>Nothing on your resume yet</span>
+                        <span class="gir-gap-ask">"Ever got a team to switch to something new?"</span>
+                    </div>
+                    <div class="gir-gap-row gir-gap-missing" style="--ri:3">
+                        <span class="gir-gap-need">Budget ownership</span>
+                        <span class="gir-gap-known"><i aria-hidden="true"></i>Nothing on your resume yet</span>
+                        <span class="gir-gap-ask">"Have you owned a budget, even an informal one?"</span>
+                    </div>
+                </div>
+
+                <div class="gir-signals-sub-header scroll-reveal">
+                    <h3 class="gir-signals-subtitle">Then every answer gets checked for seven things.</h3>
+                    <p class="gir-signals-sub">When one is missing, it asks again. Same as a resume writer would.</p>
+                </div>
+
+                <div class="gir-signals-grid">
+                    <div class="gir-signal scroll-reveal" style="--si:0">
+                        <span class="gir-signal-tick" aria-hidden="true"></span>
+                        <h3>Problem</h3>
+                        <p>What was broken before you got there?</p>
+                    </div>
+                    <div class="gir-signal scroll-reveal" style="--si:1" data-delay="60">
+                        <span class="gir-signal-tick" aria-hidden="true"></span>
+                        <h3>Ownership</h3>
+                        <p>Which part was yours alone?</p>
+                    </div>
+                    <div class="gir-signal scroll-reveal" style="--si:2" data-delay="120">
+                        <span class="gir-signal-tick" aria-hidden="true"></span>
+                        <h3>Action</h3>
+                        <p>What did you actually do, step by step?</p>
+                    </div>
+                    <div class="gir-signal scroll-reveal" style="--si:3" data-delay="180">
+                        <span class="gir-signal-tick" aria-hidden="true"></span>
+                        <h3>Scale</h3>
+                        <p>How many people, customers or dollars?</p>
+                    </div>
+                    <div class="gir-signal scroll-reveal" style="--si:4" data-delay="240">
+                        <span class="gir-signal-tick" aria-hidden="true"></span>
+                        <h3>Result</h3>
+                        <p>What changed because of it?</p>
+                    </div>
+                    <div class="gir-signal scroll-reveal" style="--si:5" data-delay="300">
+                        <span class="gir-signal-tick" aria-hidden="true"></span>
+                        <h3>Benefit</h3>
+                        <p>Who was better off, and how?</p>
+                    </div>
+                    <div class="gir-signal scroll-reveal" style="--si:6" data-delay="360">
+                        <span class="gir-signal-tick" aria-hidden="true"></span>
+                        <h3>Recognition</h3>
+                        <p>Who noticed?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 6: THE GUIDE (testimonial)
+             ============================================================ -->
+        <section class="nathan-testimonial-section">
+            <div class="container">
+                <figure class="nathan-testimonial scroll-reveal">
+                    <div class="nathan-content">
+                        <blockquote>
+                            <span class="nathan-mark">&ldquo;</span>Every time I updated my CV, I lost the last one. Bullets I'd never see again, even when they'd have been perfect for a future role. StoryCV fixes that. A database of achievements you can pull from when you actually need a bespoke CV.<span class="nathan-mark">&rdquo;</span>
+                        </blockquote>
+                        <figcaption>
+                            <span class="nathan-hair"></span>
+                            <span class="nathan-name">Dr. Neal Jha</span>
+                            <span class="nathan-title">Professor, Singapore Management University</span>
+                        </figcaption>
+                    </div>
+                </figure>
+                <p class="gir-authority scroll-reveal" data-delay="120">Built by the team behind Resumey.Pro, trusted by thousands of job seekers.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 7: THE PLAN (StoryBrand: 3 steps)
+             ============================================================ -->
+        <section class="gir-plan section-wrapper" id="gir-plan">
+            <div class="container">
+                <div class="gir-plan-header scroll-reveal">
+                    <p class="gir-eyebrow">How it works</p>
+                    <h2 class="gir-plan-title">Three steps, and the only writing you do is talking</h2>
+                </div>
+
+                <div class="gir-plan-steps">
+
+                    <!-- STEP 1: mic goes from idle to listening, on a loop -->
+                    <article class="gir-plan-step scroll-reveal">
+                        <div class="gir-plan-text">
+                            <span class="gir-plan-num">1</span>
+                            <h3>Pick your target role and start talking</h3>
+                            <p>Tell it where you're headed, then talk through one past job at a time. Answer out loud or type. Brain dump, don't filter, and stop whenever you like.</p>
+                        </div>
+                        <div class="gir-plan-visual" aria-hidden="true">
+                            <div class="gir-mic">
+                                <span class="gir-mic-halo"></span>
+                                <span class="gir-mic-button">
+                                    <svg class="gir-mic-idle" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="2" width="6" height="12" rx="3"/>
+                                        <path d="M5 11a7 7 0 0 0 14 0"/>
+                                        <path d="M12 18v4"/>
+                                    </svg>
+                                    <svg class="gir-mic-rec" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round">
+                                        <rect x="7" y="7" width="10" height="10" rx="2"/>
+                                    </svg>
+                                </span>
+                            </div>
+                            <p class="gir-mic-label">
+                                <span class="gir-mic-label-idle">Record and transcribe</span>
+                                <span class="gir-mic-label-rec">Listening…</span>
+                            </p>
+                            <div class="gir-wave">
+                                <span></span><span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- STEP 2: follow-up questions roll past, carousel style -->
+                    <article class="gir-plan-step scroll-reveal" data-delay="100">
+                        <div class="gir-plan-text">
+                            <span class="gir-plan-num">2</span>
+                            <h3>Answer the questions your resume can't</h3>
+                            <p>It compares the role you want with what it already knows about you, and asks about the gaps. Then it checks every answer for the seven things above, and follows up when one's missing.</p>
+                        </div>
+                        <div class="gir-plan-visual" aria-hidden="true">
+                            <div class="gir-qroll">
+                                <div class="gir-qroll-track">
+                                    <p class="gir-q">What was broken before you got there?</p>
+                                    <p class="gir-q">Which part was yours alone?</p>
+                                    <p class="gir-q">How many people, customers or dollars?</p>
+                                    <p class="gir-q">What changed because of it?</p>
+                                    <p class="gir-q">Who noticed?</p>
+                                    <!-- duplicate set keeps the loop seamless -->
+                                    <p class="gir-q">What was broken before you got there?</p>
+                                    <p class="gir-q">Which part was yours alone?</p>
+                                    <p class="gir-q">How many people, customers or dollars?</p>
+                                    <p class="gir-q">What changed because of it?</p>
+                                    <p class="gir-q">Who noticed?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- STEP 3: the impact in a finished bullet gets underlined -->
+                    <article class="gir-plan-step scroll-reveal" data-delay="200">
+                        <div class="gir-plan-text">
+                            <span class="gir-plan-num">3</span>
+                            <h3>Get your bullets, keep your story</h3>
+                            <p>The bullets are written from what you said, nothing invented. Everything else is kept as your Career Story, so the next resume, LinkedIn rewrite or interview answer starts from something.</p>
+                        </div>
+                        <div class="gir-plan-visual" aria-hidden="true">
+                            <div class="gir-bullet-card">
+                                <span class="gir-bullet-role">Operations Lead</span>
+                                <p class="gir-bullet-text">
+                                    Moved <span class="gir-mark gir-mark-1">all three shifts</span> onto the new scheduling system by running <span class="gir-mark gir-mark-2">2am huddles with the night team</span>, the one shift that had <span class="gir-mark gir-mark-3">refused to switch</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div class="gir-plan-cta scroll-reveal" data-delay="260">
+                    <a href="https://write.story.cv" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Start the conversation</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 8: WHERE IT FITS (comparison for solution-aware readers)
+             ============================================================ -->
+        <section class="gir-compare section-wrapper">
+            <div class="container">
+                <div class="gir-compare-header scroll-reveal">
+                    <p class="gir-eyebrow">Your other options</p>
+                    <h2 class="gir-compare-title">Somebody has to do the remembering.</h2>
+                    <p class="gir-compare-sub">Here's who it is with a builder, ChatGPT, a human writer and a digital resume writer.</p>
+                </div>
+
+                <div class="gir-table-wrap scroll-reveal" data-delay="100">
+                    <table class="gir-table">
+                        <thead>
+                            <tr>
+                                <th scope="col"><span class="gir-sr">Question</span></th>
+                                <th scope="col">Resume builder</th>
+                                <th scope="col">ChatGPT</th>
+                                <th scope="col">Human resume writer</th>
+                                <th scope="col" class="gir-col-us">StoryCV</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Starts from the role you want?</th>
+                                <td>No</td>
+                                <td>Only if you paste it in</td>
+                                <td>Yes</td>
+                                <td class="gir-col-us">Yes, and works out the gaps</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Who does the remembering?</th>
+                                <td>You</td>
+                                <td>You</td>
+                                <td>The writer, on a call</td>
+                                <td class="gir-col-us">The interview</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Asks follow-up questions?</th>
+                                <td>No</td>
+                                <td>Only if you prompt it to</td>
+                                <td>Yes</td>
+                                <td class="gir-col-us">Yes, on every answer</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">What you have to bring</th>
+                                <td>The words</td>
+                                <td>The prompt and the context</td>
+                                <td>An hour-long call</td>
+                                <td class="gir-col-us">One role, talked through</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Cost</th>
+                                <td>Free to subscription</td>
+                                <td>Free to subscription</td>
+                                <td>$200 to $1,000+</td>
+                                <td class="gir-col-us">Free to start, one-time pass</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">What you keep</th>
+                                <td>One document</td>
+                                <td>A chat log</td>
+                                <td>One document</td>
+                                <td class="gir-col-us">A Career Story you reuse</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="gir-compare-note scroll-reveal" data-delay="160">Tried ChatGPT already? <a href="/chatgpt-for-resumes">Here's why it stalls on resumes →</a></p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 9: OBJECTIONS
+             ============================================================ -->
+        <section class="gir-objections section-wrapper">
+            <div class="container">
+                <div class="floating-card floating-card-white no-shadow scroll-reveal">
+                    <div class="gir-objections-inner">
+                        <div class="gir-objections-intro">
+                            <p class="gir-eyebrow">Got more questions?</p>
+                            <h2 class="gir-objections-title">Five things people check before they start talking</h2>
+                            <p class="gir-objections-lede">Fair enough. You're about to tell a piece of software about your job.</p>
+                        </div>
+
+                        <div class="gir-objections-list">
+                            <div class="gir-objection scroll-reveal" data-delay="60">
+                                <h3>"I'm bad at talking about myself."</h3>
+                                <p>Good, you won't have to. You answer questions about what happened, the way you'd tell a friend. The interview does the translating into resume language.</p>
+                            </div>
+                            <div class="gir-objection scroll-reveal" data-delay="100">
+                                <h3>"Do I have to use my voice?"</h3>
+                                <p>No, typing works too. Talking is usually faster, because people ramble more out loud, and the rambling is where the details hide.</p>
+                            </div>
+                            <div class="gir-objection scroll-reveal" data-delay="140">
+                                <h3>"I don't have time to do my whole career."</h3>
+                                <p>You don't do it all at once. Pick one role, stop when you need to, and come back later. It picks up where you left off.</p>
+                            </div>
+                            <div class="gir-objection scroll-reveal" data-delay="180">
+                                <h3>"Is this a resume builder with a chat window?"</h3>
+                                <p>A builder asks you to fill in fields. The interview keeps asking until it has the problem, your part, the scale and the result. Then it writes.</p>
+                            </div>
+                            <div class="gir-objection scroll-reveal" data-delay="220">
+                                <h3>"What happens to everything I say?"</h3>
+                                <p>It's kept as your Career Story, and it stays yours even after a pass ends. Next time you need a resume, you start from it instead of from zero.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 10: PRICING (reuses pricing-cards.js)
+             ============================================================ -->
+        <section class="pricing-section section-wrapper">
+            <div class="container">
+                <div class="pricing-header scroll-reveal">
+                    <h2 class="pricing-title">Your first two bullets are free.</h2>
+                </div>
+                <div id="pricing-cards-container"></div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 11: CTA BANNER
+             ============================================================ -->
+        <section class="cta-banner section-wrapper">
+            <div class="container">
+                <div class="cta-banner-content scroll-reveal">
+                    <div class="cta-banner-text-column">
+                        <h2 class="cta-banner-title">Your resume is missing things you did.</h2>
+                        <p class="cta-banner-text">Walk into your next interview already knowing how to talk about your work. Talk through one role, and everything you say is kept as your Career Story.</p>
+                        <div class="cta-banner-button">
+                            <a href="https://write.story.cv" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Start the conversation</a>
+                        </div>
+                    </div>
+                    <div class="cta-banner-visual-column">
+                        <img src="job-opportunities-from-better-applications.webp"
+                             alt="job opportunities come from better applications, not more applications"
+                             width="500"
+                             height="400"
+                             loading="lazy"
+                             decoding="async"
+                             class="cta-banner-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 12: FAQ (matches FAQPage schema above)
+             ============================================================ -->
+        <section class="faq-section section-wrapper">
+            <div class="container">
+                <div class="floating-card floating-card-white no-shadow scroll-reveal">
+                    <div class="faq-content">
+                        <div class="faq-left-panel">
+                            <p class="faq-label">FAQ</p>
+                            <h2 class="faq-title">Guided interview resume tools, explained</h2>
+                            <p class="faq-description">What a guided interview resume tool or conversational resume writer actually does, and how to tell a real interview from a form in disguise.</p>
+                            <a href="https://write.story.cv" target="_blank" rel="noopener noreferrer" class="faq-cta-button">Start the conversation</a>
+                        </div>
+
+                        <div class="faq-right-panel" data-delay="100">
+                            <div class="accordion-root">
+
+                                <div class="accordion-item">
+                                    <button class="accordion-trigger" data-state="closed" aria-expanded="false" aria-controls="gir-faq-1">
+                                        <span>What is a guided interview resume tool?</span>
+                                        <svg class="accordion-chevron chevron-down-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                                    </button>
+                                    <div class="accordion-content" id="gir-faq-1" data-state="closed">
+                                        <div class="accordion-content-inner">
+                                            <p>A guided interview resume tool asks you questions about your work and writes resume bullets from your answers, so you never start from a blank page. The good ones start from the role you want, work out what your resume is missing, and keep asking until they find the decision you made, the scale of the work and what changed because of it.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-trigger" data-state="closed" aria-expanded="false" aria-controls="gir-faq-2">
+                                        <span>What is a conversational resume writer?</span>
+                                        <svg class="accordion-chevron chevron-down-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                                    </button>
+                                    <div class="accordion-content" id="gir-faq-2" data-state="closed">
+                                        <div class="accordion-content-inner">
+                                            <p>A conversational resume writer follows the same workflow as a good human resume writer, in digital form. It starts with the role you want, compares it with what it already knows about you, then interviews you about the gaps. You answer in plain language, out loud or typed, and it turns the conversation into specific bullet points.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-trigger" data-state="closed" aria-expanded="false" aria-controls="gir-faq-3">
+                                        <span>Is a digital resume writer the same as a resume builder?</span>
+                                        <svg class="accordion-chevron chevron-down-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                                    </button>
+                                    <div class="accordion-content" id="gir-faq-3" data-state="closed">
+                                        <div class="accordion-content-inner">
+                                            <p>Not quite. A resume builder gives you templates and empty fields, and you supply the words. A digital resume writer supplies the words the way a human writer would: it works out what's missing for your target role, interviews you about it, then writes. StoryCV is the second kind.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-trigger" data-state="closed" aria-expanded="false" aria-controls="gir-faq-4">
+                                        <span>Is this practice for job interviews?</span>
+                                        <svg class="accordion-chevron chevron-down-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                                    </button>
+                                    <div class="accordion-content" id="gir-faq-4" data-state="closed">
+                                        <div class="accordion-content-inner">
+                                            <p>No. The interview is about work you've already done, and it exists to write your resume. There's a useful side effect, though: once you've said something clearly out loud, it's much easier to say it again when a hiring manager asks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-trigger" data-state="closed" aria-expanded="false" aria-controls="gir-faq-5">
+                                        <span>Can I type instead of talking?</span>
+                                        <svg class="accordion-chevron chevron-down-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                                    </button>
+                                    <div class="accordion-content" id="gir-faq-5" data-state="closed">
+                                        <div class="accordion-content-inner">
+                                            <p>Yes. You can record and transcribe, or type. Talking tends to be faster, because people ramble more when they speak, and the rambling is usually where the useful details are.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-trigger" data-state="closed" aria-expanded="false" aria-controls="gir-faq-6">
+                                        <span>How is this different from asking ChatGPT to interview me?</span>
+                                        <svg class="accordion-chevron chevron-down-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                                    </button>
+                                    <div class="accordion-content" id="gir-faq-6" data-state="closed">
+                                        <div class="accordion-content-inner">
+                                            <p>You can ask ChatGPT to interview you, but you have to write the prompt, keep it on track and decide when an answer is good enough. StoryCV's interview is built for this one job: it checks every answer for seven things and asks again when one is missing. Everything you say is also kept as your Career Story, instead of disappearing into a chat log.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 13: JUNK DRAWER (internal links + community)
+             ============================================================ -->
+        <section class="gir-reading section-wrapper">
+            <div class="container">
+                <div class="gir-reading-header scroll-reveal">
+                    <h2 class="gir-reading-title">Go deeper on this</h2>
+                    <p class="gir-reading-subtitle">More on why the thinking has to come before the writing.</p>
+                </div>
+                <div class="gir-reading-grid">
+                    <a class="gir-reading-card scroll-reveal" href="/blog/articles/career-reflection-before-resume">
+                        <span class="gir-reading-tag">Article</span>
+                        <h3>Career reflection before resume: think, then write</h3>
+                        <p>Why staring at a blank page is a memory problem, not a writing one.</p>
+                        <span class="gir-reading-link">Read it →</span>
+                    </a>
+                    <a class="gir-reading-card scroll-reveal" data-delay="80" href="/blog/articles/talk-about-your-work">
+                        <span class="gir-reading-tag">Article</span>
+                        <h3>How to talk about your work without sounding arrogant</h3>
+                        <p>A simple way to describe your impact, for resumes and for the room.</p>
+                        <span class="gir-reading-link">Read it →</span>
+                    </a>
+                    <a class="gir-reading-card scroll-reveal" data-delay="160" href="/blog/articles/storycv-vs-a-professional-resume-writer">
+                        <span class="gir-reading-tag">Comparison</span>
+                        <h3>StoryCV vs a professional resume writer</h3>
+                        <p>Cost, time and quality, compared honestly.</p>
+                        <span class="gir-reading-link">Read it →</span>
+                    </a>
+                    <a class="gir-reading-card scroll-reveal" data-delay="240" href="/chatgpt-for-resumes">
+                        <span class="gir-reading-tag">Guide</span>
+                        <h3>ChatGPT for resumes has a blind spot</h3>
+                        <p>Why it can only rearrange what you already wrote.</p>
+                        <span class="gir-reading-link">Read it →</span>
+                    </a>
+                </div>
+
+                <div class="gir-reading-community scroll-reveal" data-delay="200">
+                    <p>Swapping notes with other people mid-job-hunt helps more than another template.</p>
+                    <a href="https://www.reddit.com/r/StoryCV/" target="_blank" rel="noopener noreferrer" class="gir-community-link">Join the community →</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts (same set the homepage loads, minus the slider) -->
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="cookie-banner.js" defer></script>
+    <script src="/pricing-cards.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="scroll-animation.js" defer></script>
+</body>
+</html>
