@@ -1,0 +1,436 @@
+/* ==========================================================
+   StoryCV About page  (about-us.css)
+   Loads AFTER /style.css. Uses the site's existing tokens
+   (--color-primary, --color-cream, --font-primary, --space-*).
+   Every class is prefixed .ab- so nothing collides with the
+   rest of the site.
+   ========================================================== */
+
+.ab {
+  --ab-ink: var(--color-text-primary, #2E2E2E);
+  --ab-ink-2: var(--color-text-secondary, #475569);
+  --ab-muted: var(--color-text-muted, #64748b);
+  --ab-accent: var(--color-primary, #EE4E34);
+  --ab-accent-hover: var(--color-primary-hover, #d63824);
+  --ab-cream: var(--color-cream, #FCEDDA);
+  --ab-cream-light: var(--color-cream-light, #FEF6EB);
+  --ab-line: var(--color-border, #e2e8f0);
+  --ab-line-warm: #f1dcc3;
+  --ab-bg: #ffffff;
+  --ab-ink-faded: #b3a08c; /* manifesto "unread" state, on cream */
+  --ab-ease: cubic-bezier(.22, .61, .36, 1);
+
+  display: block;
+  padding: 0;            /* the site's global main{} adds padding; reset it */
+  min-height: 0;
+  background: var(--ab-bg);
+  color: var(--ab-ink);
+  font-family: var(--font-primary, 'Onest', system-ui, sans-serif);
+  overflow-x: clip;
+}
+
+/* Element defaults use :where() so they carry almost no specificity.
+   That keeps the shared pricing-cards component styled exactly as it
+   is on /pricing. */
+:where(.ab) p { margin: 0; color: var(--ab-ink-2); }
+:where(.ab) :is(h1, h2, h3) { margin: 0; }
+:where(.ab) a:not([class]) { color: var(--ab-accent); text-underline-offset: 3px; }
+:where(.ab) a:not([class]):hover { color: var(--ab-accent-hover); text-decoration: underline; }
+.ab :focus-visible { outline: 2px solid var(--ab-accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- Layout ---------- */
+.ab-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+.ab-wrap--letter { max-width: 760px; }
+
+.ab-section { padding-block: clamp(4rem, 8vw, 6.5rem); }
+.ab-section--tint { background: var(--ab-cream-light); }
+
+.ab-head { display: grid; gap: 0.75rem; max-width: 760px; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+.ab-head--center { margin-inline: auto; text-align: center; justify-items: center; }
+
+/* ---------- Type ---------- */
+.ab-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ab-accent);
+  line-height: 1.4;
+}
+.ab-display {
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--ab-ink) !important;
+  text-wrap: balance;
+}
+.ab-display--xl { font-size: clamp(2.25rem, 5.4vw, 4rem); line-height: 1.1; letter-spacing: -0.03em; }
+.ab-lede { font-size: clamp(1.125rem, 1.6vw, 1.3125rem); line-height: 1.6; max-width: 640px; }
+
+:where(.ab) h3 { font-size: 1.1875rem; font-weight: 700; line-height: 1.3; color: var(--ab-ink); letter-spacing: -0.01em; }
+
+/* Brand wiggly underline */
+.ab-ul { position: relative; display: inline-block; white-space: nowrap; color: var(--ab-accent); }
+.ab-ul-svg { position: absolute; left: 0; bottom: -0.12em; width: 100%; height: 0.32em; overflow: visible; opacity: .45; }
+.ab-ul-path { stroke-dasharray: 140; stroke-dashoffset: 0; }
+
+/* ---------- Hero ---------- */
+.ab-hero { padding-block: clamp(3rem, 7vw, 6rem) clamp(5rem, 11vw, 9rem); }
+.ab-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  grid-template-areas: "copy art" "copy tag";
+  grid-template-rows: auto 1fr;
+  gap: 1.25rem clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+.ab-hero-copy { grid-area: copy; display: grid; gap: 1.5rem; align-content: start; }
+.ab-hero .ab-display--xl { max-width: 14ch; }
+
+/* Hero illustration */
+.ab-art { grid-area: art; position: relative; padding: 2.25rem 1.5rem 2.75rem 0; }
+.ab-paper {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--ab-line-warm);
+  border-radius: 14px;
+  padding: 1.75rem 1.75rem 2rem;
+  box-shadow: 0 30px 50px -30px rgba(146, 64, 14, 0.35), 0 2px 0 rgba(0,0,0,.02);
+  transform: rotate(-2deg);
+  display: grid; gap: 0.9rem;
+}
+.ab-bar { display: block; height: 8px; border-radius: 99px; background: #efe8df; width: 100%; }
+.ab-bar--name { height: 13px; width: 52%; background: var(--ab-ink); opacity: .85; }
+.ab-bar--sub { width: 34%; margin-top: 0.5rem; }
+.ab-bar--role { width: 42%; height: 10px; background: #dccfc0; }
+.ab-bar--date { width: 18%; }
+.ab-bar--90 { width: 90%; } .ab-bar--80 { width: 80%; } .ab-bar--70 { width: 70%; } .ab-bar--60 { width: 60%; }
+.ab-paper-head { padding-bottom: 0.9rem; border-bottom: 1px solid #f3ece3; }
+.ab-paper-role { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.35rem; }
+.ab-paper-role .ab-bar { flex: none; }
+.ab-paper-rest { display: grid; gap: 0.6rem; }
+.ab-paper-line { display: flex; align-items: center; gap: 0.6rem; margin: 0; }
+.ab-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ab-ink); flex: none; }
+.ab-thin {
+  font-size: 0.95rem; font-weight: 500; color: var(--ab-ink);
+  padding: 0.1rem 0.35rem; margin-left: -0.35rem; border-radius: 4px;
+  background: linear-gradient(90deg, var(--ab-cream), var(--ab-cream)) no-repeat left / 100% 100%;
+}
+.ab-bubble {
+  position: absolute; max-width: 15.5rem;
+  padding: 0.7rem 1rem; font-size: 0.9375rem; line-height: 1.4; font-weight: 500;
+  border-radius: 16px; box-shadow: 0 14px 28px -16px rgba(46, 46, 46, 0.28);
+  background: #fff; color: var(--ab-ink); border: 1px solid var(--ab-line);
+}
+.ab-bubble--q { border-bottom-right-radius: 4px; }
+.ab-bubble--a { font-weight: 400; color: var(--ab-ink-2); border-bottom-left-radius: 4px; }
+.ab-b1 { top: 0; right: 0; }
+.ab-b2 { top: 57%; left: -1.5rem; }
+.ab-b3 { bottom: 0; right: 0.5rem; }
+.ab-hero-tag {
+  grid-area: tag;
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem); font-weight: 700; line-height: 1.25; letter-spacing: -0.015em;
+  color: var(--ab-ink) !important; text-align: center; text-wrap: balance;
+  padding-top: 0.5rem;
+}
+.ab-meta {
+  list-style: none; margin: 1rem 0 0; padding: 1.5rem 0 0;
+  border-top: 1px solid var(--ab-line);
+  display: flex; flex-wrap: wrap; gap: 1rem 3rem;
+}
+.ab-meta li { display: grid; gap: 0.125rem; }
+.ab-meta-k { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ab-muted); }
+.ab-meta-v { font-size: 1.0625rem; font-weight: 500; color: var(--ab-ink); font-variant-numeric: tabular-nums; }
+
+/* ---------- Manifesto letter ---------- */
+.ab-manifesto { padding-block: 0 clamp(4rem, 8vw, 6.5rem); }
+.ab-manifesto .ab-eyebrow { margin-bottom: 1.25rem; }
+.ab-letter {
+  background: var(--ab-cream);
+  border: 1px solid var(--ab-accent);
+  border-radius: 12px;
+  padding: clamp(1.75rem, 5vw, 3.5rem);
+  display: grid;
+  gap: 1.5rem;
+}
+.ab-letter-title {
+  font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+  font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+  color: var(--ab-ink) !important;
+  text-wrap: balance;
+}
+.ab-ink { display: grid; gap: 1.1rem; }
+.ab-ink p {
+  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  line-height: 1.7;
+  color: var(--ab-ink);
+  transition: color 0.9s var(--ab-ease);
+}
+.ab-ink strong { font-weight: 700; color: inherit; }
+.ab-pull {
+  font-size: clamp(1.375rem, 2.6vw, 1.875rem);
+  font-weight: 700; line-height: 1.3; letter-spacing: -0.015em;
+  color: var(--ab-ink) !important;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ab-line-warm);
+}
+.ab-sign { display: flex; flex-direction: column; gap: 0.125rem; }
+.ab-sign-name { font-weight: 700; color: var(--ab-ink); font-size: 1.0625rem; }
+.ab-sign-role { font-size: 0.9375rem; color: var(--ab-muted); }
+
+/* ---------- Mission ---------- */
+.ab-mission { background: var(--ab-cream); padding-block: clamp(4rem, 9vw, 7rem); }
+.ab-mission-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1rem 3rem; align-items: baseline;
+}
+.ab-mission-label {
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem); font-weight: 700;
+  letter-spacing: -0.02em; line-height: 1.15; color: var(--ab-accent) !important;
+}
+.ab-mission-statement {
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem); font-weight: 500;
+  line-height: 1.2; letter-spacing: -0.02em; color: var(--ab-ink) !important; text-wrap: balance;
+}
+.ab-mission-body {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 3rem;
+  margin-top: clamp(2rem, 4vw, 3rem); padding-top: 2rem;
+  border-top: 1px solid var(--ab-line-warm);
+  margin-left: calc((100% - 3rem) / 3 + 3rem);
+}
+.ab-mission-body p { font-size: 1.0625rem; line-height: 1.7; }
+
+/* ---------- Beliefs ---------- */
+.ab-beliefs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; margin-top: 2rem; }
+.ab-belief { position: relative; display: grid; gap: 0.75rem; align-content: start; padding-top: 1.5rem; }
+.ab-belief::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+  background: var(--ab-accent); transform-origin: left center;
+  transition: transform 0.9s var(--ab-ease) calc(var(--d, 0) * 120ms + 150ms);
+}
+.ab-belief h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); letter-spacing: -0.015em; }
+.ab-belief p { font-size: 1.0625rem; line-height: 1.65; }
+
+/* ---------- What StoryCV does ---------- */
+.ab-does { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.ab-does-item {
+  background: var(--ab-bg); border: 1px solid var(--ab-line-warm); border-radius: 12px;
+  padding: 1.75rem; display: grid; gap: 0.75rem; align-content: start;
+  transition: transform 0.35s var(--ab-ease), box-shadow 0.35s var(--ab-ease), border-color 0.35s;
+}
+.ab-does-item:hover { transform: translateY(-4px); box-shadow: 0 14px 30px -18px rgba(238, 78, 52, 0.45); border-color: #f4b8a9; }
+.ab-does-item p { font-size: 1rem; line-height: 1.65; }
+.ab-icon { width: 44px; height: 44px; margin-bottom: 0.5rem; }
+.ab-does-item:hover .ab-icon { animation: ab-nudge 0.6s var(--ab-ease); }
+
+/* ---------- Split layout (different, FAQ) ---------- */
+.ab-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); }
+.ab-sticky { position: sticky; top: 110px; display: grid; gap: 0.75rem; }
+
+.ab-diff { display: grid; }
+.ab-diff-item { display: grid; gap: 0.5rem; padding-block: 1.75rem; border-top: 1px solid var(--ab-line); }
+.ab-diff-item:last-child { border-bottom: 1px solid var(--ab-line); }
+.ab-diff-item h3 { transition: color 0.25s; }
+.ab-diff-item:hover h3 { color: var(--ab-accent); }
+.ab-diff-item p { font-size: 1.0625rem; line-height: 1.65; }
+
+/* ---------- Who ---------- */
+.ab-who {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3rem;
+}
+.ab-who li {
+  position: relative; padding: 1.1rem 0 1.1rem 2rem;
+  border-top: 1px solid var(--ab-line-warm);
+  font-size: 1.125rem; line-height: 1.5; color: var(--ab-ink);
+}
+.ab-who li::before {
+  content: ""; position: absolute; left: 0; top: 1.72rem; width: 14px; height: 2px;
+  border-radius: 2px; background: var(--ab-accent);
+}
+
+/* ---------- Team ---------- */
+.ab-team { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.ab-founder { margin: 0; display: grid; gap: 0.875rem; }
+.ab-founder img {
+  width: 100%; max-width: 100%; height: auto; aspect-ratio: 480 / 523; object-fit: cover;
+  border-radius: 12px; background: var(--ab-cream);
+  box-shadow: 10px 10px 0 var(--ab-cream);
+  display: block;
+}
+.ab-founder figcaption { font-size: 0.9375rem; line-height: 1.55; color: var(--ab-muted); max-width: 42ch; }
+.ab-team-copy { display: grid; gap: 2rem; }
+.ab-team-copy > div:first-child { display: grid; gap: 0.75rem; }
+.ab-story { display: grid; gap: 1rem; }
+.ab-story p { font-size: 1.0625rem; line-height: 1.7; }
+.ab-links { display: flex; flex-wrap: wrap; gap: 0.625rem; }
+.ab-chip {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  padding: 0.55rem 1rem; border-radius: 999px;
+  border: 1px solid var(--ab-line); color: var(--ab-ink) !important;
+  font-size: 0.9375rem; font-weight: 500; text-decoration: none !important;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s var(--ab-ease);
+}
+.ab-chip:hover { border-color: var(--ab-accent); color: var(--ab-accent) !important; transform: translateY(-2px); }
+
+/* ---------- Steps (a real sequence, so numbered) ---------- */
+.ab-steps {
+  list-style: none; margin: 0; padding: 0; counter-reset: ab-step;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem 2rem;
+}
+.ab-steps li { counter-increment: ab-step; display: grid; gap: 0.5rem; align-content: start; }
+.ab-steps li::before {
+  content: counter(ab-step);
+  display: grid; place-items: center;
+  width: 2.5rem; height: 2.5rem; margin-bottom: 0.5rem;
+  border-radius: 50%; border: 1.5px solid var(--ab-accent);
+  color: var(--ab-accent); font-weight: 700; font-size: 1rem;
+  font-variant-numeric: tabular-nums; background: var(--ab-bg);
+}
+.ab-steps p { font-size: 1rem; line-height: 1.6; }
+.ab-contact {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem); padding: 1.5rem 1.75rem;
+  border-radius: 12px; background: var(--ab-bg); border: 1px solid var(--ab-line-warm);
+  display: grid; gap: 0.375rem; max-width: 760px;
+}
+.ab-contact p { font-size: 1rem; line-height: 1.6; }
+
+/* ---------- Key facts ---------- */
+.ab-facts {
+  margin: 0; background: var(--ab-bg); border: 1px solid var(--ab-line-warm); border-radius: 12px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+}
+.ab-facts > div {
+  display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 1rem;
+  padding: 1rem 1.5rem; border-bottom: 1px solid var(--ab-line);
+}
+.ab-facts > div:nth-child(odd) { border-right: 1px solid var(--ab-line); }
+.ab-facts > div:nth-last-child(-n+2) { border-bottom: 0; }
+.ab-facts dt { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ab-muted); padding-top: 0.15rem; }
+.ab-facts dd { margin: 0; font-size: 1rem; line-height: 1.55; color: var(--ab-ink); overflow-wrap: anywhere; }
+
+/* Placeholder marker: delete once filled */
+.ab-tbd {
+  background: #fff3cd; color: #8a5a00; border-radius: 4px;
+  padding: 0 0.3em; font-size: 0.92em; font-weight: 500; white-space: nowrap;
+}
+
+/* ---------- FAQ ---------- */
+.ab-faq { border-top: 1px solid var(--ab-line); }
+.ab-faq details { border-bottom: 1px solid var(--ab-line); }
+.ab-faq summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding: 1.35rem 0;
+}
+.ab-faq summary::-webkit-details-marker { display: none; }
+.ab-faq summary h3 { font-size: 1.125rem; font-weight: 500; transition: color 0.2s; }
+.ab-faq summary:hover h3 { color: var(--ab-accent); }
+.ab-faq summary::after {
+  content: ""; flex: none; width: 14px; height: 14px;
+  background:
+    linear-gradient(var(--ab-accent), var(--ab-accent)) center / 14px 2px no-repeat,
+    linear-gradient(var(--ab-accent), var(--ab-accent)) center / 2px 14px no-repeat;
+  transition: transform 0.35s var(--ab-ease);
+}
+.ab-faq details[open] summary::after { transform: rotate(135deg); }
+.ab-faq-a { padding: 0 2.5rem 1.5rem 0; }
+.ab-faq-a p { font-size: 1.0625rem; line-height: 1.7; }
+.ab-faq details[open] .ab-faq-a { animation: ab-drop 0.4s var(--ab-ease); }
+
+/* ---------- Closing ---------- */
+.ab-close { background: var(--ab-cream); padding-block: clamp(4.5rem, 10vw, 8rem); }
+.ab-close-inner { display: grid; justify-items: center; text-align: center; gap: 1.25rem; }
+.ab-close .ab-display--xl { max-width: 18ch; }
+.ab-btn {
+  margin-top: 0.75rem;
+  display: inline-flex; align-items: center; gap: 0.625rem;
+  padding: 1rem 1.75rem; border-radius: 8px;
+  background: linear-gradient(135deg, var(--ab-accent) 0%, #C63716 100%);
+  color: #fff !important; font-size: 1.125rem; font-weight: 500; text-decoration: none !important;
+  box-shadow: 0 10px 24px -12px rgba(198, 55, 22, 0.7);
+  transition: transform 0.25s var(--ab-ease), box-shadow 0.25s var(--ab-ease);
+}
+.ab-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(198, 55, 22, 0.75); }
+.ab-btn-arrow { transition: transform 0.25s var(--ab-ease); }
+.ab-btn:hover .ab-btn-arrow { transform: translateX(4px); }
+.ab-close-note { font-size: 0.9375rem; color: var(--ab-muted) !important; }
+
+/* ---------- Pricing component spacing inside this page ---------- */
+.ab #pricing-cards-container { max-width: 1000px; margin-inline: auto; }
+
+/* ==========================================================
+   Motion (subtle). Everything is visible without JS.
+   about-us.js only adds .ab-pre to elements BELOW the fold,
+   then swaps it for .ab-in as they scroll into view.
+   ========================================================== */
+@keyframes ab-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes ab-draw { from { stroke-dashoffset: 140; } to { stroke-dashoffset: 0; } }
+@keyframes ab-drop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@keyframes ab-nudge { 0%,100% { transform: none; } 40% { transform: translateY(-3px) rotate(-4deg); } }
+
+/* Hero: one short load sequence */
+.ab-load { animation: ab-rise 0.8s var(--ab-ease) both; animation-delay: calc(var(--d, 0) * 110ms + 60ms); }
+.ab-hero .ab-ul-path { animation: ab-draw 1.1s var(--ab-ease) 0.7s both; }
+
+/* Hero illustration: bubbles pop in one after another, then the thin line gets highlighted */
+@keyframes ab-pop { from { opacity: 0; transform: translateY(10px) scale(.94); } to { opacity: 1; transform: none; } }
+@keyframes ab-sweep { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
+.ab-paper { animation: ab-rise 0.9s var(--ab-ease) 0.25s both; }
+.ab-bubble { animation: ab-pop 0.55s var(--ab-ease) both; animation-delay: calc(var(--b, 0) * 650ms + 1100ms); }
+.ab-thin { animation: ab-sweep 0.8s var(--ab-ease) 0.9s both; }
+.ab-hero-tag .ab-ul-path { animation-delay: 3.1s; }
+.ab-hero-tag.ab-load { animation-delay: 2.6s; }
+
+/* Scroll reveal */
+.ab-reveal { transition: opacity 0.75s var(--ab-ease), transform 0.75s var(--ab-ease); transition-delay: calc(var(--d, 0) * 110ms); }
+.ab-reveal.ab-pre { opacity: 0; transform: translateY(24px); }
+.ab-belief.ab-pre::before { transform: scaleX(0); }
+.ab-letter.ab-pre .ab-ul-path, .ab-letter.ab-in .ab-ul-path { animation: none; }
+.ab-letter.ab-in .ab-ul-path { animation: ab-draw 1.1s var(--ab-ease) 0.3s both; }
+
+/* Manifesto "reading" effect: paragraphs ink in as they reach mid-screen */
+.ab-ink.ab-ink-on p { color: var(--ab-ink-faded); }
+.ab-ink.ab-ink-on p.ab-read { color: var(--ab-ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-load, .ab-hero .ab-ul-path, .ab-letter .ab-ul-path, .ab-paper, .ab-bubble, .ab-thin { animation: none !important; }
+  .ab-reveal, .ab-belief::before, .ab-ink p { transition: none !important; }
+  .ab-reveal.ab-pre { opacity: 1; transform: none; }
+  .ab-belief.ab-pre::before { transform: none; }
+  .ab-ink.ab-ink-on p { color: var(--ab-ink); }
+  .ab-does-item:hover, .ab-chip:hover, .ab-btn:hover { transform: none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .ab-hero-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "art" "tag"; grid-template-rows: auto; }
+  .ab-art { max-width: 460px; width: 100%; margin: 1rem auto 0; }
+  .ab-does, .ab-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ab-beliefs { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .ab-split, .ab-team { grid-template-columns: minmax(0, 1fr); }
+  .ab-sticky { position: static; }
+  .ab-founder { max-width: 420px; }
+  .ab-mission-grid { grid-template-columns: minmax(0, 1fr); }
+  .ab-mission-body { margin-left: 0; }
+  .ab-facts { grid-template-columns: minmax(0, 1fr); }
+  .ab-facts > div:nth-child(odd) { border-right: 0; }
+  .ab-facts > div:nth-last-child(2) { border-bottom: 1px solid var(--ab-line); }
+}
+@media (max-width: 640px) {
+  .ab-art { padding: 2.5rem 0 3rem; }
+  .ab-bubble { font-size: 0.875rem; max-width: 13rem; }
+  .ab-b2 { left: 0; }
+  .ab-wrap { padding-inline: 16px; }
+  .ab-does, .ab-steps, .ab-who, .ab-mission-body { grid-template-columns: minmax(0, 1fr); }
+  .ab-facts > div { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; padding: 0.9rem 1.1rem; }
+  .ab-meta { gap: 1rem 2rem; }
+  .ab-faq-a { padding-right: 0; }
+  .ab-founder img { box-shadow: 6px 6px 0 var(--ab-cream); }
+}
