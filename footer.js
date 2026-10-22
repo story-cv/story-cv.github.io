@@ -71,9 +71,14 @@ function createFooter() {
                     <a href="https://www.producthunt.com/products/storycv?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-storycv" target="_blank" rel="noopener noreferrer" class="producthunt-badge">
                         <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=996890&theme=light&t=1761896471862" alt="StoryCV - The only resume writer that truly tells your story. | Product Hunt" width="250" height="54">
                     </a>
-                    <a href="https://launchllama.co/?utm_source=badge&utm_medium=referral" target="_blank" rel="noopener noreferrer" class="launch-llama-badge" aria-label="Featured in Launch Llama Newsletter">
-                        <img src="/launch-llama-badge.png" alt="As seen on Launch Llama Newsletter" width="180" height="53">
+                    <span style="display:inline-block;text-align:center;font-family:system-ui,sans-serif;line-height:1;">
+                      <a href="https://tools.launchllama.co?utm_source=badge&utm_medium=referral" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0;">
+                      <img src="https://tools.launchllama.co/featured-badge.png?v=2"
+                        alt="Featured on Launch"
+                        width="200" height="52" style="display:block;border:0;" />
                     </a>
+                      <a href="https://launchmcp.co/?utm_source=badge&utm_medium=referral" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:-2px;padding-top:0;font-size:7px;font-weight:600;color:#888;text-decoration:none;line-height:1;letter-spacing:0.02em;">Launch</a>
+                    </span>
                     <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer" class="twelve-tools-badge">
                         <img src="https://twelve.tools/badge0-dark.svg" alt="Featured on Twelve Tools" width="200" height="54">
                     </a>
