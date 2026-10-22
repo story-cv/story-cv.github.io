@@ -71,6 +71,9 @@ function createFooter() {
                     <a href="https://www.producthunt.com/products/storycv?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-storycv" target="_blank" rel="noopener noreferrer" class="producthunt-badge">
                         <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=996890&theme=light&t=1761896471862" alt="StoryCV - The only resume writer that truly tells your story. | Product Hunt" width="250" height="54">
                     </a>
+                    <a href="https://launchllama.co/?utm_source=badge&utm_medium=referral" target="_blank" rel="noopener noreferrer" class="launch-llama-badge" aria-label="Featured in Launch Llama Newsletter">
+                        <img src="/launch-llama-badge.png" alt="As seen on Launch Llama Newsletter" width="180" height="53">
+                    </a>
                     <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer" class="twelve-tools-badge">
                         <img src="https://twelve.tools/badge0-dark.svg" alt="Featured on Twelve Tools" width="200" height="54">
                     </a>
