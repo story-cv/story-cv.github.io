@@ -72,7 +72,7 @@ function createFooter() {
                         <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=996890&theme=light&t=1761896471862" alt="StoryCV - The only resume writer that truly tells your story. | Product Hunt" width="250" height="54">
                     </a>
                     <span style="display:inline-block;text-align:center;font-family:system-ui,sans-serif;line-height:1;">
-                      <a href="https://tools.launchllama.co?utm_source=badge&utm_medium=referral" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0;">
+                      <a href="https://tools.launchllama.co/products/storycv?utm_source=badge&utm_medium=referral" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0;">
                       <img src="https://tools.launchllama.co/featured-badge.png?v=2"
                         alt="Featured on Launch"
                         width="200" height="52" style="display:block;border:0;" />
