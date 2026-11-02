@@ -10738,3 +10738,138 @@ body.mobile-menu-open {
     font-size: 1.375rem;
   }
 }
+
+/* Landing page testimonial */
+.stevie-testimonial {
+  padding: 112px 24px 120px;
+  background: #fbf7f1;
+}
+
+.stevie-testimonial__inner {
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.stevie-testimonial__title {
+  margin: 0 0 48px;
+  color: #2e2e2e;
+  font-family: var(--font-primary, 'Onest', system-ui, sans-serif);
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.stevie-testimonial__title-accent {
+  display: block;
+  color: #ee4e34;
+}
+
+.stevie-testimonial__figure {
+  display: grid;
+  gap: 32px;
+  margin: 0;
+  padding: 64px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(46, 46, 46, 0.08);
+}
+
+.stevie-testimonial__quote-mark {
+  display: block;
+  width: 56px;
+  color: #ee4e34;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 0.7;
+}
+
+.stevie-testimonial__quote {
+  margin: 0;
+  color: #2e2e2e;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.stevie-testimonial__quote mark {
+  padding: 0 6px;
+  border-radius: 6px;
+  background: #fcedda;
+  color: #2e2e2e;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.stevie-testimonial__caption {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stevie-testimonial__avatar {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  place-items: center;
+  border-radius: 50%;
+  background: #fcedda;
+  color: #2e2e2e;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.stevie-testimonial__person {
+  display: grid;
+  gap: 4px;
+}
+
+.stevie-testimonial__name {
+  color: #2e2e2e;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.stevie-testimonial__role {
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.stevie-testimonial__cta {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  margin-top: 48px;
+  text-align: center;
+}
+
+.stevie-testimonial__note {
+  margin: 0;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .stevie-testimonial {
+    padding-inline: 20px;
+  }
+
+  .stevie-testimonial__title {
+    font-size: 32px;
+  }
+
+  .stevie-testimonial__figure {
+    padding: 32px;
+  }
+
+  .stevie-testimonial__quote {
+    font-size: 22px;
+  }
+}
