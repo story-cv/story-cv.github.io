@@ -161,6 +161,87 @@
   white-space: nowrap;
 }
 
+.gir-stevie-testimonial {
+  padding: 48px 24px 96px;
+  background-color: #fbf7f1;
+}
+
+.gir-stevie-testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 56px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(46, 46, 46, 0.08);
+}
+
+.gir-stevie-quote-mark {
+  display: block;
+  height: 42px;
+  color: #ee4e34;
+  font-family: Georgia, serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.gir-stevie-quote {
+  margin: 0;
+  color: #2e2e2e;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.gir-stevie-quote mark {
+  padding: 0 6px;
+  border-radius: 6px;
+  background: #fcedda;
+  color: #2e2e2e;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.gir-stevie-attribution {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gir-stevie-avatar {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  place-items: center;
+  border-radius: 50%;
+  background: #fcedda;
+  color: #2e2e2e;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.gir-stevie-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gir-stevie-name {
+  color: #2e2e2e;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.gir-stevie-role {
+  color: #2e2e2e;
+  font-size: 15px;
+  font-weight: 400;
+}
+
 
 
 /* ============================================================
@@ -1565,6 +1646,14 @@
 @media (max-width: 768px) {
   .gir-hero {
     padding: var(--space-2xl) 0;
+  }
+
+  .gir-stevie-testimonial-card {
+    padding: 32px;
+  }
+
+  .gir-stevie-quote {
+    font-size: 20px;
   }
 
   .gir-stakes-grid {
