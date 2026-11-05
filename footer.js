@@ -9,7 +9,7 @@ function createFooter() {
                     <div class="footer-logo">
                         <img src="/logo-with-text-light.svg" alt="Story.CV">
                     </div>
-                    <p class="footer-tagline">A resume that starts a bidding war.</p>
+                    <p class="footer-tagline">You are not underqualified, you are underdescribed.</p>
                 </div>
 
                 <!-- Social Media and CTA -->
